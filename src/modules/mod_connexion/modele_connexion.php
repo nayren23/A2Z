@@ -57,7 +57,7 @@ class ModeleConnexion extends Connexion
 
         if (isset($_SESSION["login"])) {
             echo 'Vous vous déconnectez sous l’identifiant: ' . $_SESSION['login'];
-            unset($_SESSION["login"]); // je pense mais pas sur
+            unset($_SESSION["login"]);
             session_destroy();
         }
         else {

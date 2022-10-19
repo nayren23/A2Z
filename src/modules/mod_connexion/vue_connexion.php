@@ -1,13 +1,11 @@
 <?php
 
-require_once('/home/etudiants/info/rchouchane/local_html/MVC2/vue_generique.php');
-
-class VueConnexion extends VueGenerique
+class VueConnexion
 {
 
   public function  __construct() // constructeur c'est la methode construct
   {
-      parent::__construct();// comme un super
+     // parent::__construct();// comme un super
   }
 
   public function menu()

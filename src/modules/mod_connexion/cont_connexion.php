@@ -1,7 +1,7 @@
 <?php
 
-require_once('vue_connexion.php');
-require_once('modele_connexion.php');
+require_once "vue_connexion.php";
+require_once "modele_connexion.php";
 
 class ContConnexion
 {

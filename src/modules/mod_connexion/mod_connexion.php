@@ -1,9 +1,9 @@
 <?php
 
-require_once('cont_connexion.php');
-require_once('/home/etudiants/info/rchouchane/local_html/MVC2/mod_generique.php');
+require_once "cont_connexion.php";
 
-class ModConnexion extends ModGenerique
+
+class ModConnexion
 {
 
 
