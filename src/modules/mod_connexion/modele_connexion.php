@@ -24,8 +24,9 @@ class ModeleConnexion extends Connexion
     {
 
         if (isset($_SESSION["identifiant"])) {
-            echo 'Vous êtes déjà connecté sous l’identifiant: ' . $_POST['identifiant'];
+            //echo 'Vous êtes déjà connecté sous l’identifiant: ' . $_POST['identifiant'];
         } 
+
         else {
 
             try {
@@ -54,12 +55,12 @@ class ModeleConnexion extends Connexion
     {
 
         if (isset($_SESSION["identifiant"])) {
-            echo 'Vous vous déconnectez sous l’identifiant: ' . $_SESSION['identifiant'];
+           // echo 'Vous vous déconnectez sous l’identifiant: ' . $_SESSION['identifiant'];  // a supprimer 
             unset($_SESSION["identifiant"]); // je pense mais pas sur
             session_destroy();
         }
         else {
-            echo'Vous devez d abord vous connecté pour faire cette action !!!';
+          //  echo'Vous devez d abord vous connecté pour faire cette action !!!';  // a supprimer 
         }
         // unset() détruit la ou les variables dont le nom a été passé en argument var. 
 

@@ -27,16 +27,17 @@ class ModConnexion
                 break;
 
             case 'connexion':
-                echo'hello';
                 $this->con->afficherFormulaireConnexion();
                 break;
 
             case 'connexionidentifiant':
                 $this->con->insereDonneConnexion();
+                //changer ici et appelller la page d'acceuil principale
                 break;
 
             case 'deconnexion':
                 $this->con->deconnexion();
+                $this->con->afficherFormulaireConnexion();
                 break;
         }
         // $this->con->exec();

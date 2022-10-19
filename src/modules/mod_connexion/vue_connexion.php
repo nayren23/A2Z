@@ -22,48 +22,146 @@ class VueConnexion
   {
     //index.php?module=joueurs&action=ajout
 
-    echo '<form action="index.php?module=connexion&action=creationCompte" method="post">
+
+    ?>
+
+    <head>
+    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+
+        
+    <header class ="headerconnexion" >
+      <div class="p-3 text-bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          </ul>
+
+
+
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
+        </div>
+      </div>
+      </div>
+  </header>
+    <div class="contenir">
+
+
+    <form action="index.php?module=connexion&action=creationCompte" method="post">
+    <p>Inscription</p>
+
         <div>
-          <label for="nom">Entrer votre identifiant: </label>
-          <input type="text" name="identifiant" required>
+          <input type="text" placeholder="Identifiant" name="identifiant" required>
         </div>
         
         <div >
-          <label for="motDePasse">Entrer votre mot de passe: </label>
-          <input type="text" name="motDePasse"required>
-        </div>
-        <div>
-
-        <div>
-        <label for="adresseMail">Entrer votre adresseMail: </label>
-        <input type="email" name="adresseMail" required>
+          <input type="text" placeholder="Mot de passe" name="motDePasse"required>
         </div>
 
-          <input type="submit" value="Inscription!">
-        </div>
-      </form>
-      ';
+        <div >
+        <input type="text" placeholder="E-mail" name="adresseMail"required>
+      </div>
+      <input type="submit" value="Inscription!">
+
+        <div>
+
+
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+        
+    </div>
+    </body>
+
+<?php
+    
   }
 
   public function form_connexion()
   {
     //index.php?module=joueurs&action=ajout
 
-    echo '<form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+    ?>
+    <head>
+
+    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+
+        
+    <header class ="headerconnexion" >
+      <div class="p-3 text-bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          </ul>
+
+
+
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
+        </div>
+      </div>
+      </div>
+  </header>
+
+    <div class="contenir">
+
+      <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+        <p>Bienvenue</p>
+
         <div>
-          <label for="nom">Entrer votre identifiant: </label>
-          <input type="text" name="identifiant" required>
+          <input type="text" placeholder="Identifiant" name="identifiant" required>
         </div>
         <div >
-          <label for="motDePasse">Entrer votre mot de passe: </label>
-          <input type="text" name="motDePasse"required>
+          <input type="text" placeholder="Mot de passe" name="motDePasse"required>
         </div>
         <div>
           <input type="submit" value="Connexion!">
         </div>
-      </form>
-      ';
-  }
+          <a href="#">Mot de passe oublié</a>
+       </form>
+
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+    </div>
+    </body>
+
+   <?php
+}
 
   public function deconnexion()
   {
