@@ -31,7 +31,7 @@ class ModConnexion
                 $this->con->afficherFormulaireConnexion();
                 break;
 
-            case 'connexionLogin':
+            case 'connexionidentifiant':
                 $this->con->insereDonneConnexion();
                 break;
 

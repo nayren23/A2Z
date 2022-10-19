@@ -24,14 +24,21 @@ class VueConnexion
 
     echo '<form action="index.php?module=connexion&action=creationCompte" method="post">
         <div>
-          <label for="nom">Entrer votre login: </label>
-          <input type="text" name="login" required>
+          <label for="nom">Entrer votre identifiant: </label>
+          <input type="text" name="identifiant" required>
         </div>
+        
         <div >
-          <label for="mdp">Entrer votre mot de passe: </label>
-          <input type="text" name="mdp"required>
+          <label for="motDePasse">Entrer votre mot de passe: </label>
+          <input type="text" name="motDePasse"required>
         </div>
         <div>
+
+        <div>
+        <label for="adresseMail">Entrer votre adresseMail: </label>
+        <input type="email" name="adresseMail" required>
+        </div>
+
           <input type="submit" value="Inscription!">
         </div>
       </form>
@@ -42,14 +49,14 @@ class VueConnexion
   {
     //index.php?module=joueurs&action=ajout
 
-    echo '<form action="index.php?module=connexion&action=connexionLogin" method="post">
+    echo '<form action="index.php?module=connexion&action=connexionidentifiant" method="post">
         <div>
-          <label for="nom">Entrer votre login: </label>
-          <input type="text" name="login" required>
+          <label for="nom">Entrer votre identifiant: </label>
+          <input type="text" name="identifiant" required>
         </div>
         <div >
-          <label for="mdp">Entrer votre mot de passe: </label>
-          <input type="text" name="mdp"required>
+          <label for="motDePasse">Entrer votre mot de passe: </label>
+          <input type="text" name="motDePasse"required>
         </div>
         <div>
           <input type="submit" value="Connexion!">
