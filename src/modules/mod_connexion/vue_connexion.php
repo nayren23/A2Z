@@ -26,9 +26,10 @@ class VueConnexion
     ?>
 
     <head>
-    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>
+    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
+
+  </head>
 
     <body>
 
@@ -43,17 +44,16 @@ class VueConnexion
           </a>
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Contact </a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Respect de la vie privée</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">A propos de</a></li>
           </ul>
 
 
 
           <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+            <button type="button" class="btn btn-outline-light me-2">Connexion</button>
+            <button type="button" class="btn btn-warning">Inscription</button>
           </div>
         </div>
       </div>
@@ -96,19 +96,17 @@ class VueConnexion
 
   public function form_connexion()
   {
-    //index.php?module=joueurs&action=ajout
-
     ?>
     <head>
 
-    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>
+    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
+  
+  </head>
 
     <body>
 
 
-        
     <header class ="headerconnexion" >
       <div class="p-3 text-bg-dark">
       <div class="container">
@@ -118,17 +116,17 @@ class VueConnexion
           </a>
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Contact </a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Respect de la vie privée</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">A propos de</a></li>
           </ul>
 
 
 
           <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn btn-warning">Inscription</button>
+          <button type="button" class="btn btn-outline-light me-2">Connexion</button>
+          <button type="button" class="btn btn-outline-light me-2">Déconnexion</button>
           </div>
         </div>
       </div>
