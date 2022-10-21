@@ -23,7 +23,9 @@ class ModConnexion
                 break;
 
             case 'creationCompte':
-                $this->con->insereDonneInscription();
+                if($this->con->insereDonneInscription()){
+                    $this->con-> inscriptionReussite ();
+                }
                 break;
 
             case 'connexion':
@@ -36,8 +38,8 @@ class ModConnexion
                 break;
 
             case 'deconnexion':
+                $this->con->vueDeconnexion();
                 $this->con->deconnexion();
-                $this->con->afficherFormulaireConnexion();
                 break;
         }
         // $this->con->exec();

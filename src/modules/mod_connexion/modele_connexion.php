@@ -9,12 +9,24 @@ class ModeleConnexion extends Connexion
     public function insereInscription()
     {
         try {
+            //ici on teste si l'adresse mail est deja utilise
+            $sql = 'Select * from Utilisateur WHERE (adresseMail=:adresseMail)';
+            $statement = self::$bdd->prepare($sql);
+            $statement->execute(array(':adresseMail' => $_POST['adresseMail']));
+            $result = $statement->fetch();
+            if($result){
+                return false;
+                echo'adresseMail deja utilisé';
+            }
+
+            else{
+
+            // ici on insere les donnee dans la BDD
             $sql = 'INSERT INTO Utilisateur (adresseMail,identifiant,motDePasse) VALUES(:adresseMail,:identifiant, :motDePasse)';
             $statement = Connexion::$bdd->prepare($sql);
-
-
             $statement->execute(array(':adresseMail'=>$_POST['adresseMail'],':identifiant' => $_POST['identifiant'], 'motDePasse' => password_hash($_POST['motDePasse'], PASSWORD_DEFAULT)));
-            echo'Bravo vous venez de créer votre compte avec comme id :' .$_POST['identifiant'];
+            return true;
+        }
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }

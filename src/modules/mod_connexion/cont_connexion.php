@@ -30,6 +30,7 @@ class ContConnexion
         $this->vue->menu();
     }
 
+
     public function afficherFormulaireInscription()
     {
         $this->vue->form_inscription();
@@ -37,7 +38,7 @@ class ContConnexion
 
     public function insereDonneInscription()
     {
-        $this->modele->insereInscription();
+       return  $this->modele->insereInscription();
     }
 
     public function afficherFormulaireConnexion()
@@ -56,5 +57,13 @@ class ContConnexion
 
     public function deconnexion(){
         $this->modele->deconnexionM();
+    }
+
+    public function vueDeconnexion(){
+        $this->vue->deconnexion();
+    }
+
+    public function inscriptionReussite (){
+        $this->vue->inscription();
     }
 }
