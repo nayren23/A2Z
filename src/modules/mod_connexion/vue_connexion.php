@@ -74,7 +74,7 @@ class VueConnexion
         </div>
 
         <div >
-        <input type="text" placeholder="E-mail" name="adresseMail"required>
+        <input type="email" placeholder="E-mail" name="adresseMail"required>
       </div>
       <input type="submit" value="Inscription!">
 
@@ -228,7 +228,6 @@ class VueConnexion
         <h4>Déconnexion Réussite !!! 😰</h4>
           
         Au revoir 
-        <?php echo$_POST['identifiant']; ?>  
         Au revoir   et a bientôt  sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
         </div>
