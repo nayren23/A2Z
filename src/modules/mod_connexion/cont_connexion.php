@@ -66,4 +66,8 @@ class ContConnexion
     public function inscriptionReussite (){
         $this->vue->inscription();
     }
+
+    public function affichageNavBar(){
+        $this->vue->navBarConnexion();
+    }
 }

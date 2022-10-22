@@ -29,6 +29,7 @@ class ModConnexion
                 break;
 
             case 'connexion':
+                
                 $this->con->afficherFormulaireConnexion();
                 break;
 
@@ -41,7 +42,10 @@ class ModConnexion
                 $this->con->vueDeconnexion();
                 $this->con->deconnexion();
                 break;
+
         }
+        $this->con->affichageNavBar();
+
         // $this->con->exec();
     }
 
