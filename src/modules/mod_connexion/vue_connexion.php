@@ -180,7 +180,7 @@ class VueConnexion
     <?php
 }
 
-  //fonction pour l'affichage du toast "pop up" pour afficher un message de bienvenu
+  //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si une adresse mail est déja utiliser '
   public function adresseMailUtilise()
   {
     ?>
