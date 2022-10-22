@@ -26,6 +26,9 @@ class ModConnexion
                 if($this->con->insereDonneInscription()){
                     $this->con-> inscriptionReussite ();
                 }
+                else{
+                    $this->con->affichageAdreMailUtiliser();
+                }
                 break;
 
             case 'connexion':

@@ -15,8 +15,8 @@ class ModeleConnexion extends Connexion
             $statement->execute(array(':adresseMail' => $_POST['adresseMail']));
             $result = $statement->fetch();
             if($result){
-                return false;
                 echo'adresseMail deja utilisé';
+                return false;
             }
 
             else{

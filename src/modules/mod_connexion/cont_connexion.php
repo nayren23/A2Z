@@ -70,4 +70,8 @@ class ContConnexion
     public function affichageNavBar(){
         $this->vue->navBarConnexion();
     }
+
+    public function affichageAdreMailUtiliser(){
+        $this->vue->adresseMailUtilise();
+    }
 }
