@@ -30,8 +30,9 @@ class ContConnexion
         $this->vue->menu();
     }
 
-    //INSCRIPTION
-    public function afficherFormulaireInscription()
+  ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
+
+  public function affichageFormulaireInscription()
     {
         $this->vue->form_inscription();
     }
@@ -41,15 +42,17 @@ class ContConnexion
        return  $this->modele->insereInscription();
     }
 
-    public function inscriptionReussite (){
+    public function affichageInscriptionReussite (){
         $this->vue->inscription();  //toasts
     }
 
     public function affichageAdreMailUtiliser(){
         $this->vue->adresseMailUtilise();  //toasts
     }
-    //CONNEXION
-    public function afficherFormulaireConnexion()
+
+  ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
+
+  public function afficherFormulaireConnexion()
     {
         $this->vue->form_connexion();
     }
@@ -66,20 +69,27 @@ class ContConnexion
     public function affichageConnexionReussie(){  //toasts
         $this->vue->connexionReussi();
     }
-    //DECONNEXION
-    public function affichageDeco(){
+
+  ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
+
+  public function affichageDeco(){
         $this->vue->deconnexion();
     }
 
     public function deconnexion(){
-        $this->modele->deconnexionM();
+       return  $this->modele->deconnexionM();
     }
 
-    public function vueDeconnexion(){
+    public function affichageDeconnexion(){
         $this->vue->deconnexion();  //toasts
     }
 
-    //NAVBAR FOOTER
+    public function affichageDeconnexionImpossible(){
+        $this->vue->deconnexionImpossible();
+    }
+
+    ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
+
     public function affichageNavBar(){
         $this->vue->navBarConnexion();
     }    

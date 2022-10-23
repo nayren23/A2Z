@@ -15,24 +15,23 @@ class ModConnexion
             case 'menue':
                 $this->con->exec();
                 break;
+  ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
 
             case 'inscription':
-                $this->con->afficherFormulaireInscription();
+                $this->con->affichageFormulaireInscription();
                 break;
             
-                //Inscription
-            case 'creationCompte':
+                case 'creationCompte':
                 if($this->con->insereDonneInscription()){
-                    $this->con-> inscriptionReussite ();
+                    $this->con-> affichageInscriptionReussite ();
                 }
                 else{
                     $this->con->affichageAdreMailUtiliser();
                 }
                 break;
             
-                //Connexion
-            case 'connexion':
-                
+  ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
+                case 'connexion':
                 $this->con->afficherFormulaireConnexion();
                 break;
 
@@ -45,10 +44,14 @@ class ModConnexion
                 }
                 break;
             
-                //Deconnexion
-            case 'deconnexion':
-                $this->con->vueDeconnexion();
-                $this->con->deconnexion();
+  ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
+                case 'deconnexion':
+                if($this->con->deconnexion()){
+                    $this->con->affichageDeconnexion();
+                }
+                else{
+                    $this->con->affichageDeconnexionImpossible();
+                }
                 break;
         }
         $this->con->affichageNavBar();//affichage constant de la navbar

@@ -17,6 +17,8 @@ class VueConnexion
 
   }
 
+    ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
+
   //ici on fait ça pour éviter la duplication de code dans la fonction inscription déconnexion et connexion
   public function navBarConnexion(){
 ?>
@@ -42,8 +44,8 @@ class VueConnexion
 
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Connexion</button>
-          <button type="button" class="btn btn-warning">Inscription</button>
+        <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
+          <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning" >Inscription</button>
         </div>
       </div>
     </div>
@@ -52,8 +54,8 @@ class VueConnexion
 
 
 <?php
-  }
-
+  } 
+  ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
   // formulaire d'inscription au site 
   public function form_inscription()
   {
@@ -124,60 +126,6 @@ class VueConnexion
 
 <?php
 }
-  //fonction pour afficher le foirmulaire de connexion
-  public function form_connexion()
-  {
-    ?>
-  <head>
-    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
-  </head>
-
-  <body>
-    <div class="contenir">
-      <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
-        <p>Bienvenue</p>
-        <div><input type="text" placeholder="Identifiant" name="identifiant" required></div>
-        <div><input type="text" placeholder="Mot de passe" name="motDePasse"required></div>
-        <div><input type="submit" value="Connexion!"></div>
-          <a href="#">Mot de passe oublié</a>
-          <p>© 2022–2023</p>
-       </form>
-        <div class="drop drop-1"></div>
-        <div class="drop drop-2"></div>
-        <div class="drop drop-3"></div>
-        <div class="drop drop-4"></div>
-        <div class="drop drop-5"></div>
-    </div>
-  </body>
-   <?php
-}
-  //fonction pour l'affichage du toast "pop up" pour afficher un message de deconnexion
-  public function deconnexion(){
-    ?>  
-      <!DOCTYPE html>
-      <html>
-        <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <meta charset='utf-8'>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        </head>
-
-        <body>
-          <div class="container">
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <h4>Déconnexion Réussite !!! 😰</h4>
-                Au revoir   et a bientôt  sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
-              </div>
-          </div>  
-      
-        </body>
-      </html>
-    <?php
-}
 
   //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si une adresse mail est déja utiliser '
   public function adresseMailUtilise()
@@ -212,6 +160,36 @@ class VueConnexion
     </html>
 
 <?php
+}
+
+  ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
+
+  //fonction pour afficher le foirmulaire de connexion
+  public function form_connexion()
+  {
+    ?>
+  <head>
+    <link rel="stylesheet" href="Style_css/pageAcceuil.css">
+  </head>
+
+  <body>
+    <div class="contenir">
+      <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+        <p>Bienvenue</p>
+        <div><input type="text" placeholder="Identifiant" name="identifiant" required></div>
+        <div><input type="text" placeholder="Mot de passe" name="motDePasse"required></div>
+        <div><input type="submit" value="Connexion!"></div>
+          <a href="#">Mot de passe oublié</a>
+          <p>© 2022–2023</p>
+       </form>
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+    </div>
+  </body>
+   <?php
 }
 
   //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si un compte est Inexsistant '
@@ -284,5 +262,61 @@ public function connexionReussi()
 
 <?php
 }
+  ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
 
+  //fonction pour l'affichage du toast "pop up" pour afficher un message de deconnexion
+  public function deconnexion(){
+    ?>  
+      <!DOCTYPE html>
+      <html>
+        <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        </head>
+
+        <body>
+          <div class="container">
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <h4>Déconnexion Réussite !!! 😰</h4>
+                Au revoir   et a bientôt  sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+              </div>
+          </div>  
+      
+        </body>
+      </html>
+    <?php
+}
+
+  //fonction pour l'affichage du toast "pop up" pour afficher un message d' erreur pour la deconnexion
+  public function deconnexionImpossible(){
+    ?>  
+      <!DOCTYPE html>
+      <html>
+        <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        </head>
+
+        <body>
+          <div class="container">
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <h4>Erreur Déconnexion 😲 !!! </h4>
+                Vous devez d'abord vous connecter pour faire la déconnexion 😡!!! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+              </div>
+          </div>  
+      
+        </body>
+      </html>
+    <?php
+}
 }

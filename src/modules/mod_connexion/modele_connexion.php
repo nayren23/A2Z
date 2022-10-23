@@ -35,24 +35,24 @@ class ModeleConnexion extends Connexion
     {   
         //Verification de si on est deja connecte
         if (isset($_SESSION['identifiant'])) {
-            //'Vous êtes déjà connecté sous l’identifiant;
+            //Vous êtes déjà connecté sous l’identifiant 
+            //TROUVER UN AUTRE MOYEN POUR LE IF
         } 
         else {
 
-            try {
-                
+            try {//On cherche si l'id existe déjà
                 $sql = 'Select * from Utilisateur WHERE (identifiant=:identifiant)';
                 $statement = self::$bdd->prepare($sql);
                 $statement->execute(array(':identifiant' => $_POST['identifiant']));
                 $result = $statement->fetch();
 
-                if ($result) { //existe deja 
+                if ($result) { //si l'id est correct alors on verifie le mdp
                     if (password_verify($_POST['motDePasse'], $result['motDePasse'])) {
                         $_SESSION['identifiant'] = $result['identifiant'];
-                        return true; // connexion reussie
+                        return true; // connexion reussie au site
                     }
                 }
-                 else {
+                else {
                     return false;//pas de compte
                 }
             } catch (PDOException $e) {
@@ -63,15 +63,13 @@ class ModeleConnexion extends Connexion
 
     public function deconnexionM()
     {
-
         if (isset($_SESSION["identifiant"])) {
-            unset($_SESSION["identifiant"]); // je pense mais pas sur
+            unset($_SESSION["identifiant"]);
             session_destroy();
+            return true;
         }
-        else {
-            echo'Vous devez d abord vous connecté pour faire cette action !!!';  // a supprimer 
+        else { 
+            return false;//Vous devez d abord vous connecté pour faire cette action !!!
         }
-        // unset() détruit la ou les variables dont le nom a été passé en argument var. 
-
     }
 }
