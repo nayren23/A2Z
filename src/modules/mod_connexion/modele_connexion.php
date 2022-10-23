@@ -33,16 +33,15 @@ class ModeleConnexion extends Connexion
     }
 
     public function verificationConnexion()
-    {
-
-        if (isset($_SESSION["identifiant"])) {
-            //echo 'Vous êtes déjà connecté sous l’identifiant: ' . $_POST['identifiant'];
+    {   
+        //Verification de si on est deja connecte
+        if (isset($_SESSION['identifiant'])) {
+            echo 'Vous êtes déjà connecté sous l’identifiant: ' . $_SESSION['identifiant'];
         } 
-
         else {
 
             try {
-
+                
                 $sql = 'Select * from Utilisateur WHERE (identifiant=:identifiant)';
                 $statement = self::$bdd->prepare($sql);
                 $statement->execute(array(':identifiant' => $_POST['identifiant']));
@@ -52,10 +51,12 @@ class ModeleConnexion extends Connexion
                     if (password_verify($_POST['motDePasse'], $result['motDePasse'])) {
                         $_SESSION['identifiant'] = $result['identifiant'];
                         echo 'Bravo vous etes connecté sous l id : ' . $_SESSION['identifiant'];
+                        return true;
                     }
                 }
                  else {
                     echo 'Vous n avez pas de compte';
+                    return false;
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage() . $e->getCode();

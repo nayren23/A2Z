@@ -48,7 +48,7 @@ class ContConnexion
 
     public function insereDonneConnexion()
     {
-        $this->modele->verificationConnexion();
+       return  $this->modele->verificationConnexion();
     }
 
     public function affichageDeco(){
@@ -74,4 +74,13 @@ class ContConnexion
     public function affichageAdreMailUtiliser(){
         $this->vue->adresseMailUtilise();
     }
+
+    public function affichageCompteInexsistant(){
+        $this->vue->compteInexsistant();
+    }
+
+    public function affichageConnexionReussie(){
+        $this->vue->connexionReussi();
+    }
+    
 }

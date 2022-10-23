@@ -21,7 +21,8 @@ class ModConnexion
             case 'inscription':
                 $this->con->afficherFormulaireInscription();
                 break;
-
+            
+                //Inscription
             case 'creationCompte':
                 if($this->con->insereDonneInscription()){
                     $this->con-> inscriptionReussite ();
@@ -30,17 +31,25 @@ class ModConnexion
                     $this->con->affichageAdreMailUtiliser();
                 }
                 break;
-
+            
+                //Connexion
             case 'connexion':
                 
                 $this->con->afficherFormulaireConnexion();
                 break;
 
             case 'connexionidentifiant':
-                $this->con->insereDonneConnexion();
+                if($this->con->insereDonneConnexion()){
+                    $this->con->affichageConnexionReussie();
+                }
+                else{
+                    $this->con->affichageCompteInexsistant();
+
+                }
                 //changer ici et appelller la page d'acceuil principale
                 break;
-
+            
+                //Deconnexion
             case 'deconnexion':
                 $this->con->vueDeconnexion();
                 $this->con->deconnexion();
