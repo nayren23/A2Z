@@ -5,8 +5,6 @@ require_once "cont_connexion.php";
 
 class ModConnexion
 {
-
-
     public function __construct()
     {
 
@@ -44,9 +42,7 @@ class ModConnexion
                 }
                 else{
                     $this->con->affichageCompteInexsistant();
-
                 }
-                //changer ici et appelller la page d'acceuil principale
                 break;
             
                 //Deconnexion
@@ -54,12 +50,7 @@ class ModConnexion
                 $this->con->vueDeconnexion();
                 $this->con->deconnexion();
                 break;
-
         }
-        $this->con->affichageNavBar();
-
-        // $this->con->exec();
+        $this->con->affichageNavBar();//affichage constant de la navbar
     }
-
-
 }

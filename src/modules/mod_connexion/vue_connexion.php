@@ -3,15 +3,14 @@
 class VueConnexion
 {
 
-  public function  __construct() // constructeur c'est la methode construct
+  public function  __construct()
   {
      // parent::__construct();// comme un super
   }
 
   public function menu()
   {
-    
-    
+       
     echo "  <a href=\"index.php?module=connexion&action=inscription\">Inscription</a> </br> ";
     echo "  <a href=\"index.php?module=connexion&action=connexion\">Connexion</a> </br>";
     echo "  <a href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a> </br>";

@@ -15,8 +15,7 @@ class ModeleConnexion extends Connexion
             $statement->execute(array(':adresseMail' => $_POST['adresseMail']));
             $result = $statement->fetch();
             if($result){
-                echo'adresseMail deja utilisé';
-                return false;
+                return false; //adresseMail deja utilisé';
             }
 
             else{
@@ -36,7 +35,7 @@ class ModeleConnexion extends Connexion
     {   
         //Verification de si on est deja connecte
         if (isset($_SESSION['identifiant'])) {
-            echo 'Vous êtes déjà connecté sous l’identifiant: ' . $_SESSION['identifiant'];
+            //'Vous êtes déjà connecté sous l’identifiant;
         } 
         else {
 
@@ -50,13 +49,11 @@ class ModeleConnexion extends Connexion
                 if ($result) { //existe deja 
                     if (password_verify($_POST['motDePasse'], $result['motDePasse'])) {
                         $_SESSION['identifiant'] = $result['identifiant'];
-                        echo 'Bravo vous etes connecté sous l id : ' . $_SESSION['identifiant'];
-                        return true;
+                        return true; // connexion reussie
                     }
                 }
                  else {
-                    echo 'Vous n avez pas de compte';
-                    return false;
+                    return false;//pas de compte
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage() . $e->getCode();
@@ -68,12 +65,11 @@ class ModeleConnexion extends Connexion
     {
 
         if (isset($_SESSION["identifiant"])) {
-           // echo 'Vous vous déconnectez sous l’identifiant: ' . $_SESSION['identifiant'];  // a supprimer 
             unset($_SESSION["identifiant"]); // je pense mais pas sur
             session_destroy();
         }
         else {
-          //  echo'Vous devez d abord vous connecté pour faire cette action !!!';  // a supprimer 
+            echo'Vous devez d abord vous connecté pour faire cette action !!!';  // a supprimer 
         }
         // unset() détruit la ou les variables dont le nom a été passé en argument var. 
 

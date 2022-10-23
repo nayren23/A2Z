@@ -30,7 +30,7 @@ class ContConnexion
         $this->vue->menu();
     }
 
-
+    //INSCRIPTION
     public function afficherFormulaireInscription()
     {
         $this->vue->form_inscription();
@@ -41,6 +41,14 @@ class ContConnexion
        return  $this->modele->insereInscription();
     }
 
+    public function inscriptionReussite (){
+        $this->vue->inscription();  //toasts
+    }
+
+    public function affichageAdreMailUtiliser(){
+        $this->vue->adresseMailUtilise();  //toasts
+    }
+    //CONNEXION
     public function afficherFormulaireConnexion()
     {
         $this->vue->form_connexion();
@@ -51,6 +59,14 @@ class ContConnexion
        return  $this->modele->verificationConnexion();
     }
 
+    public function affichageCompteInexsistant(){ //toasts
+        $this->vue->compteInexsistant();
+    }
+
+    public function affichageConnexionReussie(){  //toasts
+        $this->vue->connexionReussi();
+    }
+    //DECONNEXION
     public function affichageDeco(){
         $this->vue->deconnexion();
     }
@@ -60,27 +76,11 @@ class ContConnexion
     }
 
     public function vueDeconnexion(){
-        $this->vue->deconnexion();
+        $this->vue->deconnexion();  //toasts
     }
 
-    public function inscriptionReussite (){
-        $this->vue->inscription();
-    }
-
+    //NAVBAR FOOTER
     public function affichageNavBar(){
         $this->vue->navBarConnexion();
-    }
-
-    public function affichageAdreMailUtiliser(){
-        $this->vue->adresseMailUtilise();
-    }
-
-    public function affichageCompteInexsistant(){
-        $this->vue->compteInexsistant();
-    }
-
-    public function affichageConnexionReussie(){
-        $this->vue->connexionReussi();
-    }
-    
+    }    
 }
