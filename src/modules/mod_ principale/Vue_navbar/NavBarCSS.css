@@ -1,0 +1,15 @@
+.logo {
+  position: absolute;
+  top: 5px; left: 40px;
+
+}
+
+.photoProfil{
+  position: absolute;
+  right: 5;
+  top: 10;
+}
+
+.navigation {
+width: 100%;
+}
