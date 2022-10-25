@@ -10,9 +10,9 @@ class ModeleConnexion extends Connexion
     {
         try {
             //ici on teste si l'adresse mail est deja utilise
-            $sql = 'Select * from Utilisateur WHERE (adresseMail=:adresseMail)';
+            $sql = 'Select * from Utilisateur WHERE adresseMail=:adresseMail or identifiant=:identifiant';
             $statement = self::$bdd->prepare($sql);
-            $statement->execute(array(':adresseMail' => $_POST['adresseMail']));
+            $statement->execute(array(':adresseMail' => $_POST['adresseMail'] , ':identifiant' => $_POST['identifiant'] ));
             $result = $statement->fetch();
             if($result){
                 return false; //adresseMail deja utilisé';
