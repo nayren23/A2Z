@@ -206,10 +206,10 @@ class VueConnexion
 
       ?>
         <div class="contenir">
-          <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+          <form action="index.php?module=principale&action=a definir" method="post">
             <p>Bienvenue</p>
             <div><input type="text" placeholder="Identifiant" name="identifiant" required></div>
-            <div><input type="text" placeholder="Mot de passe" name="motDePasse" required></div>
+            <div><input type="password" placeholder="Mot de passe" name="motDePasse" required></div>
             <div><input type="submit" value="Connexion!"></div>
             <a href="#">Mot de passe oublié</a>
             <p>© 2022–2023</p>

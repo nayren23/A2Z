@@ -23,5 +23,10 @@ switch ($_GET['module']) {
         case "connexion":
         $module = new ModConnexion();
         break;
+
+        case "principale":
+        //$module = new Mod();
+        break;
+        
 }
 ?>
