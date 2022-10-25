@@ -206,7 +206,7 @@ class VueConnexion
 
       ?>
         <div class="contenir">
-          <form action="index.php?module=principale&action=a definir" method="post">
+          <form action="index.php?module=principale&action=connexionidentifiant" method="post">
             <p>Bienvenue</p>
             <div><input type="text" placeholder="Identifiant" name="identifiant" required></div>
             <div><input type="password" placeholder="Mot de passe" name="motDePasse" required></div>
