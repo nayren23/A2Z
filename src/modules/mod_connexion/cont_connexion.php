@@ -77,6 +77,9 @@ class ContConnexion
     }
 
     public function deconnexion(){
+       
+       
+    
        return  $this->modele->deconnexionM();
     }
 

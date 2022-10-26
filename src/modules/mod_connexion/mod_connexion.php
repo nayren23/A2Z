@@ -15,45 +15,50 @@ class ModConnexion
             case 'menue':
                 $this->con->exec();
                 break;
-  ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
+                ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
 
             case 'inscription':
                 $this->con->affichageFormulaireInscription();
                 break;
-            
-                case 'creationCompte':
-                if($this->con->insereDonneInscription()){
-                    $this->con-> affichageInscriptionReussite ();
-                }
-                else{
+
+            case 'creationCompte':
+                if ($this->con->insereDonneInscription()) {
+                    $this->con->affichageInscriptionReussite();
+                } else {
                     $this->con->affichageAdreMailUtiliser();
                 }
                 break;
-            
-  ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
-                case 'connexion':
+
+                ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
+            case 'connexion':
                 $this->con->afficherFormulaireConnexion();
+                if (isset($_GET['errorConnexion'])) {  // verification pour voir si la connexion c'est mal passé
+                    $this->con->affichageCompteInexsistant();
+                } elseif (isset($_GET['erroDeconnexion'])) {
+                    $this->con->affichageDeconnexionImpossible();
+                } elseif (isset($_GET['DeconnexionReussite'])) {
+                    $this->con->affichageDeconnexion();
+                }
+
                 break;
 
             case 'connexionidentifiant':
-                if($this->con->insereDonneConnexion()){
+                if ($this->con->insereDonneConnexion()) {
                     $this->con->affichageConnexionReussie();
-                }
-                else{
-                    $this->con->affichageCompteInexsistant();
+                } else {
+                    header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }
                 break;
-            
-  ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
-                case 'deconnexion':
-                if($this->con->deconnexion()){
-                    $this->con->affichageDeconnexion();
-                }
-                else{
-                    $this->con->affichageDeconnexionImpossible();
+
+                ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
+            case 'deconnexion':
+                if ($this->con->deconnexion()) {
+                    header('Location: ./index.php?module=connexion&action=connexion&DeconnexionReussite=true');
+                } else {
+                    header('Location: ./index.php?module=connexion&action=connexion&erroDeconnexion=true');
                 }
                 break;
         }
-        $this->con->affichageNavBar();//affichage constant de la navbar
+        $this->con->affichageNavBar(); //affichage constant de la navbar
     }
 }

@@ -31,32 +31,32 @@ class VueConnexion
     <header class="headerconnexion">
       <div class="p-3 text-bg-dark">
         <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
-        <div class="navigation">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                <use xlink:href="#bootstrap" />
-              </svg>
-            </a>
+            <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
+            <div class="navigation">
+              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                  <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap" />
+                  </svg>
+                </a>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 text-white">Contact </a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Respect de la vie privée</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">A propos de</a></li>
-            </ul>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                  <li><a href="#" class="nav-link px-2 text-white">Contact </a></li>
+                  <li><a href="#" class="nav-link px-2 text-white">Respect de la vie privée</a></li>
+                  <li><a href="#" class="nav-link px-2 text-white">A propos de</a></li>
+                </ul>
 
 
 
-            <div class="text-end">
-              <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
-                  <a href="index.php?module=connexion&action=deconnexion"><button type="button" class="btn btn-outline-light me-2">Déconnexion</button>
+                <div class="text-end">
+                  <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
+                    <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
+                      <a href="index.php?module=connexion&action=deconnexion"><button type="button" class="btn btn-outline-light me-2">Déconnexion</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
     </header>
 
 
@@ -176,7 +176,7 @@ class VueConnexion
           <h4>Erreur Inscription 😨</h4>
           Attention
           <?php echo $_POST['identifiant']; ?>
-          cette adresse mail ou cet identifiant est déjà utilisée, veuillez en entrez un(e) autre !!! 
+          cette adresse mail ou cet identifiant est déjà utilisée, veuillez en entrez un(e) autre !!!
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
         </div>
       </div>
@@ -258,13 +258,14 @@ class VueConnexion
           <h4>Erreur Connexion 😨 !!!</h4>
           <?php
           if (isset($_SESSION['identifiant'])) {
-            echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "<?php echo $_SESSION['identifiant'] . '" puis retenter votre action !!!';
-                                                                                                                            } else {
-                                                                                                                              echo 'Attention "' . $_POST['identifiant'] . '" ce compte n existe pas !!!';
-                                                                                                                            }
+            echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "
+          <?php echo $_SESSION['identifiant'] . '" puis retenter votre action !!!';
+          } else {
+            echo 'Attention  ce compte n existe pas !!!';
+          }
 
-                                                                                                                              ?>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+        ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
         </div>
       </div>
 
@@ -326,22 +327,26 @@ class VueConnexion
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="Style_css/toast.css">
+
       <meta charset='utf-8'>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
 
     <body>
-      <div class="container">
+    <div class = "index">
+      <div class="container" >
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <h4>Déconnexion Réussite !!! 😰</h4>
           Au revoir et a bientôt sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
         </div>
       </div>
-
+    </div>
     </body>
 
     </html>
+    
   <?php
   }
 
@@ -357,11 +362,13 @@ class VueConnexion
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="Style_css/toast.css">
       <meta charset='utf-8'>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
 
     <body>
+    <div class = "index">
       <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <h4>Erreur Déconnexion 😲 !!! </h4>
@@ -369,7 +376,7 @@ class VueConnexion
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
         </div>
       </div>
-
+      </div>
     </body>
 
     </html>

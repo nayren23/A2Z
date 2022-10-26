@@ -10,15 +10,10 @@ connexion::initConnexion(); // On l’appelle donc sur une classe, et non sur un
 
 
 
-$_GET['module'] = isset($_GET['module']) ? $_GET['module'] : 'acceuil';
+$_GET['module'] = isset($_GET['module']) ? $_GET['module'] : 'connexion';
 
 
 switch ($_GET['module']) {
-
-    case "acceuil":
-        echo "  <a href=\"index.php?module=acceuil\">acceuil</a> </br> ";
-        echo "  <a href=\"index.php?module=connexion&action=menue\">Mod Connexion</a> </br> ";
-        break;
 
         case "connexion":
         $module = new ModConnexion();
