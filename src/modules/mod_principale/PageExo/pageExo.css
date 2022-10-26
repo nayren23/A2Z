@@ -58,9 +58,7 @@ body {
 
 
 
-input {
-    display: none;
-}
+
 
 .content {
     box-sizing: border-box;
@@ -236,6 +234,5 @@ li {
     padding: 5px;
     border: 5px solid orange;
     display: inline-block;
-
 }
 

@@ -27,12 +27,17 @@
 <body>
 
     <div>
+       
+
 
         <ul>
-            <li class="draggable" class="ui-state-highlight">Yassine <textarea name="" id="" cols="30"
-                    rows="1" >test</textarea> </li>
+            <li class="draggable" class="ui-state-highlight">Yassine   <input type="text" id="name" name="name" required
+                minlength="4" maxlength="8" size="60"> </li>
             <li class="draggable" class="ui-state-highlight">Rayan <textarea name="" id="" cols="30"
                     rows="1" >test</textarea> </li>
+
+
+                    
         </ul>
 
         <ul class="sortable">
@@ -82,6 +87,11 @@
                                     class="accordion-heading">Principe alphabétique</span>
                             </label>
                             <div class="content">
+
+                                <li class="draggable" class="ui-state-highlight">Exo1 
+                                    <input type="text" id="name" name="name" required
+                                    minlength="4" maxlength="8" size="10"></li>
+
                                 <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30"
                                         rows="1">test</textarea> </li>
                                 <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30"
@@ -165,12 +175,19 @@
             </div>
 
 
-            <page size="A4" class="sortable"></page>
+            <page size="A4" class="sortable"> 
+                </page>
 
 
 
         </div><!-- flex-row-->
     </div><!-- flex-container-->
 
+
+
+    <label for="name">Name (4 to 8 characters):</label>
+
+                <input type="text" id="name" name="name" required
+                    minlength="4" maxlength="8" size="10">
 
 </body>
