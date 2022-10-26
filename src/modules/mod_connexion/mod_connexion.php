@@ -19,13 +19,16 @@ class ModConnexion
 
             case 'inscription':
                 $this->con->affichageFormulaireInscription();
+                if (isset($_GET['errorInscription'])) {  // verification pour voir si la connexion c'est mal passé
+                    $this->con->affichageAdreMailUtiliser();
+                }
                 break;
 
             case 'creationCompte':
                 if ($this->con->insereDonneInscription()) {
                     $this->con->affichageInscriptionReussite();
                 } else {
-                    $this->con->affichageAdreMailUtiliser();
+                    header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
                 }
                 break;
 
