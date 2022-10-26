@@ -1,20 +1,14 @@
 <?php
+require_once "./vue_generique.php";
 
-class VueConnexion
+class VueConnexion extends Vue_Generique
 {
 
   public function  __construct()
   {
-    // parent::__construct();// comme un super
+     parent::__construct();// comme un super
   }
 
-  public function menu()
-  {
-
-    echo "  <a href=\"index.php?module=connexion&action=inscription\">Inscription</a> </br> ";
-    echo "  <a href=\"index.php?module=connexion&action=connexion\">Connexion</a> </br>";
-    echo "  <a href=\"index.php?module=connexion&action=deconnexion\">Deconnexion</a> </br>";
-  }
 
   ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
 
@@ -92,13 +86,6 @@ class VueConnexion
             <div><input type="submit" value="S'inscrire 👋🏻 !"> </div>
             <p>© 2022–2023</p>
           </form>
-          <div>
-            <div class="drop drop-1"></div>
-            <div class="drop drop-2"></div>
-            <div class="drop drop-3"></div>
-            <div class="drop drop-4"></div>
-            <div class="drop drop-5"></div>
-          </div>
         <?php
         } else {
           $this->compteInexsistant();

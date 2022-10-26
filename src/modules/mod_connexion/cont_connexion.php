@@ -6,7 +6,6 @@ require_once "modele_connexion.php";
 class ContConnexion
 {
 
-    private $vue;
     private $modele;
     private $action;
 
@@ -20,15 +19,59 @@ class ContConnexion
         $this->action = (isset($_GET['action']) ? $_GET['action'] : 'bienvenue');
     }
 
-
-    public function getAction(){
-        return $this->action;
-    }
-
+    //execution qui est appelle dans le mod_connexion
     public function exec()
     {
-        $this->vue->menu();
-    }
+        switch ($this->action) {
+
+                ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
+            case 'inscription':
+                $this->affichageFormulaireInscription();
+                if (isset($_GET['errorInscription'])) {  // verification pour voir si la connexion c'est mal passé
+                    $this->affichageAdreMailUtiliser();
+                }
+                break;
+
+            case 'creationCompte':
+                if ($this->insereDonneInscription()) {
+                    $this->affichageInscriptionReussite();
+                } else {
+                    header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
+                }
+                break;
+
+                ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
+            case 'connexion':
+                $this->afficherFormulaireConnexion();
+                if (isset($_GET['errorConnexion'])) {  // verification pour voir si la connexion c'est mal passé
+                    $this->affichageCompteInexsistant();
+                } elseif (isset($_GET['erroDeconnexion'])) {
+                    $this->affichageDeconnexionImpossible();
+                } elseif (isset($_GET['DeconnexionReussite'])) {
+                    $this->affichageDeconnexion();
+                }
+
+                break;
+
+            case 'connexionidentifiant':
+                if ($this->insereDonneConnexion()) {
+                    $this->affichageConnexionReussie();
+                } else {
+                    header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
+                }
+                break;
+
+                ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
+            case 'deconnexion':
+                if ($this->deconnexion()) {
+                    header('Location: ./index.php?module=connexion&action=connexion&DeconnexionReussite=true');
+                } else {
+                    header('Location: ./index.php?module=connexion&action=connexion&erroDeconnexion=true');
+                }
+                break;
+        }
+        $this->affichageNavBar(); //affichage constant de la navbar
+        }
 
   ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
 
@@ -96,4 +139,5 @@ class ContConnexion
     public function affichageNavBar(){
         $this->vue->navBarConnexion();
     }    
+    
 }
