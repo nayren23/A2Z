@@ -206,7 +206,7 @@ class VueConnexion
 
       ?>
         <div class="contenir">
-          <form action="index.php?module=principale&action=a definir" method="post">
+          <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
             <p>Bienvenue</p>
             <div><input type="text" placeholder="Identifiant" name="identifiant" required></div>
             <div><input type="password" placeholder="Mot de passe" name="motDePasse" required></div>
@@ -260,7 +260,7 @@ class VueConnexion
           if (isset($_SESSION['identifiant'])) {
             echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "<?php echo $_SESSION['identifiant'] . '" puis retenter votre action !!!';
                                                                                                                             } else {
-                                                                                                                              echo 'Attention "' . $_POST['identifiant'] . '" ce compte n existe pas !!!';
+                                                                                                                              echo 'Attention "' . $_POST['identifiant'] . '" ce nom d\'utilisateur ou mot de passe n\'est pas bon!!!';
                                                                                                                             }
 
                                                                                                                               ?>

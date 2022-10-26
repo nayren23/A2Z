@@ -187,9 +187,6 @@ input:checked~.questions {
     transition: 1s;
 }
 
-li {
-    display: inline-block;
-}
 
 #draggable {
 
@@ -238,5 +235,7 @@ li {
     margin: 5px;
     padding: 5px;
     border: 5px solid orange;
+    display: inline-block;
 
 }
+
