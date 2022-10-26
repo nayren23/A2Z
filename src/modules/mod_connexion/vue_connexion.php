@@ -6,7 +6,7 @@ class VueConnexion extends Vue_Generique
 
   public function  __construct()
   {
-     parent::__construct();// comme un super
+    parent::__construct(); // comme un super
   }
 
 
@@ -44,9 +44,25 @@ class VueConnexion extends Vue_Generique
 
 
                 <div class="text-end">
-                  <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                    <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
-                      <a href="index.php?module=connexion&action=deconnexion"><button type="button" class="btn btn-outline-light me-2">Déconnexion</button>
+
+                  <?php
+                  //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
+                  if (!($_GET['action'] == "inscription")) {
+                  ?>
+                    <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
+                    <?php
+                  }
+                  //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
+                  if (!isset($_SESSION['identifiant'])) {
+                    ?>
+                      <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
+                      <?php
+                    } else {
+                      ?> <a href="index.php?module=connexion&action=deconnexion"><button type="button" class="btn btn-outline-light me-2">Déconnexion</button>
+
+                        <?php
+                      }
+                        ?>
                 </div>
               </div>
             </div>
@@ -56,6 +72,7 @@ class VueConnexion extends Vue_Generique
 
   <?php
   }
+
   ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
   // formulaire d'inscription au site 
   public function form_inscription()
@@ -119,17 +136,17 @@ class VueConnexion extends Vue_Generique
     </head>
 
     <body>
-    <div class = "index">
+      <div class="index">
 
-      <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <h4>Inscription Réussite !!! 😍</h4>
-          Bonjour
-          <?php echo $_POST['identifiant']; ?>
-          et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <div class="container">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4>Inscription Réussite !!! 😍</h4>
+            Bonjour
+            <?php echo $_POST['identifiant']; ?>
+            et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          </div>
         </div>
-      </div>
       </div>
 
     </body>
@@ -160,15 +177,15 @@ class VueConnexion extends Vue_Generique
     </head>
 
     <body>
-    <div class = "index">
+      <div class="index">
 
-      <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <h4>Erreur Inscription 😨</h4>
-          Attention cette adresse mail ou cet identifiant est déjà utilisée, veuillez en entrez un(e) autre !!!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <div class="container">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4>Erreur Inscription 😨</h4>
+            Attention cette adresse mail ou cet identifiant est déjà utilisée, veuillez en entrez un(e) autre !!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          </div>
         </div>
-      </div>
       </div>
 
     </body>
@@ -237,22 +254,22 @@ class VueConnexion extends Vue_Generique
     </head>
 
     <body>
-    <div class = "index">
-      <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <h4>Erreur Connexion 😨 !!!</h4>
-          <?php
-          if (isset($_SESSION['identifiant'])) {
-            echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "
+      <div class="index">
+        <div class="container">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4>Erreur Connexion 😨 !!!</h4>
+            <?php
+            if (isset($_SESSION['identifiant'])) {
+              echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "
           <?php echo $_SESSION['identifiant'] . '" puis retenter votre action !!!';
-          } else {
-            echo 'Attention  ce compte n existe pas !!!';
-          }
+            } else {
+              echo 'Attention  ce compte n existe pas !!!';
+            }
 
-        ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          </div>
         </div>
-      </div>
       </div>
 
     </body>
@@ -282,16 +299,16 @@ class VueConnexion extends Vue_Generique
     </head>
 
     <body>
-    <div class = "index">
-      <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <h4>Connexion Réussie 😍 !!!</h4>
-          Heureux de vous revoir
-          <?php echo $_POST['identifiant']; ?>
-          sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+      <div class="index">
+        <div class="container">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4>Connexion Réussie 😍 !!!</h4>
+            Heureux de vous revoir
+            <?php echo $_POST['identifiant']; ?>
+            sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          </div>
         </div>
-      </div>
       </div>
     </body>
 
@@ -320,19 +337,19 @@ class VueConnexion extends Vue_Generique
     </head>
 
     <body>
-    <div class = "index">
-      <div class="container" >
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <h4>Déconnexion Réussite !!! 😰</h4>
-          Au revoir et a bientôt sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+      <div class="index">
+        <div class="container">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4>Déconnexion Réussite !!! 😰</h4>
+            Au revoir et a bientôt sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          </div>
         </div>
       </div>
-    </div>
     </body>
 
     </html>
-    
+
   <?php
   }
 
@@ -354,14 +371,14 @@ class VueConnexion extends Vue_Generique
     </head>
 
     <body>
-    <div class = "index">
-      <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <h4>Erreur Déconnexion 😲 !!! </h4>
-          Vous devez d'abord vous connecter pour faire la déconnexion 😡!!!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+      <div class="index">
+        <div class="container">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4>Erreur Déconnexion 😲 !!! </h4>
+            Vous devez d'abord vous connecter pour faire la déconnexion 😡!!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+          </div>
         </div>
-      </div>
       </div>
     </body>
 
