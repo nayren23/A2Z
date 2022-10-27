@@ -88,7 +88,7 @@ class ContConnexion
     public function affichageInscriptionReussite()
     {
         $Titre = ' Inscription Réussite';
-        $Contenu = 'Bonjour' . $_POST['identifiant'] . "et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄!";
+        $Contenu = 'Bonjour ' . $_POST['identifiant'] . " et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄!";
         //fonction pour l'affichage du toast "pop up" pour afficher un message de bienvenu
         $this->vue->popUpClassique($Titre, $Contenu);  //toasts
     }
