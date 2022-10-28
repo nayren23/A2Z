@@ -57,12 +57,8 @@ class VueConnexion extends Vue_Generique
                     ?>
                       <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
                       <?php
-                    } else {
-                      ?> <a href="index.php?module=connexion&action=deconnexion"><button type="button" class="btn btn-outline-light me-2">Déconnexion</button>
-
-                        <?php
-                      }
-                        ?>
+                    }
+                      ?>
                 </div>
               </div>
             </div>
@@ -84,6 +80,7 @@ class VueConnexion extends Vue_Generique
 
     <head>
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
+      <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
     </head>
 
     <body>
@@ -97,10 +94,15 @@ class VueConnexion extends Vue_Generique
         ?>
           <form action="index.php?module=connexion&action=creationCompte" method="post">
             <p>Inscription</p>
-            <div> <input type="text" placeholder="Identifiant" name="identifiant" required></div>
-            <div> <input type="text" placeholder="Mot de passe" name="motDePasse" required></div>
-            <div><input type="email" placeholder="E-mail" name="adresseMail" required></div>
-            <div><input type="submit" value="S'inscrire 👋🏻 !"> </div>
+            <div> <input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
+
+            <div class="boutonMdp">
+              <input class="saisieText" id="monEntree" type="password" placeholder="Mot de passe" name="motDePasse" required>
+              <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
+            </div>
+
+            <div><input class="saisieText" type="email" placeholder="E-mail" name="adresseMail" required></div>
+            <div><input class="saisieText" type="submit" value="S'inscrire 👋🏻 !"> </div>
             <p>© 2022–2023</p>
           </form>
         <?php
@@ -164,22 +166,27 @@ class VueConnexion extends Vue_Generique
 
     <head>
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
+      <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
     </head>
 
     <body>
       <?php
       if (!isset($_SESSION["identifiant"])) {
-
-
       ?>
         <div class="contenir">
           <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
             <p>Bienvenue</p>
-            <div><input type="text" placeholder="Identifiant" name="identifiant" required></div>
-            <div><input type="password" placeholder="Mot de passe" name="motDePasse" required></div>
-            <div><input type="submit" value="Connexion!"></div>
+            <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
+
+            <div class="boutonMdp">
+              <input class="saisieText" type="password" id="monEntree" placeholder="Mot de passe" name="motDePasse" required>
+              <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
+            </div>
+
+            <div><input class="saisieText" type="submit" value="Connexion!"></div>
             <a href="#">Mot de passe oublié</a>
             <p>© 2022–2023</p>
+
           </form>
         </div>
       <?php
@@ -188,7 +195,7 @@ class VueConnexion extends Vue_Generique
       }
       ?>
     </body>
-  <?php 
+  <?php
   }
 
   //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si un compte est Inexsistant '

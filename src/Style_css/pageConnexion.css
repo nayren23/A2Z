@@ -14,9 +14,8 @@ body {
 }
 .contenir {
   position: relative;
- 
-
 }
+
 
 form {
   z-index: -1;
@@ -59,7 +58,7 @@ a:active {
   text-shadow: none;
 }
 
-input {
+.saisieText {
   background: transparent;
   border: none;
   border-left: 1px solid rgba(255, 255, 255, .3);
@@ -78,6 +77,12 @@ input {
   margin-bottom: 2em;
 }
 
+.checkboxMdp{
+  size: 1;
+  z-index: -1;
+  background: transparent;
+
+}
 input:hover,
 input[type="email"]:focus,
 input[type="password"]:focus {
@@ -108,41 +113,6 @@ input[type="button"] {
   transition: all 0.2s ease;
 }
 
-.drop-1 {
-  height: 80px;
-  width: 80px;
-  top: -20px;
-  left: -40px;
-  z-index: -1;
+.boutonMdp{
+  margin-left: 45;
 }
-
-.drop-2 {
-  height: 80px;
-  width: 80px;
-  bottom: -30px;
-  right: -10px;
-}
-
-.drop-3 {
-  height: 100px;
-  width: 100px;
-  bottom: 120px;
-  right: -50px;
-  z-index: -1;
-}
-
-.drop-4 {
-  height: 120px;
-  width: 120px;
-  top: -60px;
-  right: -60px;
-}
-
-.drop-5 {
-  height: 60px;
-  width: 60px;
-  bottom: 170px;
-  left: 90px;
-  z-index: -1;
-}
-
