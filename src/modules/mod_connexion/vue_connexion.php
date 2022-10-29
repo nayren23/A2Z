@@ -47,7 +47,7 @@ class VueConnexion extends Vue_Generique
 
                   <?php
                   //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
-                  if (!($_GET['action'] == "inscription")) {
+                  if (!($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant'])) ) {
                   ?>
                     <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
                     <?php
@@ -227,7 +227,7 @@ class VueConnexion extends Vue_Generique
               echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "
           <?php echo $_SESSION['identifiant'] . '" puis retenter votre action !!!';
             } else {
-              echo 'Attention  ce compte n existe pas !!!';
+              echo "Attention  ce compte n'existe pas !!!";
             }
 
           ?>

@@ -96,7 +96,7 @@ class ContConnexion
     public function affichageAdreMailUtiliser()
     {
         $Titre = ' Erreur Inscription 😨';
-        $Contenu = 'Attention cette adresse mail ou cet identifiant est déjà utilisée, veuillez en entrez un(e) autre !!!';
+        $Contenu = 'Attention cette adresse mail <br>ou cet identifiant existe déjà !!!';
         //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si une adresse mail est déja utiliser '
         $this->vue->popUpClassique($Titre, $Contenu);  //toasts
     }
@@ -141,7 +141,7 @@ class ContConnexion
     public function affichageDeconnexion()
     {
         $Titre = ' Déconnexion Réussite !!! 😰';
-        $Contenu = " Au revoir et a bientôt sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 🥰!";
+        $Contenu = " Au revoir et a bientôt sur A2Z la plateforme <br>intuitive pour créer sa fiche d'exercice 🥰!";
         //fonction pour l'affichage du toast "pop up" pour afficher un message de deconnexion
         $this->vue->popUpClassique($Titre, $Contenu);  //toasts
     }
