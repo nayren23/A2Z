@@ -175,7 +175,7 @@ class VueConnexion extends Vue_Generique
       ?>
         <div class="contenir">
           <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
-            <p>Bienvenue</p>
+            <p>Connexion</p>
             <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
 
             <div class="boutonMdp">
@@ -183,7 +183,7 @@ class VueConnexion extends Vue_Generique
               <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
             </div>
 
-            <div><input class="saisieText" type="submit" value="Connexion!"></div>
+            <div><input class="saisieText" type="submit" value="Se connecter 🤩 !"></div>
             <a href="#">Mot de passe oublié</a>
             <p>© 2022–2023</p>
 

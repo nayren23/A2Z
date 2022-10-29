@@ -81,6 +81,7 @@ a:active {
   size: 1;
   z-index: -1;
   background: transparent;
+  border-radius: 20px;
 
 }
 input:hover,

@@ -11,9 +11,5 @@ const basculerAffichageMotDePasse = () => {  // la meme chose que function bascu
     else{
         x.type = `password`
         image.setAttribute("src", "ressource/images/oeilCacherMdp.png")
-    }
-
-
-        
-        
+    }        
 }
