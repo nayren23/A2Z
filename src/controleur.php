@@ -32,6 +32,6 @@ class Controleur
                 //  break;
 
         }
-        $this->resultat = $this->module->getCon()->vue->affichageTampon();
+        $this->resultat = $this->module->getControleur()->vue->affichageTampon();
     }
 }
