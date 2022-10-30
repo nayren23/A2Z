@@ -57,9 +57,9 @@ class ModeleCompte  extends Connexion
                 return false; //identifiant deja utilisé';
             } else {
                 // ici on UPDATE les donnee dans la BDD
-                $commande = ' UPDATE utilisateur SET adresseMail ="' . $_POST['nouveladresseMail'] . '" WHERE  adresseMail=:adresseMail';
+                $commande = ' UPDATE utilisateur SET adresseMail ="' . $_POST['nouveladresseMail'] . '" WHERE  identifiant=:identifiant';
                 $statement = Connexion::$bdd->prepare($commande);
-                $statement->execute(array(':adresseMail' => ($AncienneAdresseMail)));
+                $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
                 $result = $statement->fetch();
                 return true;
             }
