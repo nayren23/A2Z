@@ -62,7 +62,7 @@ class VueCompte extends Vue_Generique
       <body>
   
         <div class="contenir">
-  
+      
           <?php
   
   
@@ -71,7 +71,7 @@ class VueCompte extends Vue_Generique
               <p>Changement de l'adresse mail</p>
   
   
-              <div> <input class="saisieText" type="text" placeholder="Nouvel adresse mail" name="nouveladresseMail" required></div>
+              <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required></div>
   
               <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
             </form>

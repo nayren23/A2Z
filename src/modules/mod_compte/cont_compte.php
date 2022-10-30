@@ -32,14 +32,20 @@ class ContCompte
                     $Contenu = "Bravo, vous avez bien changé votre Identifiant !!! ";
                     $this->affichageChangementRéussie($Titre, $Contenu);
                 } elseif (isset($_GET['changementIdFaux'])) {
-                    $Titre = " Erreur changement adresse mail 😲 !!!";
-                    $Contenu = "L'adresse mail choisi existe déjà !!! ";
+                    $Titre = " Erreur changement d'identifiant  😲 !!!";
+                    $Contenu = "L'identifiant choisi existe déjà !!! ";
                     $this->affichageChangementRéussie($Titre, $Contenu);
                 }
 
                 elseif(isset($_GET['changementAdresseMail'])){
                     $Titre = " Changement d'adreese mail Réussit 😉";
                     $Contenu = "Bravo, vous avez bien changé votre adreese mail !!! ";
+                    $this->affichageChangementRéussie($Titre, $Contenu);
+                }
+
+                elseif(isset($_GET['changementAdresseMailFaux'])){
+                    $Titre = " Erreur changement adresse mail 😲 !!!";
+                    $Contenu = "L'adresse mail choisi existe déjà !!! ";
                     $this->affichageChangementRéussie($Titre, $Contenu);
                 }
 
@@ -69,7 +75,7 @@ class ContCompte
                 if ($this->changementAdresseMail()) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementAdresseMail=true;'); //redirection vers la page 
                 } else //ici l'identifiante xiste déja
-                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementIdFaux=true;'); //redirection vers la page 
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementAdresseMailFaux=true;'); //redirection vers la page 
             break;
         }
     }
