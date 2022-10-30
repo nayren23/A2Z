@@ -3,7 +3,7 @@
 require_once "cont_compte.php";
 
 
-class ModConnexion
+class ModCompte
 {
     private $controleur;
     public function __construct()
