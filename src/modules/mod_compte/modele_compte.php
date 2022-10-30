@@ -39,13 +39,6 @@ class ModeleCompte  extends Connexion
     {
 
         try {
-            //ici on récupere l'ancienne adresse mail 
-            $sql = 'Select * from utilisateur where identifiant=:identifiant';
-            $statement = self::$bdd->prepare($sql);
-            $statement->execute((array(':identifiant' => $_SESSION['identifiant'])));
-            $resultat = $statement->fetch();
-            $AncienneAdresseMail = $resultat['adresseMail'];
-
             //ici on teste si l'adresse mail entrer par l'user  est différents des autres
             $sql = 'Select * from Utilisateur WHERE adresseMail=:adresseMail';
             $statement = self::$bdd->prepare($sql);
@@ -54,7 +47,7 @@ class ModeleCompte  extends Connexion
 
             //si on trouve le bon user alors
             if ($result) {
-                return false; //identifiant deja utilisé';
+                return false; //adresseMail deja utilisé';
             } else {
                 // ici on UPDATE les donnee dans la BDD
                 $commande = ' UPDATE utilisateur SET adresseMail ="' . $_POST['nouveladresseMail'] . '" WHERE  identifiant=:identifiant';
@@ -66,5 +59,36 @@ class ModeleCompte  extends Connexion
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }
+    }
+
+
+    public function changerMotDePasse()
+    {
+
+        try {
+                // ici on UPDATE les donnee dans la BDD
+                $sql = 'UPDATE utilisateur SET motDePasse ="' .  password_hash($_POST['nouveauMotDePasse'], PASSWORD_DEFAULT) . '" WHERE  identifiant=:identifiant';
+                $statement = Connexion::$bdd->prepare($sql);
+                $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
+                $result = $statement->fetch();
+                return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage() . $e->getCode();
+        }
+    }
+
+
+    public function recuperationIdentifiant(){
+        $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
+        $statement = self::$bdd->prepare($sql);
+        $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
+        $resultat = $statement->fetch();
+        //var_dump($resultat["identifiant"]);
+        //echo $resultat["identifiant"] . $resultat["motDePasse"] . $resultat["adresseMail"];
+        return $resultat["identifiant"] . $resultat["motDePasse"] . $resultat["adresseMail"] ;
+    }
+
+    public function recuperationAdresseMail(){
+
     }
 }

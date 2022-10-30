@@ -26,7 +26,8 @@ class ContCompte
 
             case 'affichageInfoCompte':
                 //affichage global des infos 
-
+                $this->modele->recuperationIdentifiant();
+                $this->vue->affichageInfoCompte();
                 if (isset($_GET['changementId'])) {  // verification pour voir si la connexion c'est mal passé
                     $Titre = " Changement d'Identifiant Réussit 😉";
                     $Contenu = "Bravo, vous avez bien changé votre Identifiant !!! ";
@@ -49,6 +50,12 @@ class ContCompte
                     $this->affichageChangementRéussie($Titre, $Contenu);
                 }
 
+                elseif(isset($_GET['changementMDP'])){
+                    $Titre = " Changement du mot de passe réussit 😉";
+                    $Contenu = "Bravo, vous avez bien changé votre  mot de passe !!! ";
+                    $this->affichageChangementRéussie($Titre, $Contenu);
+                }
+
                 break;
 
             case 'miseAJourIdentifiant':
@@ -65,7 +72,15 @@ class ContCompte
                 break;
 
             case 'miseAJourMotDePasse':
+                $this->affichageFormulaireModificationMotDePasse();
                 break;
+            
+            case 'changementMotDePasse':
+                if ($this->changementMotDePasse()) {
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementMDP=true;'); //redirection vers la page 
+                }
+
+            break;
 
             case 'miseAJourEmail':
                 $this->affichageFormulaireModificationEmail();
@@ -86,6 +101,7 @@ class ContCompte
     }
     public function affichageInformationsCompte()
     {
+
     }
 
     public function affichageFormulaireModificationIdentifiant()
@@ -95,8 +111,12 @@ class ContCompte
 
     public function affichageFormulaireModificationMotDePasse()
     {
+        $this->vue-> form_modification_compte_mot_de_passe();
     }
 
+    public function changementMotDePasse(){
+        return $this->modele->changerMotDePasse();
+    }
     ///////////////////////////////Adresse Mail//////////////////////////////////////
     public function changementAdresseMail(){
         return $this->modele->changerAdresseMail();
