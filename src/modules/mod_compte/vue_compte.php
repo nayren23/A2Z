@@ -79,7 +79,7 @@ class VueCompte extends Vue_Generique
         <?php
         ?>
         <form action="index.php?module=compte&action=changementMotDePasse" method="post">
-          <p>Changement de l'adresse mail</p>
+          <p>Changement de mot de passe</p>
           <div class="boutonMdp">
             <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required>
             <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
@@ -94,7 +94,7 @@ class VueCompte extends Vue_Generique
   }
 
 
-  public function affichageInfoCompte()
+  public function affichageInfoCompte($identifiant,$motDePasse,$adresseMail)
   {
 
   ?>
@@ -108,51 +108,64 @@ class VueCompte extends Vue_Generique
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="Style_css/pageCompte.css">
+      <link rel="stylesheet" href="Style_css/toast.css">
+
     </head>
 
+<body class="pageCompte">
 
-
-
+    <div class="informationCompte">
   <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h6 class="border-bottom pb-2 mb-0">Informations générales</h6>
+    <h4 class="titre">Informations générales</h6>
     <div class="d-flex text-muted pt-3">
-      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+    <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title></svg>
 
+      
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
-          <strong class="text-gray-dark">Photo</strong>
-          <a href="#">Modifier </a>
+          <strong class="text-gray-dark"><p class="sousTitre">Photo</p></strong>
+          <a href=""><p class="modification">Modifier</p></a>
         </div>
-        <span class="d-block">Personnalisez votre compte en ajoutant une photo</span>
+        <span class="d-block"><p>Personnalisez votre compte en ajoutant une photo</p></span>
       </div>
     </div>
     <div class="d-flex text-muted pt-3">
-      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title></svg>
 
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
-          <strong class="text-gray-dark">Identifiant</strong>
-          <a href="#">Modifier</a>
+          <strong class="text-gray-dark"><p class="sousTitre">Identifiant</p></strong>
+          <a href="index.php?module=compte&action=miseAJourIdentifiant"><p class="modification"><p class="modification">Modifier</p></a>
         </div>
-        <span class="d-block">Personnalisez votre nom d'utilisateur</span>
+        <span class="d-block"><p><?php echo $identifiant ?></p></span>
       </div>
     </div>
     <div class="d-flex text-muted pt-3">
-      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+    <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title></svg>
 
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
-          <strong class="text-gray-dark">Mot de passe</strong>
-          <a href="#">Modifier</a>
+          <strong class="text-gray-dark"><p class="sousTitre">Mot de passe</p></strong>
+          <a href="index.php?module=compte&action=miseAJourMotDePasse"><p class="modification">Modifier</p></a>
         </div>
-        <span class="d-block">Personnalisez votre mot de passe</span>
+        <span class="d-block"> <p>****************</p></span>
       </div>
     </div>
-    <small class="d-block text-end mt-3">
-      <a href="#">All suggestions</a>
-    </small>
+
+    <div class="d-flex text-muted pt-3">
+    <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title></svg>
+
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="d-flex justify-content-between">
+          <strong class="text-gray-dark"><p class="sousTitre">Adresse Mail</p></strong>
+          <a href="index.php?module=compte&action=miseAJourEmail" ><p class="modification">Modifier</p></a>
+        </div>
+        <span class="d-block"><p><?php echo $adresseMail ?></p></span>
+      </div>
+    </div>
   </div>
-
+  </div>
     </body>
 
     </html>

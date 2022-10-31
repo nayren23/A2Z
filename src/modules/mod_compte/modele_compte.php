@@ -78,17 +78,13 @@ class ModeleCompte  extends Connexion
     }
 
 
-    public function recuperationIdentifiant(){
+    public function recuperationInfoCompte(){
         $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
         $statement = self::$bdd->prepare($sql);
         $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
         $resultat = $statement->fetch();
         //var_dump($resultat["identifiant"]);
         //echo $resultat["identifiant"] . $resultat["motDePasse"] . $resultat["adresseMail"];
-        return $resultat["identifiant"] . $resultat["motDePasse"] . $resultat["adresseMail"] ;
-    }
-
-    public function recuperationAdresseMail(){
-
+        return $resultat ;
     }
 }

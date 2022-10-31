@@ -26,8 +26,7 @@ class ContCompte
 
             case 'affichageInfoCompte':
                 //affichage global des infos 
-                $this->modele->recuperationIdentifiant();
-                $this->vue->affichageInfoCompte();
+                $this->affichageInformationsCompte();
                 if (isset($_GET['changementId'])) {  // verification pour voir si la connexion c'est mal passé
                     $Titre = " Changement d'Identifiant Réussit 😉";
                     $Contenu = "Bravo, vous avez bien changé votre Identifiant !!! ";
@@ -100,8 +99,11 @@ class ContCompte
         return $this->modele->changerIdentifiant();
     }
     public function affichageInformationsCompte()
-    {
-
+    {    
+        $identifiant =$this->modele->recuperationInfoCompte()["identifiant"];
+        $motDePasse =$this->modele->recuperationInfoCompte()["motDePasse"];
+        $adresseMail =$this->modele->recuperationInfoCompte()["adresseMail"];
+        $this->vue->affichageInfoCompte($identifiant,$motDePasse,$adresseMail);
     }
 
     public function affichageFormulaireModificationIdentifiant()
