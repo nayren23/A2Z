@@ -1,3 +1,15 @@
+body {
+  background-color: #1d1f26;
+  height: 100vh;
+  font-family: arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenir {
+  position: relative;
+}
+
 .pageCompte {
     background-color: #1d1f26;
     height: 100vh;
@@ -81,4 +93,9 @@
   
   .boutonMdp{
     margin-left: 45;
+  }
+
+  .imageFormulaire{
+    height: 50%;
+    width: 50%;
   }
