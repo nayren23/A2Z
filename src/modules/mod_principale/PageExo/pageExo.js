@@ -17,3 +17,14 @@ $(function () {
     });
     $("ul, li").disableSelection();
 });
+
+
+
+$(function () {
+    $(".dropp2").droppable();
+    $(".dragg").draggable({
+        drag: function (event, ui) {
+            $(".res").html("<b>Draggable Drag.</b><br>");
+        }
+    });
+});
