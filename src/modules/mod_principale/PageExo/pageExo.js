@@ -28,7 +28,11 @@ $(function () {
         revert: "invalid",
         
         drag: function (event, ui) {
+<<<<<<< HEAD
             $(".res").html("<b>Draggable Drag.</b><br><p> salut je suis moi </p> ");
+=======
+            $(".res").html("<b>Draggable Drag.</b><br><p> salut je suis moi </p>");
+>>>>>>> 27fc7e8d90bcc09adb2c8da065e3d752eb295d5e
         }
         
     });
@@ -36,6 +40,7 @@ $(function () {
 
 });
 
+<<<<<<< HEAD
 function ajoutHtml(){
     let b = document.getElementById("page");
     let newP = document.createElement("p");
@@ -47,6 +52,9 @@ function ajoutHtml(){
      b.prepend(newP);
      b.appendChild(newP);
  }
+=======
+
+>>>>>>> 27fc7e8d90bcc09adb2c8da065e3d752eb295d5e
 
 
 function changeFont() {
