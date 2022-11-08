@@ -58,15 +58,20 @@ body {
 
 
 
+.acc{
+    display: none;
+}
 
-
+#divpage{
+    border: #0098db 1px solid;
+}
 .content {
     box-sizing: border-box;
     font-size: 0.9em;
     max-height: 0;
     overflow: hidden;
     transition: max-height, .5s;
-    position: relative;
+    position: static;
 }
 
 
@@ -133,7 +138,6 @@ label {
 
 .content:before {
     content: '';
-    border-top: 2px solid #ffffff;
     width: 10px;
     display: block;
     margin-top: 15px;
@@ -236,3 +240,32 @@ li {
     display: inline-block;
 }
 
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+
+
+ 
+
+.dropp2 {
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+    float: center;
+    background-color: green;
+}
+  
