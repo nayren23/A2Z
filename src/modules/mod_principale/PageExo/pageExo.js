@@ -50,9 +50,6 @@ $(function () {
 
 
 
-
-
-
 $( function() {
     $( "#draggable, #draggable-nonvalid" ).draggable();
     $( "#droppable" ).droppable({

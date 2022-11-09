@@ -282,16 +282,18 @@ li {
     display: inline-block;
 }
 
-
+.select {
+    position: absolute;
+}
 /*fin changefont*/
 
 
 
 
 
-.select {
-    position: absolute;
-}
+
+
+
 
 
 /*bouton change taille font*/
