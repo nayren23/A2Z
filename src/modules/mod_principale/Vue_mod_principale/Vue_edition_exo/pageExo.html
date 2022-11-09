@@ -1,102 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="rr">
 
 <!-- En tête de la page -->
 
 <head>
     <meta charset="UTF-8">
-
-
-
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>A2Z</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
 
+
+
+
+    <!--Scripts JS-->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="pageExo.js"></script>
 
-        $(function () {
-            $(".sortable").sortable({
-                revert: true
-            });
-            $(".draggable").draggable({
-                connectToSortable: ".sortable",
-                helper: "clone",
-                revert: "invalid"
-            });
-            $("ul, li").disableSelection();
-        });
-    </script>
+    <!--Link css-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
     <link rel="stylesheet" href="pageExo.css">
+
 
 </head>
 
 
 
-
-
-
-
-
 <body>
+    <!--Test-->
+
+    <div>
+
+        <ul>
+            <li class=" draggable">Yassine <textarea name="" id="" cols="70" rows="1">test</textarea></li>
+
+            <li class="draggable dragg">Rayan <textarea name="" id="" cols="30" rows="1">test</textarea></li>
+        </ul>
+    </div>
 
 
-    <ul>
-        <li class="draggable" class="ui-state-highlight">Yassine <textarea name="" id="" cols="30"
-                rows="1">test</textarea> </li>
-        <li class="draggable" class="ui-state-highlight">Rayan</li>
-    </ul>
 
-    <ul class="sortable">
-        <li class="ui-state-default">Item 1</li>
-        <li class="ui-state-default">Item 2</li>
-        <li class="ui-state-default">Item 3</li>
-        <li class="ui-state-default">Item 4</li>
-        <li class="ui-state-default">Item 5</li>
-    </ul>
+
+    </head>
+
+
+
+    <div id="draggable-nonvalid" class="ui-widget-content">
+        <p>I&apos;m draggable but can&apos;t be dropped</p>
+    </div>
+
+    <div id="draggable" class="ui-widget-content">
+        <p>Drag me to my target</p>
+    </div>
+
+    <div id="droppable" class="ui-widget-header">
+        <p>accept: &apos;#draggable&apos;</p>
+    </div>
+
+    <!--Fin Test-->
+
+
+
+
 
 
 
     <div class="flex-container">
+
         <div class="flex-row">
 
 
+             <!--Accordeon-->
+
             <div class="flex-col-md-6">
-
-
-
 
                 <div class="panel">
 
-                    <input type="radio" id="tab-1" name="tabs">
+                    <input type="radio" class="acc" id="tab-1" name="tabs">
                     <label for="tab-1">
-                        <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Mise
-                            en
-                            page</span>
+                        <div class="cross-box"><span class="cross">
+                        </div>
+                        <span class="accordion-heading all" id="myElement">Mise en page</span>
                     </label>
 
                 </div>
 
 
+
+
+
                 <div class="panel">
-                    <input type="radio" id="tab-2" name="tabs">
+                    <input type="radio" class="acc" id="tab-2" name="tabs">
                     <label for="tab-2">
                         <div class="cross-box"><span class="cross"></span></div><span
-                            class="accordion-heading">Catégorie</span>
+                            class="accordion-heading all">Catégorie</span>
                     </label>
 
                     <div class="questions">
 
                         <div class="question-wrap">
-                            <input type="radio" id="question-1" name="question">
+                            <input type="radio" class="acc" id="question-1" name="question">
                             <label for="question-1">
                                 <div class="cross-box"><span class="cross"></span></div><span
                                     class="accordion-heading">Principe alphabétique</span>
                             </label>
                             <div class="content">
+
+                                <li class="draggable" class="ui-state-highlight">Exo1<input type="text" id="name"
+                                        name="name">
+                                </li>
+
                                 <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30"
                                         rows="1">test</textarea> </li>
                                 <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30"
@@ -106,7 +127,7 @@
                         </div>
 
                         <div class="question-wrap">
-                            <input type="radio" id="question-2" name="question">
+                            <input type="radio" class="acc" id="question-2" name="question">
                             <label for="question-2">
                                 <div class="cross-box"><span class="cross"></span></div><span
                                     class="accordion-heading">Conscience phonologique</span>
@@ -121,7 +142,7 @@
                         </div>
 
                         <div class="question-wrap">
-                            <input type="radio" id="question-3" name="question">
+                            <input type="radio" class="acc" id="question-3" name="question">
                             <label for="question-3">
                                 <div class="cross-box"><span class="cross"></span></div><span
                                     class="accordion-heading">Décodage</span>
@@ -135,7 +156,7 @@
                             </div>
                         </div>
                         <div class="question-wrap">
-                            <input type="radio" id="question-4" name="question">
+                            <input type="radio" class="acc" id="question-4" name="question">
                             <label for="question-4">
                                 <div class="cross-box"><span class="cross"></span></div><span
                                     class="accordion-heading">Encodage</span>
@@ -148,7 +169,7 @@
                             </div>
                         </div>
                         <div class="question-wrap">
-                            <input type="radio" id="question-5" name="question">
+                            <input type="radio" class="acc" id="question-5" name="question">
                             <label for="question-5">
                                 <div class="cross-box"><span class="cross"></span></div><span
                                     class="accordion-heading">Copie</span>
@@ -169,7 +190,7 @@
 
 
                 <div class="panel">
-                    <input type="radio" id="tab-3" name="tabs">
+                    <input type="radio" class="acc" id="tab-3" name="tabs">
                     <label for="tab-3">
                         <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Banque
                             d'image</span>
@@ -178,14 +199,39 @@
                 </div>
 
             </div>
+            <!--Fin Accordeon-->
 
 
-            <page size="A4" class="sortable"></page>
+            <!--Page-->
+
+            <div id="divpage">
+
+                <div id="modifieurs">
+                    <div class="select">
+                        <select id="input-font" class="input" onchange="changeAll(this);">
+
+                            <option value="arial">Arial</option>
+                            <option value="cursive">cursive</option>
+                        </select>
+
+                    </div>
+                    <button id="up">+</button>
+                    <button id="down">-</button>
+
+                </div>
+
+                <page size="A4" id="page droppable" class="sortable res ">
+                    <span class="accordion-heading all" id="myElement">Mise en page</span>
+
+                </page>
+
+            </div>
 
 
 
         </div><!-- flex-row-->
     </div><!-- flex-container-->
+
 
 
 </body>
