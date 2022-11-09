@@ -242,4 +242,98 @@ class VueConnexion extends Vue_Generique
 
 <?php
   }
+
+  public function affichageAdreMailUtiliser()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Attention cette adresse mail <br>ou cet identifiant existe déjà !!! "
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichageDeconnexion()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'info',
+        title: "Au revoir et a bientôt sur A2Z la plateforme <br>intuitive pour créer sa fiche d'exercice 🥰! "
+      })
+    </script>
+
+<?php
+  }
+/*
+  public function affichageConnexionReussie()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Heureux de vous revoir  <?php  $_POST['identifiant'] ?>  sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰! "
+      })
+    </script>
+
+<?php
+  }
+*/
+
+//pas fonctionnelle
+  public function affichageConnexionReussie()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Heureux de vous revoir  <?php  $_POST['identifiant'] ?>  sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰! "
+      })
+    </script>
+
+<?php
+  }
+//pas fonctionnelle
+  public function affichageInscriptionReussite()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Bonjour <?php $_POST['identifiant'] ?> et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄! "
+      })
+    </script>
+
+<?php
+  }
+  
+  public function affichageDeconnexionImpossible()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Vous devez d'abord vous connecter pour faire la déconnexion 😡!!! "
+      })
+    </script>
+
+<?php
+  }
+  
+
 }

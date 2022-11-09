@@ -131,7 +131,7 @@ class VueCompte extends Vue_Generique
           <label class="warningFileUpload">Taille maximale du fichier : 1000 Ko</label>
 
           <div class="mb-3">
-            <input type="file" class="form-control form-control-sm" aria-label="Small file input example"  accept="image/png, image/jpeg,, image/jpg "name="image" required>
+            <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg,, image/jpg " name="image" required>
           </div>
           <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder la photo !"> </div>
           <a href="./?module=settings&action=deleteCurrentAvatar"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
@@ -301,7 +301,7 @@ class VueCompte extends Vue_Generique
   public function affichageChangementImage()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -310,13 +310,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageChangementImageRate()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -325,13 +325,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageChangementIdentifiant()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -340,13 +340,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageChangementIdentifiantFaux()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -355,13 +355,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageChangementAdresseMailReussit()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -370,13 +370,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageChangementAdresseMailFaux()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -385,13 +385,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageChangementMDP()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -400,13 +400,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
-  
+
   public function affichageChangementPhoto()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -415,13 +415,13 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
-  
+
   public function affichageImageTropGrande()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -430,12 +430,12 @@ class VueCompte extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
   public function affichageErreurTansfertImage()
   {
   ?>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -446,7 +446,4 @@ class VueCompte extends Vue_Generique
 
 <?php
   }
-
-  
-  
 }
