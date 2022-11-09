@@ -88,41 +88,63 @@ class ModeleCompte  extends Connexion
     {
         if (isset($_POST['submit'])) {
 
-            $tailleMaximum = 500000;
-            $extension = array('.jpg', '.jpeg', '.gif', '.png');
+            $tailleMaximum = 1000000;
+            $extension = array('.jpg', '.jpeg', '.png');
 
-            if ($_FILES['nouvelPhotoDeProfile']['error'] > 0) {
+            if ($_FILES['image']['error'] > 0) {
                 return 1; // erreur lors du transfert
             }
 
-            $tailleFichier = $_FILES['nouvelPhotoDeProfile']['size'];
+            $tailleFichier = $_FILES['image']['size']; /* taille en octets */
 
             if ($tailleFichier > $tailleMaximum) {
                 return 2; //taille trop grande
             }
 
-            $nomFichier =  $_FILES['nouvelPhotoDeProfile']['name'];
+            $nomFichier =  $_FILES['image']['name'];  /* nom du fichier */
             $extensionFichier = "." . strtolower(substr(strrchr($nomFichier, '.'), 1));
 
-            if (!in_array($extensionFichier, $extension)) {
+            $nomTemporaire = $_FILES['image']['tmp_name']; /* tmp_name emplacement du fichier temporaire sur le serveur */
+            $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
+            $destination  = "upload/" . $nomUnique . $extensionFichier;
+            $resultat = move_uploaded_file($nomTemporaire, $destination ); //Déplace un fichier téléchargé ici dans upload
+
+            //vérifier le type mime 
+            if (!(in_array($extensionFichier, $extension)) && !(mime_content_type($destination )==$extensionFichier )) { 
                 return 3; //fichier pas une image;
             }
 
-            $nomTemporaire = $_FILES['nouvelPhotoDeProfile']['tmp_name'];
-            $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
-            $nomFichier = "upload/" . $nomUnique . $extensionFichier;
-            $resultat = move_uploaded_file($nomTemporaire, $nomFichier); //Déplace un fichier téléchargé ici dans upload
-
             if ($resultat) {
-                $path = $nomFichier;
+                $path = $destination;
                 $type = pathinfo($path, PATHINFO_EXTENSION);
-                $data = file_get_contents($path);
-                $base64 = 'data:image/' . $type . ';base64, ' . base64_encode($data);
-                return $base64; // echo"transfert termniné";
+                $data = file_get_contents($path);//Lit tout un fichier dans une chaîne
+                $base64 =  base64_encode($data);
+                $ensembleBase64 = 'data:image/' . $type . ';base64, ' .$base64;
+                unlink($destination);
+                return $ensembleBase64; // echo"transfert termniné";
             }
         }
     }
 
+    /*
+    public function changerTailleImage($image_name,$extension){
+                
+                // Load image file 
+                $image = @imagecreatefrompng($image_name);  
+                  var_dump($image);
+
+                // Use imagescale() function to scale the image
+                $img = imagescale( $image, 400, 400 );
+                var_dump($img);
+                $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
+
+                $path = "upload/" . $nomUnique . $extension; 
+                imagepng($img,$path);
+                return $path; 
+        }
+*/
+                 
+    
     // fonction qui envoie l'image reçu en base 64 à la BDD
     public function changementPhoto($image)
     {

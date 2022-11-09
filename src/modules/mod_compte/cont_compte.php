@@ -28,41 +28,23 @@ class ContCompte
                 //affichage global des infos 
                 $this->affichageInformationsCompte();
                 if (isset($_GET['changementId'])) {  // verification pour voir si la connexion c'est mal passé
-                    $Titre = " Changement d'Identifiant Réussit 😉";
-                    $Contenu = "Bravo, vous avez bien changé votre Identifiant !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementIdentifiantReussit();
                 } elseif (isset($_GET['changementIdFaux'])) {
-                    $Titre = " Erreur changement d'identifiant  😲 !!!";
-                    $Contenu = "L'identifiant choisi existe déjà !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementIdentifiantFaux();
                 } elseif (isset($_GET['changementAdresseMail'])) {
-                    $Titre = " Changement d'adreese mail Réussit 😉";
-                    $Contenu = "Bravo, vous avez bien changé votre adreese mail !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementAdresseMailReussit();
                 } elseif (isset($_GET['changementAdresseMailFaux'])) {
-                    $Titre = " Erreur changement adresse mail 😲 !!!";
-                    $Contenu = "L'adresse mail choisi existe déjà !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementAdresseMailFaux();
                 } elseif (isset($_GET['changementMDP'])) {
-                    $Titre = " Changement du mot de passe réussit 😉";
-                    $Contenu = "Bravo, vous avez bien changé votre  mot de passe !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementMDP();
                 } elseif (isset($_GET['changementPhoto'])) {
-                    $Titre = " Changement de photo de profil réussit 😉";
-                    $Contenu = "Bravo, vous avez bien changé votre photo de profil !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementPhoto();
                 } elseif (isset($_GET['PasImage'])) {
-                    $Titre = " Erreur changement de photo de profil  😲 !!!";
-                    $Contenu = "Le fichier n'est pas une image !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageChangementImageRate();
                 } elseif (isset($_GET['ImageTropGrande'])) {
-                    $Titre = " Erreur changement de photo de profil  😲 !!!";
-                    $Contenu = "La taille du fichier est trop grande!!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageImageTropGrande();
                 } elseif (isset($_GET['ErreurTansfert'])) {
-                    $Titre = " Erreur changement de photo de profil  😲 !!!";
-                    $Contenu = "Erreur lors du transfert !!! ";
-                    $this->affichageChangementRéussie($Titre, $Contenu);
+                    $this->affichageErreurTansfertImage();
                 }
                 break;
 
@@ -87,7 +69,6 @@ class ContCompte
                 if ($this->changementMotDePasse()) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementMDP=true;'); //redirection vers la page 
                 }
-
                 break;
 
             case 'miseAJourEmail':
@@ -188,10 +169,49 @@ class ContCompte
 
         }
     }
-    ///////////////////////////////Pop Up//////////////////////////////////////
+    //////////////////////////Affichage des Toast pour les Informations générales //////////////////////////////////////
 
-    public function affichageChangementRéussie($Titre, $Contenu)
+    public function affichageChangementImageRate()
     {
-        $this->vue->popUpClassique($Titre, $Contenu);
+        $this->vue->affichageChangementImageRate();
+    }
+
+    public function affichageChangementIdentifiantReussit()
+    {
+        $this->vue->affichageChangementIdentifiant();
+    }
+    public function affichageChangementIdentifiantFaux()
+    {
+        $this->vue->affichageChangementIdentifiantFaux();
+    }
+
+    public function affichageChangementAdresseMailReussit()
+    {
+        $this->vue->affichageChangementAdresseMailReussit();
+    }
+
+    public function affichageChangementAdresseMailFaux()
+    {
+        $this->vue->affichageChangementAdresseMailFaux();
+    }
+
+    public function affichageChangementMDP()
+    {
+        $this->vue->affichageChangementMDP();
+    }
+
+    public function affichageChangementPhoto()
+    {
+        $this->vue->affichageChangementPhoto();
+    }
+
+    public function affichageImageTropGrande()
+    {
+        $this->vue->affichageImageTropGrande();
+    }
+
+    public function affichageErreurTansfertImage()
+    {
+        $this->vue->affichageErreurTansfertImage();
     }
 }

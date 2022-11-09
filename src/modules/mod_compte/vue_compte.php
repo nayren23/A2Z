@@ -112,26 +112,35 @@ class VueCompte extends Vue_Generique
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
-
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="sweetalert2.min.js"></script>
+      <link rel="stylesheet" href="sweetalert2.min.css">
     </head>
 
     <body class="pageCompte">
-      <div class="contenir">
+
+      <div class="settings">
+        <div class="auth-title">
+          <h1>Importer une photo de profil</h1>
+          <p>Personnaliser votre compte </p>
+        </div>
 
         <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
-          <p>Changement photo de profil</p>
+          <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
+          <label class="warningFileUpload">Format de fichier autorisé : PNG</label>
+          <label class="warningFileUpload">Taille maximale du fichier : 1000 Ko</label>
 
           <div class="mb-3">
-            <!-- On limite le fichier à 100Ko -->
-            <input type="file" class="form-control form-control-sm" aria-label="Small file input example" name="nouvelPhotoDeProfile" required>
+            <input type="file" class="form-control form-control-sm" aria-label="Small file input example"  accept="image/png, image/jpeg,, image/jpg "name="image" required>
           </div>
           <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder la photo !"> </div>
+          <a href="./?module=settings&action=deleteCurrentAvatar"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
-          <div> <img src='<?php echo $image ?>' alt="" width="60%" height="60%"> </div>
-
+          <div class="fileUpload">
+            <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
+          </div>
         </form>
       </div>
-
     </body>
   <?php
   }
@@ -286,6 +295,158 @@ class VueCompte extends Vue_Generique
 
     </html>
 
+  <?php
+  }
+
+  public function affichageChangementImage()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: ' Bravo, vous avez bien changé votre photo de profil !!! '
+      })
+    </script>
+
 <?php
   }
+
+  public function affichageChangementImageRate()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Le fichier n'est pas une image !!!"
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichageChangementIdentifiant()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien changé votre Identifiant !!!"
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichageChangementIdentifiantFaux()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "L'identifiant choisi existe déjà !!! "
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichageChangementAdresseMailReussit()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien changé votre adresse mail !!! "
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichageChangementAdresseMailFaux()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "L'adresse mail choisi existe déjà !!! "
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichageChangementMDP()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien changé votre  mot de passe !!! "
+      })
+    </script>
+
+<?php
+  }
+  
+  public function affichageChangementPhoto()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien changé votre photo de profil !!! "
+      })
+    </script>
+
+<?php
+  }
+  
+  public function affichageImageTropGrande()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "La taille du fichier est trop grande!!! "
+      })
+    </script>
+
+<?php
+  }
+  public function affichageErreurTansfertImage()
+  {
+  ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "La taille du fichier est trop grande!!! "
+      })
+    </script>
+
+<?php
+  }
+
+  
+  
 }
