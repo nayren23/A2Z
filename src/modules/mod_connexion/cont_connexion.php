@@ -16,7 +16,7 @@ class ContConnexion
 
         // ? veutr dire if  
         // : veut dire else  
-        $this->action = (isset($_GET['action']) ? $_GET['action'] : 'bienvenue');
+        $this->action = (isset($_GET['action']) ? $_GET['action'] : 'connexion');
     }
 
     //execution qui est appelle dans le mod_connexion
@@ -56,6 +56,7 @@ class ContConnexion
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
                     $this->affichageConnexionReussie();
+                    header('Location: ./index.php?module=principale'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }

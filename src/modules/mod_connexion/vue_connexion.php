@@ -3,7 +3,7 @@ require_once "./vue_generique.php";
 
 class VueConnexion extends Vue_Generique
 {
-
+  
   public function  __construct()
   {
     parent::__construct(); // comme un super
@@ -47,17 +47,22 @@ class VueConnexion extends Vue_Generique
 
                   <?php
                   //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
-                  if (!($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant'])) ) {
+                  if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant'])) ) {
                   ?>
                     <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
                     <?php
                   }
                   //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
-                  if ((!isset($_SESSION['identifiant'])) && $_GET['action'] != "connexion") {
+                  else if ((!isset($_SESSION['identifiant'])) && isset(($_GET['action'])) && $_GET['action'] != "connexion") {
                     ?>
                       <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
                       <?php
                     }
+                  else if(!isset(($_GET['action']))){
+                    ?>
+                    <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
+                    <?php
+                  }
                       ?>
                 </div>
               </div>
