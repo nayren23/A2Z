@@ -56,6 +56,7 @@ class ContConnexion
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
                     $this->affichageConnexionReussie();
+                    header('Location: ./index.php?module=principale'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }
