@@ -1,13 +1,17 @@
+/*Body */
 body {
     overflow-y: scroll;
     background-color: #1d1f26;
     background-size: 1920px 1080px;
     max-height: 1080px;
     max-width: 1920px;
-    
+
 
 }
 
+/*fin body*/
+
+/*Accordeon*/
 @media (min-width: 1920px) {
     .flex-container {
         max-width: 1920px;
@@ -58,8 +62,34 @@ body {
 
 
 
-input {
+.acc {
     display: none;
+}
+
+
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+
+/*fin Accordeon*/
+
+#divpage {
+    border: #0098db 1px solid;
 }
 
 .content {
@@ -68,7 +98,7 @@ input {
     max-height: 0;
     overflow: hidden;
     transition: max-height, .5s;
-    position: relative;
+    position: static;
 }
 
 
@@ -135,7 +165,6 @@ label {
 
 .content:before {
     content: '';
-    border-top: 2px solid #ffffff;
     width: 10px;
     display: block;
     margin-top: 15px;
@@ -187,15 +216,28 @@ input:checked~.questions {
     transition: 1s;
 }
 
-li {
-    display: inline-block;
+
+/*draggable*/
+#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+
+#draggable, #draggable-nonvalid { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+
+
+.sortable {
+    border: 5px solid green;
 }
 
-#draggable {
 
-    background-color: white;
+.dropp2 {
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+    float: center;
+    background-color: green;
 }
 
+
+/*fin draggable*/
 
 page {
     background: white;
@@ -221,10 +263,9 @@ page[size="A4"] {
     }
 }
 
-.sortable {
-    border: 5px solid green;
-}
 
+
+/*changefont*/
 
 ul {
     list-style-type: none;
@@ -238,5 +279,33 @@ li {
     margin: 5px;
     padding: 5px;
     border: 5px solid orange;
-
+    display: inline-block;
 }
+
+.select {
+    position: absolute;
+}
+/*fin changefont*/
+
+
+
+
+
+
+
+
+
+
+/*bouton change taille font*/
+#up {
+    width: 30px;
+    height: 30px;
+    margin-left: 125px;
+}
+
+#down {
+    width: 30px;
+    height: 30px;
+}
+
+/*fin bouton change taille font*/
