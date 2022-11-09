@@ -1,6 +1,7 @@
 <?php
 require_once("modele.php");
 require_once "modules/mod_connexion/mod_connexion.php";
+require_once "modules/mod_compte/mod_compte.php";
 
 class Controleur
 {
@@ -27,11 +28,24 @@ class Controleur
                 $this->module = new ModConnexion();
                 break;
 
+                case "compte":
+                    if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
+                    require_once "modules/mod_compte/mod_compte.php";
+    
+                    $this->module = new ModCompte();
+                    }
+                    else{
+                        echo"connecte toi d'abord";
+                    }
+                    break;
+
                 // case "principale":
                 //$module = new Mod();
                 //  break;
 
         }
-        $this->resultat = $this->module->getCon()->vue->affichageTampon();
+        if (isset($_SESSION["identifiant"])) {
+            $this->resultat = $this->module->getControleur()->vue->affichageTampon();
+        }
     }
 }

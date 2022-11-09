@@ -13,7 +13,7 @@ class ModConnexion
 
     }
 
-    public function getCon()
+    public function getControleur()
     {
         return $this->con;
     }
