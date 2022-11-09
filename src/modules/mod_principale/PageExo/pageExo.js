@@ -1,8 +1,4 @@
 
-function changeStyle() {
-    var element = document.getElementById("myElement");
-    element.style.fontFamily = "arial";
-}
 
 
 
@@ -28,64 +24,22 @@ $(function () {
         revert: "invalid",
         
         drag: function (event, ui) {
-            $(".res").html("<b>Draggable Drag.</b><br><p> salut je suis moi </p> ");
+           
+            $(".res").append('<span class="accordion-heading all" id="myElement">Mise en page</span>');
+            
+    
         }
         
     });
-    
 
 });
 
-function ajoutHtml(){
-    let b = document.getElementById("page");
-    let newP = document.createElement("p");
-    let newTexte = document.createTextNode("Ceci est un nouveau paragraphe");
- 
-    newP.textContent = "Ceci est un nouveau paragraphe";
- 
-     b.append(newTexte);
-     b.prepend(newP);
-     b.appendChild(newP);
- }
-
-
-function changeFont() {
-    var elements = document.getElementsByClassName('font');
-
-    for (var i = 0; i < elements.length; i++) {
-        var element = elements[i];
-        element.style.fontFamily = "cursive";
-
-    }
-}
 
 
 
 
 
-function changeBold() {
-    var elements = document.getElementsByClassName('bold');
 
-    for (var i = 0; i < elements.length; i++) {
-        var element = elements[i];
-        element.style.fontWeight = "bolder";
-
-    }
-}
-
-
-
-
-
-function changeNormal() {
-    var elements = document.getElementsByClassName('normal');
-
-    for (var i = 0; i < elements.length; i++) {
-        var element = elements[i];
-        element.style.fontWeight = "normal";
-
-    }
-}
 
 function changeAll(font) {
     var elements = document.getElementsByClassName('all');
@@ -96,4 +50,26 @@ function changeAll(font) {
 
     }
 }
+
+
+
+/*
+
+
+$(function() {
+    $( ".draggable, #draggable-nonvalid" ).draggable();
+    $( "#droppable" ).droppable({
+      accept: ".draggable",
+      classes: {
+        "ui-droppable-active": "ui-state-active",
+        "ui-droppable-hover": "ui-state-hover"
+      },
+      drop: function( event, ui ) {
+        $(".res").append('<span class="accordion-heading all" id="myElement">Mise en page</span>');
+
+      }
+    });
+  });
+*/ 
+
 
