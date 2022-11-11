@@ -1,4 +1,6 @@
 <?php
+require_once "./vue_generique.php";
+
  class VueHabillage extends Vue_Generique { //fonction pour l'affichage de la nav bar
 
   public function  __construct()

@@ -10,7 +10,6 @@ class ModConnexion
     {
         $this->con = new ContConnexion();
         $this->con->exec();
-
     }
 
     public function getControleur()

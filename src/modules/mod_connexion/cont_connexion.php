@@ -16,7 +16,7 @@ class ContConnexion
 
         // ? veutr dire if  
         // : veut dire else  
-        $this->action = (isset($_GET['action']) ? $_GET['action'] : 'bienvenue');
+        $this->action = (isset($_GET['action']) ? $_GET['action'] : 'connexion');
     }
 
     //execution qui est appelle dans le mod_connexion

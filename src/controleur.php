@@ -10,7 +10,6 @@ class Controleur
     private $modele;
     private $module;
     public $resultat;
-
     public function __construct()
     {
         $this->modele = new Modele();
@@ -21,7 +20,7 @@ class Controleur
     public function exec()
     {
 
-        switch ($_GET['module']) {
+        switch ($this->module) {
 
             case "connexion":
                 $this->module = new ModConnexion();
@@ -55,6 +54,7 @@ class Controleur
                     echo "connecte toi d'abord";
                 }
                 break;
+
         }
         if (isset($_SESSION["identifiant"])) {
             $this->resultat = $this->module->getControleur()->vue->affichageTampon();
