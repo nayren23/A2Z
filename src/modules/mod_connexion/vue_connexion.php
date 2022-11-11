@@ -3,7 +3,7 @@ require_once "./vue_generique.php";
 
 class VueConnexion extends Vue_Generique
 {
-  
+
   public function  __construct()
   {
     parent::__construct(); // comme un super
@@ -26,7 +26,21 @@ class VueConnexion extends Vue_Generique
       <div class="p-3 text-bg-dark">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
+
+
+            <?php if (!isset($_SESSION["identifiant"])) {
+            ?>
+              <a href="index.php?module=connexion&action=connexion">
+                <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
+              </a>
+
+            <?php } elseif (isset($_SESSION["identifiant"])) {
+            ?>
+              <a href="index.php?module=principale">
+                <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
+              </a>
+            <?php } ?>
+
             <div class="navigation">
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -47,7 +61,7 @@ class VueConnexion extends Vue_Generique
 
                   <?php
                   //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
-                  if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant'])) ) {
+                  if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant']))) {
                   ?>
                     <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
                     <?php
@@ -57,13 +71,12 @@ class VueConnexion extends Vue_Generique
                     ?>
                       <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
                       <?php
-                    }
-                  else if(!isset(($_GET['action']))){
-                    ?>
-                    <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                    <?php
-                  }
+                    } else if (!isset(($_GET['action']))) {
                       ?>
+                        <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
+                        <?php
+                      }
+                        ?>
                 </div>
               </div>
             </div>
@@ -206,46 +219,11 @@ class VueConnexion extends Vue_Generique
   //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si un compte est Inexsistant '
   public function compteInexsistant()
   {
-  ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Style_css/toast.css">
-
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    </head>
-
-    <body>
-      <div class="index">
-        <div class="container">
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <h4>Erreur Connexion 😨 !!!</h4>
-            <?php
-            if (isset($_SESSION['identifiant'])) {
-              echo 'Vous êtes déjà connecté à ce compte "' . $_SESSION['identifiant']; ?>. Veuillez d'abord vous déconnecter de "
-          <?php echo $_SESSION['identifiant'] . '" puis retenter votre action !!!';
-            } else {
-              echo "Attention  ce compte n'existe pas !!!";
-            }
-
-          ?>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
-          </div>
-        </div>
-      </div>
-
-    </body>
-
-    </html>
-
-<?php
+    if (isset($_SESSION['identifiant'])) {
+      $this->affichageDejaConnecter();
+    } else {
+      $this->affichagCompteInexistant();
+    }
   }
 
   public function affichageAdreMailUtiliser()
@@ -260,7 +238,7 @@ class VueConnexion extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
 
   public function affichageDeconnexion()
@@ -275,9 +253,10 @@ class VueConnexion extends Vue_Generique
       })
     </script>
 
-<?php
+  <?php
   }
-/*
+
+  /// mettre cette fonction dans mod principale
   public function affichageConnexionReussie()
   {
   ?>
@@ -286,30 +265,13 @@ class VueConnexion extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Heureux de vous revoir  <?php  $_POST['identifiant'] ?>  sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰! "
+        title: "Heureux de vous revoir  sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰! "
       })
     </script>
 
-<?php
+  <?php
   }
-*/
-
-//pas fonctionnelle
-  public function affichageConnexionReussie()
-  {
-  ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'success',
-        title: "Heureux de vous revoir  <?php  $_POST['identifiant'] ?>  sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰! "
-      })
-    </script>
-
-<?php
-  }
-//pas fonctionnelle
+  
   public function affichageInscriptionReussite()
   {
   ?>
@@ -317,14 +279,14 @@ class VueConnexion extends Vue_Generique
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
-        icon: 'error',
-        title: "Bonjour <?php $_POST['identifiant'] ?> et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄! "
+        icon: 'success',
+        title: "Inscription Réussite <br>Bonjour et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄! "
       })
     </script>
 
-<?php
+  <?php
   }
-  
+
   public function affichageDeconnexionImpossible()
   {
   ?>
@@ -334,11 +296,39 @@ class VueConnexion extends Vue_Generique
       Toast.fire({
         icon: 'error',
         title: "Vous devez d'abord vous connecter pour faire la déconnexion 😡!!! "
+
+      })
+    </script>
+
+  <?php
+  }
+
+  public function affichageDejaConnecter()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: " Vous êtes déjà connecté, veuillez d'abord vous déconnecter 😡 !!!"
+      })
+    </script>
+  <?php
+  }
+
+  public function affichagCompteInexistant()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Attention  ce compte n'existe pas 😡!!! "
       })
     </script>
 
 <?php
   }
-  
-
 }

@@ -15,7 +15,14 @@ class ContPrincipale
 
 
     }
-
+ //execution qui est appelle dans le mod_principale
+ public function exec()
+ {
+     switch ($this->action) {
+        
+   
+     }
+ }
 
     public function affichageHabillage(){
         $this->vue->navBarHabillage();

@@ -107,22 +107,38 @@ class ModeleCompte  extends Connexion
             $nomTemporaire = $_FILES['image']['tmp_name']; /* tmp_name emplacement du fichier temporaire sur le serveur */
             $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
             $destination  = "upload/" . $nomUnique . $extensionFichier;
-            $resultat = move_uploaded_file($nomTemporaire, $destination ); //Déplace un fichier téléchargé ici dans upload
+            $resultat = move_uploaded_file($nomTemporaire, $destination); //Déplace un fichier téléchargé ici dans upload
 
             //vérifier le type mime 
-            if (!(in_array($extensionFichier, $extension)) && !(mime_content_type($destination )==$extensionFichier )) { 
+            if (!(in_array($extensionFichier, $extension)) && !(mime_content_type($destination) == $extensionFichier)) {
                 return 3; //fichier pas une image;
             }
 
             if ($resultat) {
                 $path = $destination;
                 $type = pathinfo($path, PATHINFO_EXTENSION);
-                $data = file_get_contents($path);//Lit tout un fichier dans une chaîne
+                $data = file_get_contents($path); //Lit tout un fichier dans une chaîne
                 $base64 =  base64_encode($data);
-                $ensembleBase64 = 'data:image/' . $type . ';base64, ' .$base64;
+                $ensembleBase64 = 'data:image/' . $type . ';base64, ' . $base64;
                 unlink($destination);
                 return $ensembleBase64; // echo"transfert termniné";
             }
+        }
+    }
+
+    //cette fonction update la photo de profil de l'user en mettant une par défault
+    public function suppresionPhotoDeProfile()
+    {
+        try {
+            $path = "ressource/images/pdp.jpeg"; //on met une image par défault 
+
+            $data = file_get_contents($path);
+            $base64 =  base64_encode($data);
+            $ensembleBase64 = 'data:image/' . '.jpeg' . ';base64, ' . $base64;
+            $this->changementPhoto($ensembleBase64);
+            return true;
+        } catch (Exception $e) {
+            echo $e->getMessage() . $e->getCode();
         }
     }
 
@@ -143,8 +159,8 @@ class ModeleCompte  extends Connexion
                 return $path; 
         }
 */
-                 
-    
+
+
     // fonction qui envoie l'image reçu en base 64 à la BDD
     public function changementPhoto($image)
     {

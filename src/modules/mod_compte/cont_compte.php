@@ -46,6 +46,12 @@ class ContCompte
                 } elseif (isset($_GET['ErreurTansfert'])) {
                     $this->affichageErreurTansfertImage();
                 }
+                elseif(isset($_GET['suppresionPhotoDeProfile'])){
+                    $this->affichagesuppresionPhotoDeProfileReussit();
+                }
+                elseif(isset($_GET['ErreursuppresionPhotoDeProfile'])){
+                    $this->affichagesuppresionPhotoDeProfileErreur();
+                }
                 break;
 
             case 'miseAJourIdentifiant':
@@ -89,6 +95,15 @@ class ContCompte
             case 'changementPhotoDeProfile':
                 $this->changementPhotoDeProfile();
                 break;
+            
+            case 'suppresionPhotoDeProfile':
+                if($this->suppresionPhotoDeProfile()){
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&suppresionPhotoDeProfile=true;'); //redirection vers la page 
+                }
+                else{
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&ErreursuppresionPhotoDeProfile=true;'); //redirection vers la page 
+                }
+                
         }
     }
 
@@ -169,6 +184,10 @@ class ContCompte
 
         }
     }
+
+    public function suppresionPhotoDeProfile(){
+       return $this->modele->suppresionPhotoDeProfile();
+    }
     //////////////////////////Affichage des Toast pour les Informations générales //////////////////////////////////////
 
     public function affichageChangementImageRate()
@@ -214,4 +233,14 @@ class ContCompte
     {
         $this->vue->affichageErreurTansfertImage();
     }
+
+    public function affichagesuppresionPhotoDeProfileErreur(){
+        $this->vue->affichagesuppresionPhotoDeProfileErreur();
+    }
+
+    public function affichagesuppresionPhotoDeProfileReussit(){
+        $this->vue->affichagesuppresionPhotoDeProfileReussit();
+    }
+
+    
 }

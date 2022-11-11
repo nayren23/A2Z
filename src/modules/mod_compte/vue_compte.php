@@ -127,14 +127,14 @@ class VueCompte extends Vue_Generique
 
         <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
           <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
-          <label class="warningFileUpload">Format de fichier autorisé : PNG</label>
+          <label class="warningFileUpload">Format de fichier autorisé : JPG, JPEG, PNG</label>
           <label class="warningFileUpload">Taille maximale du fichier : 1000 Ko</label>
 
           <div class="mb-3">
             <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg,, image/jpg " name="image" required>
           </div>
           <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder la photo !"> </div>
-          <a href="./?module=settings&action=deleteCurrentAvatar"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
+          <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
           <div class="fileUpload">
             <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
@@ -441,6 +441,36 @@ class VueCompte extends Vue_Generique
       Toast.fire({
         icon: 'error',
         title: "La taille du fichier est trop grande!!! "
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichagesuppresionPhotoDeProfileReussit()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien supprimé votre photo de profil !!! "
+      })
+    </script>
+
+<?php
+  }
+
+  public function affichagesuppresionPhotoDeProfileErreur()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Erreur lors de la suppression de votre photo de profil "
       })
     </script>
 
