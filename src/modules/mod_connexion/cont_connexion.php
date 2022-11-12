@@ -2,6 +2,7 @@
 
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
+require_once("./Verification_Creation_Token.php");
 
 class ContConnexion
 {
@@ -80,6 +81,7 @@ class ContConnexion
 
     public function affichageFormulaireInscription()
     {
+        creation_token();
         $this->vue->form_inscription();
     }
 
@@ -102,6 +104,7 @@ class ContConnexion
 
     public function afficherFormulaireConnexion()
     {
+        creation_token();
         $this->vue->form_connexion();
     }
 

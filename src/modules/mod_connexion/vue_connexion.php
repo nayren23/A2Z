@@ -111,6 +111,8 @@ class VueConnexion extends Vue_Generique
 
         ?>
           <form action="index.php?module=connexion&action=creationCompte" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
+
             <p>Inscription</p>
             <div> <input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
 
@@ -193,6 +195,8 @@ class VueConnexion extends Vue_Generique
       ?>
         <div class="contenir">
           <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
+
             <p>Connexion</p>
             <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
 
