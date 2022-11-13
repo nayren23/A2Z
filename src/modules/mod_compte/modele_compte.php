@@ -1,5 +1,6 @@
 <?php
 
+require_once("./Verification_Creation_Token.php"); //
 
 class ModeleCompte  extends Connexion
 {
@@ -9,6 +10,8 @@ class ModeleCompte  extends Connexion
     {
 
         try {
+            if (!verification_token())
+                return 1;
             //ici on teste si l'identifiant est différents des autres
             $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
             $statement = self::$bdd->prepare($sql);
@@ -40,6 +43,8 @@ class ModeleCompte  extends Connexion
     {
 
         try {
+            if (!verification_token())
+                return 1;
             //ici on teste si l'adresse mail entrer par l'user  est différents des autres
             $sql = 'Select * from Utilisateur WHERE adresseMail=:adresseMail';
             $statement = self::$bdd->prepare($sql);
@@ -67,6 +72,8 @@ class ModeleCompte  extends Connexion
     {
 
         try {
+            if (!verification_token())
+                return 1;
             // ici on UPDATE les donnee dans la BDD
             $sql = 'UPDATE utilisateur SET motDePasse ="' .  password_hash($_POST['nouveauMotDePasse'], PASSWORD_DEFAULT) . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($sql);
@@ -165,6 +172,8 @@ class ModeleCompte  extends Connexion
     public function changementPhoto($image)
     {
         try {
+            if (!verification_token())
+                return 1;
             // ici on UPDATE les donnee dans la BDD
             $commande = ' UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($commande);
@@ -179,10 +188,15 @@ class ModeleCompte  extends Connexion
     // fonction génerique pour récupérer toutes les infosd'un user dans un seul tableau 
     public function recuperationInfoCompte()
     {
-        $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
-        $statement = self::$bdd->prepare($sql);
-        $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
-        $resultat = $statement->fetch();
-        return $resultat;
+        try {
+
+            $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
+            $statement = self::$bdd->prepare($sql);
+            $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
+            $resultat = $statement->fetch();
+            return $resultat;
+        } catch (PDOException $e) {
+            echo $e->getMessage() . $e->getCode();
+        }
     }
 }

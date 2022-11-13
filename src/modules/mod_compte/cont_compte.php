@@ -2,6 +2,7 @@
 
 require_once "vue_compte.php";
 require_once "modele_compte.php";
+require_once("./Verification_Creation_Token.php");
 
 class ContCompte
 {
@@ -121,6 +122,7 @@ class ContCompte
 
     public function affichageFormulaireModificationIdentifiant()
     {
+        creation_token();
         $this->vue->form_modification_compte_identifiant();
     }
 
@@ -132,6 +134,7 @@ class ContCompte
 
     public function affichageFormulaireModificationMotDePasse()
     {
+        creation_token();
         $this->vue->form_modification_compte_mot_de_passe();
     }
 
@@ -147,6 +150,7 @@ class ContCompte
 
     public function affichageFormulaireModificationEmail()
     {
+        creation_token();
         $this->vue->form_modification_compte_adressemail();
     }
 
@@ -155,7 +159,7 @@ class ContCompte
     public function affichageChangementPhotoDeProfile()
     {
         $image = $this->modele->recuperationInfoCompte()["cheminImage"];
-
+        creation_token();
         $this->vue->modifiactionPhotoDeProfile($image);
     }
 

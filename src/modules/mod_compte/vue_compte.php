@@ -25,7 +25,8 @@ class VueCompte extends Vue_Generique
         <?php
         ?>
         <form action="index.php?module=compte&action=changementIdentifiant" method="post">
-          <p>Changement de l'identifiant</p>
+        <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->  
+        <p>Changement de l'identifiant</p>
           <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required></div>
           <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
         </form>
@@ -53,7 +54,8 @@ class VueCompte extends Vue_Generique
         <?php
         ?>
         <form action="index.php?module=compte&action=changementAdresseMail" method="post">
-          <p>Changement de l'adresse mail</p>
+        <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->  
+        <p>Changement de l'adresse mail</p>
           <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required></div>
           <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
         </form>
@@ -83,7 +85,8 @@ class VueCompte extends Vue_Generique
         <?php
         ?>
         <form action="index.php?module=compte&action=changementMotDePasse" method="post">
-          <p>Changement de mot de passe</p>
+        <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- --> 
+        <p>Changement de mot de passe</p>
           <div class="boutonMdp">
             <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required>
             <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
@@ -126,7 +129,8 @@ class VueCompte extends Vue_Generique
         </div>
 
         <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
-          <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
+        <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- --> 
+        <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
           <label class="warningFileUpload">Format de fichier autorisé : JPG, JPEG, PNG</label>
           <label class="warningFileUpload">Taille maximale du fichier : 1000 Ko</label>
 
