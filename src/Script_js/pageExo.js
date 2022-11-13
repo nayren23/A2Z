@@ -22,7 +22,7 @@ $(function() {
     $("ul, li").disableSelection();
 });
 
-
+/*
 
 $(function() {
     $(".dropp2").droppable();
@@ -42,7 +42,7 @@ $(function() {
 
 });
 
-
+*/
 
 
 
@@ -60,7 +60,7 @@ $(function() {
             $(this)
                 .addClass("ui-state-highlight")
 
-            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF" cols="30" rows="10" ></textarea>  <p>------------------Vrai-----Faux</p> </div>');
+            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF"  ></textarea>  <p class="p">----------------------Vrai----Faux</p> </div>');
 
 
 
@@ -74,12 +74,32 @@ $(function() {
             }
 
 
+
+
+            var divT = document.getElementsByClassName('p');
+
+            for (var i = 0; i < divT.length; i++) {
+                var elementp = divT[i];
+                elementp.style.border = " solid grey";
+                elementp.style.cssFloat = "right";
+                elementp.style.marginTop = "revert";
+
+
+
+
+
+
+            }
+
+
             var inputVraiF = document.getElementsByClassName('inputVraiF');
 
             for (var i = 0; i < inputVraiF.length; i++) {
                 var element2 = inputVraiF[i];
                 element2.style.height = "50px";
-                element2.style.width = "500px";
+                element2.style.width = "470px";
+
+                element2.style.resize = "none";
 
 
 

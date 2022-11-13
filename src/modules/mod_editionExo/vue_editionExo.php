@@ -212,9 +212,9 @@ class VueEdition extends Vue_Generique
 
                         </div>
 
+                        
                         <page size="A4" id="page droppable" class="sortable res ">
-                            <span class="accordion-heading all" id="myElement">Mise en page</span>
-
+                        
                         </page>
 
                     </div>

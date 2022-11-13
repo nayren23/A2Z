@@ -316,3 +316,15 @@ li {
 
 
 /*fin bouton change taille font*/
+
+#tt1 {
+    border: solid #0098db 10px;
+    height: 40px;
+    width: 40px;
+}
+
+#tt2 {
+    border: solid palevioletred 10px;
+    height: 40px;
+    width: 40px;
+}
