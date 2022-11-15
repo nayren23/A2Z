@@ -114,14 +114,14 @@ class VueConnexion extends Vue_Generique
           <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
 
             <p>Inscription</p>
-            <div> <input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
+            <div> <input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
 
             <div class="boutonMdp">
-              <input class="saisieText" id="monEntree" type="password" placeholder="Mot de passe" name="motDePasse" required>
+              <input class="saisieText" id="monEntree" type="password" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
               <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
             </div>
 
-            <div><input class="saisieText" type="email" placeholder="E-mail" name="adresseMail" required></div>
+            <div><input class="saisieText" type="email" placeholder="E-mail" name="adresseMail" required maxlength="75"></div>
             <div><input class="saisieText" type="submit" value="S'inscrire 👋🏻 !"> </div>
             <p>© 2022–2023</p>
           </form>
@@ -198,10 +198,10 @@ class VueConnexion extends Vue_Generique
           <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
 
             <p>Connexion</p>
-            <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required></div>
+            <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
 
             <div class="boutonMdp">
-              <input class="saisieText" type="password" id="monEntree" placeholder="Mot de passe" name="motDePasse" required>
+              <input class="saisieText" type="password" id="monEntree" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
               <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
             </div>
 

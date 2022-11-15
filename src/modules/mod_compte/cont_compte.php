@@ -97,7 +97,11 @@ class ContCompte
                 $this->changementPhotoDeProfile();
                 break;
             
-            case 'suppresionPhotoDeProfile':
+
+            case'suppresionPhotoDeProfile':
+                $this->affichageFormSuppresionPhotoDeProfile();
+                break;
+            case 'demandeSuppresionPhotoDeProfile':
                 if($this->suppresionPhotoDeProfile()){
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&suppresionPhotoDeProfile=true;'); //redirection vers la page 
                 }
@@ -163,6 +167,10 @@ class ContCompte
         $this->vue->modifiactionPhotoDeProfile($image);
     }
 
+    public function affichageFormSuppresionPhotoDeProfile(){
+        $image = $this->modele->recuperationInfoCompte()["cheminImage"];
+        $this->vue->formSuppresionPhotoDeProfile($image);
+    }
     //ici en fonction de ce que nous renvoie  recupererImage() on traite si c'est une erreur ou pas 
     public function changementPhotoDeProfile()
     {
