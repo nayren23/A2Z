@@ -57,7 +57,7 @@ $(function() {
         accept: "#draggable",
         drop: function(event, ui) {
 
-            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF"  ></textarea>  <p class="p">---------------Vrai----Faux</p> </div>');
+            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="p">---------------Vrai----Faux</p> </div>');
 
 
 
@@ -125,6 +125,7 @@ function getPDF() {
     // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
     doc.fromHTML($('.zima').get(0), 15, 15, {
       'width': 170, 
+      'height': 200,
       'elementHandlers': specialElementHandlers
     });
   
