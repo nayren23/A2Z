@@ -22,24 +22,24 @@ class VueCompte extends Vue_Generique
 
     <body class="bodyFormulaireInfoCompte">
 
-    <div>
+      <div>
         <div class="auth-title">
           <h1>Changer votre identifiant</h1>
           <p>Choisissez un nouvel identifiant</p>
         </div>
-      <div class="contenir">
-        <?php
-        ?>
-        <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementIdentifiant" method="post">
-          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
-          <!--Token- -->
-          <br>
-          <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required maxlength="50"></div>
-          <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
-        </form>
-        <?php
-        ?>
-      </div>
+        <div class="contenir">
+          <?php
+          ?>
+          <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementIdentifiant" method="post">
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
+            <br>
+            <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required maxlength="50"></div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
+          </form>
+          <?php
+          ?>
+        </div>
       </div>
     </body>
   <?php
@@ -59,24 +59,24 @@ class VueCompte extends Vue_Generique
 
     <body class="bodyFormulaireInfoCompte">
 
-    <div>
+      <div>
         <div class="auth-title">
           <h1>Changer votre adresse mail</h1>
           <p>Choisissez une nouvelle adresse mail</p>
         </div>
-      <div class="contenir">
-        <?php
-        ?>
-        <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementAdresseMail" method="post">
-          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
-          <!--Token- -->
-          <br>
-          <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required maxlength="75"></div>
-          <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
-        </form>
-        <?php
-        ?>
-      </div>
+        <div class="contenir">
+          <?php
+          ?>
+          <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementAdresseMail" method="post">
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
+            <br>
+            <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required maxlength="75"></div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
+          </form>
+          <?php
+          ?>
+        </div>
       </div>
     </body>
   <?php
@@ -100,7 +100,7 @@ class VueCompte extends Vue_Generique
       <div>
         <div class="auth-title">
           <h1>Changer votre mot de passe</h1>
-          <p>Choisissez un mot de passe sécurisé <br>Ne le réutilisez pas pour d'autres comptes    </p>
+          <p>Choisissez un mot de passe sécurisé <br>Ne le réutilisez pas pour d'autres comptes </p>
         </div>
         <div class="contenir">
 
@@ -111,7 +111,7 @@ class VueCompte extends Vue_Generique
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
             <div class="boutonMdp">
-            <br>
+              <br>
               <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required maxlength="100">
               <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
             </div>
@@ -246,98 +246,100 @@ class VueCompte extends Vue_Generique
 
     </head>
 
-    <body class="pageCompte">
-    <body class="bodyFormulaireInfoCompte">
-      <div>
-        <div class="auth-title">
-          <h1>Informations personnelles</h1>
-          <p>Infos sur vous dans A2Z   </p>
-        </div>
-      <div class="informationCompte">
+    <div class="pageCompte">
+      <div class="bodyFormulaireInfoCompte">
+        <div>
+          <div class="auth-title">
+            <h1>Informations personnelles</h1>
+            <p>Infos sur vous dans A2Z </p>
+          </div>
+          <div class="informationCompte">
 
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+              <div class="d-flex text-muted pt-3">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
 
 
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Photo</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourPhotoDeProfile">
-                    <p class="modification">Modifier</p>
-                  </a>
-                </div>
-                <span class="d-block">
-                  <p>Personnalisez votre compte en ajoutant une photo</p>
-                </span>
-              </div>
-            </div>
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
-
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Identifiant</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourIdentifiant">
-                    <p class="modification">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre">Photo</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourPhotoDeProfile">
                       <p class="modification">Modifier</p>
-                  </a>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p>Personnalisez votre compte en ajoutant une photo</p>
+                  </span>
                 </div>
-                <span class="d-block">
-                  <p><?php echo $identifiant ?></p>
-                </span>
+              </div>
+              <div class="d-flex text-muted pt-3">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
+
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre">Identifiant</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourIdentifiant">
+                      <p class="modification">
+                        <p class="modification">Modifier</p>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p><?php echo $identifiant ?></p>
+                  </span>
+                </div>
+              </div>
+              <div class="d-flex text-muted pt-3">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
+
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre">Mot de passe</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourMotDePasse">
+                      <p class="modification">Modifier</p>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p>****************</p>
+                  </span>
+                </div>
+              </div>
+
+              <div class="d-flex text-muted pt-3">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
+
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre">Adresse Mail</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourEmail">
+                      <p class="modification">Modifier</p>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p><?php echo $adresseMail ?></p>
+                  </span>
+                </div>
               </div>
             </div>
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
-
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Mot de passe</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourMotDePasse">
-                    <p class="modification">Modifier</p>
-                  </a>
-                </div>
-                <span class="d-block">
-                  <p>****************</p>
-                </span>
-              </div>
-            </div>
-
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
-
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Adresse Mail</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourEmail">
-                    <p class="modification">Modifier</p>
-                  </a>
-                </div>
-                <span class="d-block">
-                  <p><?php echo $adresseMail ?></p>
-                </span>
-              </div>
-            </div>
+          </div>
         </div>
       </div>
-    </body>
+    </div>
 
     </html>
 
