@@ -17,71 +17,6 @@ class VueConnexion extends Vue_Generique
   {
 ?>
 
-    <head>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-
-    </head>
-    <header class="headerconnexion">
-      <div class="p-3 text-bg-dark">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-
-            <?php if (!isset($_SESSION["identifiant"])) {
-            ?>
-              <a href="index.php?module=connexion&action=connexion">
-                <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
-              </a>
-
-            <?php } elseif (isset($_SESSION["identifiant"])) {
-            ?>
-              <a href="index.php?module=principale">
-                <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
-              </a>
-            <?php } ?>
-
-            <div class="navigation">
-              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                  <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap" />
-                  </svg>
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="#" class="nav-link px-2 text-white">Contact </a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">Respect de la vie privée</a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">A propos de</a></li>
-                </ul>
-
-
-
-                <div class="text-end">
-
-                  <?php
-                  //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
-                  if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant']))) {
-                  ?>
-                    <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                    <?php
-                  }
-                  //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
-                  else if ((!isset($_SESSION['identifiant'])) && isset(($_GET['action'])) && $_GET['action'] != "connexion") {
-                    ?>
-                      <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
-                      <?php
-                    } else if (!isset(($_GET['action']))) {
-                      ?>
-                        <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                        <?php
-                      }
-                        ?>
-                </div>
-              </div>
-            </div>
-          </div>
-    </header>
 
 
   <?php
@@ -101,13 +36,13 @@ class VueConnexion extends Vue_Generique
       <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
     </head>
 
-    <body>
+  
+    <div class="pageCompte">
 
       <div class="contenir">
 
         <?php
         if (!isset($_SESSION["identifiant"])) { // pour afficher le formulaire uniquement si on n'est pas déjà connecter
-
 
         ?>
           <form action="index.php?module=connexion&action=creationCompte" method="post">
@@ -132,8 +67,7 @@ class VueConnexion extends Vue_Generique
 
         ?>
       </div>
-    </body>
-
+      </div>
   <?php
 
   }
@@ -157,7 +91,7 @@ class VueConnexion extends Vue_Generique
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
 
-    <body>
+  
       <div class="index">
 
         <div class="container">
@@ -169,7 +103,6 @@ class VueConnexion extends Vue_Generique
         </div>
       </div>
 
-    </body>
 
     </html>
 
@@ -187,13 +120,14 @@ class VueConnexion extends Vue_Generique
     <head>
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
       <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
+      <link rel="stylesheet" href="Style_css/pageCompte.css">
+
     </head>
 
-    <body>
       <?php
       if (!isset($_SESSION["identifiant"])) {
       ?>
-        <div class="contenir">
+        <div class="pageCompte">
           <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
           <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
 
@@ -216,7 +150,6 @@ class VueConnexion extends Vue_Generique
         $this->compteInexsistant();
       }
       ?>
-    </body>
   <?php
   }
 

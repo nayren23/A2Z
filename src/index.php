@@ -9,8 +9,6 @@ require_once ("controleur.php");
 
 $controleur = new Controleur();
 
-if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
-
 require_once("template.php"); //affichage du site 
-}
+
 ?>

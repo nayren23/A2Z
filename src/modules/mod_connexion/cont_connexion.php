@@ -59,7 +59,7 @@ class ContConnexion
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
                     $this->affichageConnexionReussie();// mettre cette fonction dans mod principale
-                    header('Location: ./index.php?module=principale&connexion=true'); //redirection vers la page 
+                    header('Location: ./index.php?module=editionExo&connexion=true'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }

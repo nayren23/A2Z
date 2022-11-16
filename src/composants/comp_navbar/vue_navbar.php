@@ -1,9 +1,14 @@
 <?php
+require_once "./vue_generique.php";
 
-class Vue_navbar
-{ //fonction pour l'affichage de la nav bar
+class Vue_navbar extends Vue_Generique
+{
 
-    function navBarHabillage()
+  public function  __construct()
+  {
+    parent::__construct(); // comme un super
+  }
+    function navBarHabillage($image)
     {
 ?>
 
@@ -24,7 +29,7 @@ class Vue_navbar
                 </div>
                 <div class="photoProfil">
                     <a href="index.php?module=editionExo" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="ressource/images/pdp.jpeg" alt="mdo" width="48" height="48" class="rounded-circle">
+                        <img src="<?php echo $image ?>" alt="mdo" width="48" height="48" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu text-small">
                         <li><a class="dropdown-item" href="index.php?module=compte&action=affichageInfoCompte">Profil</a></li>
