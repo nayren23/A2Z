@@ -26,7 +26,7 @@ class ModeleConnexion extends Connexion
             // ici on insere les donnee dans la BDD
             $sql = 'INSERT INTO utilisateur (adresseMail,identifiant,motDePasse) VALUES(:adresseMail,:identifiant, :motDePasse)';
             $statement = Connexion::$bdd->prepare($sql);
-            $statement->execute(array(':adresseMail'=>htmlspecialchars($_POST['adresseMail']),':identifiant' => htmlspecialchars($_POST['identifiant']), 'motDePasse' => password_hash($_POST['motDePasse'], PASSWORD_DEFAULT)));//vois si pour le mdp on fait htmlspecialchars
+            $statement->execute(array(':adresseMail'=>htmlspecialchars($_POST['adresseMail']),':identifiant' => htmlspecialchars($_POST['identifiant']), 'motDePasse' => password_hash(htmlspecialchars($_POST['motDePasse']), PASSWORD_DEFAULT)));//vois si pour le mdp on fait htmlspecialchars
             return true;
         }
         } catch (PDOException $e) {
@@ -52,7 +52,7 @@ class ModeleConnexion extends Connexion
                 $result = $statement->fetch();
 
                 if ($result) { //si l'id est correct alors on verifie le mdp
-                    if (password_verify($_POST['motDePasse'], $result['motDePasse'])) {
+                    if (password_verify(htmlspecialchars($_POST['motDePasse']), $result['motDePasse'])) {
                         $_SESSION['identifiant'] = $result['identifiant'];
                         return true; // connexion reussie au site
                     }
