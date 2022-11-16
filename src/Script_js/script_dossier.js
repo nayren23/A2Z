@@ -1,4 +1,5 @@
 async function popUpNomDuDossier() {
+  header('Location: ./index.php?module=favoris&location=null');
 
     (async () => {
 

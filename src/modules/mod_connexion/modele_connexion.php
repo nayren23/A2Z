@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result;
-
 class ModeleConnexion extends Connexion
 {
 
@@ -11,7 +9,7 @@ class ModeleConnexion extends Connexion
         try {
             //ici on teste si l'adresse mail est deja utilise
             $sql = 'Select * from Utilisateur WHERE adresseMail=:adresseMail or identifiant=:identifiant';
-            $statement = self::$bdd->prepare($sql);
+            $sstatement = self::$bdd->prepare($sql);
             $statement->execute(array(':adresseMail' => $_POST['adresseMail'] , ':identifiant' => $_POST['identifiant'] ));
             $result = $statement->fetch();
             if($result){

@@ -9,6 +9,7 @@ class ModFavoris
     {
 
         $this->controleur = new ContFavoris();
+        header('Location: ./index.php?module=favoris&location=null');
     }
 
     public function getControleur()
