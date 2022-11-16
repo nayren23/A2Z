@@ -146,10 +146,8 @@ class VueEdition extends Vue_Generique
                                         <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Copie</span>
                                     </label>
                                     <div class="content">
-                                        Ipsam atque, soluta doloribus distinctio saepe labore voluptates facere illum alias
-                                        perferendis praesentium quia vel accusamus incidunt corporis veniam sapiente.
-                                        Voluptate,
-                                        quasi.
+                                        <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="Ex011" id="" cols="30" rows="1">test</textarea> </li>
+                                        <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
                                     </div>
                                 </div>
 
