@@ -51,7 +51,7 @@ class Controleur
 
             case "editionExo":
                 if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
-
+                    require_once "modules/mod_editionExo/mod_editionExo.php"; // pour les Faille include 
                     $this->module = new ModEditionExo();
                 } else {
                     echo "connecte toi d'abord";
