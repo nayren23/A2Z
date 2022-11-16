@@ -99,7 +99,7 @@ class VueEdition extends Vue_Generique
                                     </label>
                                     <div class="content">
 
-                                        <li id="draggable" class="ui-state-highlight"></li>
+                                        <li id="draggable" class="ui-state-highlight">Vrai ou Faux ?</li>
 
                                         <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
                                         <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
