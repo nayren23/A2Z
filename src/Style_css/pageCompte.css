@@ -2,7 +2,6 @@ body {
   background-color: #1d1f26;
   height: 100vh;
   font-family: arial, sans-serif;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -14,12 +13,11 @@ body {
 
 .pageCompte {
     background-color: #1d1f26;
-    height: 100vh;
     font-family: arial, sans-serif;
-    display: flex;
     align-items: center;
     justify-content: center;
-    
+    display: flex;
+    padding: 20;
   }
     
   .informationCompte {

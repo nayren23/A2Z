@@ -2,7 +2,6 @@ body {
   background-color: #1d1f26;
   height: 100vh;
   font-family: arial, sans-serif;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -34,12 +33,16 @@ form {
 }
 
 .FormulaireInfoCompte {
-  height: 200px;
+  height:500px;
+  width: 30vw;
+
 }
 
 .bodyFormulaireInfoCompte {
   margin-top: -3%;
+  width: 40vw;
 }
+
 
 p {
   color: white;

@@ -20,7 +20,7 @@ class VueCompte extends Vue_Generique
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
     </head>
 
-    <body class="bodyFormulaireInfoCompte">
+    <div class="pageCompte">
 
       <div>
         <div class="auth-title">
@@ -35,13 +35,13 @@ class VueCompte extends Vue_Generique
             <!--Token- -->
             <br>
             <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required maxlength="50"></div>
-            <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder!"> </div>
           </form>
           <?php
           ?>
         </div>
       </div>
-    </body>
+  </div>
   <?php
 
   }
@@ -57,7 +57,7 @@ class VueCompte extends Vue_Generique
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
     </head>
 
-    <body class="bodyFormulaireInfoCompte">
+    <div class="pageCompte">
 
       <div>
         <div class="auth-title">
@@ -72,13 +72,13 @@ class VueCompte extends Vue_Generique
             <!--Token- -->
             <br>
             <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required maxlength="75"></div>
-            <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
           </form>
           <?php
           ?>
         </div>
       </div>
-    </body>
+  </div>
   <?php
 
   }
@@ -96,7 +96,7 @@ class VueCompte extends Vue_Generique
       <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
     </head>
 
-    <body class="bodyFormulaireInfoCompte">
+    <div class="pageCompte">
       <div>
         <div class="auth-title">
           <h1>Changer votre mot de passe</h1>
@@ -115,11 +115,11 @@ class VueCompte extends Vue_Generique
               <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required maxlength="100">
               <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
             </div>
-            <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
           </form>
         </div>
       </div>
-    </body>
+  </div>
   <?php
   }
 
@@ -143,7 +143,7 @@ class VueCompte extends Vue_Generique
       <link rel="stylesheet" href="sweetalert2.min.css">
     </head>
 
-    <body class="pageCompte">
+    <div class="pageCompte">
 
       <div class="settings">
         <div class="auth-title">
@@ -161,7 +161,7 @@ class VueCompte extends Vue_Generique
           <div class="mb-3">
             <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg,, image/jpg " name="image" required>
           </div>
-          <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder la photo !"> </div>
+          <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder ma photo !"> </div>
           <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
           <div class="fileUpload">
@@ -169,7 +169,7 @@ class VueCompte extends Vue_Generique
           </div>
         </form>
       </div>
-    </body>
+  </div>
   <?php
   }
 
@@ -191,7 +191,7 @@ class VueCompte extends Vue_Generique
       <link rel="stylesheet" href="sweetalert2.min.css">
     </head>
 
-    <body class="pageCompte">
+    <div class="pageCompte">
 
       <div class="settings">
 
@@ -206,7 +206,7 @@ class VueCompte extends Vue_Generique
 
           <div>
             <label class="warningFileUpload">Celle-ci sera supprimée définitivement</label>
-            <img class="logo" src="ressource/images/poubelle.svg" width="30" height="30">
+            <img  src="ressource/images/poubelle.svg" width="30" height="30">
           </div>
 
           <div>
@@ -220,7 +220,7 @@ class VueCompte extends Vue_Generique
 
         </form>
       </div>
-    </body>
+    </div>
   <?php
   }
 
@@ -365,7 +365,7 @@ class VueCompte extends Vue_Generique
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
 
-    <body>
+    <div>
       <div class="index">
 
         <div class="container">
@@ -377,7 +377,7 @@ class VueCompte extends Vue_Generique
         </div>
       </div>
 
-    </body>
+  </div>
 
     </html>
 
