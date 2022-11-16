@@ -20,17 +20,26 @@ class VueCompte extends Vue_Generique
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
     </head>
 
-    <body>
+    <body class="bodyFormulaireInfoCompte">
+
+    <div>
+        <div class="auth-title">
+          <h1>Changer votre identifiant</h1>
+          <p>Choisissez un nouvel identifiant</p>
+        </div>
       <div class="contenir">
         <?php
         ?>
-        <form action="index.php?module=compte&action=changementIdentifiant" method="post">
-          <p>Changement de l'identifiant</p>
-          <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required></div>
+        <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementIdentifiant" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
+          <br>
+          <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required maxlength="50"></div>
           <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
         </form>
         <?php
         ?>
+      </div>
       </div>
     </body>
   <?php
@@ -48,17 +57,26 @@ class VueCompte extends Vue_Generique
       <link rel="stylesheet" href="Style_css/pageConnexion.css">
     </head>
 
-    <body>
+    <body class="bodyFormulaireInfoCompte">
+
+    <div>
+        <div class="auth-title">
+          <h1>Changer votre adresse mail</h1>
+          <p>Choisissez une nouvelle adresse mail</p>
+        </div>
       <div class="contenir">
         <?php
         ?>
-        <form action="index.php?module=compte&action=changementAdresseMail" method="post">
-          <p>Changement de l'adresse mail</p>
-          <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required></div>
+        <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementAdresseMail" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
+          <br>
+          <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required maxlength="75"></div>
           <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
         </form>
         <?php
         ?>
+      </div>
       </div>
     </body>
   <?php
@@ -78,20 +96,28 @@ class VueCompte extends Vue_Generique
       <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
     </head>
 
-    <body>
-      <div class="contenir">
-        <?php
-        ?>
-        <form action="index.php?module=compte&action=changementMotDePasse" method="post">
-          <p>Changement de mot de passe</p>
-          <div class="boutonMdp">
-            <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required>
-            <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
-          </div>
-          <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
-        </form>
-        <?php
-        ?>
+    <body class="bodyFormulaireInfoCompte">
+      <div>
+        <div class="auth-title">
+          <h1>Changer votre mot de passe</h1>
+          <p>Choisissez un mot de passe sécurisé <br>Ne le réutilisez pas pour d'autres comptes    </p>
+        </div>
+        <div class="contenir">
+
+          <?php
+          ?>
+          <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementMotDePasse" method="post">
+
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
+            <div class="boutonMdp">
+            <br>
+              <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required maxlength="100">
+              <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
+            </div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
+          </form>
+        </div>
       </div>
     </body>
   <?php
@@ -126,19 +152,72 @@ class VueCompte extends Vue_Generique
         </div>
 
         <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
           <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
-          <label class="warningFileUpload">Format de fichier autorisé : PNG</label>
-          <label class="warningFileUpload">Taille maximale du fichier : 1000 Ko</label>
+          <label class="warningFileUpload">Format de fichier autorisé : JPG, JPEG, PNG</label>
+          <label class="warningFileUpload">Taille maximale du fichier : 1 Mo</label>
 
           <div class="mb-3">
             <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg,, image/jpg " name="image" required>
           </div>
           <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder la photo !"> </div>
-          <a href="./?module=settings&action=deleteCurrentAvatar"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
+          <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
           <div class="fileUpload">
             <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
           </div>
+        </form>
+      </div>
+    </body>
+  <?php
+  }
+
+  // page pour changer la photo de profile
+  public function formSuppresionPhotoDeProfile($image)
+  {
+  ?>
+
+    <head>
+      <meta charset='utf-8'>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="Style_css/pageConnexion.css">
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="sweetalert2.min.js"></script>
+      <link rel="stylesheet" href="sweetalert2.min.css">
+    </head>
+
+    <body class="pageCompte">
+
+      <div class="settings">
+
+        <div class="auth-title">
+          <h1>Supprimer la photo de profil</h1>
+          <p>Êtes-vous sûr de vouloir supprimer votre photo de profil?</p>
+        </div>
+
+        <form action="index.php?module=compte&action=demandeSuppresionPhotoDeProfile" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
+
+          <div>
+            <label class="warningFileUpload">Celle-ci sera supprimée définitivement</label>
+            <img class="logo" src="ressource/images/poubelle.svg" width="30" height="30">
+          </div>
+
+          <div>
+            <input class="saisieText" name="submit" type="submit" value="Supprimer ma photo !">
+          </div>
+
+          <div class="fileUpload">
+            <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
+          </div>
+
+
         </form>
       </div>
     </body>
@@ -168,10 +247,15 @@ class VueCompte extends Vue_Generique
     </head>
 
     <body class="pageCompte">
-
+    <body class="bodyFormulaireInfoCompte">
+      <div>
+        <div class="auth-title">
+          <h1>Informations personnelles</h1>
+          <p>Infos sur vous dans A2Z   </p>
+        </div>
       <div class="informationCompte">
+
         <div class="my-3 p-3 bg-body rounded shadow-sm">
-          <h4 class="titre">Informations générales</h6>
             <div class="d-flex text-muted pt-3">
               <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <title>Placeholder</title>
@@ -441,6 +525,36 @@ class VueCompte extends Vue_Generique
       Toast.fire({
         icon: 'error',
         title: "La taille du fichier est trop grande!!! "
+      })
+    </script>
+
+  <?php
+  }
+
+  public function affichagesuppresionPhotoDeProfileReussit()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien supprimé votre photo de profil !!! "
+      })
+    </script>
+
+  <?php
+  }
+
+  public function affichagesuppresionPhotoDeProfileErreur()
+  {
+  ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Erreur lors de la suppression de votre photo de profil "
       })
     </script>
 

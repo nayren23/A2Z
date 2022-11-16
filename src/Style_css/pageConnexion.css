@@ -32,6 +32,14 @@ form {
 
 }
 
+.FormulaireInfoCompte {
+  height: 200px;
+}
+
+.bodyFormulaireInfoCompte{
+  margin-top: -3%;
+}
+
 p {
   color: white;
   font-weight: 500;
@@ -119,17 +127,9 @@ input[type="button"] {
 
 
 
-
-
-
-
-
-
-
-
 .auth-title {
   text-align: center;
-  margin-top: 5%;
+  margin-top: -5%;
   margin-bottom: 2%;
 }
 
