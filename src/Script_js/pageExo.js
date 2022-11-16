@@ -60,7 +60,7 @@ $(function() {
             $(this)
                 .addClass("ui-state-highlight")
 
-            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF"  ></textarea>  <p class="p">----------------------Vrai----Faux</p> </div>');
+            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF"  ></textarea>  <p class="p">---------------Vrai----Faux</p> </div>');
 
 
 
@@ -83,6 +83,8 @@ $(function() {
                 elementp.style.border = " solid grey";
                 elementp.style.cssFloat = "right";
                 elementp.style.marginTop = "revert";
+                elementp.style.marginbottom= "0px";
+
 
 
 
