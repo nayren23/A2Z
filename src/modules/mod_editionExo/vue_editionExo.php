@@ -30,7 +30,9 @@ class VueEdition extends Vue_Generique
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
             <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
             <script src="Script_js/pageExo.js"></script>
-
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
             <!--Link css-->
             <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
             <link rel="stylesheet" href="/resources/demos/style.css">
@@ -97,8 +99,7 @@ class VueEdition extends Vue_Generique
                                     </label>
                                     <div class="content">
 
-                                        <li id="draggable" class="ui-state-highlight">Exo1<input type="text" id="draggable" name="name">
-                                        </li>
+                                        <li id="draggable" class="ui-state-highlight">Exo1</li>
 
                                         <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
                                         <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
@@ -187,11 +188,12 @@ class VueEdition extends Vue_Generique
                             <button id="up">+</button>
                             <button id="down">-</button>
 
+                            <button id="getPDF" onclick="getPDF()">Telecharger page en PDF</button>
+
                         </div>
 
                         
-                        <page size="A4" id="page" class="sortable res ">
-                        
+                        <page size="A4" id="page" class="sortable res zima">
                         </page>
 
                     </div>
