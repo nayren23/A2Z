@@ -45,33 +45,10 @@ class VueEdition extends Vue_Generique
         <body>
             <!--Test-->
 
-            <div>
-
-                <ul>
-                    <li class=" draggable">Yassine <textarea name="" id="" cols="70" rows="1">test</textarea></li>
-
-                    <li class="draggable dragg">Rayan <textarea name="" id="" cols="30" rows="1">test</textarea></li>
-                </ul>
-            </div>
-
-
-
-
+           
             </head>
 
-
-
-            <div id="draggable-nonvalid" class="ui-widget-content">
-                <p>I&apos;m draggable but can&apos;t be dropped</p>
-            </div>
-
-            <div id="draggable" class="ui-widget-content">
-                <p>Drag me to my target</p>
-            </div>
-
-            <div id="droppable" class="ui-widget-header">
-                <p>accept: &apos;#draggable&apos;</p>
-            </div>
+            
 
             <!--Fin Test-->
 
@@ -120,7 +97,7 @@ class VueEdition extends Vue_Generique
                                     </label>
                                     <div class="content">
 
-                                        <li class="draggable" class="ui-state-highlight">Exo1<input type="text" id="name" name="name">
+                                        <li id="draggable" class="ui-state-highlight">Exo1<input type="text" id="draggable" name="name">
                                         </li>
 
                                         <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
@@ -213,7 +190,7 @@ class VueEdition extends Vue_Generique
                         </div>
 
                         
-                        <page size="A4" id="page droppable" class="sortable res ">
+                        <page size="A4" id="page" class="sortable res ">
                         
                         </page>
 

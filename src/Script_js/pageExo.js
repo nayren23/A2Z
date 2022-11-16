@@ -49,16 +49,13 @@ $(function() {
 
 
 $(function() {
-    $("#draggable, #draggable-nonvalid").draggable();
-    $("#droppable").droppable({
+    $("#draggable, #draggable-nonvalid").draggable({
+        helper: "clone"
+    }),
+    $("#page").droppable({
+        
         accept: "#draggable",
-        classes: {
-            "ui-droppable-active": "ui-state-active",
-            "ui-droppable-hover": "ui-state-hover"
-        },
         drop: function(event, ui) {
-            $(this)
-                .addClass("ui-state-highlight")
 
             $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF"  ></textarea>  <p class="p">---------------Vrai----Faux</p> </div>');
 
