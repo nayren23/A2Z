@@ -10,7 +10,6 @@ class ModCompte
     {
         $this->controleur = new ContCompte();
         $this->controleur->exec();
-
     }
 
     public function getControleur()

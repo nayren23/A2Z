@@ -9,10 +9,8 @@ class ModPrincipale
     {
 
         $this->controleur = new ContPrincipale();
+        $this->controleur->exec();
 
-       // switch ($this->con->getAction()) {
-            
-        //}
     
         $this->controleur->affichageHabillage();//affichage constant de la navbar et du footer
 

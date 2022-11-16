@@ -38,7 +38,7 @@ require_once "./vue_generique.php";
                       <img src="ressource/images/pdp.jpeg" alt="mdo" width="48" height="48" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu text-small">
-                      <li><a class="dropdown-item" href="index.php?module=compte&action=affichageInfoCompte">Profile</a></li>
+                      <li><a class="dropdown-item" href="index.php?module=compte&action=affichageInfoCompte">Profil</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="index.php?module=connexion&action=deconnexion">Déconnexion</a></li>
                     </ul>
