@@ -23,8 +23,9 @@ class ContFavoris
 
     public function AfficherBoutonCreerDossier() {
         $this->vue->boutonCreerDossier();
+        
     }
-
+    
 }
 
 ?>
