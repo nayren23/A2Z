@@ -9,19 +9,13 @@ class VueCompte extends Vue_Generique
     parent::__construct(); // comme un super
   }
 
-  ////////////////////////////////////////////////// Modifiaction Identifiant ///////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification Identifiant ///////////////////////////////////////////////////////
   // formulaire pour la modification de l'identifiant
   public function form_modification_compte_identifiant()
   {
-
 ?>
-
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-    </head>
-
+    <title> Modification ID | A2Z</title>
     <div class="pageCompte">
-
       <div>
         <div class="auth-title">
           <h1>Changer votre identifiant</h1>
@@ -46,19 +40,14 @@ class VueCompte extends Vue_Generique
 
   }
 
-  ////////////////////////////////////////////////// Modifiaction adresse mail ///////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification adresse mail ///////////////////////////////////////////////////////
 
   // formulaire pour la modification de l' adresse mail
   public function form_modification_compte_adressemail()
   {
   ?>
-
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-    </head>
-
+    <title> Modification Mail | A2Z</title>
     <div class="pageCompte">
-
       <div>
         <div class="auth-title">
           <h1>Changer votre adresse mail</h1>
@@ -83,19 +72,13 @@ class VueCompte extends Vue_Generique
 
   }
 
-  ////////////////////////////////////////////////// Modifiaction mot de passe ///////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification mot de passe ///////////////////////////////////////////////////////
 
   // formulaire pour la modification du mot de passe
   public function form_modification_compte_mot_de_passe()
   {
-
   ?>
-
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
-    </head>
-
+    <title> Modification MDP | A2Z</title>
     <div class="pageCompte">
       <div>
         <div class="auth-title">
@@ -123,28 +106,14 @@ class VueCompte extends Vue_Generique
   <?php
   }
 
-  ////////////////////////////////////////////////// Modifiaction Photo De Profile ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification Photo De Profile ////////////////////////////////////////////////////
 
   // page pour changer la photo de profile
   public function modifiactionPhotoDeProfile($image)
   {
   ?>
-
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="sweetalert2.min.js"></script>
-      <link rel="stylesheet" href="sweetalert2.min.css">
-    </head>
-
+    <title>Modification Photo | A2Z</title>
     <div class="pageCompte">
-
       <div class="settings">
         <div class="auth-title">
           <h1>Importer une photo de profil</h1>
@@ -177,22 +146,35 @@ class VueCompte extends Vue_Generique
   public function formSuppresionPhotoDeProfile($image)
   {
   ?>
+    <title>Suppression Photo | A2Z</title>
+    <div class="pageCompte">
+      <div class="settings">
+        <div class="auth-title">
+          <h1>Supprimer la photo de profil</h1>
+          <p>Êtes-vous sûr de vouloir supprimer votre photo de profil?</p>
+        </div>
 
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="sweetalert2.min.js"></script>
-      <link rel="stylesheet" href="sweetalert2.min.css">
-    </head>
+        <form action="index.php?module=compte&action=demandeSuppresionPhotoDeProfile" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
 
+          <div>
+            <label class="warningFileUpload">Celle-ci sera supprimée définitivement</label>
+            <img src="ressource/images/poubelle.svg" width="30" height="30">
+          </div>
 
+          <div>
+            <input class="saisieText" name="submit" type="submit" value="Supprimer ma photo !">
+          </div>
+
+          <div class="fileUpload">
+            <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
+          </div>
+        </form>
+      </div>
+    </div>
   <?php
+
   }
 
   ////////////////////////////////////////////////// INFORMATIONS DU COMPTE ////////////////////////////////////////////////////
@@ -200,23 +182,8 @@ class VueCompte extends Vue_Generique
   //page génerale pour afficher toutes les informations generale d'un user
   public function affichageInfoCompte($identifiant, $motDePasse, $adresseMail)
   {
-
   ?>
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="Style_css/pageCompte.css">
-      <link rel="stylesheet" href="Style_css/toast.css">
-
-    </head>
-
+    <title>Info Compte | A2Z</title>
     <div class="pageCompte">
       <div class="bodyFormulaireInfoCompte">
         <div>
@@ -311,16 +278,12 @@ class VueCompte extends Vue_Generique
         </div>
       </div>
     </div>
-
-    </html>
-
   <?php
   }
 
   public function affichageChangementImage()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -328,44 +291,38 @@ class VueCompte extends Vue_Generique
         title: ' Bravo, vous avez bien changé votre photo de profil !!! '
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementImageRate()
   {
-  ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Script_js/outils.js"></script>
+  ?> 
+   <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
         title: "Le fichier n'est pas une image !!!"
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementIdentifiant()
   {
-  ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Script_js/outils.js"></script>
+  ?>  
+  <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
         title: "Bravo, vous avez bien changé votre Identifiant !!!"
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementIdentifiantFaux()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -373,14 +330,12 @@ class VueCompte extends Vue_Generique
         title: "L'identifiant choisi existe déjà !!! "
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementAdresseMailReussit()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -388,14 +343,12 @@ class VueCompte extends Vue_Generique
         title: "Bravo, vous avez bien changé votre adresse mail !!! "
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementAdresseMailFaux()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -410,7 +363,6 @@ class VueCompte extends Vue_Generique
   public function affichageChangementMDP()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -418,15 +370,13 @@ class VueCompte extends Vue_Generique
         title: "Bravo, vous avez bien changé votre  mot de passe !!! "
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementPhoto()
   {
-  ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Script_js/outils.js"></script>
+  ?>    
+  <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
@@ -440,7 +390,6 @@ class VueCompte extends Vue_Generique
   public function affichageImageTropGrande()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -454,7 +403,6 @@ class VueCompte extends Vue_Generique
   public function affichageErreurTansfertImage()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -469,8 +417,6 @@ class VueCompte extends Vue_Generique
   public function affichagesuppresionPhotoDeProfileReussit()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
@@ -484,7 +430,6 @@ class VueCompte extends Vue_Generique
   public function affichagesuppresionPhotoDeProfileErreur()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -492,7 +437,6 @@ class VueCompte extends Vue_Generique
         title: "Erreur lors de la suppression de votre photo de profil "
       })
     </script>
-
 <?php
   }
 }

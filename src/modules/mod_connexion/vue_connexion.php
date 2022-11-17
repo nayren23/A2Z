@@ -10,18 +10,6 @@ class VueConnexion extends Vue_Generique
   }
 
 
-  ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
-
-  //ici on fait ça pour éviter la duplication de code dans la fonction inscription déconnexion et connexion
-  public function navBarConnexion()
-  {
-?>
-
-
-
-  <?php
-  }
-
   ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
   // formulaire d'inscription au site 
   public function form_inscription()
@@ -29,24 +17,17 @@ class VueConnexion extends Vue_Generique
     //index.php?module=joueurs&action=ajout
 
 
-  ?>
-
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
-    </head>
-
-  
+?>
+    <title> INSCRIPTION | A2Z</title>
     <div class="pageCompte">
-
       <div class="contenir">
-
         <?php
         if (!isset($_SESSION["identifiant"])) { // pour afficher le formulaire uniquement si on n'est pas déjà connecter
 
         ?>
           <form action="index.php?module=connexion&action=creationCompte" method="post">
-          <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
 
             <p>Inscription</p>
             <div> <input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
@@ -67,7 +48,7 @@ class VueConnexion extends Vue_Generique
 
         ?>
       </div>
-      </div>
+    </div>
   <?php
 
   }
@@ -78,40 +59,34 @@ class VueConnexion extends Vue_Generique
   public function form_connexion()
   {
   ?>
+    <title> CONNEXION | A2Z</title>
+    <?php
+    if (!isset($_SESSION["identifiant"])) {
+    ?>
+      <div class="pageCompte">
+        <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
 
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
-      <link rel="stylesheet" href="Style_css/pageCompte.css">
+          <p>Connexion</p>
+          <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
 
-    </head>
+          <div class="boutonMdp">
+            <input class="saisieText" type="password" id="monEntree" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
+            <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
+          </div>
 
-      <?php
-      if (!isset($_SESSION["identifiant"])) {
-      ?>
-        <div class="pageCompte">
-          <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
-          <input type="hidden" name="token" value='<?php echo $_SESSION['token']?>'> <!--Token- -->
+          <div><input class="saisieText" type="submit" value="Se connecter 🤩 !"></div>
+          <a href="#">Mot de passe oublié</a>
+          <p>© 2022–2023</p>
 
-            <p>Connexion</p>
-            <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
-
-            <div class="boutonMdp">
-              <input class="saisieText" type="password" id="monEntree" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
-              <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
-            </div>
-
-            <div><input class="saisieText" type="submit" value="Se connecter 🤩 !"></div>
-            <a href="#">Mot de passe oublié</a>
-            <p>© 2022–2023</p>
-
-          </form>
-        </div>
-      <?php
-      } else {
-        $this->compteInexsistant();
-      }
-      ?>
+        </form>
+      </div>
+    <?php
+    } else {
+      $this->compteInexsistant();
+    }
+    ?>
   <?php
   }
 
@@ -128,7 +103,6 @@ class VueConnexion extends Vue_Generique
   public function affichageAdreMailUtiliser()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -143,7 +117,6 @@ class VueConnexion extends Vue_Generique
   public function affichageDeconnexion()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -159,7 +132,6 @@ class VueConnexion extends Vue_Generique
   public function affichageConnexionReussie()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -170,11 +142,10 @@ class VueConnexion extends Vue_Generique
 
   <?php
   }
-  
+
   public function affichageInscriptionReussite()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -189,7 +160,6 @@ class VueConnexion extends Vue_Generique
   public function affichageDeconnexionImpossible()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -205,7 +175,6 @@ class VueConnexion extends Vue_Generique
   public function affichageDejaConnecter()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
@@ -219,7 +188,6 @@ class VueConnexion extends Vue_Generique
   public function affichagCompteInexistant()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({

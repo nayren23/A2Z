@@ -73,7 +73,6 @@ class ContConnexion
                 }
                 break;
         }
-        $this->affichageNavBar(); //affichage constant de la navbar
     }
 
     ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
@@ -143,12 +142,5 @@ class ContConnexion
     public function affichageDeconnexionImpossible()
     {
         $this->vue->affichageDeconnexionImpossible();  //toasts
-    }
-
-    ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
-
-    public function affichageNavBar()
-    {
-        $this->vue->navBarConnexion();
     }
 }
