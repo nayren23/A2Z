@@ -50,15 +50,14 @@ class ContConnexion
                     $this->affichageDeconnexionImpossible();
                 } elseif (isset($_GET['DeconnexionReussite'])) {
                     $this->affichageDeconnexion();
-                }
-                elseif(isset($_GET['InscriptionReussi'])){
+                } elseif (isset($_GET['InscriptionReussi'])) {
                     $this->affichageInscriptionReussite();
                 }
                 break;
 
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
-                    $this->affichageConnexionReussie();// mettre cette fonction dans mod principale
+                    $this->affichageConnexionReussie(); // mettre cette fonction dans mod principale
                     header('Location: ./index.php?module=editionExo&connexion=true'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 

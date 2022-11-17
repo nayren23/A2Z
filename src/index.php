@@ -10,5 +10,4 @@ require_once ("controleur.php");
 $controleur = new Controleur();
 
 require_once("template.php"); //affichage du site 
-
 ?>

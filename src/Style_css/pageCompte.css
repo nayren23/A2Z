@@ -19,6 +19,15 @@ body {
     display: flex;
     padding: 20;
   }
+
+  .bouton-oeil{
+    margin-bottom: 0.2em;
+    padding: 16px;
+  }
+
+  .inputMotdePasse{
+    margin-bottom: 0.2em !important;
+  }
     
   .informationCompte {
     background: rgba(255, 255, 255, .3);

@@ -20,13 +20,13 @@ class Vue_navbar_Connexion extends Vue_Generique
                         <?php if (!isset($_SESSION["identifiant"])) {
                         ?>
                             <a href="index.php?module=connexion&action=connexion">
-                                <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
+                                <img class="logo" src="ressource/images/TabA2Z.png" alt="logo Site" width="64" height="64">
                             </a>
 
                         <?php } elseif (isset($_SESSION["identifiant"])) {
                         ?>
                             <a href="index.php?module=principale">
-                                <img class="logo" src="ressource/images/TabA2Z.png" width="64" height="64">
+                                <img class="logo" src="ressource/images/TabA2Z.png" alt="logo Site" width="64" height="64">
                             </a>
                         <?php } ?>
 
@@ -52,20 +52,20 @@ class Vue_navbar_Connexion extends Vue_Generique
                                     //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
                                     if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant']))) {
                                     ?>
-                                        <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                                        <?php
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                    <?php
                                     }
                                     //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
                                     else if ((!isset($_SESSION['identifiant'])) && isset(($_GET['action'])) && $_GET['action'] != "connexion") {
-                                        ?>
-                                            <a href="index.php?module=connexion&action=connexion"><button type="button" class="btn btn-outline-light me-2">Connexion</button>
-                                            <?php
-                                        } else if (!isset(($_GET['action']))) {
-                                            ?>
-                                                <a href="index.php?module=connexion&action=inscription"><button type="button" class="btn btn-warning">Inscription</button>
-                                                <?php
-                                            }
-                                                ?>
+                                    ?>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-outline-light me-2">Connexion</button>
+                                    <?php
+                                    } else if (!isset(($_GET['action']))) {
+                                    ?>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

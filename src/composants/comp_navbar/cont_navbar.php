@@ -13,12 +13,11 @@ class Cont_navbar
     {
         $this->vue = new Vue_navbar;
         $this->modele = new ModeleNavBar;
-
     }
 
     public function exec()
     {
-        $image =$this->recuperationPhoto()["cheminImage"];
+        $image = $this->recuperationPhoto()["cheminImage"];
         $this->affichageHabillage($image);
     }
 
@@ -27,7 +26,9 @@ class Cont_navbar
         $this->vue->navBarHabillage($image);
     }
 
-    public function recuperationPhoto(){
+    public function recuperationPhoto()
+    {
         return $this->modele->recupererPhoto();
     }
 }
+?>
