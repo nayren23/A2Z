@@ -19,18 +19,14 @@ const checkMdp = () => {
     mdp2 = document.getElementById(`deuxiemeMdp`).value
   if (mdp !== mdp2) {
     
-    writedivmdp('<span style="color:#F95738">Les mots de passe ne correspondent pas 😮 !</span>','error')
+    writedivmdp('<span style="color:#F95738">Les mots de passe ne correspondent pas 😮 !</span>')
   }
   else {
-    writedivmdp('<span style="color:#38E4AE" font-weight: bold >Mots de passe OK 😊 !</span>', 'success')
+    writedivmdp('<span style="color:#38E4AE" font-weight: bold >Mots de passe OK 😊 !</span>')
   }
 }
 
 //fonction pour inserer le message dans un conteneur
 const writedivmdp = (texte,icone)=> { 
-    Toast.fire({
-      icon: icone ,
-      title: texte
-    })
   document.getElementById('deuxiemeAffichageMdp').innerHTML = texte
 }

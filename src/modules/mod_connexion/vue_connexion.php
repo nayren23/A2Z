@@ -43,7 +43,7 @@ class VueConnexion extends Vue_Generique
 
             <!--Deuxième Mot de Passe- -->
             <div class="boutonMdp">
-              <input class="saisieText" id="deuxiemeMdp" type="password" placeholder="Confirmation Mdp" name="DeuxiemeMotDePasse" required maxlength="100" onblur="checkMdp()">
+              <input class="saisieText" id="deuxiemeMdp" type="password" placeholder="Confirmation Mdp" name="DeuxiemeMotDePasse" required maxlength="100" onKeyUp="checkMdp()">
               <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
             </div>
             <div><input class="saisieText" type="email" placeholder="E-mail" name="adresseMail" required maxlength="75"></div>
