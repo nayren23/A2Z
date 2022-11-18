@@ -20,6 +20,7 @@ class Controleur
             case "connexion":
                 require_once "modules/mod_connexion/mod_connexion.php"; // pour les Faille include 
                 $this->module = new ModConnexion();
+                $this->resultat = $this->module->getControleur()->vue->affichageTampon(); //affichage du tampon
                 break;
 
             case "compte":
@@ -50,7 +51,8 @@ class Controleur
             default:
                 die("Module inconnu"); //on peut changer l'affichage ici
         }
-
-        $this->resultat = $this->module->getControleur()->vue->affichageTampon(); //affichage du tampon
+        if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
+            $this->resultat = $this->module->getControleur()->vue->affichageTampon(); //affichage du tampon
+        }
     }
 }

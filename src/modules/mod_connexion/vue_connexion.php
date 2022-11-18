@@ -21,6 +21,10 @@ class VueConnexion extends Vue_Generique
     <title> INSCRIPTION | A2Z</title>
     <div class="pageCompte">
       <div class="contenir">
+      <div class="auth-title">
+          <h1>INSCRIPTION</h1>
+          <p>Inscrivez-vous à A2Z</p>
+        </div>
         <?php
         if (!isset($_SESSION["identifiant"])) { // pour afficher le formulaire uniquement si on n'est pas déjà connecter
 
@@ -29,7 +33,7 @@ class VueConnexion extends Vue_Generique
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
 
-            <p>Inscription</p>
+            <br>
             <div> <input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
 
             <div class="boutonMdp">
@@ -64,11 +68,18 @@ class VueConnexion extends Vue_Generique
     if (!isset($_SESSION["identifiant"])) {
     ?>
       <div class="pageCompte">
+      <div>
+      <div class="auth-title">
+          <h1>Connexion</h1>
+          <p>Connectez-vous à A2Z</p>
+        </div>
         <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
           <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
           <!--Token- -->
 
-          <p>Connexion</p>
+          <br>
+          <br>
+          <br>
           <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
 
           <div class="boutonMdp">
@@ -81,6 +92,7 @@ class VueConnexion extends Vue_Generique
           <p>© 2022–2023</p>
 
         </form>
+        </div>
       </div>
     <?php
     } else {

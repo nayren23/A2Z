@@ -123,7 +123,7 @@ class VueCompte extends Vue_Generique
         <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
           <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
           <!--Token- -->
-          <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
+          <label class="warningFileUpload" >IMPORTER UNE IMAGE :</label>
           <label class="warningFileUpload">Format de fichier autorisé : JPG, JPEG, PNG</label>
           <label class="warningFileUpload">Taille maximale du fichier : 1 Mo</label>
 
@@ -131,7 +131,7 @@ class VueCompte extends Vue_Generique
             <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
           </div>
           <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder ma photo !"> </div>
-          <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
+          <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="warningFileUpload">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
           <div class="fileUpload">
             <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
@@ -416,7 +416,8 @@ class VueCompte extends Vue_Generique
 
   public function affichagesuppresionPhotoDeProfileReussit()
   {
-  ?>
+  ?>  
+   <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',

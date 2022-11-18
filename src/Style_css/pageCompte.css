@@ -1,5 +1,5 @@
 body {
-  background-color: #1d1f26;
+  background-color: #1f253d;
   height: 100vh;
   font-family: arial, sans-serif;
   align-items: center;
@@ -11,7 +11,7 @@ body {
 }
 
 .pageCompte {
-  background-color: #1d1f26;
+  background-color: #1f253d;
   font-family: arial, sans-serif;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ body {
 
 
 .informationCompte {
-  background: rgba(255, 255, 255, .3);
+  background:#394264;
   padding: 1rem;
   border-radius: 20px;
   border-left: 1px solid rgba(255, 255, 255, .3);
