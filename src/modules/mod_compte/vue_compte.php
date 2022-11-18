@@ -93,10 +93,22 @@ class VueCompte extends Vue_Generique
 
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
-            <div class="boutonMdp">
-              <br>
-              <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required maxlength="100">
-              <button type="button" class="checkboxMdp"> <img alt="oeil affichage Mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
+            <div class="conteneurMdp">
+              <!--Premier Mot de Passe- -->
+              <div class="boutonMdp">
+                <input class="saisieText" id="premierMdp" type="password" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
+                <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
+              </div>
+
+              <!--Deuxième Mot de Passe- -->
+              <div class="boutonMdp">
+                <input class="saisieText" id="deuxiemeMdp" type="password" placeholder="Confirmation Mdp" name="DeuxiemeMotDePasse" required maxlength="100" onblur="checkMdp()">
+                <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
+              </div>
+
+              <div id="deuxiemeAffichageMdp">
+                <!--Vide pour laisser la place au message d'erreur  -->
+              </div>
             </div>
             <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
           </form>
@@ -123,7 +135,7 @@ class VueCompte extends Vue_Generique
         <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
           <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
           <!--Token- -->
-          <label class="warningFileUpload" >IMPORTER UNE IMAGE :</label>
+          <label class="warningFileUpload">IMPORTER UNE IMAGE :</label>
           <label class="warningFileUpload">Format de fichier autorisé : JPG, JPEG, PNG</label>
           <label class="warningFileUpload">Taille maximale du fichier : 1 Mo</label>
 
@@ -194,7 +206,7 @@ class VueCompte extends Vue_Generique
           <div class="informationCompte">
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
-              <div class="d-flex text-muted pt-3">
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
                 <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                   <title>Placeholder</title>
                 </svg>
@@ -214,7 +226,7 @@ class VueCompte extends Vue_Generique
                   </span>
                 </div>
               </div>
-              <div class="d-flex text-muted pt-3">
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
                 <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                   <title>Placeholder</title>
                 </svg>
@@ -225,8 +237,7 @@ class VueCompte extends Vue_Generique
                       <p class="sousTitre">Identifiant</p>
                     </strong>
                     <a href="index.php?module=compte&action=miseAJourIdentifiant">
-                      <p class="modification">
-                        <p class="modification">Modifier</p>
+                      <p class="modification">Modifier</p>
                     </a>
                   </div>
                   <span class="d-block">
@@ -234,7 +245,7 @@ class VueCompte extends Vue_Generique
                   </span>
                 </div>
               </div>
-              <div class="d-flex text-muted pt-3">
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
                 <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                   <title>Placeholder</title>
                 </svg>
@@ -254,7 +265,7 @@ class VueCompte extends Vue_Generique
                 </div>
               </div>
 
-              <div class="d-flex text-muted pt-3">
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
                 <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
                   <title>Placeholder</title>
                 </svg>
@@ -281,27 +292,14 @@ class VueCompte extends Vue_Generique
   <?php
   }
 
-  public function affichageChangementImage()
+  public function affichageChangementImageRate()
   {
   ?>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
-        icon: 'success',
-        title: ' Bravo, vous avez bien changé votre photo de profil !!! '
-      })
-    </script>
-  <?php
-  }
-
-  public function affichageChangementImageRate()
-  {
-  ?> 
-   <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
         icon: 'error',
-        title: "Le fichier n'est pas une image !!!"
+        title: "Le fichier n'est pas une image 😥"
       })
     </script>
   <?php
@@ -309,12 +307,12 @@ class VueCompte extends Vue_Generique
 
   public function affichageChangementIdentifiant()
   {
-  ?>  
-  <script src="Script_js/outils.js"></script>
+  ?>
+    <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre Identifiant !!!"
+        title: "Bravo, vous avez bien changé votre Identifiant 😊"
       })
     </script>
   <?php
@@ -327,7 +325,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "L'identifiant choisi existe déjà !!! "
+        title: "L'identifiant choisi existe déjà 😡 "
       })
     </script>
   <?php
@@ -340,7 +338,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre adresse mail !!! "
+        title: "Bravo, vous avez bien changé votre adresse mail 😊 "
       })
     </script>
   <?php
@@ -353,7 +351,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "L'adresse mail choisi existe déjà !!! "
+        title: "L'adresse mail choisi existe déjà 😡"
       })
     </script>
 
@@ -367,7 +365,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre  mot de passe !!! "
+        title: "Bravo, vous avez bien changé votre  mot de passe 😊 "
       })
     </script>
   <?php
@@ -375,12 +373,12 @@ class VueCompte extends Vue_Generique
 
   public function affichageChangementPhoto()
   {
-  ?>    
-  <script src="Script_js/outils.js"></script>
+  ?>
+    <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre photo de profil !!! "
+        title: "Bravo, vous avez bien changé votre photo de profil 😊"
       })
     </script>
 
@@ -394,7 +392,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "La taille du fichier est trop grande!!! "
+        title: "La taille du fichier est trop grande 😥 "
       })
     </script>
 
@@ -407,7 +405,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "La taille du fichier est trop grande!!! "
+        title: "La taille du fichier est trop grande 😥 "
       })
     </script>
 
@@ -416,12 +414,12 @@ class VueCompte extends Vue_Generique
 
   public function affichagesuppresionPhotoDeProfileReussit()
   {
-  ?>  
-   <script src="Script_js/outils.js"></script>
+  ?>
+    <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien supprimé votre photo de profil !!! "
+        title: "Bravo, vous avez bien supprimé votre photo de profil 😊 "
       })
     </script>
 
@@ -435,7 +433,7 @@ class VueCompte extends Vue_Generique
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "Erreur lors de la suppression de votre photo de profil "
+        title: "Erreur lors de la suppression de votre photo de profil 😥"
       })
     </script>
 <?php

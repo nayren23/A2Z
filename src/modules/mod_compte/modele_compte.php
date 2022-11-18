@@ -74,12 +74,16 @@ class ModeleCompte  extends Connexion
         try {
             if (!verification_token())
                 return 1;
+
+            elseif (strcmp($_POST['motDePasse'], $_POST['DeuxiemeMotDePasse']) != 0) {
+                return 2;
+            }
             // ici on UPDATE les donnee dans la BDD
-            $sql = 'UPDATE utilisateur SET motDePasse ="' .  password_hash(htmlspecialchars($_POST['nouveauMotDePasse']), PASSWORD_DEFAULT) . '" WHERE  identifiant=:identifiant';
+            $sql = 'UPDATE utilisateur SET motDePasse ="' .  password_hash(htmlspecialchars($_POST['motDePasse']), PASSWORD_DEFAULT) . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($sql);
             $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
             $result = $statement->fetch();
-            return true;
+            return 3;
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }

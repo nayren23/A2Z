@@ -3,6 +3,7 @@
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
 require_once("./Verification_Creation_Token.php");
+require_once("./affichageRecurrent.php"); //
 
 class ContConnexion
 {
@@ -31,13 +32,21 @@ class ContConnexion
                 if (isset($_GET['errorInscription'])) {  // verification pour voir si la connexion c'est mal passé
                     $this->affichageAdreMailUtiliser();
                 }
+                elseif(isset($_GET['errorMotDePasseDifferents'])) {  // verification pour voir si la connexion c'est mal passé
+                    affichagMotDePasseDifferent();
+                }
+            
                 break;
 
             case 'creationCompte':
-                if ($this->insereDonneInscription()) {
+                if ($this->insereDonneInscription() == 4) {
+                    echo"wtf";
                     header('Location: ./index.php?module=connexion&action=connexion&InscriptionReussi=true'); //redirection vers la page 
-                } else {
+                } else if($this->insereDonneInscription() == 3) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
+                }
+                else if($this->insereDonneInscription() == 2) {
+                    header('Location: ./index.php?module=connexion&action=inscription&errorMotDePasseDifferents=true'); //redirection vers la page 
                 }
                 break;
 
@@ -98,6 +107,7 @@ class ContConnexion
         $this->vue->affichageAdreMailUtiliser();  //toasts
     }
 
+    
     ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
 
     public function afficherFormulaireConnexion()
