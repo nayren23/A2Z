@@ -30,6 +30,7 @@ class VueCompte extends Vue_Generique
             <br>
             <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required maxlength="50"></div>
             <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
+            <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
           </form>
           <?php
           ?>
@@ -62,6 +63,8 @@ class VueCompte extends Vue_Generique
             <br>
             <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required maxlength="75"></div>
             <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
+            <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
+
           </form>
           <?php
           ?>
@@ -110,7 +113,9 @@ class VueCompte extends Vue_Generique
                 <!--Vide pour laisser la place au message d'erreur  -->
               </div>
             </div>
-            <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder !">
+           </div>
+           <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
           </form>
         </div>
       </div>
@@ -142,7 +147,10 @@ class VueCompte extends Vue_Generique
           <div class="mb-3">
             <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
           </div>
-          <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder ma photo !"> </div>
+          <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder ma photo !">
+          <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
+
+        </div>
           <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="warningFileUpload">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
           <div class="fileUpload">
@@ -177,6 +185,7 @@ class VueCompte extends Vue_Generique
 
           <div>
             <input class="saisieText" name="submit" type="submit" value="Supprimer ma photo !">
+            <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
           </div>
 
           <div class="fileUpload">
