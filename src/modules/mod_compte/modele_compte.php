@@ -194,7 +194,7 @@ class ModeleCompte  extends Connexion
     {
         try {
 
-            $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
+            $sql = 'Select * from utilisateur WHERE identifiant=:identifiant';
             $statement = self::$bdd->prepare($sql);
             $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
             $resultat = $statement->fetch();

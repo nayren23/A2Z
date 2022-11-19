@@ -49,18 +49,15 @@ $(function() {
 
 
 $(function() {
-    $("#draggable, #draggable-nonvalid").draggable();
-    $("#droppable").droppable({
+    $("#draggable, #draggable-nonvalid").draggable({
+        helper: "clone"
+    }),
+    $("#page").droppable({
+        
         accept: "#draggable",
-        classes: {
-            "ui-droppable-active": "ui-state-active",
-            "ui-droppable-hover": "ui-state-hover"
-        },
         drop: function(event, ui) {
-            $(this)
-                .addClass("ui-state-highlight")
 
-            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF"  ></textarea>  <p class="p">----------------------Vrai----Faux</p> </div>');
+            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="p">---------------Vrai----Faux</p> </div>');
 
 
 
@@ -83,6 +80,8 @@ $(function() {
                 elementp.style.border = " solid grey";
                 elementp.style.cssFloat = "right";
                 elementp.style.marginTop = "revert";
+                elementp.style.marginbottom= "0px";
+
 
 
 
@@ -109,3 +108,26 @@ $(function() {
         }
     });
 });
+
+
+function getPDF() {
+    var doc = new jsPDF();
+   
+    // We'll make our own renderer to skip this editor
+    var specialElementHandlers = {
+      '#getPDF': function(element, renderer){
+        return true;
+      },
+      
+    };
+  
+    // All units are in the set measurement for the document
+    // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
+    doc.fromHTML($('.zima').get(0), 15, 15, {
+      'width': 170, 
+      'height': 200,
+      'elementHandlers': specialElementHandlers
+    });
+  
+    doc.save('Generated.pdf');
+  }
