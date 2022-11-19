@@ -3,6 +3,7 @@
 require_once "vue_compte.php";
 require_once "modele_compte.php";
 require_once("./Verification_Creation_Token.php");
+require_once("./affichageRecurrent.php"); //
 
 class ContCompte
 {
@@ -53,6 +54,10 @@ class ContCompte
                 elseif(isset($_GET['ErreursuppresionPhotoDeProfile'])){
                     $this->affichagesuppresionPhotoDeProfileErreur();
                 }
+
+                elseif(isset($_GET['errorMotDePasseDifferents'])){
+                    affichagMotDePasseDifferent();
+                }
                 break;
 
             case 'miseAJourIdentifiant':
@@ -73,8 +78,11 @@ class ContCompte
                 break;
 
             case 'changementMotDePasse':
-                if ($this->changementMotDePasse()) {
+                if ($this->changementMotDePasse() == 3) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementMDP=true;'); //redirection vers la page 
+                }
+                if ($this->changementMotDePasse() == 2) {
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&errorMotDePasseDifferents=true;'); //redirection vers la page 
                 }
                 break;
 

@@ -3,6 +3,7 @@
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
 require_once("./Verification_Creation_Token.php");
+require_once("./affichageRecurrent.php"); //
 
 class ContConnexion
 {
@@ -31,13 +32,21 @@ class ContConnexion
                 if (isset($_GET['errorInscription'])) {  // verification pour voir si la connexion c'est mal passé
                     $this->affichageAdreMailUtiliser();
                 }
+                elseif(isset($_GET['errorMotDePasseDifferents'])) {  // verification pour voir si la connexion c'est mal passé
+                    affichagMotDePasseDifferent();
+                }
+            
                 break;
 
             case 'creationCompte':
-                if ($this->insereDonneInscription()) {
+                if ($this->insereDonneInscription() == 4) {
+                    echo"wtf";
                     header('Location: ./index.php?module=connexion&action=connexion&InscriptionReussi=true'); //redirection vers la page 
-                } else {
+                } else if($this->insereDonneInscription() == 3) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
+                }
+                else if($this->insereDonneInscription() == 2) {
+                    header('Location: ./index.php?module=connexion&action=inscription&errorMotDePasseDifferents=true'); //redirection vers la page 
                 }
                 break;
 
@@ -50,16 +59,15 @@ class ContConnexion
                     $this->affichageDeconnexionImpossible();
                 } elseif (isset($_GET['DeconnexionReussite'])) {
                     $this->affichageDeconnexion();
-                }
-                elseif(isset($_GET['InscriptionReussi'])){
+                } elseif (isset($_GET['InscriptionReussi'])) {
                     $this->affichageInscriptionReussite();
                 }
                 break;
 
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
-                    $this->affichageConnexionReussie();// mettre cette fonction dans mod principale
-                    header('Location: ./index.php?module=principale&connexion=true'); //redirection vers la page 
+                    $this->affichageConnexionReussie(); // mettre cette fonction dans mod principale
+                    header('Location: ./index.php?module=editionExo&connexion=true'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }
@@ -74,7 +82,6 @@ class ContConnexion
                 }
                 break;
         }
-        $this->affichageNavBar(); //affichage constant de la navbar
     }
 
     ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
@@ -100,6 +107,7 @@ class ContConnexion
         $this->vue->affichageAdreMailUtiliser();  //toasts
     }
 
+    
     ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
 
     public function afficherFormulaireConnexion()
@@ -144,12 +152,5 @@ class ContConnexion
     public function affichageDeconnexionImpossible()
     {
         $this->vue->affichageDeconnexionImpossible();  //toasts
-    }
-
-    ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
-
-    public function affichageNavBar()
-    {
-        $this->vue->navBarConnexion();
     }
 }
