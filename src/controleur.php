@@ -20,6 +20,7 @@ class Controleur
             case "connexion":
                 require_once "modules/mod_connexion/mod_connexion.php"; // pour les Faille include 
                 $this->module = new ModConnexion();
+                $this->resultat = $this->module->getControleur()->vue->affichageTampon(); //affichage du tampon
                 break;
 
             case "compte":
@@ -31,20 +32,10 @@ class Controleur
                 }
                 break;
 
-            case "principale":
-                if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
-                    require_once "modules/mod_principale/mod_principale.php"; // pour les Faille include 
-                $this->module= new ModPrincipale();
-                }
-                else {
-                    echo "connecte toi d'abord";
-                }
-                break;
-
             case "favoris":
                 if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
                     require_once "./modules/mod_favoris/mod_favoris.php"; // pour les Faille include 
-                $this->module = new ModFavoris();
+                    $this->module = new ModFavoris();
                 }
                 break;
 
@@ -58,10 +49,10 @@ class Controleur
                 }
                 break;
             default:
-                die("Module inconnu");//on peut changer l'affichage ici
+                die("Module inconnu"); //on peut changer l'affichage ici
         }
-        if (isset($_SESSION["identifiant"])) {
-            $this->resultat = $this->module->getControleur()->vue->affichageTampon();
+        if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
+            $this->resultat = $this->module->getControleur()->vue->affichageTampon(); //affichage du tampon
         }
     }
 }
