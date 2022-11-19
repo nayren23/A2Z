@@ -1,14 +1,14 @@
 <?php
 
-require_once "cont_compte.php";
+require_once "cont_navbar_Connexion.php";
 
 
-class ModCompte
+class Composant_navbar_Connexion
 {
     private $controleur;
     public function __construct()
     {
-        $this->controleur = new ContCompte();
+        $this->controleur = new Cont_navbar_Connexion();
         $this->controleur->exec();
     }
 

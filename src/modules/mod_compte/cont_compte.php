@@ -2,6 +2,8 @@
 
 require_once "vue_compte.php";
 require_once "modele_compte.php";
+require_once("./Verification_Creation_Token.php");
+require_once("./affichageRecurrent.php"); //
 
 class ContCompte
 {
@@ -46,6 +48,16 @@ class ContCompte
                 } elseif (isset($_GET['ErreurTansfert'])) {
                     $this->affichageErreurTansfertImage();
                 }
+                elseif(isset($_GET['suppresionPhotoDeProfile'])){
+                    $this->affichagesuppresionPhotoDeProfileReussit();
+                }
+                elseif(isset($_GET['ErreursuppresionPhotoDeProfile'])){
+                    $this->affichagesuppresionPhotoDeProfileErreur();
+                }
+
+                elseif(isset($_GET['errorMotDePasseDifferents'])){
+                    affichagMotDePasseDifferent();
+                }
                 break;
 
             case 'miseAJourIdentifiant':
@@ -66,8 +78,11 @@ class ContCompte
                 break;
 
             case 'changementMotDePasse':
-                if ($this->changementMotDePasse()) {
+                if ($this->changementMotDePasse() == 3) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementMDP=true;'); //redirection vers la page 
+                }
+                if ($this->changementMotDePasse() == 2) {
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&errorMotDePasseDifferents=true;'); //redirection vers la page 
                 }
                 break;
 
@@ -89,6 +104,19 @@ class ContCompte
             case 'changementPhotoDeProfile':
                 $this->changementPhotoDeProfile();
                 break;
+            
+
+            case'suppresionPhotoDeProfile':
+                $this->affichageFormSuppresionPhotoDeProfile();
+                break;
+            case 'demandeSuppresionPhotoDeProfile':
+                if($this->suppresionPhotoDeProfile()){
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&suppresionPhotoDeProfile=true;'); //redirection vers la page 
+                }
+                else{
+                    header('Location: ./index.php?module=compte&action=affichageInfoCompte&ErreursuppresionPhotoDeProfile=true;'); //redirection vers la page 
+                }
+                
         }
     }
 
@@ -106,6 +134,7 @@ class ContCompte
 
     public function affichageFormulaireModificationIdentifiant()
     {
+        creation_token();
         $this->vue->form_modification_compte_identifiant();
     }
 
@@ -117,6 +146,7 @@ class ContCompte
 
     public function affichageFormulaireModificationMotDePasse()
     {
+        creation_token();
         $this->vue->form_modification_compte_mot_de_passe();
     }
 
@@ -132,6 +162,7 @@ class ContCompte
 
     public function affichageFormulaireModificationEmail()
     {
+        creation_token();
         $this->vue->form_modification_compte_adressemail();
     }
 
@@ -140,10 +171,14 @@ class ContCompte
     public function affichageChangementPhotoDeProfile()
     {
         $image = $this->modele->recuperationInfoCompte()["cheminImage"];
-
+        creation_token();
         $this->vue->modifiactionPhotoDeProfile($image);
     }
 
+    public function affichageFormSuppresionPhotoDeProfile(){
+        $image = $this->modele->recuperationInfoCompte()["cheminImage"];
+        $this->vue->formSuppresionPhotoDeProfile($image);
+    }
     //ici en fonction de ce que nous renvoie  recupererImage() on traite si c'est une erreur ou pas 
     public function changementPhotoDeProfile()
     {
@@ -168,6 +203,10 @@ class ContCompte
                 header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementPhoto=true;'); //redirection vers la page affichageInfoCompte
 
         }
+    }
+
+    public function suppresionPhotoDeProfile(){
+       return $this->modele->suppresionPhotoDeProfile();
     }
     //////////////////////////Affichage des Toast pour les Informations générales //////////////////////////////////////
 
@@ -214,4 +253,14 @@ class ContCompte
     {
         $this->vue->affichageErreurTansfertImage();
     }
+
+    public function affichagesuppresionPhotoDeProfileErreur(){
+        $this->vue->affichagesuppresionPhotoDeProfileErreur();
+    }
+
+    public function affichagesuppresionPhotoDeProfileReussit(){
+        $this->vue->affichagesuppresionPhotoDeProfileReussit();
+    }
+
+    
 }

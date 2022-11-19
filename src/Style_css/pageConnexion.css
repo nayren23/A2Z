@@ -1,26 +1,13 @@
-body {
-  background-color: #1d1f26;
-  height: 100vh;
-  font-family: arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.headerconnexion{
+.headerconnexion {
   position: absolute;
   top: 0;
   background-color: #1d1f26;
 }
-.contenir {
-  position: relative;
-}
-
 
 form {
-  background: rgba(255, 255, 255, .3);
+  background: #394264;
   padding: 3rem;
-  height: 530px;
+  height: 540px;
   border-radius: 20px;
   border-left: 1px solid rgba(255, 255, 255, .3);
   border-top: 1px solid rgba(255, 255, 255, .3);
@@ -30,6 +17,16 @@ form {
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
   text-align: center;
 
+}
+
+.FormulaireInfoCompte {
+  height: 500px;
+  width: 30vw;
+
+}
+
+.bodyFormulaireInfoCompte {
+  width: 30vw;
 }
 
 p {
@@ -76,13 +73,14 @@ a:active {
   margin-bottom: 2em;
 }
 
-.checkboxMdp{
+.checkboxMdp {
   size: 1;
   z-index: -1;
   background: transparent;
   border-radius: 20px;
 
 }
+
 input:hover,
 input[type="email"]:focus,
 input[type="password"]:focus {
@@ -113,23 +111,15 @@ input[type="button"] {
   transition: all 0.2s ease;
 }
 
-.boutonMdp{
+.boutonMdp {
   margin-left: 45;
 }
 
 
 
-
-
-
-
-
-
-
-
 .auth-title {
   text-align: center;
-  margin-top: 5%;
+  margin-top: -5%;
   margin-bottom: 2%;
 }
 
@@ -151,7 +141,7 @@ input[type="button"] {
 .fileUpload .profilePic {
   margin: auto;
   text-align: center;
-  cursor:default;
+  cursor: default;
   width: 200px;
   height: 200px;
   border-radius: 100px;
@@ -165,6 +155,7 @@ input[type="button"] {
 
 .warningFileUpload {
   margin-top: 10px;
+  color: #fff;
 }
 
 .deleteCurrentAvatar {
@@ -210,7 +201,7 @@ input[type="button"] {
 .fileUpload .profilePic {
   margin: auto;
   text-align: center;
-  cursor:default;
+  cursor: default;
   width: 200px;
   height: 200px;
   border-radius: 100px;
