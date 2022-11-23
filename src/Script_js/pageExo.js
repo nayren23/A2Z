@@ -57,7 +57,7 @@ $(function() {
         accept: "#draggable",
         drop: function(event, ui) {
 
-            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="p">---------------Vrai----Faux</p> </div>');
+            $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
 
 
@@ -73,7 +73,7 @@ $(function() {
 
 
 
-            var divT = document.getElementsByClassName('p');
+            var divT = document.getElementsByClassName('pVraiFaux');
 
             for (var i = 0; i < divT.length; i++) {
                 var elementp = divT[i];
@@ -81,6 +81,7 @@ $(function() {
                 elementp.style.cssFloat = "right";
                 elementp.style.marginTop = "revert";
                 elementp.style.marginbottom= "0px";
+                elementp.style.color = "black";
 
 
 

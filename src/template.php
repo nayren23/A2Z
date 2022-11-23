@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="Style_css/Footer.css">
 <link rel="stylesheet" href="Style_css/pageConnexion.css">
 <link rel="stylesheet" href="Style_css/pageCompte.css">
+<link rel="stylesheet" href="Style_css/pageExo.css">
+
 </head>
 
 

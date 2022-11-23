@@ -26,7 +26,7 @@ class Vue_footer extends Vue_Generique
 
                         <a href="index.php?module=principale">Contact</a>
                     </p>
-                    <p> &copy;A2Z 2022</p>
+                    <p class = "p"> &copy;A2Z 2022</p>
                 </div>
 
             </div>
