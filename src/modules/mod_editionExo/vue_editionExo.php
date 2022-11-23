@@ -156,16 +156,24 @@ class VueEdition extends Vue_Generique
                             </select>
 
                         </div>
+                        <div id = "button">
                         <button id="up">+</button>
                         <button id="down">-</button>
 
                         <button id="getPDF" onclick="getPDF()">Telecharger page en PDF</button>
+                        <button id ="save" onclick="tojson()"> Sauvegarder</button>
+                    </div>
+                        
 
+                        
                     </div>
 
-
+                    <form action="save" id="formSave">
                     <page size="A4" id="page" class="sortable res zima">
                     </page>
+
+                    </form>
+                    
 
                 </div>
 
