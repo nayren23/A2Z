@@ -2,18 +2,15 @@
 
 require_once "vue_favoris.php";
 require_once "modele_favoris.php";
-require_once "creerDossier.php";
 
 class ContFavoris
 {
     private $vue;
-    private $dossier;
     private $location;
 
     public function __construct() {
 
         $this->vue = new VueFavoris;
-        $this->dossier = new dossierBDD;
         $this->location = $_GET['location'];
         $this->AfficherBoutonCreerDossier();
 

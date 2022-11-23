@@ -1,7 +1,7 @@
 <?php
 
 
-class ModeleFavoris  {
+class ModeleFavoris extends Connexion {
 
     public function __construct () {
         
