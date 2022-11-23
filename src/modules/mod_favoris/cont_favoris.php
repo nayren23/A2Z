@@ -3,7 +3,7 @@
 require_once "vue_favoris.php";
 require_once "modele_favoris.php";
 
-class ContFavoris
+class ContFavoris extends Controleurgenerique
 {
 
     public function __construct()

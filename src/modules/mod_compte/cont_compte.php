@@ -1,23 +1,15 @@
 <?php
-
 require_once "vue_compte.php";
 require_once "modele_compte.php";
 require_once("./Verification_Creation_Token.php");
 require_once("./affichageRecurrent.php"); //
 
-class ContCompte
+class ContCompte extends Controleurgenerique
 {
-
-    private $modele;
-    private $action;
-
     public function __construct()
     {
         $this->vue = new VueCompte;
         $this->modele = new ModeleCompte;
-
-        // ? veutr dire if  
-        // : veut dire else  
         $this->action = (isset($_GET['action']) ? $_GET['action'] : 'affichageInfoCompte');
     }
 
@@ -54,7 +46,6 @@ class ContCompte
                 elseif(isset($_GET['ErreursuppresionPhotoDeProfile'])){
                     $this->affichagesuppresionPhotoDeProfileErreur();
                 }
-
                 elseif(isset($_GET['errorMotDePasseDifferents'])){
                     affichagMotDePasseDifferent();
                 }

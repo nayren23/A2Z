@@ -24,7 +24,7 @@ class VueCompte extends Vue_Generique
         <div class="contenir">
           <?php
           ?>
-          <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementIdentifiant" method="post">
+          <form class="formulairegenerale FormulaireInfoCompte" action="index.php?module=compte&action=changementIdentifiant" method="post">
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
             <br>
@@ -57,7 +57,7 @@ class VueCompte extends Vue_Generique
         <div class="contenir">
           <?php
           ?>
-          <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementAdresseMail" method="post">
+          <form class="formulairegenerale FormulaireInfoCompte" action="index.php?module=compte&action=changementAdresseMail" method="post">
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
             <br>
@@ -92,7 +92,7 @@ class VueCompte extends Vue_Generique
 
           <?php
           ?>
-          <form class="FormulaireInfoCompte" action="index.php?module=compte&action=changementMotDePasse" method="post">
+          <form class="formulairegenerale FormulaireInfoCompte" action="index.php?module=compte&action=changementMotDePasse" method="post">
 
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
@@ -137,7 +137,7 @@ class VueCompte extends Vue_Generique
           <p>Personnaliser votre compte </p>
         </div>
 
-        <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
+        <form class="formulairegenerale" action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
           <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
           <!--Token- -->
           <label class="warningFileUpload">IMPORTER UNE IMAGE :</label>
@@ -174,7 +174,7 @@ class VueCompte extends Vue_Generique
           <p>Êtes-vous sûr de vouloir supprimer votre photo de profil?</p>
         </div>
 
-        <form action="index.php?module=compte&action=demandeSuppresionPhotoDeProfile" method="post">
+        <form class="formulairegenerale" action="index.php?module=compte&action=demandeSuppresionPhotoDeProfile" method="post">
           <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
           <!--Token- -->
 

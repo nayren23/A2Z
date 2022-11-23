@@ -29,7 +29,7 @@ class VueConnexion extends Vue_Generique
         if (!isset($_SESSION["identifiant"])) { // pour afficher le formulaire uniquement si on n'est pas déjà connecter
 
         ?>
-          <form action="index.php?module=connexion&action=creationCompte" method="post">
+          <form class="formulairegenerale" action="index.php?module=connexion&action=creationCompte" method="post">
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
 
@@ -81,7 +81,7 @@ class VueConnexion extends Vue_Generique
             <h1>Connexion</h1>
             <p>Connectez-vous à A2Z</p>
           </div>
-          <form action="index.php?module=connexion&action=connexionidentifiant" method="post">
+          <form class="formulairegenerale" action="index.php?module=connexion&action=connexionidentifiant" method="post">
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
             <!--Token- -->
 
