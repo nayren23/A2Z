@@ -1,31 +1,27 @@
 <?php
 
 
-class dossierBDD  {
+class dossierBDD  extends Connexion{
     
     public function  __construct()
   {
-    
+    $this->envoieDossierBdd();
   }
     function envoieDossierBdd() {
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(isset($_POST["dossier"]) ? $nomDossier = $_POST["dossier"] : "nomDossier null");
-        header('Location: ./index.php?module=favoris');
 
-
-
-        $sql = 'select idUser from Utilisateur where identifiant = ?';
+        $sql = "select idUser from Utilisateur where identifiant = :identifiant";
         $stmt = self::$bdd->prepare($sql);
-        $stmt->bind_param("s", $_SESSION["identifiant"]); 
-        $idUser = $stmt->fetch();
-        echo json_encode(isset($idUser)? $idUser : "idUser null");
         
+        $stmt->execute(array(":identifiant" => $_SESSION['identifiant']));
+        $idUser = $stmt->fetch();
+
+        $sql2 = 'INSERT INTO Dossier(nomDossier, idParent, idUser) VALUES ( :nomDossier , :idParent, :idUser)';
+        $stmt2 = self::$bdd->prepare($sql2);        
+        $stmt->execute(array(':identifiant' => $_SESSION['identifiant'], ':idParent' => $_GET['location'], ':idUser' => $idUser));
+        $idUser = $stmt->fetch();
 
 
 
-
-        $sql2 = 'INSERT INTO Dossier(nomDossier, idParent, idUser) VALUES ( ? , ?, ?)';
-        $stmt = self::$bdd->prepare($sql2);
     }
 }
 ?>

@@ -6,19 +6,25 @@ require_once "creerDossier.php";
 
 class ContFavoris
 {
-    private $location = null;
+    private $vue;
+    private $dossier;
+    private $location;
 
     public function __construct() {
-    
+
         $this->vue = new VueFavoris;
         $this->dossier = new dossierBDD;
+        $this->location = $_GET['location'];
         $this->AfficherBoutonCreerDossier();
 
-        $this->location = (isset($_GET['action']) ? $_GET['action'] : 'connexion');
+        
+        $this->exec();
+
+        
     }
 
-    public function getAction() {
-        return $this->action;
+    public function getVue() {
+        return $this->vue;
 
     }
 
@@ -30,9 +36,6 @@ class ContFavoris
         $this->dossier = envoieDossierBdd();
     }
 
-    public function affichageCarousel() {
-        $this->vue->carousel();
-    }
 
     public function AfficherBoutonCreerDossier() {
         $this->vue->boutonCreerDossier();
@@ -41,15 +44,12 @@ class ContFavoris
 
     public function exec()
     {
-        switch ($this->action) {
+        switch ($this->location) {
+            case $_SESSION['identifiant'] :
 
-            case 'APIDossier':
-                header('Location: ./index.php?module=favoris');
-                
-            case 'creationCompte':
-                
-                break;
-            }
+
+            
         }
+    }
 }
 ?>

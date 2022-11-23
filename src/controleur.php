@@ -45,19 +45,16 @@ class Controleur
                 break;
 
             case "favoris":
-                if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
+              //  if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
 
                 $this->module = new ModFavoris();
-                }
+                
 
-                else {
-                    echo "connecte toi d'abord";
-                }
                 break;
 
         }
         if (isset($_SESSION["identifiant"])) {
-            $this->resultat = $this->module->getControleur()->vue->affichageTampon();
+            $this->resultat = $this->module->getControleur()->getVue()->affichageTampon();
         }
     }
 }

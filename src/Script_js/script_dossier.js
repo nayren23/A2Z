@@ -1,5 +1,5 @@
 async function popUpNomDuDossier() {
-  header('Location: ./index.php?module=favoris&location=null');
+  
 
     (async () => {
 
@@ -11,18 +11,19 @@ async function popUpNomDuDossier() {
         
         if (nomDossier) {
           Swal.fire('nom dossier : ', nomDossier)
+          $.ajax ( {
+            method : "POST" ,
+            url : "./modules/mod_favoris/creerDossier.php",
+            data : { dossier : nomDossier  } ,
+            dataType : "json"
+            })
+         
+            .done ( function ( retour ) {
+             console.log("ok")
+            alert( " Reponse : " +retour ) ;
+           10 } ) ;
         }
-        $.ajax ( {
-           method : "POST" ,
-           url : "./modules/mod_favoris/creerDossier.php",
-           data : { dossier : nomDossier  } ,
-           dataType : "json"
-           })
         
-           .done ( function ( retour ) {
-            console.log("ok")
-           alert( " Reponse : " +retour ) ;
-          10 } ) ;
 
           
         })()
