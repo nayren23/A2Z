@@ -1,6 +1,6 @@
 <?php
 
-require_once("./Verification_Creation_Token.php"); //
+require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php"); //
 
 class ModeleCompte  extends Connexion
 {
@@ -8,10 +8,9 @@ class ModeleCompte  extends Connexion
     //fonction changement d'identifiant et verifie sil est unique 
     public function changerIdentifiant()
     {
-
+        if (!verification_token())
+            return 1;
         try {
-            if (!verification_token())
-                return 1;
             //ici on teste si l'identifiant est différents des autres
             $sql = 'Select * from utilisateur WHERE identifiant=:identifiant';
             $statement = self::$bdd->prepare($sql);

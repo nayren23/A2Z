@@ -1,5 +1,5 @@
 <?php
-require_once "./vue_generique.php";
+require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_side_Bar_Menu extends Vue_Generique
 {
@@ -16,23 +16,13 @@ class Vue_side_Bar_Menu extends Vue_Generique
 
         <nav class="main-menu">
             <ul>
-                <li>
-                    <a href="#">
+                <li class="has-subnav">
+                    <a href="index.php?module=gestionUseur&action=gestionUseur">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
-                            Dashboard
+                        Tableau de bord
                         </span>
                     </a>
-
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                        <i class="fa fa-table fa-2x"></i>
-                        <span class="nav-text">
-                            Liste utilisateur
-                        </span>
-                    </a>
-
                 </li>
                 <li class="has-subnav">
                     <a href="#">

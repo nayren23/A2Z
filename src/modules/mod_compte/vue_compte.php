@@ -1,5 +1,5 @@
 <?php
-require_once "./vue_generique.php";
+require_once "./Common/Classe_Generique/vue_generique.php";
 
 class VueCompte extends Vue_Generique
 {

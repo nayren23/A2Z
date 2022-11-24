@@ -1,9 +1,10 @@
 <?php
 
 require_once "vue_connexion_administration.php";
-require_once "modele_connexion_administration.php";
-require_once("./Verification_Creation_Token.php");
-require_once("./affichageRecurrent.php"); //
+require_once "./Common/Classe_Generique\modele_connexion_generique.php";
+require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
+
+require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
 
 class ContConnexion_administration extends Controleurgenerique
 {
@@ -34,7 +35,7 @@ class ContConnexion_administration extends Controleurgenerique
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
                     $this->affichageConnexionReussie(); // mettre cette fonction dans mod principale
-                    header('Location: ./index.php?module=gestionUseur&action=administration'); //redirection vers la page 
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&page=1'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=administration&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }
@@ -50,7 +51,7 @@ class ContConnexion_administration extends Controleurgenerique
                 break;
         }
     }
-   
+
     ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
 
     public function afficherFormulaireConnexion_administration()

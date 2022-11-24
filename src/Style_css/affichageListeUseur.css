@@ -1,3 +1,11 @@
+body {
+    background-color: #1f253d;
+    height: 100vh;
+    font-family: arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+  }
+  
 .card {
     border: none;
     margin-bottom: 24px;

@@ -1,8 +1,8 @@
 <?php
 require_once "vue_compte.php";
 require_once "modele_compte.php";
-require_once("./Verification_Creation_Token.php");
-require_once("./affichageRecurrent.php"); //
+require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
+require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
 
 class ContCompte extends Controleurgenerique
 {

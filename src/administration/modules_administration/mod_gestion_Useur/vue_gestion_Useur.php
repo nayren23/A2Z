@@ -1,60 +1,16 @@
 <?php
-require_once "./vue_generique.php";
+require_once "./Common/Classe_Generique/vue_generique.php";
 
-class VueConnexion_gestion_Useur extends Vue_Generique
+require_once("./Common/Classe_Generique/vue_connexion_generique.php");
+class VueConnexion_gestion_Useur extends Vue_connexion_generique
 {
 
-  public function  __construct()
-  {
-    parent::__construct(); // comme un super
-  }
 
-  ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
-
-  //fonction pour afficher le foirmulaire de connexion
-  public function form_connexion_gestion_Useur()
-  {
-?>
-    <title>Gestion Useur | A2Z</title>
-    <?php
-    ?>
-    <div class="pageCompte">
-      <div>
-        <div class="auth-title">
-          <h1>Administration</h1>
-          <p>Connexion admin A2Z</p>
-        </div>
-        <form class="formulairegenerale" action="index.php?module=administration&action=connexionidentifiant" method="post">
-          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
-          <!--Token- -->
-
-          <br>
-          <br>
-          <br>
-          <div><input class="saisieText" type="text" placeholder="Identifiant" name="identifiant" required maxlength="50"></div>
-
-          <div class="boutonMdp">
-            <input class="saisieText" type="password" id="monEntree" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
-            <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(monEntree,oeil)"> </button>
-          </div>
-
-          <div><input class="saisieText" type="submit" value="Se connecter 🤩 !"></div>
-          <a href="#">Mot de passe oublié</a>
-          <p>&copy;A2Z 2022</p>
-
-        </form>
-      </div>
-    </div>
-    <?php
-
-    ?>
-  <?php
-  }
   //affichage de la liste des utilisateurs
-  public function affichageListeUseur($resultat)
+  public function affichageListeUseur($resultat, $statUseur, $nbr_de_pages)
   {
 
-  ?>
+?>
     <title>Liste Useur | A2Z</title>
 
 
@@ -64,10 +20,10 @@ class VueConnexion_gestion_Useur extends Vue_Generique
           <div class="card bg-pattern">
             <div class="card-body">
               <div class="float-right">
-                <i class="fa fa-archive text-primary h4 ml-3"></i>
+                <i class="fa fa-th text-primary h4 ml-3"></i>
               </div>
-              <h5 class="font-size-20 mt-0 pt-1">24</h5>
-              <p class="text-muted mb-0">Total des comptes</p>
+              <h5 class="font-size-20 mt-0 pt-1"><?php echo count($resultat) ?></h5>
+              <p class="text-muted mb-0">Total des utilisateurs</p>
             </div>
           </div>
         </div>
@@ -77,8 +33,8 @@ class VueConnexion_gestion_Useur extends Vue_Generique
               <div class="float-right">
                 <i class="fa fa-th text-primary h4 ml-3"></i>
               </div>
-              <h5 class="font-size-20 mt-0 pt-1">18</h5>
-              <p class="text-muted mb-0">Total des Utlisateurs</p>
+              <h5 class="font-size-20 mt-0 pt-1"><?php echo $statUseur[0]['userNumber'] ?></h5>
+              <p class="text-muted mb-0">Total des Professeurs</p>
             </div>
           </div>
         </div>
@@ -86,9 +42,9 @@ class VueConnexion_gestion_Useur extends Vue_Generique
           <div class="card bg-pattern">
             <div class="card-body">
               <div class="float-right">
-                <i class="fa fa-file text-primary h4 ml-3"></i>
+                <i class="fa fa-th text-primary h4 ml-3"></i>
               </div>
-              <h5 class="font-size-20 mt-0 pt-1">06</h5>
+              <h5 class="font-size-20 mt-0 pt-1"><?php echo $statUseur[1]['userNumber'] ?></h5>
               <p class="text-muted mb-0">Total des Administrateurs</p>
             </div>
           </div>
@@ -125,7 +81,7 @@ class VueConnexion_gestion_Useur extends Vue_Generique
                       <th scope="col">Adresse Mail</th>
                       <th scope="col">Identifiant</th>
                       <th scope="col">Photo</th>
-                      <th scope="col">id Groupes</th>
+                      <th scope="col">Rôle</th>
                       <th scope="col">Mot de Passe</th>
                       <th scope="col">Action</th>
                     </tr>
@@ -139,7 +95,7 @@ class VueConnexion_gestion_Useur extends Vue_Generique
                         <!--Id Utilisateur -->
                         <td><?php echo $value['adresseMail'] ?></td>
                         <td>
-                          <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo $value['identifiant'] ?></span>
+                          <span class="text-identifiant font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo $value['identifiant'] ?></span>
                         </td>
                         <td>
                           <div class="team">
@@ -148,7 +104,15 @@ class VueConnexion_gestion_Useur extends Vue_Generique
                             </a>
                           </div>
                         </td>
-                        <td><?php echo $value['idGroupes'] ?></td>
+                        <td><?php if ($value['idGroupes'] == 1) {
+                            ?> <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo "prof"; ?></span>
+                          <?php
+                            } else {
+                          ?>
+                            <span class="text-admin font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo "admin"; ?></span>
+                          <?php
+                            } ?>
+                        </td>
                         <!--Id Utilisateur -->
                         <td>****************</td>
                         <!--Id Utilisateur -->
@@ -175,11 +139,24 @@ class VueConnexion_gestion_Useur extends Vue_Generique
                   <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <?php
+                  if (isset($_GET["page"])) { //on verifie si elle existe
+                    $page = $_GET["page"];
+                  }
+                  if (empty($page)) {
+                    $page = 1; //pour que la première page soit à 1
+                  }
+                  for ($i = 1; $i <= $nbr_de_pages; $i++) {
+                    if ($page != $i)
+                      echo "<li class='page-item '><a class='page-link' href='index.php?module=gestionUseur&action=gestionUseur&page=$i'>$i</a>";
+                    else
+                      echo "<li class='page-item  active'><a class='page-link'>$i</a>";
+                  ?>
+                  <?php
+                  }
+                  ?>
                   <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="">Next</a>
                   </li>
                 </ul>
               </div>
@@ -189,87 +166,6 @@ class VueConnexion_gestion_Useur extends Vue_Generique
       </div>
       <!-- end row -->
     </div>
-
-  <?php
-  }
-
-  //fonction pour l'affichage du toast "pop up" pour afficher un message d'erruer si un compte est Inexsistant '
-  public function compteInexsistant()
-  {
-    if (isset($_SESSION['identifiant'])) {
-      $this->affichageDejaConnecter();
-    } else {
-      $this->affichagCompteInexistant();
-    }
-  }
-
-  public function affichageDeconnexion()
-  {
-  ?>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'info',
-        title: "Au revoir et a bientôt sur A2Z la plateforme <br>intuitive pour créer sa fiche d'exercice 🤩! "
-      })
-    </script>
-
-  <?php
-  }
-
-  /// mettre cette fonction dans mod principale
-  public function affichageConnexionReussie()
-  {
-  ?>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'success',
-        title: "Heureux de vous revoir  sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰! "
-      })
-    </script>
-
-  <?php
-  }
-
-  public function affichageDeconnexionImpossible()
-  {
-  ?>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'error',
-        title: "Vous devez d'abord vous connecter pour faire la déconnexion 😮!!! "
-
-      })
-    </script>
-
-  <?php
-  }
-
-  public function affichageDejaConnecter()
-  {
-  ?>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'error',
-        title: " Vous êtes déjà connecté, veuillez d'abord vous déconnecter 😮 !!!"
-      })
-    </script>
-  <?php
-  }
-
-  public function affichagCompteInexistant()
-  {
-  ?>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'error',
-        title: "Attention  ce compte n'existe pas 😥!!! "
-      })
-    </script>
 
 <?php
   }
