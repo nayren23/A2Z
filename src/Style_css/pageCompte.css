@@ -39,7 +39,7 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-p {
+.balise_p_generique {
   color: white;
   font-weight: 500;
   opacity: 1;
@@ -49,6 +49,7 @@ p {
 
 .modification {
   color: #1E90FF;
+  font-size: 1rem;
 }
 
 .titre {

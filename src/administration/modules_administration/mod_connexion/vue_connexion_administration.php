@@ -23,7 +23,7 @@ class VueConnexion_administration extends Vue_Generique
         <div>
           <div class="auth-title">
             <h1>Administration</h1>
-            <p>Connexion admin A2Z</p>
+            <p class="balise_p_generique">Connexion admin à A2Z</p>
           </div>
           <form class="formulairegenerale" action="index.php?module=administration&action=connexionidentifiant" method="post">
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
@@ -40,8 +40,7 @@ class VueConnexion_administration extends Vue_Generique
             </div>
 
             <div><input class="saisieText" type="submit" value="Se connecter 🤩 !"></div>
-            <a href="#">Mot de passe oublié</a>
-            <p>&copy;A2Z 2022</p>
+            <p class="balise_p_generique">&copy;A2Z 2022</p>
 
           </form>
         </div>

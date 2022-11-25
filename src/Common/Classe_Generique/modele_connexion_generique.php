@@ -6,7 +6,7 @@ class Modele_Connexion_Generique extends Connexion
     {
         //Verification de si on est deja connecte
 
-        if (!verification_token())
+        if (!isset($_POST['token']) ||!verification_token())
             return 1; // faire une pop up et verification dans le  controlleur
         else {
 

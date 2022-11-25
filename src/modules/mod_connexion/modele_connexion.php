@@ -7,7 +7,7 @@ class ModeleConnexion extends Modele_Connexion_Generique
 
     public function insereInscription()
     {
-        if (!verification_token())
+        if (!isset($_POST['token']) || !verification_token())
             return 1;
 
         elseif (strcmp($_POST['motDePasse'], $_POST['DeuxiemeMotDePasse']) != 0) {

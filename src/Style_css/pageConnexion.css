@@ -29,13 +29,12 @@
   width: 30vw;
 }
 
-p {
+.balise_p_Usueur {
   color: white;
   font-weight: 500;
   opacity: .7;
   font-size: 1.4rem;
   margin-top: 0px;
-
   margin-bottom: 45px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 }
@@ -78,7 +77,6 @@ a:active {
   z-index: -1;
   background: transparent;
   border-radius: 20px;
-
 }
 
 input:hover,
@@ -114,8 +112,6 @@ input[type="button"] {
 .boutonMdp {
   margin-left: 45;
 }
-
-
 
 .auth-title {
   text-align: center;
@@ -207,7 +203,6 @@ input[type="button"] {
   border-radius: 100px;
   margin-bottom: 20px;
 }
-
 
 .profilePicName {
   width: 90%;

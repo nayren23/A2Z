@@ -8,7 +8,7 @@ class ModeleCompte  extends Connexion
     //fonction changement d'identifiant et verifie sil est unique 
     public function changerIdentifiant()
     {
-        if (!verification_token())
+        if (!isset($_POST['token']) || !verification_token())
             return 1;
         try {
             //ici on teste si l'identifiant est différents des autres
@@ -40,10 +40,10 @@ class ModeleCompte  extends Connexion
     //fonction changement d'adresse mail et verifie s il est unique 
     public function changerAdresseMail()
     {
-
+        if (!isset($_POST['token']) || !verification_token())
+            return 1;
         try {
-            if (!verification_token())
-                return 1;
+
             //ici on teste si l'adresse mail entrer par l'user  est différents des autres
             $sql = 'Select * from utilisateur WHERE adresseMail=:adresseMail';
             $statement = self::$bdd->prepare($sql);
@@ -69,14 +69,14 @@ class ModeleCompte  extends Connexion
     //fonction de changement de mot de passe avec le hashage
     public function changerMotDePasse()
     {
+        if (!isset($_POST['token']) || !verification_token())
+            return 1;
 
+        elseif (strcmp($_POST['motDePasse'], $_POST['DeuxiemeMotDePasse']) != 0) {
+            return 2;
+        }
         try {
-            if (!verification_token())
-                return 1;
 
-            elseif (strcmp($_POST['motDePasse'], $_POST['DeuxiemeMotDePasse']) != 0) {
-                return 2;
-            }
             // ici on UPDATE les donnee dans la BDD
             $sql = 'UPDATE utilisateur SET motDePasse ="' .  password_hash(htmlspecialchars($_POST['motDePasse']), PASSWORD_DEFAULT) . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($sql);
@@ -174,9 +174,10 @@ class ModeleCompte  extends Connexion
     // fonction qui envoie l'image reçu en base 64 à la BDD
     public function changementPhoto($image)
     {
+        if (!isset($_POST['token']) || !verification_token())
+            return 1;
         try {
-            if (!verification_token())
-                return 1;
+
             // ici on UPDATE les donnee dans la BDD
             $commande = ' UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($commande);

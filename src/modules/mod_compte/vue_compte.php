@@ -19,7 +19,7 @@ class VueCompte extends Vue_Generique
       <div>
         <div class="auth-title">
           <h1>Changer votre identifiant</h1>
-          <p>Choisissez un nouvel identifiant</p>
+          <p class="balise_p_generique">Choisissez un nouvel identifiant</p>
         </div>
         <div class="contenir">
           <?php
@@ -52,7 +52,7 @@ class VueCompte extends Vue_Generique
       <div>
         <div class="auth-title">
           <h1>Changer votre adresse mail</h1>
-          <p>Choisissez une nouvelle adresse mail</p>
+          <p class="balise_p_generique">Choisissez une nouvelle adresse mail</p>
         </div>
         <div class="contenir">
           <?php
@@ -86,7 +86,7 @@ class VueCompte extends Vue_Generique
       <div>
         <div class="auth-title">
           <h1>Changer votre mot de passe</h1>
-          <p>Choisissez un mot de passe sécurisé <br>Ne le réutilisez pas pour d'autres comptes </p>
+          <p class="balise_p_generique">Choisissez un mot de passe sécurisé <br>Ne le réutilisez pas pour d'autres comptes </p>
         </div>
         <div class="contenir">
 
@@ -134,7 +134,7 @@ class VueCompte extends Vue_Generique
       <div class="settings">
         <div class="auth-title">
           <h1>Importer une photo de profil</h1>
-          <p>Personnaliser votre compte </p>
+          <p class="balise_p_generique">Personnaliser votre compte </p>
         </div>
 
         <form class="formulairegenerale" action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
@@ -171,7 +171,7 @@ class VueCompte extends Vue_Generique
       <div class="settings">
         <div class="auth-title">
           <h1>Supprimer la photo de profil</h1>
-          <p>Êtes-vous sûr de vouloir supprimer votre photo de profil?</p>
+          <p class="balise_p_generique">Êtes-vous sûr de vouloir supprimer votre photo de profil?</p>
         </div>
 
         <form class="formulairegenerale" action="index.php?module=compte&action=demandeSuppresionPhotoDeProfile" method="post">
@@ -210,7 +210,7 @@ class VueCompte extends Vue_Generique
         <div>
           <div class="auth-title">
             <h1>Informations personnelles</h1>
-            <p>Infos sur vous dans A2Z </p>
+            <p class="balise_p_generique">Infos sur vous dans A2Z </p>
           </div>
           <div class="informationCompte">
 
@@ -224,14 +224,14 @@ class VueCompte extends Vue_Generique
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                   <div class="d-flex justify-content-between">
                     <strong class="text-gray-dark">
-                      <p class="sousTitre">Photo</p>
+                      <p class="sousTitre balise_p_generique">Photo</p>
                     </strong>
                     <a href="index.php?module=compte&action=miseAJourPhotoDeProfile">
                       <p class="modification">Modifier</p>
                     </a>
                   </div>
                   <span class="d-block">
-                    <p>Personnalisez votre compte en ajoutant une photo</p>
+                    <p class="balise_p_generique">Personnalisez votre compte en ajoutant une photo</p>
                   </span>
                 </div>
               </div>
@@ -243,14 +243,14 @@ class VueCompte extends Vue_Generique
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                   <div class="d-flex justify-content-between">
                     <strong class="text-gray-dark">
-                      <p class="sousTitre">Identifiant</p>
+                      <p class="sousTitre balise_p_generique">Identifiant</p>
                     </strong>
                     <a href="index.php?module=compte&action=miseAJourIdentifiant">
                       <p class="modification">Modifier</p>
                     </a>
                   </div>
                   <span class="d-block">
-                    <p><?php echo $identifiant ?></p>
+                    <p class="balise_p_generique"><?php echo $identifiant ?></p>
                   </span>
                 </div>
               </div>
@@ -262,14 +262,14 @@ class VueCompte extends Vue_Generique
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                   <div class="d-flex justify-content-between">
                     <strong class="text-gray-dark">
-                      <p class="sousTitre">Mot de passe</p>
+                      <p class="sousTitre balise_p_generique">Mot de passe</p>
                     </strong>
                     <a href="index.php?module=compte&action=miseAJourMotDePasse">
                       <p class="modification">Modifier</p>
                     </a>
                   </div>
                   <span class="d-block">
-                    <p>****************</p>
+                    <p class="balise_p_generique">****************</p>
                   </span>
                 </div>
               </div>
@@ -282,14 +282,14 @@ class VueCompte extends Vue_Generique
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                   <div class="d-flex justify-content-between">
                     <strong class="text-gray-dark">
-                      <p class="sousTitre">Adresse Mail</p>
+                      <p class="sousTitre balise_p_generique">Adresse Mail</p>
                     </strong>
                     <a href="index.php?module=compte&action=miseAJourEmail">
                       <p class="modification">Modifier</p>
                     </a>
                   </div>
                   <span class="d-block">
-                    <p><?php echo $adresseMail ?></p>
+                    <p class="balise_p_generique"><?php echo $adresseMail ?></p>
                   </span>
                 </div>
               </div>

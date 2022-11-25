@@ -19,6 +19,9 @@
   <!-- CSS only -->
   <link rel="stylesheet" href="Style_css/side_Bar_Menu.css">
   <link rel="stylesheet" href="Style_css/affichageListeUseur.css">
+  <link rel="stylesheet" href="Style_css\affichage_confirmation_SuppresionUseur.css">
+  <link rel="stylesheet" href="Style_css/pageConnexion.css">
+  <link rel="stylesheet" href="Style_css/pageCompte.css">
 </head>
 
 

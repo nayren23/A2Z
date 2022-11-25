@@ -23,7 +23,7 @@ class VueConnexion extends Vue_connexion_generique
       <div class="contenir">
         <div class="auth-title">
           <h1>INSCRIPTION</h1>
-          <p>Inscrivez-vous à A2Z</p>
+          <p class="balise_p_generique">Inscrivez-vous à A2Z</p>
         </div>
         <?php
         if (!isset($_SESSION["identifiant"])) { // pour afficher le formulaire uniquement si on n'est pas déjà connecter
@@ -51,7 +51,7 @@ class VueConnexion extends Vue_connexion_generique
             <div id="deuxiemeAffichageMdp">
               <!--Vide pour laisser la place au message d'erreur  -->
             </div>
-            <p>&copy;A2Z 2022</p>
+            <p class="balise_p_generique">&copy;A2Z 2022</p>
           </form>
         <?php
         } else {
@@ -79,7 +79,7 @@ class VueConnexion extends Vue_connexion_generique
         <div>
           <div class="auth-title">
             <h1>Connexion</h1>
-            <p>Connectez-vous à A2Z</p>
+            <p class="balise_p_generique">Connectez-vous à A2Z</p>
           </div>
           <form class="formulairegenerale" action="index.php?module=connexion&action=connexionidentifiant" method="post">
             <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
@@ -96,8 +96,7 @@ class VueConnexion extends Vue_connexion_generique
             </div>
 
             <div><input class="saisieText" type="submit" value="Se connecter 🤩 !"></div>
-            <a href="#">Mot de passe oublié</a>
-            <p>&copy;A2Z 2022</p>
+            <p class="balise_p_generique">&copy;A2Z 2022</p>
 
           </form>
         </div>
