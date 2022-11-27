@@ -3,19 +3,13 @@
 require_once "./modules/mod_editionExo/vue_editionExo.php";
 require_once "./modules/mod_editionExo/modele_editionExo.php";
 
-class ContEditionExo
+class ContEditionExo extends Controleurgenerique
 {
-    private $modele;
-    private $action;
-
     public function __construct()
     {
         $this->vue = new VueEdition;
         $this->modele = new ModeleEditionExo;
-
         $this->action = (isset($_GET['action']) ? $_GET['action'] : 'editionExo');
-
-
     }
 
  

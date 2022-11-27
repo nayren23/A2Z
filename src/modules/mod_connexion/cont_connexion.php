@@ -2,14 +2,11 @@
 
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
-require_once("./Verification_Creation_Token.php");
-require_once("./affichageRecurrent.php"); //
+require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
+require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
 
-class ContConnexion
+class ContConnexion extends Controleurgenerique
 {
-
-    private $modele;
-    private $action;
 
     public function __construct()
     {
@@ -118,7 +115,7 @@ class ContConnexion
 
     public function insereDonneConnexion()
     {
-        return  $this->modele->verificationConnexion();
+        return  $this->modele->verificationConnexion(1);
     }
 
     public function affichageCompteInexsistant()
