@@ -8,7 +8,7 @@ require_once("./modules\mod_compte\modele_compte.php");
 class ModeleConnexion_gestion_Useur extends ModeleCompte
 {
 
-    const nbr_elements_par_page = 3; //on définit ici on veut cb d'useur par page
+    const nbr_elements_par_page = 5; //on définit ici on veut cb d'useur par page
     public function suppresionUtilisateur($idUseur)
     {
         try {
@@ -49,20 +49,6 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
         }
     }
 
-
-    public function recuperationStatistiqueUseur()
-    {
-        try {
-            $sql = 'SELECT COUNT(*) as userNumber FROM utilisateur WHERE idGroupes = 1 UNION ALL SELECT COUNT(*) as userNumber2 FROM utilisateur WHERE idGroupes = 2 UNION ALL SELECT COUNT(*) as totalUseur FROM utilisateur ';
-            $statement = self::$bdd->prepare($sql);
-            $statement->execute();
-            $resultat = $statement->fetchAll(); //fetchAll pour recuper le tout dans le tableau resultat
-            return $resultat;
-        } catch (PDOException $e) {
-            echo $e->getMessage() . $e->getCode();
-        }
-    }
-
     /**
      * cette fonction calcule le nombre de pages qu'il faut pour toutes les données
      */
@@ -81,9 +67,14 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
         }
     }
 
-    public function suppresionUseur()
+    public function suppresionUseur($adminactuel)
     {
+        var_dump($adminactuel['idUser']);
+        var_dump(htmlspecialchars($_GET['idUseur']));
 
+        if($adminactuel['idUser'] == htmlspecialchars($_GET['idUseur'])){
+            return 1 ;//on peut pas se supprimer son compte
+        }
         try {
             //ici on supprime d'abord les dossiers de l'useur
             $sql1 = 'DELETE FROM `dossier` WHERE idUser=:idUser';
@@ -96,7 +87,7 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
                 $sql = 'DELETE FROM `utilisateur` WHERE idUser=:idUser';
                 $statement = self::$bdd->prepare($sql);
                 $statement->execute(array(':idUser' => htmlspecialchars($_GET['idUseur'])));
-                return false;
+                return 2;
             
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
@@ -129,4 +120,19 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
             }
         }
     }
+
+        // fonction génerique pour récupérer toutes les infosd'un user dans un seul tableau 
+        public function recuperationIdUser()
+        {
+            try {
+    
+                $sql = 'Select idUser from utilisateur WHERE identifiant=:identifiant';
+                $statement = self::$bdd->prepare($sql);
+                $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
+                $resultat = $statement->fetch();
+                return $resultat;
+            } catch (PDOException $e) {
+                echo $e->getMessage() . $e->getCode();
+            }
+        }
 }

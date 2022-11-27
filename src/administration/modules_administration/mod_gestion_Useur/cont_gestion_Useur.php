@@ -28,6 +28,10 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 elseif(isset($_GET["affichagMotDePasseErrone"])){
                     affichagMotDePasseErrone();
                 }
+
+                elseif(isset($_GET['suppresionCompteActuelle'])){
+                $this->affichageSuppresionCompteActuelleFaux();
+                }
                 break;
 
             case 'suppresionUseur':
@@ -37,8 +41,12 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
             case 'suppresionUseurConfirmer':
                 
                 if($this->verificationConfirmationMdp()==2){
-                    $this->suppresionUseur();
-                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
+                    if($this->suppresionUseur()==2){
+                        header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
+                    }
+                    elseif($this->suppresionUseur()==1){
+                        header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionCompteActuelle=false;');
+                    }
                 }
                 else{
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');                   
@@ -55,23 +63,22 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
     public function affichageListeUseur()
     {
         $resultat = $this->modele->recuperationInfoCompte();
-        $statUseur = $this->modele->recuperationStatistiqueUseur();
         $nb_page = $this->modele->pagination($resultat);
         if (count($resultat) == 0) {
             header('Location: ./index.php?module=gestionUseur&action=gestionUseur&page=1');
         }
-        $this->vue->affichageListeUseur($resultat, $statUseur, $nb_page);
+        $this->vue->affichageListeUseur($resultat, $nb_page);
     }
 
-    public function recuperationStatistiqueUseur()
-    {
-        $statuseur = $this->modele->recuperationStatistiqueUseur();
-    }
+
 
     public function suppresionUseur()
     {
-        $resultat = $this->modele->suppresionUseur();
+        $adminactuel = $this->modele->recuperationIdUser();//pour éviter qu'on puisse supprimé le compte sur lequel on est connecté
+        return $this->modele->suppresionUseur($adminactuel);
     }
+
+    //fonction de demande de confirmation du mdp pour la suppresion
     public function affichage_confirmation_SuppresionUseu()
     {
         creation_token();
@@ -89,4 +96,9 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
     public function affichageSuppresionUseur(){
         $this->vue->affichageSuppresionUseur();
     }
+
+    public function affichageSuppresionCompteActuelleFaux(){
+        $this->vue->affichageSuppresionCompteActuelleFaux();
+    }
+    
 }

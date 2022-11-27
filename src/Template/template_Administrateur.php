@@ -36,7 +36,9 @@
     require_once("administration\composants_administration\comp_side_Bar_Menu\composants_side_Bar_Menu.php");
     $side_Bar_Menu = new Composant_side_Bar_Menu();
   }
-
+  
+  require_once("./administration\composants_administration\Info_Statistique_BD\composant_info_statistique.php");
+    $Info_statistique = new Composant_info_statistique();
   echo $controleur->resultat; // affichage ici comme ça le contenu des modules sera toujours entre la navbar et le footer
   ?>
 

@@ -21,7 +21,7 @@ function affichagMotDePasseErrone()
   <script type="text/javascript">
     Toast.fire({
       icon: 'error',
-      title: "Attention le mot de passe saisi est faux 😡 "
+      title: "Échec de l'authentification 😡 "
     })
   </script>
 

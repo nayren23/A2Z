@@ -7,68 +7,13 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
 
 
   //affichage de la liste des utilisateurs
-  public function affichageListeUseur($resultat, $statUseur, $nbr_de_pages)
+  public function affichageListeUseur($resultat, $nbr_de_pages)
   {
 
 ?>
-    <title>Liste Useur | A2Z</title>
-
-
+    <title>Tableau de Bord | A2Z</title>
     <div class="container">
-      <div class="row">
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-pattern">
-            <div class="card-body">
-              <div class="float-right">
-                <i class="fa fa-th text-primary h4 ml-3"></i>
-              </div>
-              <h5 class="font-size-20 mt-0 pt-1"><?php echo $statUseur[2]['userNumber'] ?></h5>
-              <p class="text-muted mb-0">Total des Utilisateurs</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-pattern">
-            <div class="card-body">
-              <div class="float-right">
-                <i class="fa fa-th text-primary h4 ml-3"></i>
-              </div>
-              <h5 class="font-size-20 mt-0 pt-1"><?php echo $statUseur[0]['userNumber'] ?></h5>
-              <p class="text-muted mb-0">Total des Professeurs</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-pattern">
-            <div class="card-body">
-              <div class="float-right">
-                <i class="fa fa-th text-primary h4 ml-3"></i>
-              </div>
-              <h5 class="font-size-20 mt-0 pt-1"><?php echo $statUseur[1]['userNumber'] ?></h5>
-              <p class="text-muted mb-0">Total des Administrateurs</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <form>
-                <div class="form-group mb-0">
-                  <label>Rechercher</label>
-                  <div class="input-group mb-0">
-                    <input type="text" class="form-control" data-action="filter" data-filters="#dev-table" placeholder="Rechercher..." aria-describedby="project-search-addon" />
-                    <div class="input-group-append">
-                      <button class="btn btn-danger" type="button" id="project-search-addon"><i class="fa fa-search search-icon font-12"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end row -->
-
+      
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
@@ -107,11 +52,11 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                           </div>
                         </td>
                         <td><?php if ($value['idGroupes'] == 1) {
-                            ?> <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo "prof"; ?></span>
+                            ?> <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo "Professeur"; ?></span>
                           <?php
                             } else {
                           ?>
-                            <span class="text-admin font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo "admin"; ?></span>
+                            <span class="text-admin font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> <?php echo "Admin"; ?></span>
                           <?php
                             } ?>
                         </td>
@@ -236,4 +181,17 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
       })
     </script>
   <?php
-  }}
+  }
+  public function affichageSuppresionCompteActuelleFaux()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Impossible de supprimer votre compte 😡 "
+      })
+    </script>
+  <?php
+  }
+}
