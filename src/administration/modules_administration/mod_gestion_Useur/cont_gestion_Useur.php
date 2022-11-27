@@ -52,6 +52,11 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');                   
                 }
                 break;
+
+            case 'affichageInfoUseur':
+
+                $this->affichageInfoUseur();
+            break;
             default:
                 die("Action inexistantes");
         }
@@ -90,6 +95,10 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
         return $this->modele->verificationConfirmationMdp();
     }
 
+    public function affichageInfoUseur(){
+        $resultat = $this->modele->recuperationInfoCompteUseur();
+        $this->vue->affichageInfoUseur($resultat);
+    }
 
     //----------------Notification-----------------------//
 

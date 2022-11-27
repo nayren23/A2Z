@@ -9,6 +9,7 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
 {
 
     const nbr_elements_par_page = 5; //on définit ici on veut cb d'useur par page
+
     public function suppresionUtilisateur($idUseur)
     {
         try {
@@ -129,6 +130,19 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
                 $sql = 'Select idUser from utilisateur WHERE identifiant=:identifiant';
                 $statement = self::$bdd->prepare($sql);
                 $statement->execute(array(':identifiant' => $_SESSION['identifiant']));
+                $resultat = $statement->fetch();
+                return $resultat;
+            } catch (PDOException $e) {
+                echo $e->getMessage() . $e->getCode();
+            }
+        }
+
+        public function recuperationInfoCompteUseur()
+        {
+            try {
+                $sql = 'Select * from utilisateur WHERE idUser=:idUseur';
+                $statement = self::$bdd->prepare($sql);
+                $statement->execute(array(':idUseur' => $_GET['idUseur']));
                 $resultat = $statement->fetch();
                 return $resultat;
             } catch (PDOException $e) {
