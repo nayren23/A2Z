@@ -22,15 +22,14 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
             case 'gestionUseur':
                 $this->affichageListeUseur();
 
-                if(isset($_GET['suppresionUtilisateur'])){
+                if (isset($_GET['suppresionUtilisateur'])) {
                     $this->affichageSuppresionUseur();
-                }
-                elseif(isset($_GET["affichagMotDePasseErrone"])){
+                } elseif (isset($_GET["affichagMotDePasseErrone"])) {
                     affichagMotDePasseErrone();
-                }
-
-                elseif(isset($_GET['suppresionCompteActuelle'])){
-                $this->affichageSuppresionCompteActuelleFaux();
+                } elseif (isset($_GET['suppresionCompteActuelle'])) {
+                    $this->affichageSuppresionCompteActuelleFaux();
+                } elseif (isset($_GET['affichageChangementInfoUseurReussit'])) {
+                    $this->affichageChangementInfoUseurReussit();
                 }
                 break;
 
@@ -39,24 +38,40 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 break;
 
             case 'suppresionUseurConfirmer':
-                
-                if($this->verificationConfirmationMdp()==2){
-                    if($this->suppresionUseur()==2){
-                        header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
-                    }
-                    elseif($this->suppresionUseur()==1){
+
+                if ($this->verificationConfirmationMdp() == 2) {
+                    if ($this->suppresionUseur() == 2) {
+                        //header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
+                    } elseif ($this->suppresionUseur() == 1) {
                         header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionCompteActuelle=false;');
                     }
-                }
-                else{
-                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');                   
+                } else {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
                 }
                 break;
 
             case 'affichageInfoUseur':
-
                 $this->affichageInfoUseur();
-            break;
+                break;
+
+            case 'changementInfoUseur'://formulaire de demande mdp admin par sécurité
+                $this->confirmationModificationUseur();
+                break;
+
+            case 'modificationUseur'://si le changement c'est bien passé
+                if ($this->modificationDonneUseur() == 2) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageChangementInfoUseurReussit=true;');
+                }
+                break;
+
+            case 'modificationUseurConfirmer'://ici verification que l'admin a mit le bon mdp
+
+                if ($this->verificationConfirmationMdp() == 2) {
+                    $this->formulaireModificationUseur();
+                } else {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
+                }
+                break;
             default:
                 die("Action inexistantes");
         }
@@ -79,7 +94,7 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
 
     public function suppresionUseur()
     {
-        $adminactuel = $this->modele->recuperationIdUser();//pour éviter qu'on puisse supprimé le compte sur lequel on est connecté
+        $adminactuel = $this->modele->recuperationIdUser(); //pour éviter qu'on puisse supprimé le compte sur lequel on est connecté
         return $this->modele->suppresionUseur($adminactuel);
     }
 
@@ -95,19 +110,42 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
         return $this->modele->verificationConfirmationMdp();
     }
 
-    public function affichageInfoUseur(){
+    public function affichageInfoUseur()
+    {
         $resultat = $this->modele->recuperationInfoCompteUseur();
         $this->vue->affichageInfoUseur($resultat);
     }
 
+    public function formulaireModificationUseur()
+    {
+        creation_token();
+        $resultat = $this->modele->recuperationInfoCompteUseur();
+        $this->vue->formulaireModificationUseur($resultat);
+    }
+
+    public function modificationDonneUseur()
+    {
+        return $this->modele->modificationDonneUseur();
+    }
+
+    public function confirmationModificationUseur()
+    {
+        $this->vue->confirmationModificationUseur();
+    }
     //----------------Notification-----------------------//
 
-    public function affichageSuppresionUseur(){
+    public function affichageSuppresionUseur()
+    {
         $this->vue->affichageSuppresionUseur();
     }
 
-    public function affichageSuppresionCompteActuelleFaux(){
+    public function affichageSuppresionCompteActuelleFaux()
+    {
         $this->vue->affichageSuppresionCompteActuelleFaux();
     }
-    
+
+    public function affichageChangementInfoUseurReussit()
+    {
+        $this->vue->affichageChangementInfoUseurReussit();
+    }
 }

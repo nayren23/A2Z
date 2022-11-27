@@ -189,14 +189,14 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                   <div class="mt-3">
                     <h4><?php echo $infoUseur['identifiant'] ?></h4>
                     <p class="text-secondary mb-1">
-                    <?php if ($infoUseur['idGroupes'] == 1) {
-                            ?><?php echo "Professeur"; ?>
-                          <?php
-                            } else {
-                          ?>
-                            <?php echo "Admin"; ?>
-                          <?php
-                            } ?> </p>
+                      <?php if ($infoUseur['idGroupes'] == 1) {
+                      ?><?php echo "Professeur"; ?>
+                    <?php
+                      } else {
+                    ?>
+                      <?php echo "Admin"; ?>
+                    <?php
+                      } ?> </p>
                   </div>
                 </div>
               </div>
@@ -211,7 +211,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                     <h6 class="mb-0">Identifiant</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <?php echo $infoUseur['identifiant'] ?>
+                    <?php echo $infoUseur['identifiant'] ?>
                   </div>
                 </div>
                 <hr>
@@ -220,7 +220,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                     <h6 class="mb-0">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <?php echo $infoUseur['adresseMail'] ?>
+                    <?php echo $infoUseur['adresseMail'] ?>
                   </div>
                 </div>
                 <hr>
@@ -235,7 +235,8 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                 <hr>
                 <div class="row">
                   <div class="col-sm-12">
-                    <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Modifier</a>
+                    <a class="btn btn-info " href='index.php?module=gestionUseur&action=changementInfoUseur&idUseur=<?php echo $infoUseur['idUser'] ?>'>Modifier</a>
+
                   </div>
                 </div>
               </div>
@@ -243,6 +244,127 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
           </div>
         </div>
       </div>
+    </div>
+
+  <?php
+  }
+
+
+  public function formulaireModificationUseur($infoUseur)
+  {
+
+  ?>
+
+    <div class="container">
+      <div class="main-body">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img src="<?php echo $infoUseur['cheminImage'] ?>" alt="Admin" class="rounded-circle" width="150">
+                  <div class="mt-3">
+                    <h4><?php echo $infoUseur['identifiant'] ?></h4>
+                    <p class="text-secondary mb-1"><?php if ($infoUseur['idGroupes'] == 1) {
+                                                    ?><?php echo "Professeur"; ?>
+                    <?php
+                                                    } else {
+                    ?>
+                      <?php echo "Admin"; ?>
+                    <?php
+                                                    } ?></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-body">
+                <form action="index.php?module=gestionUseur&action=modificationUseur&idUser=<?php echo $infoUseur['idUser'] ?>" method="post">
+                  <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+                  <!--Token- -->
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Identifiant</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" id="identifiant" name="identifiant" required maxlength="50" placeholder="Identifiant" value="<?php echo $infoUseur['identifiant'] ?>" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="email" id="adresseMail" name="adresseMail" required maxlength="75" placeholder="E-mail" value="<?php echo $infoUseur['adresseMail'] ?>" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mot de Passe</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" required maxlength="100" value="*********" placeholder="Mot de Passe">
+                      <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="Oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(motDePasse,Oeil)"> </button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="submit" class="btn btn-primary px-4" value="Mettre à jour">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php
+
+  }
+
+
+  //formulaire pour redamnder le mpd admin avant de faire la suppresion
+  public function confirmationModificationUseur()
+  {
+  ?>
+    <title>Modification Compte | A2Z</title>
+
+    <div class="container">
+      <form action='index.php?module=gestionUseur&action=modificationUseurConfirmer&idUseur=<?php echo (htmlspecialchars($_GET['idUseur'])); ?> ' method="post">
+        <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+        <!--Token- -->
+
+        <div class="row justify-content-md-center">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="login-screen">
+              <div class="login-box">
+                <a href="index.php?module=gestionUseur&action=gestionUseur" class="login-logo">
+                  <img src="ressource/images/TabA2Z.png" alt="Logo A2Z">
+                </a>
+                <div class="or">
+                  <span>Pour continuer, veuillez confirmer votre identité 😉</span>
+                </div>
+                <div class="boutonMdp">
+                  <input id="premierMdp" type="password" name="motDePasse" class="form-control" placeholder="Saisissez votre mot de passe" required maxlength="100" onKeyUp="checkMdp()">
+                  <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
+                </div>
+              </div>
+              <div class="actions clearfix">
+                <button type="submit" class="btn btn-primary btn-block">Suivant</button>
+                <button onclick="window.location.href = 'index.php?module=gestionUseur&action=gestionUseur'" type="button" class="btn  btn-block">Annuler</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+    </form>
     </div>
 
   <?php
@@ -268,6 +390,19 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
       Toast.fire({
         icon: 'error',
         title: "Impossible de supprimer votre compte 😡 "
+      })
+    </script>
+  <?php
+  }
+
+  public function affichageChangementInfoUseurReussit()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "L'utilisateur a été mit à jour 😊 "
       })
     </script>
 <?php
