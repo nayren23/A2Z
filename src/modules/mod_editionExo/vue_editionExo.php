@@ -13,22 +13,7 @@ class VueEdition extends Vue_Generique
 
 
 
-        <!--Scripts JS-->
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>">
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="Script_js/pageExo.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
-        <!--Link css-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
-        <link rel="stylesheet" href="Style_css/pageExo.css">
+       
 
 
 
@@ -45,7 +30,7 @@ class VueEdition extends Vue_Generique
                     <div class="panel">
 
                         <input type="radio" class="acc" id="tab-1" name="tabs">
-                        <label for="tab-1">
+                        <label class = "labelEditionExo" for="tab-1">
                             <div class="cross-box"><span class="cross">
                             </div>
                             <span class="accordion-heading" id="myElement">Mise en page</span>
@@ -59,7 +44,7 @@ class VueEdition extends Vue_Generique
 
                     <div class="panel">
                         <input type="radio" class="acc" id="tab-2" name="tabs">
-                        <label for="tab-2">
+                        <label class = "labelEditionExo" for="tab-2">
                             <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Catégorie</span>
                         </label>
 
@@ -67,60 +52,59 @@ class VueEdition extends Vue_Generique
 
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-1" name="question">
-                                <label for="question-1">
+                                <label class = "labelEditionExo" for="question-1">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Principe alphabétique</span>
                                 </label>
                                 <div class="content">
 
-                                    <li id="draggable" class="ui-state-highlight">Vrai ou Faux ?</li>
+                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
 
-                                    <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
 
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-2" name="question">
-                                <label for="question-2">
+                                <label class = "labelEditionExo" for="question-2">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Conscience phonologique</span>
                                 </label>
                                 <div class="content">
-                                    <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
 
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-3" name="question">
-                                <label for="question-3">
+                                <label  class = "labelEditionExo"for="question-3">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Décodage</span>
                                 </label>
                                 <div class="content">
-                                    <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                                <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-4" name="question">
-                                <label for="question-4">
+                                <label  class = "labelEditionExo"for="question-4">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Encodage</span>
                                 </label>
                                 <div class="content">
-                                    <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="Ex011" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
+                                <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
                                 </div>
                             </div>
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-5" name="question">
-                                <label for="question-5">
+                                <label  class = "labelEditionExo"for="question-5">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Copie</span>
                                 </label>
                                 <div class="content">
-                                    <li class="draggable" class="ui-state-highlight">Exo1 <textarea name="Ex011" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
+                                <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
                                 </div>
                             </div>
 
@@ -133,7 +117,7 @@ class VueEdition extends Vue_Generique
 
                     <div class="panel">
                         <input type="radio" class="acc" id="tab-3" name="tabs">
-                        <label for="tab-3">
+                        <label  class = "labelEditionExo"for="tab-3">
                             <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Banque d'image</span>
                         </label>
 
@@ -156,16 +140,24 @@ class VueEdition extends Vue_Generique
                             </select>
 
                         </div>
+                        <div id = "button">
                         <button id="up">+</button>
                         <button id="down">-</button>
 
                         <button id="getPDF" onclick="getPDF()">Telecharger page en PDF</button>
+                        <button id ="save" onclick="tojson()"> Sauvegarder</button>
+                    </div>
+                        
 
+                        
                     </div>
 
-
+                    <form action="save" id="formSave">
                     <page size="A4" id="page" class="sortable res zima">
                     </page>
+
+                    </form>
+                    
 
                 </div>
 
