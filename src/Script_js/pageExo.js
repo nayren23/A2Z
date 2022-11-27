@@ -10,7 +10,7 @@ function changeAll(font) {
 }
 
 
-$(function () {
+$(function() {
     $(".sortable").sortable({
         revert: true
     });
@@ -19,7 +19,7 @@ $(function () {
         helper: "clone",
         revert: "invalid"
     });
-    $("ul, li").disableSelection();
+    $("li").disableSelection();
 });
 
 /*
@@ -48,14 +48,14 @@ $(function() {
 
 
 
-$(function () {
+$(function() {
     $("#draggable, #draggable-nonvalid").draggable({
-        helper: "clone"
-    }),
+            helper: "clone"
+        }),
         $("#page").droppable({
 
             accept: "#draggable",
-            drop: function (event, ui) {
+            drop: function(event, ui) {
 
                 $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
@@ -116,7 +116,7 @@ function getPDF() {
 
     // We'll make our own renderer to skip this editor
     var specialElementHandlers = {
-        '#getPDF': function (element, renderer) {
+        '#getPDF': function(element, renderer) {
             return true;
         },
 
@@ -136,34 +136,34 @@ function getPDF() {
 
 function tojson() {
     //  This gives you an HTMLElement object
-var element = document.getElementById('formSave');
-//  This gives you a string representing that element and its content
-var html = element.outerHTML;       
-//  This gives you a JSON object that you can send with jQuery.ajax's `data`
-// option, you can rename the property to whatever you want.
-var data = { html: html }; 
+    var element = document.getElementById('formSave');
+    //  This gives you a string representing that element and its content
+    var html = element.outerHTML;
+    //  This gives you a JSON object that you can send with jQuery.ajax's `data`
+    // option, you can rename the property to whatever you want.
+    var data = { html: html };
 
-//  This gives you a string in JSON syntax of the object above that you can 
-// send with XMLHttpRequest.
-var json = JSON.stringify(data);
+    //  This gives you a string in JSON syntax of the object above that you can 
+    // send with XMLHttpRequest.
+    var json = JSON.stringify(data);
 
-console.log(json);
+    console.log(json);
 }
 
 
 var isCtrl = false;
-document.onkeyup = function (e) {
+document.onkeyup = function(e) {
     if (e.keyCode == 17) isCtrl = false;
 }
 
-document.onkeydown = function (e) {
+document.onkeydown = function(e) {
     if (e.keyCode == 17) isCtrl = true;
     if (e.keyCode == 83 && isCtrl == true) {
         //run code for CTRL+S -- ie, save!
 
         $("#button").append(' <span class="save-icon"><span class="loader"></span><span class="loader"></span><span class="loader">');
 
-       
+
         console.log("Ctrl+S pressed");
         return false;
     }

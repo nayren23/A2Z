@@ -12,7 +12,7 @@ class ModeleCompte  extends Connexion
             return 1;
         try {
             //ici on teste si l'identifiant est différents des autres
-            $sql = 'Select * from Utilisateur WHERE identifiant=:identifiant';
+            $sql = 'Select * from utilisateur WHERE identifiant=:identifiant';
             $statement = self::$bdd->prepare($sql);
             $statement->execute(array(':identifiant' => $_POST['nouveauidentifiant']));
             $resultat = $statement->fetch();
@@ -23,7 +23,7 @@ class ModeleCompte  extends Connexion
             } else {
 
                 // ici on UPDATE les donnee dans la BDD
-                $commande = ' UPDATE Utilisateur SET identifiant ="' . $_POST['nouveauidentifiant'] . '" WHERE  identifiant=:identifiant';
+                $commande = ' UPDATE utilisateur SET identifiant ="' . $_POST['nouveauidentifiant'] . '" WHERE  identifiant=:identifiant';
                 $statement = Connexion::$bdd->prepare($commande);
                 $statement->execute(array(':identifiant' => ($_SESSION["identifiant"])));
                 $result = $statement->fetch();
@@ -45,7 +45,7 @@ class ModeleCompte  extends Connexion
         try {
 
             //ici on teste si l'adresse mail entrer par l'user  est différents des autres
-            $sql = 'Select * from Utilisateur WHERE adresseMail=:adresseMail';
+            $sql = 'Select * from utilisateur WHERE adresseMail=:adresseMail';
             $statement = self::$bdd->prepare($sql);
             $statement->execute(array(':adresseMail' => $_POST['nouveladresseMail']));
             $result = $statement->fetch();
@@ -55,7 +55,7 @@ class ModeleCompte  extends Connexion
                 return false; //adresseMail deja utilisé';
             } else {
                 // ici on UPDATE les donnee dans la BDD
-                $commande = ' UPDATE Utilisateur SET adresseMail ="' . $_POST['nouveladresseMail'] . '" WHERE  identifiant=:identifiant';
+                $commande = ' UPDATE utilisateur SET adresseMail ="' . $_POST['nouveladresseMail'] . '" WHERE  identifiant=:identifiant';
                 $statement = Connexion::$bdd->prepare($commande);
                 $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
                 $result = $statement->fetch();
@@ -179,7 +179,7 @@ class ModeleCompte  extends Connexion
         try {
 
             // ici on UPDATE les donnee dans la BDD
-            $commande = ' UPDATE Utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
+            $commande = ' UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($commande);
             $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
             $result = $statement->fetch();
