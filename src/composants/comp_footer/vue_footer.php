@@ -1,5 +1,5 @@
 <?php
-require_once "./vue_generique.php";
+require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_footer extends Vue_Generique
 {
@@ -15,7 +15,7 @@ class Vue_footer extends Vue_Generique
         <footer class="footer-distributed">
             <div class="conteneurFooter">
                 <div class="footer-left">
-                    <p class="footer-links">
+                    <p class="footer-links balise_p_generique">
                         <a class="link-1" href="index.php?module=editionExo">Accueil</a> <!-- Changer ici l'action une fois page acceuil finie-->
 
                         <a href="index.php?module=favoris">Mes Fiches</a>
@@ -26,7 +26,7 @@ class Vue_footer extends Vue_Generique
 
                         <a href="index.php?module=principale">Contact</a>
                     </p>
-                    <p class = "p"> &copy;A2Z 2022</p>
+                    <p class="balise_p_generique"> &copy;A2Z 2022</p>
                 </div>
 
             </div>

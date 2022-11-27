@@ -1,5 +1,5 @@
 <?php
-require_once "./vue_generique.php";
+require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_navbar_Connexion extends Vue_Generique
 {
@@ -58,14 +58,17 @@ class Vue_navbar_Connexion extends Vue_Generique
                                     //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
                                     else if ((!isset($_SESSION['identifiant'])) && isset(($_GET['action'])) && $_GET['action'] != "connexion") {
                                     ?>
-                                        <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-outline-light me-2">Connexion</button>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-warning">Connexion</button>
                                     <?php
                                     } else if (!isset(($_GET['action']))) {
                                     ?>
                                         <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
                                     <?php
                                     }
+
                                     ?>
+                                    <button onclick="window.location.href = 'index.php?module=administration'" type="button" class="btn btn-outline-light me-2">Administration</button>
+
                                 </div>
                             </div>
                         </div>
