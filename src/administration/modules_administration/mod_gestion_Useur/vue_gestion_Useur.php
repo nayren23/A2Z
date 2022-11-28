@@ -328,7 +328,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
   }
 
 
-  //formulaire pour redamnder le mpd admin avant de faire la suppresion
+  //formulaire pour redamnder le mpd admin avant de faire la modification
   public function confirmationModificationUseur()
   {
   ?>
@@ -370,6 +370,116 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
   <?php
   }
 
+  public function formulaireCreationAdmin()
+  {
+
+  ?>
+    <div class="container">
+      <div class="contact__wrapper shadow-lg mt-n9">
+        <div class="row no-gutters">
+          <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
+            <h3 class="color--white mb-5">Création d'un compte Admin</h3>
+            <figure class="figure position-absolute m-0 opacity-06 z-index-100" style="bottom:0; right: 10px">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="444px" height="626px">
+                <defs>
+                  <linearGradient id="PSgrad_1" x1="0%" x2="81.915%" y1="57.358%" y2="0%">
+                    <stop offset="0%" stop-color="rgb(255,255,255)" stop-opacity="1"></stop>
+                    <stop offset="100%" stop-color="rgb(0,54,207)" stop-opacity="0"></stop>
+                  </linearGradient>
+
+                </defs>
+                <path fill-rule="evenodd" opacity="0.302" fill="rgb(72, 155, 248)" d="M816.210,-41.714 L968.999,111.158 L-197.210,1277.998 L-349.998,1125.127 L816.210,-41.714 Z"></path>
+                <path fill="url(#PSgrad_1)" d="M816.210,-41.714 L968.999,111.158 L-197.210,1277.998 L-349.998,1125.127 L816.210,-41.714 Z"></path>
+              </svg>
+            </figure>
+          </div>
+
+          <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
+            <form action="index.php?module=gestionUseur&action=ajoutNouvelAdmin" class="contact-form form-validate" method="post">
+              <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+              <!--Token- -->
+              <div class="row">
+                <div class="col-sm-6 mb-3">
+                  <div class="form-group">
+                    <label class="required-field" for="firstName">Identifiant</label>
+                    <input type="text" class="form-control" id="identifiant" name="identifiant" placeholder="Identifiant">
+                  </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                  <div class="form-group">
+                    <label for="lastName">E-mail</label>
+                    <input type="email" class="form-control" id="adresseMail" name="adresseMail" placeholder="E-mail">
+                  </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                  <div class="form-group">
+                    <label class="required-field" for="email">Mot de passe</label>
+                    <input type="password" id="premierMdp" class="form-control" name="motDePasse" placeholder="Mot de Passe" required maxlength="100">
+                    <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                  <div class="form-group">
+                    <label class="required-field" for="email">Confirmation mot de passe</label>
+                    <input type="password" id="deuxiemeMdp" class="form-control" name="DeuxiemeMotDePasse" placeholder="Confirmation Mdp" required maxlength="100">
+                    <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 mb-3">
+                  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <!-- End Contact Form Wrapper -->
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  //formulaire pour redamnder le mpd admin avant de faire la suppresion
+  public function confirmationCreationAdmin()
+  {
+  ?>
+    <title>COnnexion admin | A2Z</title>
+    <div class="container">
+      <form action='index.php?module=gestionUseur&action=confirmationCreationAdmin' method="post">
+        <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+        <!--Token- -->
+
+        <div class="row justify-content-md-center">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="login-screen">
+              <div class="login-box">
+                <a href="index.php?module=gestionUseur&action=gestionUseur" class="login-logo">
+                  <img src="ressource/images/TabA2Z.png" alt="Logo A2Z">
+                </a>
+                <div class="or">
+                  <span>Pour continuer, veuillez confirmer votre identité 😉</span>
+                </div>
+                <div class="boutonMdp">
+                  <input id="premierMdp" type="password" name="motDePasse" class="form-control" placeholder="Saisissez votre mot de passe" required maxlength="100" onKeyUp="checkMdp()">
+                  <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
+                </div>
+              </div>
+              <div class="actions clearfix">
+                <button type="submit" class="btn btn-primary btn-block">Suivant</button>
+                <button onclick="window.location.href = 'index.php?module=gestionUseur&action=gestionUseur'" type="button" class="btn  btn-block">Annuler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  <?php
+  }
+  
   public function affichageSuppresionUseur()
   {
   ?>
@@ -403,6 +513,45 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
       Toast.fire({
         icon: 'success',
         title: "L'utilisateur a été mit à jour 😊 "
+      })
+    </script>
+  <?php
+  }
+
+  public function affichageMotDePasseDifferents()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Les mots de passe saisit sont différents "
+      })
+    </script>
+  <?php
+  }
+
+  public function affichageCompteExistant()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'info',
+        title: "Le compte existe déjà 😰 "
+      })
+    </script>
+  <?php
+  }
+
+  public function CreationAdminReussit()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo le compte admin a été créer 😀 "
       })
     </script>
 <?php

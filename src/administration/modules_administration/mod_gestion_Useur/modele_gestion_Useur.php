@@ -143,15 +143,44 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
 
     public function modificationDonneUseur()
     {
-        if (!isset($_POST['token']) || !verification_token()){
+        if (!isset($_POST['token']) || !verification_token()) {
             return 1;
         }
         try {
             // ici on insere les donnee dans la BDD
-            $sql='UPDATE utilisateur SET adresseMail= :adresseMail ,identifiant =:identifiant ,motDePasse= :motDePasse WHERE idUser =:idUser';
+            $sql = 'UPDATE utilisateur SET adresseMail= :adresseMail ,identifiant =:identifiant ,motDePasse= :motDePasse WHERE idUser =:idUser';
             $statement = Connexion::$bdd->prepare($sql);
-            $statement->execute(array(':adresseMail' => htmlspecialchars($_POST['adresseMail']), ':identifiant' => htmlspecialchars($_POST['identifiant']), 'motDePasse' => password_hash(htmlspecialchars($_POST['motDePasse'], ), PASSWORD_DEFAULT), ':idUser'=>$_GET['idUser'])); //vois si pour le mdp on fait htmlspecialchars
+            $statement->execute(array(':adresseMail' => htmlspecialchars($_POST['adresseMail']), ':identifiant' => htmlspecialchars($_POST['identifiant']), 'motDePasse' => password_hash(htmlspecialchars($_POST['motDePasse'],), PASSWORD_DEFAULT), ':idUser' => $_GET['idUser'])); //vois si pour le mdp on fait htmlspecialchars
             return 2;
+        } catch (PDOException $e) {
+            echo $e->getMessage() . $e->getCode();
+        }
+    }
+
+    public function inscriptionNouvelAdmin()
+    {
+        if (!isset($_POST['token']) || !verification_token())
+            return 1;
+
+        elseif (strcmp($_POST['motDePasse'], $_POST['DeuxiemeMotDePasse']) != 0) {
+            return 2;
+        }
+
+        try {
+            //ici on teste si l'adresse mail est deja utilise
+            $sql = 'Select * from utilisateur WHERE adresseMail=:adresseMail or identifiant=:identifiant';
+            $statement = self::$bdd->prepare($sql);
+            $statement->execute(array(':adresseMail' => htmlspecialchars($_POST['adresseMail']), ':identifiant' => htmlspecialchars($_POST['identifiant'])));
+            $result = $statement->fetch();
+            if ($result) {
+                return 3; //adresseMail deja utilisé';
+            } else {
+                // ici on insere les donnee dans la BDD
+                $sql = 'INSERT INTO utilisateur (adresseMail,identifiant,motDePasse,idGroupes) VALUES(:adresseMail,:identifiant, :motDePasse, :idGroupes)';
+                $statement = Connexion::$bdd->prepare($sql);
+                $statement->execute(array(':adresseMail' => htmlspecialchars($_POST['adresseMail']), ':identifiant' => htmlspecialchars($_POST['identifiant']), 'motDePasse' => password_hash(htmlspecialchars($_POST['motDePasse']), PASSWORD_DEFAULT), 'idGroupes' => '2')); //vois si pour le mdp on fait htmlspecialchars
+                return 4;
+            }
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }

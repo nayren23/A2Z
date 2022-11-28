@@ -30,7 +30,14 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                     $this->affichageSuppresionCompteActuelleFaux();
                 } elseif (isset($_GET['affichageChangementInfoUseurReussit'])) {
                     $this->affichageChangementInfoUseurReussit();
+                } elseif (isset($_GET['affichagMotDePasseDifferents'])) {
+                    $this->affichageMotDePasseDifferents();
+                } elseif (isset($_GET['affichageCompteExistant'])) {
+                    $this->affichageCompteExistant();
+                } elseif (isset($_GET['CreationAdminReussit'])) {
+                    $this->CreationAdminReussit();
                 }
+
                 break;
 
             case 'suppresionUseur':
@@ -54,17 +61,17 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 $this->affichageInfoUseur();
                 break;
 
-            case 'changementInfoUseur'://formulaire de demande mdp admin par sécurité
+            case 'changementInfoUseur': //formulaire de demande mdp admin par sécurité
                 $this->confirmationModificationUseur();
                 break;
 
-            case 'modificationUseur'://si le changement c'est bien passé
+            case 'modificationUseur': //si le changement c'est bien passé
                 if ($this->modificationDonneUseur() == 2) {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageChangementInfoUseurReussit=true;');
                 }
                 break;
 
-            case 'modificationUseurConfirmer'://ici verification que l'admin a mit le bon mdp
+            case 'modificationUseurConfirmer': //ici verification que l'admin a mit le bon mdp
 
                 if ($this->verificationConfirmationMdp() == 2) {
                     $this->formulaireModificationUseur();
@@ -72,6 +79,30 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
                 }
                 break;
+
+            case 'confirmationCreationAdmin':
+                if ($this->verificationConfirmationMdp() == 2) {
+                    $this->formulaireCreationAdmin();
+                } else {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
+                }
+                break;
+
+            case 'creationAdmin':
+                $this->confirmationCreationAdmin();
+                break;
+
+            case 'ajoutNouvelAdmin':
+                if ($this->inscriptionNouvelAdmin() == 4) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&CreationAdminReussit=true;');
+                } elseif ($this->inscriptionNouvelAdmin() == 2) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseDifferents=true;');
+                } elseif ($this->inscriptionNouvelAdmin() == 3) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageCompteExistant=true;');
+                }
+
+                break;
+
             default:
                 die("Action inexistantes");
         }
@@ -130,7 +161,25 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
 
     public function confirmationModificationUseur()
     {
+        creation_token();
         $this->vue->confirmationModificationUseur();
+    }
+
+    public function formulaireCreationAdmin()
+    {
+        creation_token();
+        $this->vue->formulaireCreationAdmin();
+    }
+
+    public function confirmationCreationAdmin()
+    {
+        creation_token();
+        $this->vue->confirmationCreationAdmin();
+    }
+
+    public  function inscriptionNouvelAdmin()
+    {
+        return $this->modele->inscriptionNouvelAdmin();
     }
     //----------------Notification-----------------------//
 
@@ -147,5 +196,19 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
     public function affichageChangementInfoUseurReussit()
     {
         $this->vue->affichageChangementInfoUseurReussit();
+    }
+
+    public function affichageMotDePasseDifferents()
+    {
+        $this->vue->affichageMotDePasseDifferents();
+    }
+    public function affichageCompteExistant()
+    {
+        $this->vue->affichageCompteExistant();
+    }
+
+    public function CreationAdminReussit()
+    {
+        $this->vue->CreationAdminReussit();
     }
 }
