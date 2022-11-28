@@ -1,6 +1,6 @@
 <?php
-require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
-require_once("./Common/Classe_Generique\modele_connexion_generique.php");
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
+require_once("./Common/Classe_Generique/modele_connexion_generique.php");
 
 class ModeleConnexion extends Modele_Connexion_Generique
 {

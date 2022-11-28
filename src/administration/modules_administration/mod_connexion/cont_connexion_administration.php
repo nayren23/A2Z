@@ -1,10 +1,10 @@
 <?php
 
 require_once "vue_connexion_administration.php";
-require_once "./Common/Classe_Generique\modele_connexion_generique.php";
-require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
+require_once "./Common/Classe_Generique/modele_connexion_generique.php";
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
 
-require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
+require_once("./Common/Bibliotheque_Communes/affichageRecurrent.php"); //
 
 class ContConnexion_administration extends Controleurgenerique
 {

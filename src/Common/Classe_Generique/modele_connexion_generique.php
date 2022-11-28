@@ -41,7 +41,7 @@ class Modele_Connexion_Generique extends Connexion
         }
     }
 
-    // fonction génerique pour récupérer toutes les infosd'un user dans un seul tableau 
+    // fonction génerique pour récupérer toutes les infos d'un user dans un seul tableau 
     public function recuperationInfoCompte()
     {
         try {

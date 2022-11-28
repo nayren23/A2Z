@@ -1,9 +1,9 @@
 <?php
 require_once "vue_gestion_Useur.php";
 require_once "modele_gestion_Useur.php";
-require_once("Common\Bibliotheque_Communes\Verification_Creation_Token.php");
-require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php");
-require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
+require_once("Common/Bibliotheque_Communes/Verification_Creation_Token.php");
+require_once("./Common/Bibliotheque_Communes/affichageRecurrent.php");
+require_once("./Common/Bibliotheque_Communes/affichageRecurrent.php"); //
 
 class ContConnexion_gestion_Useur extends Controleurgenerique
 {
@@ -41,7 +41,7 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
 
                 if ($this->verificationConfirmationMdp() == 2) {
                     if ($this->suppresionUseur() == 2) {
-                        //header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
+                        header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
                     } elseif ($this->suppresionUseur() == 1) {
                         header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionCompteActuelle=false;');
                     }

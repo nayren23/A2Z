@@ -2,8 +2,8 @@
 
 use LDAP\Result;
 
-require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
-require_once("./modules\mod_compte\modele_compte.php");
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
+require_once("./modules/mod_compte/modele_compte.php");
 
 class ModeleConnexion_gestion_Useur extends ModeleCompte
 {
@@ -77,15 +77,7 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
             return 1; //on peut pas se supprimer son compte
         }
         try {
-            //ici on supprime d'abord les dossiers de l'useur
-            $sql1 = 'DELETE FROM `dossier` WHERE idUser=:idUser';
-            $statement = self::$bdd->prepare($sql1);
-            $statement->execute(array(':idUser' => htmlspecialchars($_GET['idUseur'])));
-
-            $result = $statement->fetch();
-            if (!$result)
-
-                $sql = 'DELETE FROM `utilisateur` WHERE idUser=:idUser';
+            $sql = 'DELETE FROM `utilisateur` WHERE idUser=:idUser';
             $statement = self::$bdd->prepare($sql);
             $statement->execute(array(':idUser' => htmlspecialchars($_GET['idUseur'])));
             return 2;

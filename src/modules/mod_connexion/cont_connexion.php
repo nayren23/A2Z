@@ -2,8 +2,8 @@
 
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
-require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
-require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
+require_once("./Common/Bibliotheque_Communes/affichageRecurrent.php"); //
 
 class ContConnexion extends Controleurgenerique
 {
@@ -37,7 +37,6 @@ class ContConnexion extends Controleurgenerique
 
             case 'creationCompte':
                 if ($this->insereDonneInscription() == 4) {
-                    echo"wtf";
                     header('Location: ./index.php?module=connexion&action=connexion&InscriptionReussi=true'); //redirection vers la page 
                 } else if($this->insereDonneInscription() == 3) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
