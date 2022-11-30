@@ -1,0 +1,173 @@
+<?php
+class VueEdition extends Vue_Generique
+{ //fonction pour l'affichage de la nav bar
+
+    public function  __construct()
+    {
+        parent::__construct(); // comme un super
+    }
+
+    function pageExoEdition()
+    {
+?>
+
+
+
+       
+
+
+
+
+        <div class="flex-container">
+
+            <div class="flex-row">
+
+
+                <!--Accordeon-->
+
+                <div class="flex-col-md-6">
+
+                    <div class="panel">
+
+                        <input type="radio" class="acc" id="tab-1" name="tabs">
+                        <label class = "labelEditionExo" for="tab-1">
+                            <div class="cross-box"><span class="cross">
+                            </div>
+                            <span class="accordion-heading" id="myElement">Mise en page</span>
+                        </label>
+
+                    </div>
+
+
+
+
+
+                    <div class="panel">
+                        <input type="radio" class="acc" id="tab-2" name="tabs">
+                        <label class = "labelEditionExo" for="tab-2">
+                            <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Catégorie</span>
+                        </label>
+
+                        <div class="questions">
+
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-1" name="question">
+                                <label class = "labelEditionExo" for="question-1">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Principe alphabétique</span>
+                                </label>
+                                <div class="content">
+
+                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+
+                                </div>
+                            </div>
+
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-2" name="question">
+                                <label class = "labelEditionExo" for="question-2">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Conscience phonologique</span>
+                                </label>
+                                <div class="content">
+                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+
+                                </div>
+                            </div>
+
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-3" name="question">
+                                <label  class = "labelEditionExo"for="question-3">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Décodage</span>
+                                </label>
+                                <div class="content">
+                                <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+
+                                </div>
+                            </div>
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-4" name="question">
+                                <label  class = "labelEditionExo"for="question-4">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Encodage</span>
+                                </label>
+                                <div class="content">
+                                <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
+                                </div>
+                            </div>
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-5" name="question">
+                                <label  class = "labelEditionExo"for="question-5">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Copie</span>
+                                </label>
+                                <div class="content">
+                                <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="panel">
+                        <input type="radio" class="acc" id="tab-3" name="tabs">
+                        <label  class = "labelEditionExo"for="tab-3">
+                            <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Banque d'image</span>
+                        </label>
+
+                    </div>
+
+                </div>
+                <!--Fin Accordeon-->
+
+
+                <!--Page-->
+
+                <div id="divpage">
+
+                    <div id="modifieurs">
+                        <div class="select">
+                            <select id="input-font" class="input" onchange="changeAll(this);">
+
+                                <option value="arial">Arial</option>
+                                <option value="cursive">cursive</option>
+                            </select>
+
+                        </div>
+                        <div id = "button">
+                        <button id="up">+</button>
+                        <button id="down">-</button>
+
+                        <button id="getPDF" onclick="getPDF()">Telecharger page en PDF</button>
+                        <button id ="save" onclick="tojson()"> Sauvegarder</button>
+                    </div>
+                        
+
+                        
+                    </div>
+
+                    <form action="save" id="formSave">
+                    <page size="A4" id="page" class="sortable res zima">
+                    </page>
+
+                    </form>
+                    
+
+                </div>
+
+
+
+            </div><!-- flex-row-->
+        </div><!-- flex-container-->
+
+<?php
+
+    }
+}
+?>

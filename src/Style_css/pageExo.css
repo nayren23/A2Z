@@ -1,17 +1,19 @@
 /*Body */
+
 body {
     overflow-y: scroll;
     background-color: #1d1f26;
     background-size: 1920px 1080px;
     max-height: 1080px;
     max-width: 1920px;
-
-
 }
+
 
 /*fin body*/
 
+
 /*Accordeon*/
+
 @media (min-width: 1920px) {
     .flex-container {
         max-width: 1920px;
@@ -30,7 +32,6 @@ body {
     flex-direction: column;
     margin-bottom: 1em;
 }
-
 
 .flex-col-md-6 {
     box-sizing: border-box;
@@ -52,21 +53,9 @@ body {
     max-width: calc(100% * (12/ 12));
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Space Mono', monospace;
-    color: #3E474F;
-}
-
-
-
 .acc {
     display: none;
 }
-
-
 
 .accordion {
     background-color: #eee;
@@ -100,7 +89,6 @@ body {
     transition: max-height, .5s;
     position: static;
 }
-
 
 .questions {
     margin-top: 20px;
@@ -145,23 +133,25 @@ label .accordion-heading {
     box-sizing: border-box;
     padding: 30px;
     background-color: lightgrey;
-    width: 50%;
+    width: 65%;
 }
 
-label {
+.labelEditionExo {
     display: flex;
     width: 100%;
     cursor: pointer;
     user-select: none;
-    color: #8a8a8a;
     margin: 0;
 }
 
+
 /********************/
+
+
 /* pseudos elements */
+
+
 /**********************/
-
-
 
 .content:before {
     content: '';
@@ -170,7 +160,6 @@ label {
     margin-top: 15px;
     transition: 0.3s;
     margin-left: 6px;
-
 }
 
 .cross:before,
@@ -191,7 +180,11 @@ label {
 
 
 /********************/
+
+
 /* check states */
+
+
 /**********************/
 
 input:checked~.content {
@@ -218,15 +211,27 @@ input:checked~.questions {
 
 
 /*draggable*/
-#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
 
-#draggable, #draggable-nonvalid { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+#droppable {
+    width: 150px;
+    height: 150px;
+    padding: 0.5em;
+    float: left;
+    margin: 10px;
+}
 
+#draggable,
+#draggable-nonvalid {
+    width: 100px;
+    height: 100px;
+    padding: 0.5em;
+    float: left;
+    margin: 10px 10px 10px 0;
+}
 
 .sortable {
     border: 5px solid green;
 }
-
 
 .dropp2 {
     width: 200px;
@@ -246,7 +251,6 @@ page {
     margin-bottom: 0.5cm;
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
     border: 5px solid pink;
-
 }
 
 page[size="A4"] {
@@ -255,14 +259,12 @@ page[size="A4"] {
 }
 
 @media print {
-
     body,
     page {
         margin: 0;
         box-shadow: 0;
     }
 }
-
 
 
 /*changefont*/
@@ -272,31 +274,24 @@ ul {
     margin: 0;
     padding: 0;
     margin-bottom: 10px;
-    border: 5px solid blue;
 }
 
-li {
+.listeDeroulante {
     margin: 5px;
     padding: 5px;
-    border: 5px solid orange;
     display: inline-block;
 }
 
 .select {
     position: absolute;
 }
+
+
 /*fin changefont*/
 
 
-
-
-
-
-
-
-
-
 /*bouton change taille font*/
+
 #up {
     width: 30px;
     height: 30px;
@@ -308,4 +303,175 @@ li {
     height: 30px;
 }
 
+
 /*fin bouton change taille font*/
+
+#tt1 {
+    border: solid #0098db 10px;
+    height: 40px;
+    width: 40px;
+}
+
+#tt2 {
+    border: solid palevioletred 10px;
+    height: 40px;
+    width: 40px;
+}
+
+.save-icon {
+    position: relative;
+    background: white;
+    height: 40px;
+    width: 35px;
+    display: block;
+    padding-top: 10px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.save-icon:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 10px 10px 0;
+    border-style: solid;
+    border-color: #a4a6a7 #3c4145;
+}
+
+.save-icon:after {
+    content: "✓";
+    color: green;
+    font-size: 30px;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+    -webkit-animation: pop 0.5s 3s forwards;
+    -moz-animation: pop 0.5s 3s forwards;
+    animation: pop 0.5s 3s forwards;
+}
+
+.loader {
+    background: #e2e2e2;
+    width: 80%;
+    height: 5px;
+    display: block;
+    margin: 3px auto;
+    position: relative;
+    overflow: hidden;
+    -webkit-animation: fade-loaders 0.2s 3s forwards;
+    -moz-animation: fade-loaders 0.2s 3s forwards;
+    animation: fade-loaders 0.2s 3s forwards;
+}
+
+.loader:after {
+    content: "";
+    background: #2c3033;
+    width: 0;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.loader:first-child:after {
+    -webkit-animation: loader 0.4s 1s forwards;
+    -moz-animation: loader 0.4s 1s forwards;
+    animation: loader 0.4s 1s forwards;
+}
+
+.loader:nth-child(2n):after {
+    -webkit-animation: loader 0.4s 1.5s forwards;
+    -moz-animation: loader 0.4s 1.5s forwards;
+    animation: loader 0.4s 1.5s forwards;
+}
+
+.loader:nth-child(3n):after {
+    -webkit-animation: loader 0.4s 2s forwards;
+    -moz-animation: loader 0.4s 2s forwards;
+    animation: loader 0.4s 2s forwards;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@-moz-keyframes loader {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes loader {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes pop {
+    0% {
+        -webkit-transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@-moz-keyframes pop {
+    0% {
+        -moz-transform: scale(0);
+    }
+    100% {
+        -moz-transform: scale(1);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes fade-loaders {
+    0% {
+        opactity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fade-loaders {
+    0% {
+        opactity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-loaders {
+    0% {
+        opactity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

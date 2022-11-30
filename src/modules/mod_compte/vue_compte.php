@@ -1,5 +1,5 @@
 <?php
-require_once "./vue_generique.php";
+require_once "./Common/Classe_Generique/vue_generique.php";
 
 class VueCompte extends Vue_Generique
 {
@@ -9,140 +9,193 @@ class VueCompte extends Vue_Generique
     parent::__construct(); // comme un super
   }
 
-  ////////////////////////////////////////////////// Modifiaction Identifiant ///////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification Identifiant ///////////////////////////////////////////////////////
   // formulaire pour la modification de l'identifiant
   public function form_modification_compte_identifiant()
   {
-
 ?>
-
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-    </head>
-
-    <body>
-      <div class="contenir">
-        <?php
-        ?>
-        <form action="index.php?module=compte&action=changementIdentifiant" method="post">
-          <p>Changement de l'identifiant</p>
-          <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required></div>
-          <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
-        </form>
-        <?php
-        ?>
+    <title> Modification ID | A2Z</title>
+    <div class="pageCompte">
+      <div>
+        <div class="auth-title">
+          <h1>Changer votre identifiant</h1>
+          <p class="balise_p_generique">Choisissez un nouvel identifiant</p>
+        </div>
+        <div class="contenir">
+          <?php
+          ?>
+          <form class="formulairegenerale FormulaireInfoCompte" action="index.php?module=compte&action=changementIdentifiant" method="post">
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
+            <br>
+            <div> <input class="saisieText" type="text" placeholder="Nouvel Identifiant" name="nouveauidentifiant" required maxlength="50"></div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
+            <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
+          </form>
+          <?php
+          ?>
+        </div>
       </div>
-    </body>
+    </div>
   <?php
 
   }
 
-  ////////////////////////////////////////////////// Modifiaction adresse mail ///////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification adresse mail ///////////////////////////////////////////////////////
 
   // formulaire pour la modification de l' adresse mail
   public function form_modification_compte_adressemail()
   {
   ?>
+    <title> Modification Mail | A2Z</title>
+    <div class="pageCompte">
+      <div>
+        <div class="auth-title">
+          <h1>Changer votre adresse mail</h1>
+          <p class="balise_p_generique">Choisissez une nouvelle adresse mail</p>
+        </div>
+        <div class="contenir">
+          <?php
+          ?>
+          <form class="formulairegenerale FormulaireInfoCompte" action="index.php?module=compte&action=changementAdresseMail" method="post">
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
+            <br>
+            <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required maxlength="75"></div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder !"> </div>
+            <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
 
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-    </head>
-
-    <body>
-      <div class="contenir">
-        <?php
-        ?>
-        <form action="index.php?module=compte&action=changementAdresseMail" method="post">
-          <p>Changement de l'adresse mail</p>
-          <div> <input class="saisieText" type="email" placeholder="Nouvel adresse mail" name="nouveladresseMail" required></div>
-          <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
-        </form>
-        <?php
-        ?>
+          </form>
+          <?php
+          ?>
+        </div>
       </div>
-    </body>
+    </div>
   <?php
 
   }
 
-  ////////////////////////////////////////////////// Modifiaction mot de passe ///////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification mot de passe ///////////////////////////////////////////////////////
 
   // formulaire pour la modification du mot de passe
   public function form_modification_compte_mot_de_passe()
   {
-
   ?>
+    <title> Modification MDP | A2Z</title>
+    <div class="pageCompte">
+      <div>
+        <div class="auth-title">
+          <h1>Changer votre mot de passe</h1>
+          <p class="balise_p_generique">Choisissez un mot de passe sécurisé <br>Ne le réutilisez pas pour d'autres comptes </p>
+        </div>
+        <div class="contenir">
 
-    <head>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="modules/mod_connexion/outilsMotDePasse.js"></script>
-    </head>
+          <?php
+          ?>
+          <form class="formulairegenerale FormulaireInfoCompte" action="index.php?module=compte&action=changementMotDePasse" method="post">
 
-    <body>
-      <div class="contenir">
-        <?php
-        ?>
-        <form action="index.php?module=compte&action=changementMotDePasse" method="post">
-          <p>Changement de mot de passe</p>
-          <div class="boutonMdp">
-            <input class="saisieText" type="password" id="monEntree" placeholder="Nouvel mot de passe" name="nouveauMotDePasse" required>
-            <button type="button" class="checkboxMdp"> <img id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse()"> </button>
-          </div>
-          <div><input class="saisieText" type="submit" value="Sauvegarder mes informations !"> </div>
-        </form>
-        <?php
-        ?>
+            <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+            <!--Token- -->
+            <div class="conteneurMdp">
+              <!--Premier Mot de Passe- -->
+              <div class="boutonMdp">
+                <input class="saisieText" id="premierMdp" type="password" placeholder="Mot de passe" name="motDePasse" required maxlength="100">
+                <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
+              </div>
+
+              <!--Deuxième Mot de Passe- -->
+              <div class="boutonMdp">
+                <input class="saisieText" id="deuxiemeMdp" type="password" placeholder="Confirmation Mdp" name="DeuxiemeMotDePasse" required maxlength="100" onKeyUp="checkMdp()">
+                <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
+              </div>
+
+              <div id="deuxiemeAffichageMdp">
+                <!--Vide pour laisser la place au message d'erreur  -->
+              </div>
+            </div>
+            <div><input class="saisieText" type="submit" value="Sauvegarder !">
+           </div>
+           <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
+          </form>
+        </div>
       </div>
-    </body>
+    </div>
   <?php
   }
 
-  ////////////////////////////////////////////////// Modifiaction Photo De Profile ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////// Modification Photo De Profile ////////////////////////////////////////////////////
 
   // page pour changer la photo de profile
   public function modifiactionPhotoDeProfile($image)
   {
   ?>
-
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="Style_css/pageConnexion.css">
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="sweetalert2.min.js"></script>
-      <link rel="stylesheet" href="sweetalert2.min.css">
-    </head>
-
-    <body class="pageCompte">
-
+    <title>Modification Photo | A2Z</title>
+    <div class="pageCompte">
       <div class="settings">
         <div class="auth-title">
           <h1>Importer une photo de profil</h1>
-          <p>Personnaliser votre compte </p>
+          <p class="balise_p_generique">Personnaliser votre compte </p>
         </div>
 
-        <form action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
-          <label for="formFileSm" class="form-label">IMPORTER UNE IMAGE :</label>
-          <label class="warningFileUpload">Format de fichier autorisé : PNG</label>
-          <label class="warningFileUpload">Taille maximale du fichier : 1000 Ko</label>
+        <form class="formulairegenerale" action="index.php?module=compte&action=changementPhotoDeProfile" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
+          <label class="warningFileUpload">IMPORTER UNE IMAGE :</label>
+          <label class="warningFileUpload">Format de fichier autorisé : JPG, JPEG, PNG</label>
+          <label class="warningFileUpload">Taille maximale du fichier : 1 Mo</label>
 
           <div class="mb-3">
-            <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg,, image/jpg " name="image" required>
+            <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
           </div>
-          <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder la photo !"> </div>
-          <a href="./?module=settings&action=deleteCurrentAvatar"><label class="deleteCurrentAvatar">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
+          <div><input class="saisieText" name="submit" type="submit" value="Sauvegarder ma photo !">
+          <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
+
+        </div>
+          <a href="index.php?module=compte&action=suppresionPhotoDeProfile"><label class="warningFileUpload">SUPPRIMER LA PHOTO DE PROFIL ACTUELLE</label></a>
 
           <div class="fileUpload">
             <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
           </div>
         </form>
       </div>
-    </body>
+    </div>
   <?php
+  }
+
+  // page pour changer la photo de profile
+  public function formSuppresionPhotoDeProfile($image)
+  {
+  ?>
+    <title>Suppression Photo | A2Z</title>
+    <div class="pageCompte">
+      <div class="settings">
+        <div class="auth-title">
+          <h1>Supprimer la photo de profil</h1>
+          <p class="balise_p_generique">Êtes-vous sûr de vouloir supprimer votre photo de profil?</p>
+        </div>
+
+        <form class="formulairegenerale" action="index.php?module=compte&action=demandeSuppresionPhotoDeProfile" method="post">
+          <input type="hidden" name="token" value='<?php echo $_SESSION['token'] ?>'>
+          <!--Token- -->
+
+          <div>
+            <label class="warningFileUpload">Celle-ci sera supprimée définitivement</label>
+            <img src="ressource/images/poubelle.svg" width="30" height="30">
+          </div>
+
+          <div>
+            <input class="saisieText" name="submit" type="submit" value="Supprimer ma photo !">
+            <button onclick="window.location.href = 'index.php?module=compte&action=affichageInfoCompte'" type="button" class="saisieText">Annuler</button>
+          </div>
+
+          <div class="fileUpload">
+            <div class="profilePic" style="background: url('<?php echo $image ?>');"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  <?php
+
   }
 
   ////////////////////////////////////////////////// INFORMATIONS DU COMPTE ////////////////////////////////////////////////////
@@ -150,238 +203,164 @@ class VueCompte extends Vue_Generique
   //page génerale pour afficher toutes les informations generale d'un user
   public function affichageInfoCompte($identifiant, $motDePasse, $adresseMail)
   {
-
   ?>
-    <!DOCTYPE html>
-    <html>
+    <title>Info Compte | A2Z</title>
+    <div class="pageCompte">
+      <div class="bodyFormulaireInfoCompte">
+        <div>
+          <div class="auth-title">
+            <h1>Informations personnelles</h1>
+            <p class="balise_p_generique">Infos sur vous dans A2Z </p>
+          </div>
+          <div class="informationCompte">
 
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="Style_css/pageCompte.css">
-      <link rel="stylesheet" href="Style_css/toast.css">
-
-    </head>
-
-    <body class="pageCompte">
-
-      <div class="informationCompte">
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-          <h4 class="titre">Informations générales</h6>
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
 
 
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Photo</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourPhotoDeProfile">
-                    <p class="modification">Modifier</p>
-                  </a>
-                </div>
-                <span class="d-block">
-                  <p>Personnalisez votre compte en ajoutant une photo</p>
-                </span>
-              </div>
-            </div>
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
-
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Identifiant</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourIdentifiant">
-                    <p class="modification">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre balise_p_generique">Photo</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourPhotoDeProfile">
                       <p class="modification">Modifier</p>
-                  </a>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p class="balise_p_generique">Personnalisez votre compte en ajoutant une photo</p>
+                  </span>
                 </div>
-                <span class="d-block">
-                  <p><?php echo $identifiant ?></p>
-                </span>
+              </div>
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
+
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre balise_p_generique">Identifiant</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourIdentifiant">
+                      <p class="modification">Modifier</p>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p class="balise_p_generique"><?php echo $identifiant ?></p>
+                  </span>
+                </div>
+              </div>
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
+
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre balise_p_generique">Mot de passe</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourMotDePasse">
+                      <p class="modification">Modifier</p>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p class="balise_p_generique">****************</p>
+                  </span>
+                </div>
+              </div>
+
+              <div class="d-flex text-muted pt-3 changement-Taille-Affichage-Info-Compte">
+                <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                </svg>
+
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                  <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">
+                      <p class="sousTitre balise_p_generique">Adresse Mail</p>
+                    </strong>
+                    <a href="index.php?module=compte&action=miseAJourEmail">
+                      <p class="modification">Modifier</p>
+                    </a>
+                  </div>
+                  <span class="d-block">
+                    <p class="balise_p_generique"><?php echo $adresseMail ?></p>
+                  </span>
+                </div>
               </div>
             </div>
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
-
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Mot de passe</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourMotDePasse">
-                    <p class="modification">Modifier</p>
-                  </a>
-                </div>
-                <span class="d-block">
-                  <p>****************</p>
-                </span>
-              </div>
-            </div>
-
-            <div class="d-flex text-muted pt-3">
-              <svg class="" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-              </svg>
-
-              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                <div class="d-flex justify-content-between">
-                  <strong class="text-gray-dark">
-                    <p class="sousTitre">Adresse Mail</p>
-                  </strong>
-                  <a href="index.php?module=compte&action=miseAJourEmail">
-                    <p class="modification">Modifier</p>
-                  </a>
-                </div>
-                <span class="d-block">
-                  <p><?php echo $adresseMail ?></p>
-                </span>
-              </div>
-            </div>
-        </div>
-      </div>
-    </body>
-
-    </html>
-
-  <?php
-  }
-  ///////////////////////////////////////////////////////////////////////////TOAST////////////////////////////////////////////////////
-  //fonction pour l'affichage du toast "pop up" pour afficher un message de bienvenu générique 
-  public function popUpClassique($Titre, $Contenu)
-  {
-
-  ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-      <meta charset='utf-8'>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    </head>
-
-    <body>
-      <div class="index">
-
-        <div class="container">
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <h4> <?php echo $Titre; ?> </h4>
-            <?php echo $Contenu;  ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
           </div>
         </div>
       </div>
-
-    </body>
-
-    </html>
-
-  <?php
-  }
-
-  public function affichageChangementImage()
-  {
-  ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'success',
-        title: ' Bravo, vous avez bien changé votre photo de profil !!! '
-      })
-    </script>
-
+    </div>
   <?php
   }
 
   public function affichageChangementImageRate()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "Le fichier n'est pas une image !!!"
+        title: "Le fichier n'est pas une image 😥"
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementIdentifiant()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre Identifiant !!!"
+        title: "Bravo, vous avez bien changé votre Identifiant 😊"
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementIdentifiantFaux()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "L'identifiant choisi existe déjà !!! "
+        title: "L'identifiant choisi existe déjà 😡 "
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementAdresseMailReussit()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre adresse mail !!! "
+        title: "Bravo, vous avez bien changé votre adresse mail 😊 "
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementAdresseMailFaux()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "L'adresse mail choisi existe déjà !!! "
+        title: "L'adresse mail choisi existe déjà 😡"
       })
     </script>
 
@@ -391,27 +370,24 @@ class VueCompte extends Vue_Generique
   public function affichageChangementMDP()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre  mot de passe !!! "
+        title: "Bravo, vous avez bien changé votre  mot de passe 😊 "
       })
     </script>
-
   <?php
   }
 
   public function affichageChangementPhoto()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'success',
-        title: "Bravo, vous avez bien changé votre photo de profil !!! "
+        title: "Bravo, vous avez bien changé votre photo de profil 😊"
       })
     </script>
 
@@ -421,12 +397,11 @@ class VueCompte extends Vue_Generique
   public function affichageImageTropGrande()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "La taille du fichier est trop grande!!! "
+        title: "La taille du fichier est trop grande 😥 "
       })
     </script>
 
@@ -435,15 +410,41 @@ class VueCompte extends Vue_Generique
   public function affichageErreurTansfertImage()
   {
   ?>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script_js/outils.js"></script>
     <script type="text/javascript">
       Toast.fire({
         icon: 'error',
-        title: "La taille du fichier est trop grande!!! "
+        title: "La taille du fichier est trop grande 😥 "
       })
     </script>
 
+  <?php
+  }
+
+  public function affichagesuppresionPhotoDeProfileReussit()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'success',
+        title: "Bravo, vous avez bien supprimé votre photo de profil 😊 "
+      })
+    </script>
+
+  <?php
+  }
+
+  public function affichagesuppresionPhotoDeProfileErreur()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Erreur lors de la suppression de votre photo de profil 😥"
+      })
+    </script>
 <?php
   }
 }

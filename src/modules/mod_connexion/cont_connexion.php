@@ -2,12 +2,11 @@
 
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
+require_once("./Common/Bibliotheque_Communes/affichageRecurrent.php"); //
 
-class ContConnexion
+class ContConnexion extends Controleurgenerique
 {
-
-    private $modele;
-    private $action;
 
     public function __construct()
     {
@@ -30,13 +29,20 @@ class ContConnexion
                 if (isset($_GET['errorInscription'])) {  // verification pour voir si la connexion c'est mal passé
                     $this->affichageAdreMailUtiliser();
                 }
+                elseif(isset($_GET['errorMotDePasseDifferents'])) {  // verification pour voir si la connexion c'est mal passé
+                    affichagMotDePasseDifferent();
+                }
+            
                 break;
 
             case 'creationCompte':
-                if ($this->insereDonneInscription()) {
-                    $this->affichageInscriptionReussite();
-                } else {
+                if ($this->insereDonneInscription() == 4) {
+                    header('Location: ./index.php?module=connexion&action=connexion&InscriptionReussi=true'); //redirection vers la page 
+                } else if($this->insereDonneInscription() == 3) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
+                }
+                else if($this->insereDonneInscription() == 2) {
+                    header('Location: ./index.php?module=connexion&action=inscription&errorMotDePasseDifferents=true'); //redirection vers la page 
                 }
                 break;
 
@@ -49,14 +55,15 @@ class ContConnexion
                     $this->affichageDeconnexionImpossible();
                 } elseif (isset($_GET['DeconnexionReussite'])) {
                     $this->affichageDeconnexion();
+                } elseif (isset($_GET['InscriptionReussi'])) {
+                    $this->affichageInscriptionReussite();
                 }
-
                 break;
 
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
-                    $this->affichageConnexionReussie();
-                    header('Location: ./index.php?module=principale'); //redirection vers la page 
+                    $this->affichageConnexionReussie(); // mettre cette fonction dans mod principale
+                    header('Location: ./index.php?module=editionExo&connexion=true'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }
@@ -71,13 +78,13 @@ class ContConnexion
                 }
                 break;
         }
-        $this->affichageNavBar(); //affichage constant de la navbar
     }
 
     ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
 
     public function affichageFormulaireInscription()
     {
+        creation_token();
         $this->vue->form_inscription();
     }
 
@@ -88,10 +95,7 @@ class ContConnexion
 
     public function affichageInscriptionReussite()
     {
-        $Titre = ' Inscription Réussite';
-        $Contenu = 'Bonjour ' . $_POST['identifiant'] . " et bienvenue sur A2Z la plateforme intuitive pour créer sa fiche d'exercice 😄!";
-        //fonction pour l'affichage du toast "pop up" pour afficher un message de bienvenu
-        $this->vue->popUpClassique($Titre, $Contenu);  //toasts
+        $this->vue->affichageInscriptionReussite();  //toasts
     }
 
     public function affichageAdreMailUtiliser()
@@ -99,16 +103,18 @@ class ContConnexion
         $this->vue->affichageAdreMailUtiliser();  //toasts
     }
 
+    
     ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
 
     public function afficherFormulaireConnexion()
     {
+        creation_token();
         $this->vue->form_connexion();
     }
 
     public function insereDonneConnexion()
     {
-        return  $this->modele->verificationConnexion();
+        return  $this->modele->verificationConnexion(1);
     }
 
     public function affichageCompteInexsistant()
@@ -118,10 +124,8 @@ class ContConnexion
 
     public function affichageConnexionReussie()
     {  //toasts
-        $Titre = ' Connexion Réussie 😍 !!!';
-        $Contenu = 'Heureux de vous revoir ' . $_POST['identifiant'] . " sur A2Z la plateforme intuitive pour créer sa fiche d' exercice 🥰!";
-        //fonction pour l'affichage du toast "pop up" pour afficher un message connexion Reussi '
-        $this->vue->popUpClassique($Titre, $Contenu);  //toasts
+
+        $this->vue->affichageConnexionReussie();  //toasts
     }
 
     ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
@@ -144,12 +148,5 @@ class ContConnexion
     public function affichageDeconnexionImpossible()
     {
         $this->vue->affichageDeconnexionImpossible();  //toasts
-    }
-
-    ////////////////////////////////////////////////// NAVBAR FOOTER ///////////////////////////////////////////////////////
-
-    public function affichageNavBar()
-    {
-        $this->vue->navBarConnexion();
     }
 }

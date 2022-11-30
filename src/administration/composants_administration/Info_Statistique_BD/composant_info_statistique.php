@@ -1,14 +1,14 @@
 <?php
 
-require_once "cont_compte.php";
+require_once "cont_info_statistique.php";
 
 
-class ModCompte
+class Composant_info_statistique
 {
     private $controleur;
     public function __construct()
     {
-        $this->controleur = new ContCompte();
+        $this->controleur = new Cont_info_statistique();
         $this->controleur->exec();
     }
 
