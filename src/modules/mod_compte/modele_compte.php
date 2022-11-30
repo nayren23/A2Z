@@ -157,11 +157,9 @@ class ModeleCompte  extends Connexion
                 
                 // Load image file 
                 $image = @imagecreatefrompng($image_name);  
-                  var_dump($image);
 
                 // Use imagescale() function to scale the image
                 $img = imagescale( $image, 400, 400 );
-                var_dump($img);
                 $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
 
                 $path = "upload/" . $nomUnique . $extension; 

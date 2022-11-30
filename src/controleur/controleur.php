@@ -1,13 +1,11 @@
 <?php
-class Controleur
+
+class Controleur 
 {
-    private $modele;
     private $module;
     public $resultat;
     public function __construct()
     {
-        require_once("modele.php"); // pour les Faille include 
-        $this->modele = new Modele();
         $this->module = isset($_GET['module']) ? $_GET['module'] : 'connexion';
         $this->exec();
     }
@@ -54,14 +52,6 @@ class Controleur
                 $this->resultat = $this->module->getControleur()->getVueControleur()->affichageTampon(); //affichage du tampon
                 break;
 
-            case "gestionUseur":
-                if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
-                    require_once "administration/modules_administration/mod_gestion_Useur/mod_gestion_Useur.php"; // pour les Faille include 
-                    $this->module = new Mod_gestionUseur();
-                } else {
-                    echo "connecte toi d'abord";
-                }
-                break;
             default:
                 die("Module inconnu"); //on peut changer l'affichage ici
         }

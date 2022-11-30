@@ -305,7 +305,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Mot de Passe</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" required maxlength="100" value="*********" placeholder="Mot de Passe">
+                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" required maxlength="100"  placeholder="Mot de Passe">
                       <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="Oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(motDePasse,Oeil)"> </button>
                     </div>
                   </div>
