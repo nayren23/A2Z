@@ -109,21 +109,6 @@ class VueConnexion extends Vue_connexion_generique
   <?php
   }
 
-
-  public function affichageAdreMailUtiliser()
-  {
-  ?>
-    <script src="Script_js/outils.js"></script>
-    <script type="text/javascript">
-      Toast.fire({
-        icon: 'error',
-        title: "Attention cette adresse mail <br>ou cet identifiant existe déjà 😮 "
-      })
-    </script>
-
-  <?php
-  }
-
   public function affichageInscriptionReussite()
   {
   ?>

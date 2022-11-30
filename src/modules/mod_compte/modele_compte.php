@@ -152,23 +152,6 @@ class ModeleCompte  extends Connexion
         }
     }
 
-    /*
-    public function changerTailleImage($image_name,$extension){
-                
-                // Load image file 
-                $image = @imagecreatefrompng($image_name);  
-
-                // Use imagescale() function to scale the image
-                $img = imagescale( $image, 400, 400 );
-                $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
-
-                $path = "upload/" . $nomUnique . $extension; 
-                imagepng($img,$path);
-                return $path; 
-        }
-*/
-
-
     // fonction qui envoie l'image reçu en base 64 à la BDD
     public function changementPhoto($image)
     {

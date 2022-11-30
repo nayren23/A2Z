@@ -23,6 +23,9 @@ class ContEditionExo extends Controleurgenerique
                 ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
             case 'editionExo':
                 $this->affichagePageEditionExo();
+                if(isset($_GET['connexion'])){
+                    $this->affichageConnexionReussie();
+                }
                 break;
 
            
@@ -35,5 +38,8 @@ class ContEditionExo extends Controleurgenerique
 
     } 
     
-    
+    public function affichageConnexionReussie()
+    {
+        $this->vue->affichageConnexionReussie();
+    }
 }
