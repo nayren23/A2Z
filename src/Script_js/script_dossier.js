@@ -1,4 +1,4 @@
-async function popUpNomDuDossier() {
+async function popUpNomDuDossier($loc) {
   
 
     (async () => {
@@ -14,7 +14,8 @@ async function popUpNomDuDossier() {
           $.ajax ( {
             method : "POST" ,
             url : "./modules/mod_favoris/creerDossier.php",
-            data : { dossier : nomDossier  } ,
+            data : { dossier : nomDossier,
+                    location : $loc  } ,
             dataType : "json"
             })
          

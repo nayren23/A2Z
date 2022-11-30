@@ -4,57 +4,42 @@ echo __DIR__;
 require_once "../../connexion.php";
 
 session_start();
-$_SESSION["identifiant"] = "ok";
 
 class dossierBDD extends Connexion
 {
-  
 
     public function  __construct()
   {
     parent::initConnexion();
 
-    if (isset($_POST['dossier'])){
-     $this->envoieDossierBdd();
     }
-    if (isset($_POST['nomDossier'])) {
-      
-    }
-
-    }
-
 
     function envoieDossierBdd() {
-      
       try {
-        
-        $sql = "select idUser from Utilisateur where identifiant = :identifiant";
+
+        $sql = 'select idUser from utilisateur where identifiant = :identifiant';
         $stmt = self::$bdd->prepare($sql);
         
-        $stmt->execute(array(":identifiant" => $_SESSION['identifiant']));
-        $idUser = $stmt->fetch();
+        $stmt->execute(array(':identifiant' => $_SESSION['identifiant']));
+        $tabretour = $stmt->fetch();
+        $idUser =$tabretour['idUser'];
 
-        echo $idUser;
-        
-        $sql2 = 'INSERT INTO Dossier(nomDossier, idParent, idUser) VALUES ( :nomDossier , :idParent, :idUser)';
+        $sql2 = 'INSERT INTO dossier(nomDossier, idParent, idUser) VALUES ( :nomDossier , :idParent, :idUser)';
         $stmt2 = self::$bdd->prepare($sql2); 
 
 
-        $stmt->execute(array(':nomDossier'=>$_POST['dossier'], ':idParent'=> $_GET["location"], ':idUser'=>$idUser));
+        $location = intval ($_POST['location']);
+        $stmt2->execute(array(':nomDossier'=>$_POST['dossier'], ':idParent'=> $location, ':idUser'=>$idUser));
         
         $idUser = $stmt->fetch();
-        echo $idUser0,$_GET['location'], $_POST['dossier'];
-        
-        $this->contFav->afficheIconeDossier();
 
       } catch (PDOException $e) {
         echo $e->getMessage() . $e->getCode();
       }
-
-
     }
 }
-
 $dossier = new dossierBDD();
-
+if (isset($_POST['dossier'])){
+  $dossier->envoieDossierBdd();
+ }
 ?>

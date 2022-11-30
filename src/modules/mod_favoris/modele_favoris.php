@@ -9,7 +9,7 @@ class ModeleFavoris extends Connexion {
 
     public function recupereDossierSelonLocation($affichageDossier) {
         try {
-        $sql = "select idDossier, nomDossier from Dossier where idParent = ?";
+        $sql = "select idDossier, nomDossier from dossier where idParent = ?";
         $stmt = self::$bdd->prepare($sql);
         
         $stmt->execute(array(":idParent" => $_GET['location']));

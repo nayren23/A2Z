@@ -118,7 +118,7 @@ Call lightSlider!
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./Script_js/script_dossier.js">
 </script>
-   <button type="button" onClick="popUpNomDuDossier()" name="CreerDossier" > Créer un dossier </button>
+   <button type="button" onClick="popUpNomDuDossier(<?php echo $_GET['location']?>)" name="CreerDossier" > Créer un dossier </button>
 <?php
   
   }
