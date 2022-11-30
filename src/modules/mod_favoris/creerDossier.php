@@ -10,7 +10,6 @@ class dossierBDD extends Connexion
     public function  __construct()
   {
     parent::initConnexion();
-
     }
 
     function envoieDossierBdd() {
