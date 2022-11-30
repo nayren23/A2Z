@@ -13,7 +13,7 @@ class ModeleFavoris extends Connexion {
         $stmt = self::$bdd->prepare($sql);
         
         $stmt->execute(array(":idParent" => $_GET['location']));
-        $stmt->fetchAll(PDO::FETCH_FUNC, $affichageDossier);
+        $stmt->fetchAll(PDO::FETCH_FUNC, $affichageDossier());
         } catch (PDOException $e) {
         echo $e->getMessage() . $e->getCode();
       }

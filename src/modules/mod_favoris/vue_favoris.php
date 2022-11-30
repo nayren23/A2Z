@@ -17,7 +17,6 @@ class VueFavoris extends Vue_Generique {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/lightslider.js">    // Do not include both lightslider.js and lightslider.min.js </script>
 
-HTML Structure
 
     <ul id="lightSlider">
       <li>
@@ -28,10 +27,7 @@ HTML Structure
           <h3>Second Slide</h3>
           <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
       </li>
-      ...
     </ul>
-
-Call lightSlider!
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -96,8 +92,6 @@ Call lightSlider!
     });
     </script>
 
-  Public methods
-
     <script type="text/javascript">
       $(document).ready(function() {
         var slider = $("#lightSlider").lightSlider();
@@ -123,11 +117,12 @@ Call lightSlider!
   
   }
 
-    public function affichageDossier($nomDossier) {
+    public function affichageDossier() {
 ?>
   <script src="./Script_js/script_dossier.js"></script>
-  <a href="index.php?module=favoris&location=<?php echo $nomDossier['idDossier']?>" classname="Dossier"><figure><img onClick="rechercheLocation()"src="./ressource/dossier.png" alt="Image de dossier"><figcaption><?php echo $nomDossier['nomDossier'] ?> </figcaption></figure>
-
+  <div classname="dossiers">
+        <p> eiuthreaik</p>
+  </div>
 
 <?php
     }

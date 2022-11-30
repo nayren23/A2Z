@@ -44,7 +44,7 @@ class ContFavoris extends Controleurgenerique
     }
 
     public function afficherIconeDossier(){
-        $this->modele->recupereDossierSelonLocation($this->vue->affichageDossier());
+        $this->modele->recupereDossierSelonLocation("vue>->affichageDossier");
            
     }
 }

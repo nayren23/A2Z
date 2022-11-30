@@ -1,6 +1,5 @@
 <?php
 
-echo __DIR__;
 require_once "../../connexion.php";
 
 session_start();
@@ -33,9 +32,18 @@ class dossierBDD extends Connexion
         
         $idUser = $stmt->fetch();
 
+        $sql3 = 'select idDossier from dossier where nomDossier = :nomDossier';
+        $stmt3 = self::$bdd->prepare($sql3);
+
+        $stmt3->execute(array(':nomDossier' => $_POST['dossier']));
+        $tabretour2 = $stmt3->fetch();
+        $idDossier = $tabretour2['idDossier'];
+
       } catch (PDOException $e) {
-        echo $e->getMessage() . $e->getCode();
+        echo false;
+
       }
+      echo $idDossier;
     }
 }
 $dossier = new dossierBDD();
