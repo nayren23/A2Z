@@ -1,21 +1,29 @@
 <?php
 
-require_once "vue_favoris.php";
-require_once "modele_favoris.php";
+require_once __DIR__ ."/vue_favoris.php";
+require_once __DIR__."/modele_favoris.php";
 
+if (isset($_POST['idDossier'])) {
+    session_start();
+Connexion::initConnexion();
+$controleur = new ContFavoris();
+
+}
 class ContFavoris
 {
     private $vue;
     private $location;
+    private $modele;
 
     public function __construct() {
 
         $this->vue = new VueFavoris;
         $this->location = $_GET['location'];
-        $this->AfficherBoutonCreerDossier();
+        $this->modele = new ModeleFavoris;
+        $this->afficherBoutonCreerDossier();
+        $this->afficheCarouselFiches();
 
         
-        $this->exec();
 
         
     }
@@ -33,20 +41,18 @@ class ContFavoris
         $this->dossier = envoieDossierBdd();
     }
 
+    public function afficheCarouselFiches() {
+        $this->vue->carouselFiches();
+    }
 
-    public function AfficherBoutonCreerDossier() {
+    public function afficherBoutonCreerDossier() {
         $this->vue->boutonCreerDossier();
         
     }
 
-    public function exec()
-    {
-        switch ($this->location) {
-            case $_SESSION['identifiant'] :
-
-
-            
-        }
+    public function afficherIconeDossier(){
+        $this->modele->recupereDossierSelonLocation($this->vue->affichageDossier());
+           
     }
 }
 ?>

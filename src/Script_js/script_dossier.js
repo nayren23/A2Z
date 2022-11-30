@@ -28,3 +28,15 @@ async function popUpNomDuDossier() {
           
         })()
 }
+
+function rechercheLocation() {
+
+  var url = new URL(window.location.href);
+  var idDossier = url.searchParams.get("location");
+            $.ajax ( {
+            method : "POST" ,
+            url : "./modules/mod_favoris/cont_favoris.php",
+            data : { idDossier : idDossier  } ,
+            dataType : "json"
+            })
+}
