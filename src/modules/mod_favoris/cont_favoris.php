@@ -9,11 +9,9 @@ Connexion::initConnexion();
 $controleur = new ContFavoris();
 
 }
-class ContFavoris
+class ContFavoris extends Controleurgenerique
 {
-    private $vue;
     private $location;
-    private $modele;
 
     public function __construct() {
 
@@ -26,11 +24,6 @@ class ContFavoris
         
 
         
-    }
-
-    public function getVue() {
-        return $this->vue;
-
     }
 
     public function getLocation() {
