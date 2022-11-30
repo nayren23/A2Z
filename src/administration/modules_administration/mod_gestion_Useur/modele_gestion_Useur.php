@@ -70,9 +70,6 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
 
     public function suppresionUseur($adminactuel)
     {
-        var_dump($adminactuel['idUser']);
-        var_dump(htmlspecialchars($_GET['idUseur']));
-
         if ($adminactuel['idUser'] == htmlspecialchars($_GET['idUseur'])) {
             return 1; //on peut pas se supprimer son compte
         }

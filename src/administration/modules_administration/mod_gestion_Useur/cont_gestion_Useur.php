@@ -22,9 +22,15 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
             case 'gestionUseur':
                 $this->affichageListeUseur();
 
+                //Gestion des Erreurs
                 if (isset($_GET['suppresionUtilisateur'])) {
                     $this->affichageSuppresionUseur();
-                } elseif (isset($_GET["affichagMotDePasseErrone"])) {
+                } 
+                elseif (isset($_GET['connexionReussit'])) {
+                    $this->affichageConnexionReussie();
+                }
+                
+                elseif (isset($_GET["affichagMotDePasseErrone"])) {
                     affichagMotDePasseErrone();
                 } elseif (isset($_GET['suppresionCompteActuelle'])) {
                     $this->affichageSuppresionCompteActuelleFaux();
@@ -37,19 +43,20 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 } elseif (isset($_GET['CreationAdminReussit'])) {
                     $this->CreationAdminReussit();
                 }
-
                 break;
 
             case 'suppresionUseur':
-                $this->affichage_confirmation_SuppresionUseu();
+                $this->affichage_confirmation_SuppresionUseur();
                 break;
 
             case 'suppresionUseurConfirmer':
 
                 if ($this->verificationConfirmationMdp() == 2) {
-                    if ($this->suppresionUseur() == 2) {
+                    
+                    $resultatSuppresionUseur = $this->suppresionUseur();
+                    if ($resultatSuppresionUseur == 2) {
                         header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
-                    } elseif ($this->suppresionUseur() == 1) {
+                    } elseif ($resultatSuppresionUseur == 1) {
                         header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionCompteActuelle=false;');
                     }
                 } else {
@@ -93,16 +100,16 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 break;
 
             case 'ajoutNouvelAdmin':
-                if ($this->inscriptionNouvelAdmin() == 4) {
+                $resultatInscriptionNouvelAdmin = $this->inscriptionNouvelAdmin();
+
+                if ($resultatInscriptionNouvelAdmin == 4) {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&CreationAdminReussit=true;');
-                } elseif ($this->inscriptionNouvelAdmin() == 2) {
+                } elseif ($resultatInscriptionNouvelAdmin == 2) {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseDifferents=true;');
-                } elseif ($this->inscriptionNouvelAdmin() == 3) {
+                } elseif ($resultatInscriptionNouvelAdmin == 3) {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageCompteExistant=true;');
                 }
-
                 break;
-
             default:
                 die("Action inexistantes");
         }
@@ -130,7 +137,7 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
     }
 
     //fonction de demande de confirmation du mdp pour la suppresion
-    public function affichage_confirmation_SuppresionUseu()
+    public function affichage_confirmation_SuppresionUseur()
     {
         creation_token();
         $this->vue->confirmationSuppresionUseur();
@@ -211,4 +218,10 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
     {
         $this->vue->CreationAdminReussit();
     }
+
+    public function affichageConnexionReussie()
+    {
+        $this->vue->affichageConnexionReussie();
+    }
+    
 }

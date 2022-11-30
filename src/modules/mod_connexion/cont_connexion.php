@@ -36,12 +36,14 @@ class ContConnexion extends Controleurgenerique
                 break;
 
             case 'creationCompte':
-                if ($this->insereDonneInscription() == 4) {
+                $resultatInsereDonneInscription = $this->insereDonneInscription();
+
+                if ($resultatInsereDonneInscription == 4) {
                     header('Location: ./index.php?module=connexion&action=connexion&InscriptionReussi=true'); //redirection vers la page 
-                } else if($this->insereDonneInscription() == 3) {
+                } else if($resultatInsereDonneInscription == 3) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
                 }
-                else if($this->insereDonneInscription() == 2) {
+                else if($resultatInsereDonneInscription == 2) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorMotDePasseDifferents=true'); //redirection vers la page 
                 }
                 break;

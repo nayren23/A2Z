@@ -21,6 +21,8 @@ class ContCompte extends Controleurgenerique
             case 'affichageInfoCompte':
                 //affichage global des infos 
                 $this->affichageInformationsCompte();
+
+                //Gestion des erreurs
                 if (isset($_GET['changementId'])) {  // verification pour voir si la connexion c'est mal passé
                     $this->affichageChangementIdentifiantReussit();
                 } elseif (isset($_GET['changementIdFaux'])) {
@@ -39,21 +41,17 @@ class ContCompte extends Controleurgenerique
                     $this->affichageImageTropGrande();
                 } elseif (isset($_GET['ErreurTansfert'])) {
                     $this->affichageErreurTansfertImage();
-                }
-                elseif(isset($_GET['suppresionPhotoDeProfile'])){
+                } elseif (isset($_GET['suppresionPhotoDeProfile'])) {
                     $this->affichagesuppresionPhotoDeProfileReussit();
-                }
-                elseif(isset($_GET['ErreursuppresionPhotoDeProfile'])){
+                } elseif (isset($_GET['ErreursuppresionPhotoDeProfile'])) {
                     $this->affichagesuppresionPhotoDeProfileErreur();
-                }
-                elseif(isset($_GET['errorMotDePasseDifferents'])){
+                } elseif (isset($_GET['errorMotDePasseDifferents'])) {
                     affichagMotDePasseDifferent();
                 }
                 break;
 
             case 'miseAJourIdentifiant':
                 $this->affichageFormulaireModificationIdentifiant();
-
                 break;
 
             case 'changementIdentifiant':
@@ -69,10 +67,11 @@ class ContCompte extends Controleurgenerique
                 break;
 
             case 'changementMotDePasse':
-                if ($this->changementMotDePasse() == 3) {
+                $resultatChangementMotDePasse = $this->changementMotDePasse();
+                if ($resultatChangementMotDePasse == 3) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&changementMDP=true;'); //redirection vers la page 
                 }
-                if ($this->changementMotDePasse() == 2) {
+                if ($resultatChangementMotDePasse == 2) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&errorMotDePasseDifferents=true;'); //redirection vers la page 
                 }
                 break;
@@ -95,19 +94,17 @@ class ContCompte extends Controleurgenerique
             case 'changementPhotoDeProfile':
                 $this->changementPhotoDeProfile();
                 break;
-            
 
-            case'suppresionPhotoDeProfile':
+
+            case 'suppresionPhotoDeProfile':
                 $this->affichageFormSuppresionPhotoDeProfile();
                 break;
             case 'demandeSuppresionPhotoDeProfile':
-                if($this->suppresionPhotoDeProfile()){
+                if ($this->suppresionPhotoDeProfile()) {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&suppresionPhotoDeProfile=true;'); //redirection vers la page 
-                }
-                else{
+                } else {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&ErreursuppresionPhotoDeProfile=true;'); //redirection vers la page 
                 }
-                
         }
     }
 
@@ -166,7 +163,8 @@ class ContCompte extends Controleurgenerique
         $this->vue->modifiactionPhotoDeProfile($image);
     }
 
-    public function affichageFormSuppresionPhotoDeProfile(){
+    public function affichageFormSuppresionPhotoDeProfile()
+    {
         $image = $this->modele->recuperationInfoCompte()["cheminImage"];
         $this->vue->formSuppresionPhotoDeProfile($image);
     }
@@ -196,8 +194,9 @@ class ContCompte extends Controleurgenerique
         }
     }
 
-    public function suppresionPhotoDeProfile(){
-       return $this->modele->suppresionPhotoDeProfile();
+    public function suppresionPhotoDeProfile()
+    {
+        return $this->modele->suppresionPhotoDeProfile();
     }
     //////////////////////////Affichage des Toast pour les Informations générales //////////////////////////////////////
 
@@ -245,13 +244,13 @@ class ContCompte extends Controleurgenerique
         $this->vue->affichageErreurTansfertImage();
     }
 
-    public function affichagesuppresionPhotoDeProfileErreur(){
+    public function affichagesuppresionPhotoDeProfileErreur()
+    {
         $this->vue->affichagesuppresionPhotoDeProfileErreur();
     }
 
-    public function affichagesuppresionPhotoDeProfileReussit(){
+    public function affichagesuppresionPhotoDeProfileReussit()
+    {
         $this->vue->affichagesuppresionPhotoDeProfileReussit();
     }
-
-    
 }

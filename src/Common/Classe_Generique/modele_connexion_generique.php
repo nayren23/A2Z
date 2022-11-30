@@ -15,7 +15,6 @@ class Modele_Connexion_Generique extends Connexion
                 $statement = self::$bdd->prepare($sql);
                 $statement->execute(array(':identifiant' => htmlspecialchars($_POST['identifiant'])));
                 $result = $statement->fetch();
-                var_dump($result['idGroupes']);
                 if ($result) { //si l'id est correct alors on verifie le mdp
                     if (password_verify(htmlspecialchars($_POST['motDePasse']), $result['motDePasse']) && $result['idGroupes'] == $idGroupe) {
                         $_SESSION['identifiant'] = $result['identifiant'];

@@ -1,5 +1,7 @@
 <?php
-class VueEdition extends Vue_Generique
+require_once("./Common/Classe_Generique/vue_connexion_generique.php");
+
+class VueEdition extends Vue_connexion_generique
 { //fonction pour l'affichage de la nav bar
 
     public function  __construct()

@@ -91,5 +91,20 @@ class Vue_connexion_generique extends Vue_Generique
     </script>
 <?php
   }
+
+  
+  public function affichageAdreMailUtiliser()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Attention cette adresse mail <br>ou cet identifiant existe déjà 😮 "
+      })
+    </script>
+
+  <?php
+  }
 }
 ?>

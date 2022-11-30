@@ -35,7 +35,7 @@ class ContConnexion_administration extends Controleurgenerique
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
                     $this->affichageConnexionReussie(); // mettre cette fonction dans mod principale
-                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&page=1'); //redirection vers la page 
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&page=1&connexionReussit=true'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=administration&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }

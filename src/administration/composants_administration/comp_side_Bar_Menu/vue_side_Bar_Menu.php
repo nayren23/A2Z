@@ -9,7 +9,7 @@ class Vue_side_Bar_Menu extends Vue_Generique
         parent::__construct(); // comme un super
     }
     //fonction pour l'affichage du Footer
-    function side_Bar_Menu()
+    function side_Bar_Menu($idUseur)
     {
 ?>
 
@@ -34,7 +34,7 @@ class Vue_side_Bar_Menu extends Vue_Generique
 
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="index.php?module=gestionUseur&action=affichageInfoUseur&idUseur=<?php echo $idUseur['idUser'] ?>">
                         <i class="fa fa-info fa-2x"></i>
                         <span class="nav-text">
                             Profil
