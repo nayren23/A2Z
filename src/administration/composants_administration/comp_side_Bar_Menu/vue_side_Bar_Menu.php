@@ -25,7 +25,7 @@ class Vue_side_Bar_Menu extends Vue_Generique
                     </a>
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
+                    <a href="index.php?module=gestionUseur&action=creationAdmin">
                         <i class="fa fa-list fa-2x"></i>
                         <span class="nav-text">
                             Gestion administateur

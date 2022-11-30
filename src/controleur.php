@@ -49,14 +49,14 @@ class Controleur
                 break;
 
             case "administration":
-                require_once "administration\modules_administration\mod_connexion\mod_connexion_administration.php"; // pour les Faille include 
+                require_once "administration/modules_administration/mod_connexion/mod_connexion_administration.php"; // pour les Faille include 
                 $this->module = new ModConnexion_administration();
                 $this->resultat = $this->module->getControleur()->getVueControleur()->affichageTampon(); //affichage du tampon
                 break;
 
             case "gestionUseur":
                 if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
-                    require_once "administration\modules_administration\mod_gestion_Useur\mod_gestion_Useur.php"; // pour les Faille include 
+                    require_once "administration/modules_administration/mod_gestion_Useur/mod_gestion_Useur.php"; // pour les Faille include 
                     $this->module = new Mod_gestionUseur();
                 } else {
                     echo "connecte toi d'abord";
