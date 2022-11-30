@@ -25,7 +25,7 @@ async function popUpNomDuDossier($loc) {
                 $(".dossiers").append('<div class = "dossier"> <a href="index.php?module=favoris&location=' + retour + '"><figure><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>"'+ nomDossier +'"</figcaption></figure></div>');
 
               } else {
-                alert("problème avec la créalmezofeoztion du dossier")
+                alert("problème avec la création du dossier")
               }
 
            10 } ) ;
