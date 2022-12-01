@@ -289,7 +289,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Identifiant</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="text" id="identifiant" name="identifiant" required maxlength="50" placeholder="Identifiant" value="<?php echo $infoUseur['identifiant'] ?>" class="form-control">
+                      <input type="text" id="identifiant" name="identifiant"  maxlength="50" placeholder="Identifiant" value="<?php echo $infoUseur['identifiant'] ?>" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -297,7 +297,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="email" id="adresseMail" name="adresseMail" required maxlength="75" placeholder="E-mail" value="<?php echo $infoUseur['adresseMail'] ?>" class="form-control">
+                      <input type="email" id="adresseMail" name="adresseMail"  maxlength="75" placeholder="E-mail" value="<?php echo $infoUseur['adresseMail'] ?>" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -305,7 +305,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Mot de Passe</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" required maxlength="100"  placeholder="Mot de Passe">
+                      <input type="password" class="form-control" id="motDePasse" name="motDePasse"  maxlength="100"  placeholder="Mot de Passe">
                       <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="Oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(motDePasse,Oeil)"> </button>
                     </div>
                   </div>
