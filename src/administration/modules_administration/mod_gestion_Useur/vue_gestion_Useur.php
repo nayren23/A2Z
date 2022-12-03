@@ -265,6 +265,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                   <img src="<?php echo $infoUseur['cheminImage'] ?>" alt="Admin" class="rounded-circle" width="150">
                   <div class="mt-3">
                     <h4><?php echo $infoUseur['identifiant'] ?></h4>
+                    <p class="text-secondary mb-1"><?php echo $infoUseur['adresseMail'] ?> </p>
                     <p class="text-secondary mb-1"><?php if ($infoUseur['idGroupes'] == 1) {
                                                     ?><?php echo "Professeur"; ?>
                     <?php
@@ -289,7 +290,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Identifiant</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="text" id="identifiant" name="identifiant"  maxlength="50" placeholder="Identifiant" value="<?php echo $infoUseur['identifiant'] ?>" class="form-control">
+                      <input type="text" id="identifiant" name="identifiant"  maxlength="50" placeholder="Identifiant" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -297,7 +298,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="email" id="adresseMail" name="adresseMail"  maxlength="75" placeholder="E-mail" value="<?php echo $infoUseur['adresseMail'] ?>" class="form-control">
+                      <input type="email" id="adresseMail" name="adresseMail"  maxlength="75" placeholder="E-mail" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -556,4 +557,32 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
     </script>
 <?php
   }
+
+  public function ErreuraffichageChangementInfoUseur()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'info',
+        title: "Le mot de passe ou l'adresse mail existe déjà  😰"
+      })
+    </script>
+  <?php
+  }
+
+
+  public function affichageAucuneInfoModifier()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'info',
+        title: "Aucune information n'a été modifié 😇"
+      })
+    </script>
+  <?php
+  }
+
 }
