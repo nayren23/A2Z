@@ -9,6 +9,6 @@
     }
 
      function verification_token() {
-        return strcmp($_POST['token'], $_SESSION['token']) == 0 && time() - $_SESSION['token_date'] < 9000;
+        return strcmp($_POST['token'], $_SESSION['token']) == 0 && time() - $_SESSION['token_date'] < 300;//10 minutes
     }
 ?>

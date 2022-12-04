@@ -20,7 +20,6 @@ class Cont_side_Bar_Menu extends Controleurgenerique
     public function affichageHabillage()
     {
         $idUseur= $this->modele->recuperationIdUser();
-        var_dump($idUseur);
         $this->vue->side_Bar_Menu($idUseur);
     }
 }

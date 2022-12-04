@@ -25,12 +25,9 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 //Gestion des Erreurs
                 if (isset($_GET['suppresionUtilisateur'])) {
                     $this->affichageSuppresionUseur();
-                } 
-                elseif (isset($_GET['connexionReussit'])) {
+                } elseif (isset($_GET['connexionReussit'])) {
                     $this->affichageConnexionReussie();
-                }
-                
-                elseif (isset($_GET["affichagMotDePasseErrone"])) {
+                } elseif (isset($_GET["affichagMotDePasseErrone"])) {
                     affichagMotDePasseErrone();
                 } elseif (isset($_GET['suppresionCompteActuelle'])) {
                     $this->affichageSuppresionCompteActuelleFaux();
@@ -42,7 +39,15 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                     $this->affichageCompteExistant();
                 } elseif (isset($_GET['CreationAdminReussit'])) {
                     $this->CreationAdminReussit();
+                } elseif (isset($_GET['ErreuraffichageChangementInfoUseur'])) {
+                    $this->ErreuraffichageChangementInfoUseur();
+                } elseif (isset($_GET['affichageTokenExpire'])) {
+                    affichageTokenExpire();
+                } elseif (isset($_GET['AucuneInfoModifier'])) {
+                    $this->affichageAucuneInfoModifier();
                 }
+
+
                 break;
 
             case 'suppresionUseur':
@@ -50,15 +55,17 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 break;
 
             case 'suppresionUseurConfirmer':
+                $resultatVerificationConfirmationMdp = $this->verificationConfirmationMdp();
+                if ($resultatVerificationConfirmationMdp == 2) {
 
-                if ($this->verificationConfirmationMdp() == 2) {
-                    
                     $resultatSuppresionUseur = $this->suppresionUseur();
                     if ($resultatSuppresionUseur == 2) {
                         header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionUtilisateur=true;');
                     } elseif ($resultatSuppresionUseur == 1) {
                         header('Location: ./index.php?module=gestionUseur&action=gestionUseur&suppresionCompteActuelle=false;');
                     }
+                } elseif ($resultatVerificationConfirmationMdp == 1) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageTokenExpire=true;');
                 } else {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
                 }
@@ -73,23 +80,38 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 break;
 
             case 'modificationUseur': //si le changement c'est bien passé
-                if ($this->modificationDonneUseur() == 2) {
+                $resultatModificationDonneUseur = $this->modificationDonneUseur();
+                if ($resultatModificationDonneUseur == 2) {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageChangementInfoUseurReussit=true;');
+                } elseif ($resultatModificationDonneUseur == 4) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&ErreuraffichageChangementInfoUseur=true;');
+                } elseif ($resultatModificationDonneUseur == 1) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagTokenExpire=true;');
+                } elseif ($resultatModificationDonneUseur == 5) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&AucuneInfoModifier=true;');
                 }
+
                 break;
 
             case 'modificationUseurConfirmer': //ici verification que l'admin a mit le bon mdp
 
-                if ($this->verificationConfirmationMdp() == 2) {
+                $resultatVerificationConfirmationMdp = $this->verificationConfirmationMdp();
+                if ($resultatVerificationConfirmationMdp == 2) {
                     $this->formulaireModificationUseur();
+                } elseif ($resultatVerificationConfirmationMdp == 1) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageTokenExpire=true;');
                 } else {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
                 }
                 break;
 
             case 'confirmationCreationAdmin':
-                if ($this->verificationConfirmationMdp() == 2) {
+                $resultatVerificationConfirmationMdp = $this->verificationConfirmationMdp();
+
+                if ($resultatVerificationConfirmationMdp == 2) {
                     $this->formulaireCreationAdmin();
+                } elseif ($resultatVerificationConfirmationMdp == 1) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageTokenExpire=true;');
                 } else {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseErrone=true;');
                 }
@@ -108,6 +130,8 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichagMotDePasseDifferents=true;');
                 } elseif ($resultatInscriptionNouvelAdmin == 3) {
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageCompteExistant=true;');
+                } elseif ($resultatInscriptionNouvelAdmin == 1) {
+                    header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageTokenExpire=true;');
                 }
                 break;
             default:
@@ -223,5 +247,15 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
     {
         $this->vue->affichageConnexionReussie();
     }
-    
+
+    public function ErreuraffichageChangementInfoUseur()
+    {
+        $this->vue->ErreuraffichageChangementInfoUseur();
+    }
+
+
+    public function affichageAucuneInfoModifier()
+    {
+        $this->vue->affichageAucuneInfoModifier();
+    }
 }

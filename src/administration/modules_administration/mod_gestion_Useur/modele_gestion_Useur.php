@@ -144,10 +144,55 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
             return 1;
         }
         try {
-            // ici on insere les donnee dans la BDD
-            $sql = 'UPDATE utilisateur SET adresseMail= :adresseMail ,identifiant =:identifiant ,motDePasse= :motDePasse WHERE idUser =:idUser';
-            $statement = Connexion::$bdd->prepare($sql);
-            $statement->execute(array(':adresseMail' => htmlspecialchars($_POST['adresseMail']), ':identifiant' => htmlspecialchars($_POST['identifiant']), 'motDePasse' => password_hash(htmlspecialchars($_POST['motDePasse'],), PASSWORD_DEFAULT), ':idUser' => $_GET['idUser'])); //vois si pour le mdp on fait htmlspecialchars
+            foreach ($_POST as $clef => $value) {
+                if (!empty($_POST[$clef])  && strcmp($clef, 'token') != 0) { //si la clef n'est pas vide et la clef n'est pas "token"
+
+                    if (strcmp($clef, 'motDePasse') == 0) {
+                        // ici on insere les donnee dans la BDD
+                        $sql = 'UPDATE utilisateur SET motDePasse= :motDePasse WHERE idUser =:idUser';
+                        $statement = Connexion::$bdd->prepare($sql);
+                        $statement->execute(array(
+                            ':motDePasse' => password_hash(htmlspecialchars($_POST['motDePasse']), PASSWORD_DEFAULT),
+                            ':idUser' => $_GET['idUser']
+                        )); //vois si pour le mdp on fait htmlspecialchars
+                    } else {
+
+
+                        //on liste les colonnes que l'on peut potentiellemnt mettre a jour car il n'est pas possible de fournir 
+                        //un nom de colonne de bdd dynamique
+                        $colonneDIsponibleTable = array("adresseMail", "identifiant");
+
+                        //on protege contre des attaques externe
+                        if (in_array(strval($clef), $colonneDIsponibleTable)) {
+                            $colonneModifier = htmlspecialchars(strval($clef));
+
+                            //ici on teste si l'identifiant ou l'adresseMail est différents des autres
+                            $sql = "Select * from utilisateur WHERE " . $colonneModifier . " = :donneUseur";
+                            $statement = self::$bdd->prepare($sql);
+                            $statement->execute(array(':donneUseur' => htmlspecialchars($value)));
+                            $resultat = $statement->fetch();
+
+                            //si on trouve le bon user alors
+                            if ($resultat) {
+                                return 4; //identifiant deja utilisé';
+                            } else {
+                                $sql = "UPDATE utilisateur SET " . $colonneModifier . " = :donneUseur WHERE idUser =:idUser";
+                                $statement = Connexion::$bdd->prepare($sql);
+                                $statement->execute(array(
+                                    ':donneUseur' => htmlspecialchars($value),
+                                    ':idUser' => htmlspecialchars($_GET['idUser'])
+                                ));
+                            }
+                        } else {
+                            return 3;
+                        }
+                    }
+                }
+
+    /*            else{
+                    return 5; // affichageAucuneInfoModifier
+                }*/
+            }
             return 2;
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
