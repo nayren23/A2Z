@@ -18,7 +18,6 @@ function tojson() {
     var data = {
         idExo: identifiantExercicesHtml, // creation tableau identifiant UNIQUE identifiant HTML
         html: exercicesHTML // tableau des exos en html
-
     };
 
 

@@ -20,23 +20,28 @@ class saveExo extends connexion{
         //decoder le json en fichier
         try {       
             // faire une boucle for qui va d'une part
+            $sql = 'INSERT into exercices (idExo, contenu)  VALUES (:idExo , :contenu)'; 
+            $statement = Connexion::$bdd->prepare($sql);
+            
             for ($i = 0; $i < count($tableauContenuExerciceDecode)-1; $i++){
                
                 
-
-                $sql = 'INSERT into exercices (idExo, contenu)  VALUES (:idExo , :contenu)'; 
-
-                $statement = Connexion::$bdd->prepare($sql);
                 $idExercice = $tableauContenuExerciceDecode['idExo'][$i] ;
                 $html =  $tableauContenuExerciceDecode['html'][$i] ;
                 
+
+
                 var_dump($tableauContenuExerciceDecode['idExo'][$i]);
                 var_dump($idExercice);
                 var_dump($html);
                 
 
-                $statement->execute(array(':idExo' => $idExercice, ':contenu' => $html)); //vois si pour le mdp on fait htmlspecialchars
-              
+                $tableauExec = array(':idExo' => $idExercice, ':contenu' => $html);
+                var_dump($tableauExec);
+
+
+                $statement->execute($tableauExec); //vois si pour le mdp on fait htmlspecialchars
+
 
 
             }
