@@ -24,6 +24,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
   <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <!-- CSS only -->
+  <link rel="stylesheet" href="Style_css/styleExo.css">
   <link rel="stylesheet" href="Style_css/pageExo.css">
   <link rel="stylesheet" href="Style_css/NavBar.css">
   <link rel="stylesheet" href="Style_css/habillage.css">

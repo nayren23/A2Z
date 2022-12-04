@@ -1,0 +1,16 @@
+.pVraiFaux {
+    margin-bottom: 0rem;
+    Float: right;
+    margin-top: revert;
+    margin-bottom: 0px;
+}
+
+.divTest {
+    border: solid black;
+}
+
+.inputVraiF {
+    height: 50px;
+    width: 470px;
+    resize: none;
+}

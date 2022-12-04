@@ -57,49 +57,19 @@ $(function() {
             accept: "#draggable",
             drop: function(event, ui) {
 
-                $(".res").append('<div class = "divTest" id="firstname"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
-
-
-                
-
-                var divT = document.getElementsByClassName('divTest');
-
-                for (var i = 0; i < divT.length; i++) {
-                    var element = divT[i];
-                    element.style.border = " solid grey";
-
-                }
-
-
-                var divT = document.getElementsByClassName('pVraiFaux');
-
-                for (var i = 0; i < divT.length; i++) {
-                    var elementp = divT[i];
-                    elementp.style.border = "solid grey";
-                    elementp.style.cssFloat = "right";
-                    elementp.style.marginTop = "revert";
-                    elementp.style.marginbottom = "0px";
-                    elementp.style.color = "green";
-
-                } 
-
-
-                var inputVraiF = document.getElementsByClassName('inputVraiF');
-
-                for (var i = 0; i < inputVraiF.length; i++) {
-                    var element2 = inputVraiF[i];
-                    element2.style.height = "50px";
-                    element2.style.width = "470px";
-                    element2.style.resize = "none";
-
-
-
-                }
-
+                $(".res").append('<div class = "divTest" > <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
             }
         });
 });
+
+
+
+
+
+
+
+
 
 
 function getPDF() {
@@ -123,5 +93,3 @@ function getPDF() {
 
     doc.save('Generated.pdf');
 }
-
-
