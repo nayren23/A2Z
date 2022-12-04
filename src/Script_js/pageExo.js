@@ -24,7 +24,7 @@ $(function() {
 
 /*
 
-$(function() {
+$(function() {  
     $(".dropp2").droppable();
     $(".dragg").draggable({
         connectToSortable: ".sortable",
@@ -57,10 +57,10 @@ $(function() {
             accept: "#draggable",
             drop: function(event, ui) {
 
-                $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
+                $(".res").append('<div class = "divTest" id="firstname"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
 
-
+                
 
                 var divT = document.getElementsByClassName('divTest');
 
@@ -71,25 +71,17 @@ $(function() {
                 }
 
 
-
-
                 var divT = document.getElementsByClassName('pVraiFaux');
 
                 for (var i = 0; i < divT.length; i++) {
                     var elementp = divT[i];
-                    elementp.style.border = " solid grey";
+                    elementp.style.border = "solid grey";
                     elementp.style.cssFloat = "right";
                     elementp.style.marginTop = "revert";
                     elementp.style.marginbottom = "0px";
-                    elementp.style.color = "black";
+                    elementp.style.color = "green";
 
-
-
-
-
-
-
-                }
+                } 
 
 
                 var inputVraiF = document.getElementsByClassName('inputVraiF');
@@ -98,7 +90,6 @@ $(function() {
                     var element2 = inputVraiF[i];
                     element2.style.height = "50px";
                     element2.style.width = "470px";
-
                     element2.style.resize = "none";
 
 
@@ -134,37 +125,3 @@ function getPDF() {
 }
 
 
-function tojson() {
-    //  This gives you an HTMLElement object
-    var element = document.getElementById('formSave');
-    //  This gives you a string representing that element and its content
-    var html = element.outerHTML;
-    //  This gives you a JSON object that you can send with jQuery.ajax's `data`
-    // option, you can rename the property to whatever you want.
-    var data = { html: html };
-
-    //  This gives you a string in JSON syntax of the object above that you can 
-    // send with XMLHttpRequest.
-    var json = JSON.stringify(data);
-
-    console.log(json);
-}
-
-
-var isCtrl = false;
-document.onkeyup = function(e) {
-    if (e.keyCode == 17) isCtrl = false;
-}
-
-document.onkeydown = function(e) {
-    if (e.keyCode == 17) isCtrl = true;
-    if (e.keyCode == 83 && isCtrl == true) {
-        //run code for CTRL+S -- ie, save!
-
-        $("#button").append(' <span class="save-icon"><span class="loader"></span><span class="loader"></span><span class="loader">');
-
-
-        console.log("Ctrl+S pressed");
-        return false;
-    }
-}

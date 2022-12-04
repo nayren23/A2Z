@@ -2,8 +2,8 @@
 
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
-require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php");
-require_once("./Common\Bibliotheque_Communes\affichageRecurrent.php"); //
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
+require_once("./Common/Bibliotheque_Communes/affichageRecurrent.php"); //
 
 class ContConnexion extends Controleurgenerique
 {

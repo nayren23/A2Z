@@ -1,6 +1,6 @@
 <?php
 
-require_once("./Common\Bibliotheque_Communes\Verification_Creation_Token.php"); //
+require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php"); //
 
 class ModeleCompte  extends Connexion
 {
@@ -116,7 +116,7 @@ class ModeleCompte  extends Connexion
 
             $nomTemporaire = $_FILES['image']['tmp_name']; /* tmp_name emplacement du fichier temporaire sur le serveur */
             $nomUnique = md5(uniqid(rand(), true)); // on lui donne  un id unique au nom fichier
-            $destination  = "upload/" . $nomUnique . $extensionFichier;
+            $destination  = "./upload/" . $nomUnique . $extensionFichier;
             $resultat = move_uploaded_file($nomTemporaire, $destination); //Déplace un fichier téléchargé ici dans upload
 
             //vérifier le type mime 
@@ -179,7 +179,7 @@ class ModeleCompte  extends Connexion
         try {
 
             // ici on UPDATE les donnee dans la BDD
-            $commande = ' UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
+            $commande = 'UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($commande);
             $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
             $result = $statement->fetch();
