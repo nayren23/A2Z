@@ -290,7 +290,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Identifiant</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="text" id="identifiant" name="identifiant"  maxlength="50" placeholder="Identifiant" class="form-control">
+                      <input type="text" id="identifiant" name="identifiant" maxlength="50" placeholder="Identifiant" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -298,7 +298,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="email" id="adresseMail" name="adresseMail"  maxlength="75" placeholder="E-mail" class="form-control">
+                      <input type="email" id="adresseMail" name="adresseMail" maxlength="75" placeholder="E-mail" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -306,7 +306,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Mot de Passe</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password" class="form-control" id="motDePasse" name="motDePasse"  maxlength="100"  placeholder="Mot de Passe">
+                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" maxlength="100" placeholder="Mot de Passe">
                       <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="Oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(motDePasse,Oeil)"> </button>
                     </div>
                   </div>
@@ -421,19 +421,9 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                     <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
                   </div>
                 </div>
-
-                <div class="col-sm-6 mb-3">
-                  <div class="form-group">
-                    <label class="required-field" for="email">Confirmation mot de passe</label>
-                    <input type="password" id="deuxiemeMdp" class="form-control" name="DeuxiemeMotDePasse" placeholder="Confirmation Mdp" required maxlength="100">
-                    <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
-                  </div>
-                </div>
-
                 <div class="col-sm-12 mb-3">
                   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </div>
-
               </div>
             </form>
           </div>
@@ -480,7 +470,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
     </div>
   <?php
   }
-  
+
   public function affichageSuppresionUseur()
   {
   ?>
@@ -555,7 +545,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
         title: "Bravo le compte admin a été créer 😀 "
       })
     </script>
-<?php
+  <?php
   }
 
   public function ErreuraffichageChangementInfoUseur()
@@ -582,7 +572,6 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
         title: "Aucune information n'a été modifié 😇"
       })
     </script>
-  <?php
+<?php
   }
-
 }
