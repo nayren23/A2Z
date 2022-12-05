@@ -1,5 +1,9 @@
 <?php
 
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+    die(affichage_erreur404("module=administration&action=connexion"));
+
 use LDAP\Result;
 
 require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
@@ -189,7 +193,7 @@ class ModeleConnexion_gestion_Useur extends ModeleCompte
                     }
                 }
 
-    /*            else{
+                /*            else{
                     return 5; // affichageAucuneInfoModifier
                 }*/
             }

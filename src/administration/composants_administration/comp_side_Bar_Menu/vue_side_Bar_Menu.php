@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+die(affichage_erreur404("module=administration&action=connexion"));
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_side_Bar_Menu extends Vue_Generique

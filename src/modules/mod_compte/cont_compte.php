@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+    die(affichage_erreur404());
+
 require_once "vue_compte.php";
 require_once "modele_compte.php";
 require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
@@ -105,6 +110,8 @@ class ContCompte extends Controleurgenerique
                 } else {
                     header('Location: ./index.php?module=compte&action=affichageInfoCompte&ErreursuppresionPhotoDeProfile=true;'); //redirection vers la page 
                 }
+            default:
+                die(affichage_erreur404());
         }
     }
 

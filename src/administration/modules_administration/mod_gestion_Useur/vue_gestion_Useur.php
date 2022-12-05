@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+  die(affichage_erreur404("module=administration&action=connexion"));
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 require_once("./Common/Classe_Generique/vue_connexion_generique.php");
@@ -430,8 +435,8 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                   </div>
                 </div>
                 <div id="deuxiemeAffichageMdp">
-                <!--Vide pour laisser la place au message d'erreur  -->
-              </div>
+                  <!--Vide pour laisser la place au message d'erreur  -->
+                </div>
                 <div class="col-sm-12 mb-3">
                   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </div>

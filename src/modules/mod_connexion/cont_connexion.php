@@ -1,5 +1,9 @@
 <?php
 
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+    die(affichage_erreur404());
+
 require_once "vue_connexion.php";
 require_once "modele_connexion.php";
 require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
@@ -28,11 +32,10 @@ class ContConnexion extends Controleurgenerique
                 $this->affichageFormulaireInscription();
                 if (isset($_GET['errorInscription'])) {  // verification pour voir si la connexion c'est mal passé
                     $this->affichageAdreMailUtiliser();
-                }
-                elseif(isset($_GET['errorMotDePasseDifferents'])) {  // verification pour voir si la connexion c'est mal passé
+                } elseif (isset($_GET['errorMotDePasseDifferents'])) {  // verification pour voir si la connexion c'est mal passé
                     affichagMotDePasseDifferent();
                 }
-            
+
                 break;
 
             case 'creationCompte':
@@ -40,10 +43,9 @@ class ContConnexion extends Controleurgenerique
 
                 if ($resultatInsereDonneInscription == 4) {
                     header('Location: ./index.php?module=connexion&action=connexion&InscriptionReussi=true'); //redirection vers la page 
-                } else if($resultatInsereDonneInscription == 3) {
+                } else if ($resultatInsereDonneInscription == 3) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorInscription=true'); //redirection vers la page 
-                }
-                else if($resultatInsereDonneInscription == 2) {
+                } else if ($resultatInsereDonneInscription == 2) {
                     header('Location: ./index.php?module=connexion&action=inscription&errorMotDePasseDifferents=true'); //redirection vers la page 
                 }
                 break;
@@ -79,6 +81,8 @@ class ContConnexion extends Controleurgenerique
                     header('Location: ./index.php?module=connexion&action=connexion&erroDeconnexion=true');
                 }
                 break;
+            default:
+                die(affichage_erreur404());
         }
     }
 
@@ -105,7 +109,7 @@ class ContConnexion extends Controleurgenerique
         $this->vue->affichageAdreMailUtiliser();  //toasts
     }
 
-    
+
     ////////////////////////////////////////////////// CONNEXION ///////////////////////////////////////////////////////
 
     public function afficherFormulaireConnexion()

@@ -2,6 +2,8 @@
 
 session_start();
 define('SITE_ROOT',__DIR__);
+define ("a2z", "rya");//définition d'une constante pour vérifier ensuite quand on accède au fichier 
+// ,qu'on soit bien passé par l'index
 
 require_once "connexion.php";
 require_once("./Common/Classe_Generique/vue_generique.php");
