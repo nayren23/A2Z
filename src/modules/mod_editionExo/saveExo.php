@@ -26,8 +26,8 @@ class saveExo extends connexion{
             for ($i = 0; $i < count($tableauContenuExerciceDecode)-1; $i++){
                
                 
-                $idExercice = $tableauContenuExerciceDecode['idExo'][$i] ;
-                $html =  $tableauContenuExerciceDecode['html'][$i] ;
+                $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$i]) ;
+                $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$i]);
                 
 
 
@@ -36,8 +36,8 @@ class saveExo extends connexion{
                 var_dump($html);
                 
 
-                $tableauExec = array(':idExo' => $idExercice, ':contenu' => $html);
-                var_dump($tableauExec);
+                $tableauExec = array(':idExo' => $idExercice, ':contenu' => json_encode($html));
+                var_dump(json_encode($html));
 
 
                 $statement->execute($tableauExec); //vois si pour le mdp on fait htmlspecialchars
