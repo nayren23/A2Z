@@ -21,6 +21,9 @@ function tojson() {
     };
 
 
+    document.querySelector(".divVraiOuFaux")
+
+
 
     //  This gives you a string in JSON syntax of the object above that you can 
     // send with XMLHttpRequest.
@@ -33,6 +36,8 @@ function tojson() {
 
     console.log(obj);
     console.log(idUniqueJSON.idExo);
+
+    console.log(document.getElementsByName("idUnique"))
 
 
 

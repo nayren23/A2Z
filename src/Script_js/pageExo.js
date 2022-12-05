@@ -22,27 +22,6 @@ $(function() {
     $("li").disableSelection();
 });
 
-/*
-
-$(function() {  
-    $(".dropp2").droppable();
-    $(".dragg").draggable({
-        connectToSortable: ".sortable",
-        helper: "clone",
-        revert: "invalid",
-
-        drag: function(event, ui) {
-
-            $(".res") += ('<div id = "divTest"> <span class="accordion-heading all" id="myElement">Mise en page test </span><p> je suis le plus BG</p>  </div>');
-
-
-        }
-
-    });
-
-});
-
-*/
 
 
 
@@ -57,14 +36,22 @@ $(function() {
             accept: "#draggable",
             drop: function(event, ui) {
 
-                $(".res").append('<div class = "divTest" > <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
+                $(".res").append('<div class ="divVraiOuFaux" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
+
+                //$("#idDivVraiFaux").text("" + CreateUUID());
+
+
 
             }
         });
 });
 
 
-
+function CreateUUID() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    )
+}
 
 
 
