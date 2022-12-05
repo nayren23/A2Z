@@ -32,8 +32,7 @@
   <link rel="stylesheet" href="Style_css/pageCompte.css">
   <link rel="stylesheet" href="Style_css/side_Bar_Menu.css">
   <link rel="stylesheet" href="Style_css/affichageListeUseur.css">
-
-
+  <link rel="stylesheet" href="Style_css/impression.css">
 
 </head>
 
