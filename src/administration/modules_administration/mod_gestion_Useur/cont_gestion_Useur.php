@@ -2,7 +2,7 @@
 
 require_once("./Common/Bibliotheque_Communes/errreur404.php");
 if (constant("a2z") != "rya")
-	die(affichage_erreur404("module=administration&action=connexion"));
+	die(affichage_erreur404_admin());
 
 require_once "vue_gestion_Useur.php";
 require_once "modele_gestion_Useur.php";
@@ -140,7 +140,7 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                 }
                 break;
                 default:
-                die(affichage_erreur404("module=administration&action=connexion"));
+                die(affichage_erreur404_admin());
         }
     }
 
