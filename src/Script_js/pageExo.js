@@ -44,6 +44,7 @@ $(function() {
 
                 var idUnique = document.getElementById('idDivVraiFaux');
                 idUnique.id = CreateUUID();
+                console.log(idUnique.id);
 
             }
         });

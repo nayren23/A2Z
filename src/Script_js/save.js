@@ -7,7 +7,11 @@ function tojson() {
 
     //tableau des id du tableau HTMl
     let identifiantExercicesHtml = [];
-    Array.from(contentElements).forEach(element => identifiantExercicesHtml.push(parseInt(Date.now() * Math.random()))); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+
+
+    const div = document.querySelector(".divVraiOuFaux")
+
+    Array.from(contentElements).forEach(element => identifiantExercicesHtml.push(div.id)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
 
     //  This gives you a string representing that element and its content
@@ -33,9 +37,6 @@ function tojson() {
 
     const idUniqueJSON = JSON.parse(json);
 
-
-    console.log(obj);
-    console.log(idUniqueJSON.idExo);
 
 
 
