@@ -37,7 +37,7 @@ function tojson() {
     console.log(obj);
     console.log(idUniqueJSON.idExo);
 
-    console.log(document.getElementsByName("idUnique"))
+
 
 
 

@@ -36,11 +36,14 @@ $(function() {
             accept: "#draggable",
             drop: function(event, ui) {
 
+
                 $(".res").append('<div class ="divVraiOuFaux" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
-                //$("#idDivVraiFaux").text("" + CreateUUID());
 
 
+
+                var idUnique = document.getElementById('idDivVraiFaux');
+                idUnique.id = CreateUUID();
 
             }
         });
