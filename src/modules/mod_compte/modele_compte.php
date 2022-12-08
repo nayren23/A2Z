@@ -164,7 +164,7 @@ class ModeleCompte  extends Connexion
         try {
 
             // ici on UPDATE les donnee dans la BDD
-            $commande = ' UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
+            $commande = 'UPDATE utilisateur SET cheminImage ="' . $image . '" WHERE  identifiant=:identifiant';
             $statement = Connexion::$bdd->prepare($commande);
             $statement->execute(array(':identifiant' =>  $_SESSION['identifiant']));
             $result = $statement->fetch();
