@@ -24,9 +24,11 @@ class saveExo extends connexion{
             $statement = Connexion::$bdd->prepare($sql);
             
             var_dump($tableauContenuExerciceDecode);
-            for ($i = 0; $i < count($tableauContenuExerciceDecode); $i++){
+            var_dump(count($tableauContenuExerciceDecode['idExo']));
+            for ($i = 0; $i < count($tableauContenuExerciceDecode['idExo']); $i++){
                
                
+
 
                 $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$i]) ;
                 $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$i]);
