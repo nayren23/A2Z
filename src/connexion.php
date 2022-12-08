@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Connexion{
 
     protected static $bdd;
@@ -15,7 +17,7 @@ class Connexion{
         //self :: $bdd = new PDO('mysql:host=sunixes.com;dbname=A2Z', 'A2Z', '5Zapo5DMEW3m&UgZB%!qAhEr*^5Z7oF&^c4!5#BHUXU^Uy$i86sk38yp84zQ%#gE');  
                 
         //pour yassine le BG NE PAS SUPPRIMER ET UTILISER L AUTRE BDD
-          self::$bdd = new PDO('mysql:host=localhost;dbname=dutinfopw201620', 'yassine', 'yassine');
+        self::$bdd = new PDO('mysql:host=localhost;dbname=dutinfopw201620', 'yassine', 'yassine');
     }
 }
 

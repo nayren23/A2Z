@@ -1,5 +1,9 @@
 <?php
 
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+    die(affichage_erreur404());
+
 require_once "./modules/mod_editionExo/vue_editionExo.php";
 require_once "./modules/mod_editionExo/modele_editionExo.php";
 
@@ -12,7 +16,7 @@ class ContEditionExo extends Controleurgenerique
         $this->action = (isset($_GET['action']) ? $_GET['action'] : 'editionExo');
     }
 
- 
+
 
 
     //execution qui est appelle dans le mod_connexion
@@ -23,17 +27,23 @@ class ContEditionExo extends Controleurgenerique
                 ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
             case 'editionExo':
                 $this->affichagePageEditionExo();
+                if (isset($_GET['connexion'])) {
+                    $this->affichageConnexionReussie();
+                }
                 break;
-
-           
+            default:
+                die(affichage_erreur404());
         }
     }
 
 
-    public function affichagePageEditionExo(){
+    public function affichagePageEditionExo()
+    {
         $this->vue->pageExoEdition();
+    }
 
-    } 
-    
-    
+    public function affichageConnexionReussie()
+    {
+        $this->vue->affichageConnexionReussie();
+    }
 }

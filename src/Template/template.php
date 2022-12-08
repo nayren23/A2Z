@@ -1,3 +1,9 @@
+<?php
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+?>
+
 <html lang="fr">
 <!DOCTYPE html>
 
@@ -24,6 +30,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.min.js"></script>
   <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <!-- CSS only -->
+  <link rel="stylesheet" href="Style_css/styleExo.css">
   <link rel="stylesheet" href="Style_css/pageExo.css">
   <link rel="stylesheet" href="Style_css/NavBar.css">
   <link rel="stylesheet" href="Style_css/habillage.css">
@@ -32,9 +39,7 @@
   <link rel="stylesheet" href="Style_css/pageCompte.css">
   <link rel="stylesheet" href="Style_css/side_Bar_Menu.css">
   <link rel="stylesheet" href="Style_css/affichageListeUseur.css">
-
-
-
+  <link rel="stylesheet" href="Style_css/impression.css">
 </head>
 
 
@@ -64,10 +69,12 @@
 
 <!-- Script only -->
 <script src="Script_js/pageExo.js"></script>
+<script src="Script_js/save.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="Script_js/outilsMotDePasse.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="Script_js/outils.js"></script>
+
 
 
 </html>

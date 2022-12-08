@@ -1,5 +1,12 @@
 <?php
-class VueEdition extends Vue_Generique
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+    
+require_once("./Common/Classe_Generique/vue_connexion_generique.php");
+
+class VueEdition extends Vue_connexion_generique
 { //fonction pour l'affichage de la nav bar
 
     public function  __construct()
@@ -59,8 +66,7 @@ class VueEdition extends Vue_Generique
 
                                     <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
 
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                            
 
                                 </div>
                             </div>
@@ -72,7 +78,6 @@ class VueEdition extends Vue_Generique
                                 </label>
                                 <div class="content">
                                     <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
@@ -84,7 +89,6 @@ class VueEdition extends Vue_Generique
                                 </label>
                                 <div class="content">
                                 <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
@@ -95,7 +99,6 @@ class VueEdition extends Vue_Generique
                                 </label>
                                 <div class="content">
                                 <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
                                 </div>
                             </div>
                             <div class="question-wrap">
