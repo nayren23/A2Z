@@ -40,8 +40,6 @@ $(function() {
                 $(".res").append('<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
 
-
-
                 var idUnique = document.getElementById('idDivVraiFaux');
                 idUnique.id = CreateUUID();
                 console.log(idUnique.id);
