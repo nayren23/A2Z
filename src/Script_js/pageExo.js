@@ -37,7 +37,7 @@ $(function() {
             drop: function(event, ui) {
 
 
-                $(".res").append('<div class ="divVraiOuFaux" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
+                $(".res").append('<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
 
 
 

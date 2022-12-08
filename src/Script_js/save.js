@@ -7,11 +7,8 @@ function tojson() {
 
     //tableau des id du tableau HTMl
     let identifiantExercicesHtml = [];
-
-
-    const div = document.querySelector(".divVraiOuFaux")
-
-    Array.from(contentElements).forEach(element => identifiantExercicesHtml.push(div.id)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+    const divExercice = document.querySelectorAll(".classeDeBase") // recupere tout les classes qui possede classDeBase 
+    Array.from(divExercice).forEach(element => identifiantExercicesHtml.push(element.id)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
 
     //  This gives you a string representing that element and its content

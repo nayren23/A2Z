@@ -23,9 +23,11 @@ class saveExo extends connexion{
             $sql = 'INSERT into exercices (idExo, contenu)  VALUES (:idExo , :contenu)'; 
             $statement = Connexion::$bdd->prepare($sql);
             
-            for ($i = 0; $i < count($tableauContenuExerciceDecode)-1; $i++){
+            var_dump($tableauContenuExerciceDecode);
+            for ($i = 0; $i < count($tableauContenuExerciceDecode); $i++){
                
-                
+               
+
                 $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$i]) ;
                 $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$i]);
                 
