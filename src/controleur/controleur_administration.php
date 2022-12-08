@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+    die(affichage_erreur404_admin());
+
 class Controleur_administration
 {
     private $module;
@@ -29,7 +34,7 @@ class Controleur_administration
                 break;
 
             default:
-                die("Module inconnu"); //on peut changer l'affichage ici
+                die(affichage_erreur404_admin());
         }
         if (isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
             $this->resultat = $this->module->getControleur()->getVueControleur()->affichageTampon(); //affichage du tampon

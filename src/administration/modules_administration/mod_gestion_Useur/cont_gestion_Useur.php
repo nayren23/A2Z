@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404_admin());
+
 require_once "vue_gestion_Useur.php";
 require_once "modele_gestion_Useur.php";
 require_once("Common/Bibliotheque_Communes/Verification_Creation_Token.php");
@@ -134,8 +139,8 @@ class ContConnexion_gestion_Useur extends Controleurgenerique
                     header('Location: ./index.php?module=gestionUseur&action=gestionUseur&affichageTokenExpire=true;');
                 }
                 break;
-            default:
-                die("Action inexistantes");
+                default:
+                die(affichage_erreur404_admin());
         }
     }
 

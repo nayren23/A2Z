@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+
 //fichier APPELLER DANS cont_connexio, modele_connexion
 
     //fonction qui creer un token unique pour un formulaire par ex

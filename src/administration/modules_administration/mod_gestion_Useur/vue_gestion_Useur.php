@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+  die(affichage_erreur404_admin());
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 require_once("./Common/Classe_Generique/vue_connexion_generique.php");
@@ -403,14 +408,14 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                 <div class="col-sm-6 mb-3">
                   <div class="form-group">
                     <label class="required-field" for="firstName">Identifiant</label>
-                    <input type="text" class="form-control" id="identifiant" name="identifiant" placeholder="Identifiant">
+                    <input type="text" class="form-control" id="identifiant" name="identifiant" placeholder="Identifiant" required>
                   </div>
                 </div>
 
                 <div class="col-sm-6 mb-3">
                   <div class="form-group">
                     <label for="lastName">E-mail</label>
-                    <input type="email" class="form-control" id="adresseMail" name="adresseMail" placeholder="E-mail">
+                    <input type="email" class="form-control" id="adresseMail" name="adresseMail" placeholder="E-mail" required>
                   </div>
                 </div>
 
@@ -420,6 +425,17 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                     <input type="password" id="premierMdp" class="form-control" name="motDePasse" placeholder="Mot de Passe" required maxlength="100">
                     <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(premierMdp,oeil)"> </button>
                   </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                  <div class="form-group">
+                    <label class="required-field" for="email">Confirmation mot de passe</label>
+                    <input type="password" id="deuxiemeMdp" class="form-control" name="DeuxiemeMotDePasse" placeholder="Confirmation Mdp" required maxlength="100" onKeyUp="checkMdp()">
+                    <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
+                  </div>
+                </div>
+                <div id="deuxiemeAffichageMdp">
+                  <!--Vide pour laisser la place au message d'erreur  -->
                 </div>
                 <div class="col-sm-12 mb-3">
                   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
