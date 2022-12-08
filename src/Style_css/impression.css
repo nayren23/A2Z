@@ -1,0 +1,22 @@
+@media print {
+
+    nav, footer,#modifieurs,.flex-col-md-6 {
+        display: none;
+    }
+    :link {
+        display: none;
+    }
+
+    body {
+        margin: 0;
+      }
+  
+
+    
+    @page {
+      size: auto;  
+      margin: 0; 
+      padding: 0;
+    }
+    
+}

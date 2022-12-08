@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+die(affichage_erreur404_admin());
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_side_Bar_Menu extends Vue_Generique
@@ -9,7 +14,7 @@ class Vue_side_Bar_Menu extends Vue_Generique
         parent::__construct(); // comme un super
     }
     //fonction pour l'affichage du Footer
-    function side_Bar_Menu()
+    function side_Bar_Menu($idUseur)
     {
 ?>
 
@@ -25,7 +30,7 @@ class Vue_side_Bar_Menu extends Vue_Generique
                     </a>
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
+                    <a href="index.php?module=gestionUseur&action=creationAdmin">
                         <i class="fa fa-list fa-2x"></i>
                         <span class="nav-text">
                             Gestion administateur
@@ -34,7 +39,7 @@ class Vue_side_Bar_Menu extends Vue_Generique
 
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="index.php?module=gestionUseur&action=affichageInfoUseur&idUseur=<?php echo $idUseur['idUser'] ?>">
                         <i class="fa fa-info fa-2x"></i>
                         <span class="nav-text">
                             Profil

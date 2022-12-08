@@ -1,3 +1,9 @@
+<?php
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+?>
+
 <html lang="fr">
 <!DOCTYPE html>
 
@@ -33,9 +39,7 @@
   <link rel="stylesheet" href="Style_css/pageCompte.css">
   <link rel="stylesheet" href="Style_css/side_Bar_Menu.css">
   <link rel="stylesheet" href="Style_css/affichageListeUseur.css">
-
-
-
+  <link rel="stylesheet" href="Style_css/impression.css">
 </head>
 
 

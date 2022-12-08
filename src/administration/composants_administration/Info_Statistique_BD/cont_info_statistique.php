@@ -1,5 +1,9 @@
 <?php
 
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404_admin());
+
 require_once "vue_info_statistique.php";
 require_once "modele_info_statistique.php";
 class Cont_info_statistique extends Controleurgenerique
