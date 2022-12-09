@@ -66,8 +66,7 @@ class VueEdition extends Vue_connexion_generique
 
                                     <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
 
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo1 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
+                            
 
                                 </div>
                             </div>
@@ -79,7 +78,6 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
                                     <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
@@ -91,7 +89,6 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
                                 <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="" id="" cols="30" rows="1">test</textarea> </li>
 
                                 </div>
                             </div>
@@ -102,7 +99,6 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
                                 <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-                                    <li class="draggable" class="ui-state-highlight listeDeroulante">Exo2 <textarea name="Ex022" id="" cols="30" rows="1">test</textarea> </li>
                                 </div>
                             </div>
                             <div class="question-wrap">

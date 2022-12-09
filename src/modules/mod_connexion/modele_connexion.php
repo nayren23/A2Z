@@ -11,7 +11,7 @@ class ModeleConnexion extends Modele_Connexion_Generique
 {
 
     public function insereInscription()
-    {
+    {   
         if (!isset($_POST['token']) || !verification_token())
             return 1;
 
