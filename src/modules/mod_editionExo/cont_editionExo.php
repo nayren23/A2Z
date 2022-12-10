@@ -27,7 +27,6 @@ class ContEditionExo extends Controleurgenerique
                 ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
             case 'editionExo':
                 $this->affichagePageEditionExo();
-                var_dump($_GET['action']);
                 if (isset($_GET['connexion'])) {
                     $this->affichageConnexionReussie();
                 }
