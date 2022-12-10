@@ -15,10 +15,12 @@ function tojson() {
     //var html = element.outerHTML;
     //  This gives you a JSON object that you can send with jQuery.ajax's `data`
     // option, you can rename the property to whatever you want.
+    var deco_var = decodeURI($_GET('idFiche'));
 
     var data = {
         idExo: identifiantExercicesHtml, // creation tableau identifiant UNIQUE identifiant HTML
-        html: exercicesHTML // tableau des exos en html
+        html: exercicesHTML, // tableau des exos en html
+        idFiche: deco_var
     };
 
 
@@ -28,18 +30,14 @@ function tojson() {
 
     //  This gives you a string in JSON syntax of the object above that you can 
     // send with XMLHttpRequest.
+
     const json = JSON.stringify(data); // transforme un objet JavaScript en string JSON.
     const obj = JSON.parse(json); // transforme un string JSON en objet JavaScript.
-
-
     const idUniqueJSON = JSON.parse(json);
 
 
 
-
-
-
-
+    console.log(deco_var);
 
     $.ajax({
         method: "POST",
@@ -48,4 +46,22 @@ function tojson() {
         dataType: "json"
     })
 
+}
+
+
+
+
+function $_GET(param) {
+    var vars = {};
+    window.location.href.replace(location.hash, '').replace(
+        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+        function(m, key, value) { // callback
+            vars[key] = value !== undefined ? value : '';
+        }
+    );
+
+    if (param) {
+        return vars[param] ? vars[param] : null;
+    }
+    return vars;
 }
