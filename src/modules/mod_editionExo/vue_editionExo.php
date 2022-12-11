@@ -64,10 +64,7 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
 
-                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
-
-
-
+                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiFaux">Vrai ou Faux ?</li>
                                 </div>
                             </div>
 
@@ -77,7 +74,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Conscience phonologique</span>
                                 </label>
                                 <div class="content">
-                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable exoAutre">Vrai ou Faux ?</li>
 
                                 </div>
                             </div>
@@ -88,7 +85,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Décodage</span>
                                 </label>
                                 <div class="content">
-                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable">Vrai ou Faux ?</li>
 
                                 </div>
                             </div>
@@ -98,7 +95,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Encodage</span>
                                 </label>
                                 <div class="content">
-                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable">Vrai ou Faux ?</li>
                                 </div>
                             </div>
                             <div class="question-wrap">
@@ -107,7 +104,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Copie</span>
                                 </label>
                                 <div class="content">
-                                    <li id="draggable" class="ui-state-highlight listeDeroulante">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable">Vrai ou Faux ?</li>
                                 </div>
                             </div>
 
@@ -166,6 +163,7 @@ class VueEdition extends Vue_connexion_generique
 
                 <!-- Script pour insertion des exercices au chargement de la page -->
                 <script src="Script_js\recuperationExo.js"></script>
+                <script src="Script_js/blocageToucheEntree.js"></script>
                 <script>
                     const tableauExo = <?php echo  json_encode($tableauExercice)  ?>; //ici on encode le tableau pour l'envoyer à JS
                     let exercice

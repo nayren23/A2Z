@@ -2,7 +2,12 @@ function tojson() {
     //  This gives you an HTMLElement object
     var contentElements = document.querySelector('#formSave page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
-    Array.from(contentElements).forEach(element => exercicesHTML.push(element.outerHTML)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+    Array.from(contentElements).forEach(element => {
+        const texte = $(`#${element.id} input`)[0].value
+        $(`#${element.id} input`).attr("value", texte)
+        console.log(texte)
+        exercicesHTML.push(element.outerHTML)
+    }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
 
     //tableau des id du tableau HTMl
@@ -50,7 +55,7 @@ function tojson() {
 
 
 
-
+//recuperation idFiche depuis l'url
 function $_GET(param) {
     var vars = {};
     window.location.href.replace(location.hash, '').replace(
