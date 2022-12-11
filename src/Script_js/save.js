@@ -3,10 +3,9 @@ function tojson() {
     var contentElements = document.querySelector('#formSave page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
     Array.from(contentElements).forEach(element => {
-        //on est dans les enfants de la div actuelle on copie le contenu entrer par l'useur dans le textare
-        const enfants = Array.from(element.children)
-        const texte = enfants.find(child => child.tagName === "LT-MIRROR").textContent
-        enfants.find(child => child.tagName === "TEXTAREA").textContent = texte
+        const texte = $(`#${element.id} input`)[0].value
+        $(`#${element.id} input`).attr("value", texte)
+        console.log(texte)
         exercicesHTML.push(element.outerHTML)
     }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 

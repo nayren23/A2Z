@@ -34,18 +34,18 @@ $(function () {
         drop: function (event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
             const classes = ui.draggable["0"].className
             let htmlNouvelExercice
+            const uuid = CreateUUID()
             if(classes.includes("exoVraiFaux")){
-                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
             }
 
             else if(classes.includes("exoAutre")){
-                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">-autre type/p> </div>'
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">-autre type/p> </div>'
             }
             
-            console.log(ui.draggable["0"].className)
             $(".res").append(htmlNouvelExercice);
             var idUnique = document.getElementById('idDivVraiFaux');
-            idUnique.id = CreateUUID();
+            idUnique.id = uuid
         }
     });
 });

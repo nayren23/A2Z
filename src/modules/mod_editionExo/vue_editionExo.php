@@ -163,6 +163,7 @@ class VueEdition extends Vue_connexion_generique
 
                 <!-- Script pour insertion des exercices au chargement de la page -->
                 <script src="Script_js\recuperationExo.js"></script>
+                <script src="Script_js/blocageToucheEntree.js"></script>
                 <script>
                     const tableauExo = <?php echo  json_encode($tableauExercice)  ?>; //ici on encode le tableau pour l'envoyer à JS
                     let exercice
