@@ -26,10 +26,9 @@ function trimDoubleQuotes(s) { //viré les doubles quotes au début et à la fin
 
 /**
  * Insert l'exercice en question dans la page d'édition
- * @param {string} exercice 
+ * @param {string} htmlExercice 
  */
-function insertionExercies(exercice) {
-
+function insertionExercies(htmlExercice) {
     let page = document.getElementById('page');
-    page.insertAdjacentHTML('afterbegin', trimDoubleQuotes(exercice));//insert au début de la page
+    $(page).append(trimDoubleQuotes(htmlExercice))
 }

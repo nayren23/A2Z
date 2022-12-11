@@ -2,7 +2,13 @@ function tojson() {
     //  This gives you an HTMLElement object
     var contentElements = document.querySelector('#formSave page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
-    Array.from(contentElements).forEach(element => exercicesHTML.push(element.outerHTML)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+    Array.from(contentElements).forEach(element => {
+        //on est dans les enfants de la div actuelle on copie le contenu entrer par l'useur dans le textare
+        const enfants = Array.from(element.children)
+        const texte = enfants.find(child => child.tagName === "LT-MIRROR").textContent
+        enfants.find(child => child.tagName === "TEXTAREA").textContent = texte
+        exercicesHTML.push(element.outerHTML)
+    }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
 
     //tableau des id du tableau HTMl
@@ -50,7 +56,7 @@ function tojson() {
 
 
 
-
+//recuperation idFiche depuis l'url
 function $_GET(param) {
     var vars = {};
     window.location.href.replace(location.hash, '').replace(
