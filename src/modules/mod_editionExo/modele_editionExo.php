@@ -10,12 +10,13 @@ class ModeleEditionExo  extends Connexion
 
 
 
-	public function insertionExoDansPage()
+	public function insertionExoDansPage($result)
 	{
 ?>
 		<script src="Script_js/recuperationExo.js"></script>
 		<script type="text/javascript">
-			insertionExoDansPage();
+			const exercices = <?php echo json_encode($result); ?>;
+			insertionExoDansPage(exercices);
 		</script>
 
 <?php
@@ -33,13 +34,11 @@ class ModeleEditionExo  extends Connexion
 
 		$statement1->execute(array(':idFiche' => $idFiche));
 		$result = $statement1->fetchAll();
-
-		if(!empty($result)){
+	/*	if(!empty($result)){
 			$this->insertionExoDansPage($result);
-			var_dump($result);
 		}
-		
-		
+		*/
+		return $result;
 		
 	}
 }

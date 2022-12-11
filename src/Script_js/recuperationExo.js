@@ -1,13 +1,13 @@
-function insertionExoDansPage(tableau) {
+window.addEventListener("load", function() {
 
+    console.log(document.querySelector("script[tableauExo]"))
+    const tableauExo = document.querySelector("script[tableauExo]").getAttribute("tableauExo")
+    console.log(tableauExo)
 
-    for (let i = 0; i < 9; i++) {
+    /*for (let i = 0; i < tableauExo.length; i++) {
 
-        var page = document.getElementById('page');
-        page.insertAdjacentHTML('afterbegin', 'contenu div pas JSON');
+        const page = document.getElementById('page');
+        page.insertAdjacentHTML('afterbegin', tableauExo[i]);
 
-    }
-
-
-
-}
+    }*/
+})
