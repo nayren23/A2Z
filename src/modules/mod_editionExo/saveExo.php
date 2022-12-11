@@ -14,7 +14,7 @@ class saveExo extends connexion
     }
 
 
-    public function insereInscription()
+    public function insererDonneesExercices()
     {
         $exerciceJSON = $_POST['stringRecu']; // tableau en JSON contenant tout (id et le code html)
         //var_dump($exerciceJSON);
@@ -38,13 +38,13 @@ class saveExo extends connexion
             $statement = Connexion::$bdd->prepare($sql);
             $statement1 = Connexion::$bdd->prepare($sql1);
             $statement2 = Connexion::$bdd->prepare($sql2);
-            
 
-            for ($i = 0; $i < count($tableauContenuExerciceDecode['idExo']); $i++) {//verification de tout les exos
+
+            for ($i = 0; $i < count($tableauContenuExerciceDecode['idExo']); $i++) { //verification de tout les exos
 
                 //variable de recuperation de données
-                $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$i]);//recuperation de l'id de l'exo
-                $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$i]);// recuperation de l'html
+                $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$i]); //recuperation de l'id de l'exo
+                $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$i]); // recuperation de l'html
 
 
                 //verification (select)
@@ -55,20 +55,27 @@ class saveExo extends connexion
                 if ($result) { // si l'exo existe alors on le modifie (update)
                     $tableauExec = array(':contenu' => json_encode($html), ':idExo' => $idExercice);
                     $statement2->execute($tableauExec);
-
-
+                    
                 } else { // sinon on le crée (insert)
                     $tableauExec = array(':idExo' => $idExercice, ':contenu' => json_encode($html), ':idFiche' => $idFiche);
                     $statement->execute($tableauExec); //vois si pour le mdp on fait htmlspecialchars
-
+                    
                 }
             }
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }
     }
+
+
 }
 
 
+
+
+
 $exoSauvegarder = new saveExo();
-$exoSauvegarder->insereInscription();
+$exoSauvegarder->insererDonneesExercices();
+
+
+?>
