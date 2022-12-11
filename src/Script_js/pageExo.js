@@ -1,6 +1,6 @@
 /*changement de la police*/
 function changeAll(font) {
-    var elements = document.getElementsByClassName('all');
+    var elements = document.getElementsByClassName('classeDeBase');
 
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
@@ -9,43 +9,45 @@ function changeAll(font) {
     }
 }
 
-
-$(function() {
+$(function () {
+    // page
     $(".sortable").sortable({
         revert: true
     });
-    $(".draggable").draggable({
+    /*$(".draggable").draggable({
         connectToSortable: ".sortable",
         helper: "clone",
         revert: "invalid"
-    });
+    });*/
+    // empêche la selection du texte des exos qu'on peut drag n drop sur la page
     $("li").disableSelection();
 });
 
-
-
-
-
-
-$(function() {
-    $("#draggable, #draggable-nonvalid").draggable({
-            helper: "clone"
-        }),
-        $("#page").droppable({
-
-            accept: "#draggable",
-            drop: function(event, ui) {
-
-
-                $(".res").append('<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
-
-
-                var idUnique = document.getElementById('idDivVraiFaux');
-                idUnique.id = CreateUUID();
-                console.log(idUnique.id);
-
+$(function () {
+    // rend les exos draggable
+    $(".draggable, #draggable-nonvalid").draggable({
+        helper: "clone"
+    })
+    // rend la page droppable et definit l'event listener du drop
+    $("#page").droppable({
+        accept: ".draggable",
+        drop: function (event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
+            const classes = ui.draggable["0"].className
+            let htmlNouvelExercice
+            const uuid = CreateUUID()
+            if(classes.includes("exoVraiFaux")){
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
             }
-        });
+            
+            else if(classes.includes("exoAutre")){
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">-autre type</p> </div>'
+            }
+            
+            $(".res").append(htmlNouvelExercice);
+            var idUnique = document.getElementById('idDivVraiFaux');
+            idUnique.id = uuid
+        }
+    });
 });
 
 
@@ -56,17 +58,12 @@ function CreateUUID() {
 }
 
 
-
-
-
-
-
 function getPDF() {
     var doc = new jsPDF();
 
     // We'll make our own renderer to skip this editor
     var specialElementHandlers = {
-        '#getPDF': function(element, renderer) {
+        '#getPDF': function (element, renderer) {
             return true;
         },
 
