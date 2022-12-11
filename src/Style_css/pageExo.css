@@ -77,9 +77,6 @@ body {
 
 /*fin Accordeon*/
 
-#divpage {
-    border: #0098db 1px solid;
-}
 
 .content {
     box-sizing: border-box;
@@ -229,9 +226,7 @@ input:checked~.questions {
     margin: 10px 10px 10px 0;
 }
 
-.sortable {
-    border: 5px solid green;
-}
+
 
 .dropp2 {
     width: 200px;
@@ -250,7 +245,7 @@ page {
     margin: 0 auto;
     margin-bottom: 0.5cm;
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
-    border: 5px solid pink;
+    border:  solid black;
 }
 
 page[size="A4"] {
