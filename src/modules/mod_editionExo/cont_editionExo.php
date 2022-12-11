@@ -14,7 +14,6 @@ class ContEditionExo extends Controleurgenerique
         $this->vue = new VueEdition;
         $this->modele = new ModeleEditionExo;
         $this->action = (isset($_GET['action']) ? $_GET['action'] : 'editionExo');
-        
     }
 
 

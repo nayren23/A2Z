@@ -8,39 +8,20 @@ if (constant("a2z") != "rya")
 class ModeleEditionExo  extends Connexion
 {
 
-
-
-	public function insertionExoDansPage($result)
-	{
-?>
-		<script src="Script_js/recuperationExo.js"></script>
-		<script type="text/javascript">
-			const exercices = <?php echo json_encode($result); ?>;
-			insertionExoDansPage(exercices);
-		</script>
-
-<?php
-	}
-
+	/**
+	 * fonction qui récupere l'ensembles des exercices d'une fiche
+	 */
 	public function recupererExercices()
 	{
-
-
 		$idFiche = htmlspecialchars($_GET['idFiche']);
-
 
 		$sql1 = 'Select contenu from exercices where idFiche = :idFiche'; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
 		$statement1 = Connexion::$bdd->prepare($sql1);
 
 		$statement1->execute(array(':idFiche' => $idFiche));
-		$result = $statement1->fetchAll();
-	/*	if(!empty($result)){
-			$this->insertionExoDansPage($result);
-		}
-		*/
+		$result = $statement1->fetchAll();//on  retourne tous les exos
+
 		return $result;
-		
 	}
 }
-
 ?>

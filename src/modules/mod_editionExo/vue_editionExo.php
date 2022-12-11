@@ -164,43 +164,20 @@ class VueEdition extends Vue_connexion_generique
 
                 </div>
 
+                <!-- Script pour insertion des exercices au chargement de la page -->
+                <script src="Script_js\recuperationExo.js"></script>
                 <script>
-                    const tableauExo = <?php echo  json_encode($tableauExercice, JSON_HEX_QUOT)  ?>;
-                    let page
+                    const tableauExo = <?php echo  json_encode($tableauExercice)  ?>; //ici on encode le tableau pour l'envoyer à JS
                     let exercice
                     <?php
                     for ($i = 0; $i < count($tableauExercice); $i++) {
-                        $exercice = htmlspecialchars_decode($tableauExercice[$i]['contenu'])
+                        $exercice = htmlspecialchars_decode($tableauExercice[$i]['contenu']); //on decode le htmlspecialchars pour ré avoir les chevrons
                     ?>
-                        page = document.getElementById('page');
                         exercice = '<?php echo $exercice ?>'
-                        page.insertAdjacentHTML('afterbegin', trimDoubleQuotes(exercice) );
+                        insertionExercies(exercice)
                     <?php
                     } ?>
-
-                    //fonction pour enlver les " au début et à la fin
-                    function trimDoubleQuotes(s) { //viré les doubles quotes au début et à la fin
-                        if (s === null || s === undefined || !s) {
-                            return s
-                        }
-                        let caractereActuelle = '"'; //pour quil rentre dans le while
-                        while (caractereActuelle === '"' && s.length > 0) {
-                            caractereActuelle = s[0]
-                            if (caractereActuelle === '"') {
-                                s = s.substring(1, s.length)
-                            }
-                        }
-                        caractereActuelle = '"'
-                        while (caractereActuelle === '"' && s.length > 0) {
-                            caractereActuelle = s[s.length - 1]
-                            if (caractereActuelle === '"') {
-                                s = s.substring(0, s.length - 1)
-                            }
-                        }
-                        return s
-                    }
                 </script>
-
 
             </div><!-- flex-row-->
         </div><!-- flex-container-->
