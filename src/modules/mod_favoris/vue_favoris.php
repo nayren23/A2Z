@@ -20,10 +20,11 @@ class VueFavoris extends Vue_Generique {
 
   public function boutonCreerDossier() {
 ?>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./Script_js/script_dossier.js">
 </script>
    <button type="button" onClick="popUpNomDuDossier(<?php echo $_GET['location']?>)" name="CreerDossier" > Créer un dossier </button>
+   <button onclick="window.location.href = 'https://fr.w3docs.com/';">Cliquez Ici</button>
+
 <?php
   
   }
