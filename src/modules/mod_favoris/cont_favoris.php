@@ -20,6 +20,7 @@ class ContFavoris extends Controleurgenerique
         $this->modele = new ModeleFavoris;
         $this->afficherBoutonCreerDossier();
         $this->afficheCarouselFiches();
+        $this->afficherIconeDossier();
 
         
 
@@ -44,7 +45,7 @@ class ContFavoris extends Controleurgenerique
     }
 
     public function afficherIconeDossier(){
-        $this->modele->recupereDossierSelonLocation("vue>->affichageDossier");
+        $this->vue->affichageDossier();
            
     }
 }
