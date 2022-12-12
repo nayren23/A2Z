@@ -21,9 +21,7 @@ class Vue_footer extends Vue_Generique
             <div class="conteneurFooter">
                 <div class="footer-left">
                     <p class="footer-links balise_p_generique">
-                        <a class="link-1" href="index.php?module=editionExo">Accueil</a> <!-- Changer ici l'action une fois page acceuil finie-->
-
-                        <a href="index.php?module=favoris">Mes Fiches</a>
+                        <a class="link-1" href="index.php?module=favoris&location=1">Accueil</a> <!-- Changer ici l'action une fois page acceuil finie-->
 
                         <a href="index.php?module=principale">Fiches publiques</a>
 
