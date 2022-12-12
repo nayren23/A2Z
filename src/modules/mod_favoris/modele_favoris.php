@@ -5,11 +5,13 @@ if (constant("a2z") != "rya")
 	die(affichage_erreur404());
 
 
-class ModeleFavoris  {
+class ModeleFavoris extends Connexion {
 
     public function __construct () {
         
     }
+
+   
 
 }
 ?>
