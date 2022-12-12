@@ -43,6 +43,19 @@ class VueEdition extends Vue_connexion_generique
                             <span class="accordion-heading" id="myElement">Mise en page</span>
                         </label>
 
+
+                        <div class="questions">
+
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-6" name="question">
+                                <label class="labelEditionExo" for="question-6">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Consigne</span>
+                                </label>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable consigne">Consigne</li>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -152,11 +165,11 @@ class VueEdition extends Vue_connexion_generique
 
                     </div>
 
-                    
-                        <page size="A4" id="page" class="sortable res zima">
-                        </page>
 
-                   
+                    <page size="A4" id="page" class="sortable res zima">
+                    </page>
+
+
 
 
                 </div>

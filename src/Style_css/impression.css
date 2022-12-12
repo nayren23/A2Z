@@ -1,22 +1,28 @@
 @media print {
-
-    nav, footer,#modifieurs,.flex-col-md-6 {
+    nav,
+    footer,
+    #modifieurs,
+    .flex-col-md-6,
+    button {
         display: none;
     }
-    :link {
+     :link {
         display: none;
     }
-
     body {
         margin: 0;
-      }
-  
-
-    
-    @page {
-      size: auto;  
-      margin: 0; 
-      padding: 0;
     }
-    
+    .divVraiOuFaux {
+        border: none;
+    }
+    .inputVraiF {
+        border: none;
+    }
+    #page {
+        border: none;
+    }
+    @page {
+        margin: 0;
+        padding: 0;
+    }
 }

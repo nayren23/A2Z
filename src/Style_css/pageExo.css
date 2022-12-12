@@ -78,6 +78,9 @@ body {
 
 /*fin Accordeon*/
 
+
+/*Questions dans accordeons*/
+
 .content {
     box-sizing: border-box;
     font-size: 0.9em;
@@ -141,15 +144,6 @@ label .accordion-heading {
     margin: 0;
 }
 
-
-/********************/
-
-
-/* pseudos elements */
-
-
-/**********************/
-
 .content:before {
     content: '';
     width: 10px;
@@ -176,6 +170,9 @@ label .accordion-heading {
 }
 
 
+/*Questions dans accordeons*/
+
+
 /********************/
 
 
@@ -184,31 +181,15 @@ label .accordion-heading {
 
 /**********************/
 
-input:checked~.content {
-    max-height: 400px;
-    transition: max-height, 1s;
-}
 
-input:checked~label .cross-box {
-    background-color: #93c04d;
-}
-
-input:checked~label .cross:before {
-    transform: rotate(180deg);
-}
-
-input:checked~label .cross:after {
-    transform: rotate(0deg);
-}
-
-input:checked~.questions {
-    max-height: 600px;
-    transition: 1s;
-}
+/*input*/
 
 .input {
     margin-top: 5;
 }
+
+
+/*fin input*/
 
 
 /*draggable*/
@@ -241,6 +222,9 @@ input:checked~.questions {
 
 /*fin draggable*/
 
+
+/*Page*/
+
 page {
     background: white;
     display: inline-block;
@@ -262,6 +246,9 @@ page[size="A4"] {
         box-shadow: 0;
     }
 }
+
+
+/*Page fin*/
 
 
 /*changefont*/
@@ -303,178 +290,11 @@ ul {
 
 /*fin bouton change taille font*/
 
-#tt1 {
-    border: solid #0098db 10px;
-    height: 40px;
-    width: 40px;
-}
-
-#tt2 {
-    border: solid palevioletred 10px;
-    height: 40px;
-    width: 40px;
-}
-
-.save-icon {
-    position: relative;
-    background: white;
-    height: 40px;
-    width: 35px;
-    display: block;
-    padding-top: 10px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-.save-icon:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-width: 0 10px 10px 0;
-    border-style: solid;
-    border-color: #a4a6a7 #3c4145;
-}
-
-.save-icon:after {
-    content: "✓";
-    color: green;
-    font-size: 30px;
-    position: absolute;
-    top: 15%;
-    left: 20%;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-    -webkit-animation: pop 0.5s 3s forwards;
-    -moz-animation: pop 0.5s 3s forwards;
-    animation: pop 0.5s 3s forwards;
-}
-
-.loader {
-    background: #e2e2e2;
-    width: 80%;
-    height: 5px;
-    display: block;
-    margin: 3px auto;
-    position: relative;
-    overflow: hidden;
-    -webkit-animation: fade-loaders 0.2s 3s forwards;
-    -moz-animation: fade-loaders 0.2s 3s forwards;
-    animation: fade-loaders 0.2s 3s forwards;
-}
-
-.loader:after {
-    content: "";
-    background: #2c3033;
-    width: 0;
-    height: 5px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.loader:first-child:after {
-    -webkit-animation: loader 0.4s 1s forwards;
-    -moz-animation: loader 0.4s 1s forwards;
-    animation: loader 0.4s 1s forwards;
-}
-
-.loader:nth-child(2n):after {
-    -webkit-animation: loader 0.4s 1.5s forwards;
-    -moz-animation: loader 0.4s 1.5s forwards;
-    animation: loader 0.4s 1.5s forwards;
-}
-
-.loader:nth-child(3n):after {
-    -webkit-animation: loader 0.4s 2s forwards;
-    -moz-animation: loader 0.4s 2s forwards;
-    animation: loader 0.4s 2s forwards;
-}
-
-@-webkit-keyframes loader {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-@-moz-keyframes loader {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-@keyframes loader {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-@-webkit-keyframes pop {
-    0% {
-        -webkit-transform: scale(0);
-    }
-    100% {
-        -webkit-transform: scale(1);
-    }
-}
-
-@-moz-keyframes pop {
-    0% {
-        -moz-transform: scale(0);
-    }
-    100% {
-        -moz-transform: scale(1);
-    }
-}
-
-@keyframes pop {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@-webkit-keyframes fade-loaders {
-    0% {
-        opactity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@-moz-keyframes fade-loaders {
-    0% {
-        opactity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes fade-loaders {
-    0% {
-        opactity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
 
 /* CSS */
+
+
+/*boutton outils*/
 
 .button-34 {
     background: #5E5DF0;
@@ -496,7 +316,9 @@ ul {
     border: 0;
 }
 
+
+/*boutton outils fin*/
+
 .supprimer {
     margin-left: 5%;
-    font-size: smaller;
 }

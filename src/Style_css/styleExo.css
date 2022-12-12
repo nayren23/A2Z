@@ -6,11 +6,26 @@
 }
 
 .divVraiOuFaux {
-    border: solid black;
+    border: dashed black 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .inputVraiF {
     height: 50px;
     width: 470px;
     resize: none;
+}
+
+.rond {
+    border-radius: 50%;
+    width: 35px;
+    text-align: center;
+}
+
+.consigne2 {
+    border: dashed black 1px;
+    height: 50px;
+    width: 93%;
+    margin-left: 15px;
 }
