@@ -1,0 +1,25 @@
+.BoxDossiers {
+    border: yellowgreen;
+    border-style: solid;
+    margin: 50;
+    margin-top: 125;
+    height: 60%;
+}
+.imageDossier {
+    height: 150px;
+    width: 150px;
+}
+
+figcaption {
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    height: 20px;
+    width: 150px;
+    text-align: center;
+}
+figure {
+    display : inline-block;
+    max-width: 150px;
+
+}
