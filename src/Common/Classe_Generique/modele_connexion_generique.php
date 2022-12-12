@@ -1,5 +1,9 @@
 <?php
 
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+
 class Modele_Connexion_Generique extends Connexion
 {
     public function verificationConnexion($idGroupe)
@@ -15,7 +19,6 @@ class Modele_Connexion_Generique extends Connexion
                 $statement = self::$bdd->prepare($sql);
                 $statement->execute(array(':identifiant' => htmlspecialchars($_POST['identifiant'])));
                 $result = $statement->fetch();
-                var_dump($result['idGroupes']);
                 if ($result) { //si l'id est correct alors on verifie le mdp
                     if (password_verify(htmlspecialchars($_POST['motDePasse']), $result['motDePasse']) && $result['idGroupes'] == $idGroupe) {
                         $_SESSION['identifiant'] = $result['identifiant'];

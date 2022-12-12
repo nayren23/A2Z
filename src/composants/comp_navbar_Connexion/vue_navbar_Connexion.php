@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_navbar_Connexion extends Vue_Generique
@@ -37,38 +42,30 @@ class Vue_navbar_Connexion extends Vue_Generique
                                         <use xlink:href="#bootstrap" />
                                     </svg>
                                 </a>
-
-                                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                                    <li><a href="#" class="nav-link px-2 text-white">Contact </a></li>
-                                    <li><a href="#" class="nav-link px-2 text-white">Respect de la vie privée</a></li>
-                                    <li><a href="#" class="nav-link px-2 text-white">A propos de</a></li>
-                                </ul>
-
-
-
                                 <div class="text-end">
-
                                     <?php
                                     //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
                                     if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant']))) {
                                     ?>
                                         <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                        <button onclick="window.location.href = 'index.php?module=administration'" type="button" class="btn btn-outline-light me-2">Administration</button>
                                     <?php
                                     }
                                     //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
                                     else if ((!isset($_SESSION['identifiant'])) && isset(($_GET['action'])) && $_GET['action'] != "connexion") {
                                     ?>
                                         <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-warning">Connexion</button>
-                                    <?php
-                                    } else if (!isset(($_GET['action']))) {
-                                    ?>
-                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                        <button onclick="window.location.href = 'index.php?module=administration'" type="button" class="btn btn-outline-light me-2">Administration</button>
                                     <?php
                                     }
-
+                                    //Pour la page admini on met connexion et inscription
+                                     else if (!isset(($_GET['action']))) {
                                     ?>
-                                    <button onclick="window.location.href = 'index.php?module=administration'" type="button" class="btn btn-outline-light me-2">Administration</button>
-
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-outline-light me-2">Connexion</button>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

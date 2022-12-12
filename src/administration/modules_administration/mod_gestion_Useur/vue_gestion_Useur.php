@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+  die(affichage_erreur404_admin());
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 require_once("./Common/Classe_Generique/vue_connexion_generique.php");
@@ -265,6 +270,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                   <img src="<?php echo $infoUseur['cheminImage'] ?>" alt="Admin" class="rounded-circle" width="150">
                   <div class="mt-3">
                     <h4><?php echo $infoUseur['identifiant'] ?></h4>
+                    <p class="text-secondary mb-1"><?php echo $infoUseur['adresseMail'] ?> </p>
                     <p class="text-secondary mb-1"><?php if ($infoUseur['idGroupes'] == 1) {
                                                     ?><?php echo "Professeur"; ?>
                     <?php
@@ -289,7 +295,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Identifiant</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="text" id="identifiant" name="identifiant" required maxlength="50" placeholder="Identifiant" value="<?php echo $infoUseur['identifiant'] ?>" class="form-control">
+                      <input type="text" id="identifiant" name="identifiant" maxlength="50" placeholder="Identifiant" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -297,7 +303,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="email" id="adresseMail" name="adresseMail" required maxlength="75" placeholder="E-mail" value="<?php echo $infoUseur['adresseMail'] ?>" class="form-control">
+                      <input type="email" id="adresseMail" name="adresseMail" maxlength="75" placeholder="E-mail" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -305,7 +311,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                       <h6 class="mb-0">Mot de Passe</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" required maxlength="100" value="*********" placeholder="Mot de Passe">
+                      <input type="password" class="form-control" id="motDePasse" name="motDePasse" maxlength="100" placeholder="Mot de Passe">
                       <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="Oeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(motDePasse,Oeil)"> </button>
                     </div>
                   </div>
@@ -402,14 +408,14 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                 <div class="col-sm-6 mb-3">
                   <div class="form-group">
                     <label class="required-field" for="firstName">Identifiant</label>
-                    <input type="text" class="form-control" id="identifiant" name="identifiant" placeholder="Identifiant">
+                    <input type="text" class="form-control" id="identifiant" name="identifiant" placeholder="Identifiant" required>
                   </div>
                 </div>
 
                 <div class="col-sm-6 mb-3">
                   <div class="form-group">
                     <label for="lastName">E-mail</label>
-                    <input type="email" class="form-control" id="adresseMail" name="adresseMail" placeholder="E-mail">
+                    <input type="email" class="form-control" id="adresseMail" name="adresseMail" placeholder="E-mail" required>
                   </div>
                 </div>
 
@@ -424,15 +430,16 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
                 <div class="col-sm-6 mb-3">
                   <div class="form-group">
                     <label class="required-field" for="email">Confirmation mot de passe</label>
-                    <input type="password" id="deuxiemeMdp" class="form-control" name="DeuxiemeMotDePasse" placeholder="Confirmation Mdp" required maxlength="100">
+                    <input type="password" id="deuxiemeMdp" class="form-control" name="DeuxiemeMotDePasse" placeholder="Confirmation Mdp" required maxlength="100" onKeyUp="checkMdp()">
                     <button type="button" class="checkboxMdp"> <img alt="oeil affichage mot de passe" id="deuxiemeOeil" src="ressource/images/oeilCacherMdp.png" onclick="basculerAffichageMotDePasse(deuxiemeMdp,deuxiemeOeil)"> </button>
                   </div>
                 </div>
-
+                <div id="deuxiemeAffichageMdp">
+                  <!--Vide pour laisser la place au message d'erreur  -->
+                </div>
                 <div class="col-sm-12 mb-3">
                   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </div>
-
               </div>
             </form>
           </div>
@@ -479,7 +486,7 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
     </div>
   <?php
   }
-  
+
   public function affichageSuppresionUseur()
   {
   ?>
@@ -552,6 +559,33 @@ class VueConnexion_gestion_Useur extends Vue_connexion_generique
       Toast.fire({
         icon: 'success',
         title: "Bravo le compte admin a été créer 😀 "
+      })
+    </script>
+  <?php
+  }
+
+  public function ErreuraffichageChangementInfoUseur()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'info',
+        title: "Le mot de passe ou l'adresse mail existe déjà  😰"
+      })
+    </script>
+  <?php
+  }
+
+
+  public function affichageAucuneInfoModifier()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'info',
+        title: "Aucune information n'a été modifié 😇"
       })
     </script>
 <?php

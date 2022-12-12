@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 class Vue_navbar extends Vue_Generique
@@ -16,7 +21,7 @@ class Vue_navbar extends Vue_Generique
             <div class="conteneur full-width full-height">
                 <div class="container full-height">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start full-width full-height">
-                        <a href="index.php?module=editionExo"> <img class="logo" alt="logo Site" src="ressource/images/TabA2Z.png" width="64" height="64"></a>
+                        <a href="index.php?module=editionExo&action=editionExo&idFiche=1"> <img class="logo" alt="logo Site" src="ressource/images/TabA2Z.png" width="64" height="64"></a>
                         <div class="navigation">
                             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                                 <li><a href="index.php?module=editionExo" class="nav-link px-2 link-secondary">Accueil</a></li>

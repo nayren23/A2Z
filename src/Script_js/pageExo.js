@@ -1,6 +1,6 @@
 /*changement de la police*/
 function changeAll(font) {
-    var elements = document.getElementsByClassName('all');
+    var elements = document.getElementsByClassName('classeDeBase');
 
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
@@ -9,167 +9,53 @@ function changeAll(font) {
     }
 }
 
-
 $(function() {
+    // page
     $(".sortable").sortable({
         revert: true
     });
-    $(".draggable").draggable({
+    /*$(".draggable").draggable({
         connectToSortable: ".sortable",
         helper: "clone",
         revert: "invalid"
-    });
+    });*/
+    // empêche la selection du texte des exos qu'on peut drag n drop sur la page
     $("li").disableSelection();
 });
 
-/*
-
 $(function() {
-    $(".dropp2").droppable();
-    $(".dragg").draggable({
-        connectToSortable: ".sortable",
-        helper: "clone",
-        revert: "invalid",
-
-        drag: function(event, ui) {
-
-            $(".res") += ('<div id = "divTest"> <span class="accordion-heading all" id="myElement">Mise en page test </span><p> je suis le plus BG</p>  </div>');
-
-
-        }
-
-    });
-
-});
-
-*/
-
-
-
-
-
-$(function() {
-    $("#draggable, #draggable-nonvalid").draggable({
+    // rend les exos draggable
+    $(".draggable, #draggable-nonvalid").draggable({
             helper: "clone"
-        }),
-        $("#page").droppable({
-
-            accept: "#draggable",
-            drop: function(event, ui) {
-
-                $(".res").append('<div class = "divTest"> <textarea name="VouF" class="inputVraiF all"  ></textarea> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>');
-
-
-
-
-                var divT = document.getElementsByClassName('divTest');
-
-                for (var i = 0; i < divT.length; i++) {
-                    var element = divT[i];
-                    element.style.border = " solid grey";
-
-                }
-
-
-
-
-                var divT = document.getElementsByClassName('pVraiFaux');
-
-                for (var i = 0; i < divT.length; i++) {
-                    var elementp = divT[i];
-                    elementp.style.border = " solid grey";
-                    elementp.style.cssFloat = "right";
-                    elementp.style.marginTop = "revert";
-                    elementp.style.marginbottom = "0px";
-                    elementp.style.color = "black";
-
-
-
-
-
-
-
-                }
-
-
-                var inputVraiF = document.getElementsByClassName('inputVraiF');
-
-                for (var i = 0; i < inputVraiF.length; i++) {
-                    var element2 = inputVraiF[i];
-                    element2.style.height = "50px";
-                    element2.style.width = "470px";
-
-                    element2.style.resize = "none";
-
-
-
-                }
-
-
+        })
+        // rend la page droppable et definit l'event listener du drop
+    $("#page").droppable({
+        accept: ".draggable",
+        drop: function(event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
+            const classes = ui.draggable["0"].className
+            let htmlNouvelExercice
+            const uuid = CreateUUID()
+            if (classes.includes("exoVraiFaux")) {
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /> <button class = "supprimer" onClick="supprimerExo()">❌</button> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
+            } else if (classes.includes("exoAutre")) {
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><button class = "supprimer" onClick="supprimerExo()">❌</button><p class="pVraiFaux">-autre type</p> </div>'
             }
-        });
+
+            $(".res").append(htmlNouvelExercice);
+            var idUnique = document.getElementById('idDivVraiFaux');
+            idUnique.id = uuid
+        }
+    });
 });
+
+
+function CreateUUID() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    )
+}
 
 
 function getPDF() {
-    var doc = new jsPDF();
-
-    // We'll make our own renderer to skip this editor
-    var specialElementHandlers = {
-        '#getPDF': function(element, renderer) {
-            return true;
-        },
-
-    };
-
-    // All units are in the set measurement for the document
-    // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-    doc.fromHTML($('.zima').get(0), 15, 15, {
-        'width': 170,
-        'height': 200,
-        'elementHandlers': specialElementHandlers
-    });
-
-    doc.save('Generated.pdf');
-}
-
-
-function tojson() {
-    //  This gives you an HTMLElement object
-    var contentElements = document.querySelector('#formSave page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
-    let exercicesHTML = []
-    Array.from(contentElements).forEach(element => exercicesHTML.push(element.outerHTML))
-
-    //  This gives you a string representing that element and its content
-    //var html = element.outerHTML;
-    //  This gives you a JSON object that you can send with jQuery.ajax's `data`
-    // option, you can rename the property to whatever you want.
-    var data = { 
-        html: exercicesHTML
-    };
-
-    //  This gives you a string in JSON syntax of the object above that you can 
-    // send with XMLHttpRequest.
-    var json = JSON.stringify(data); // transforme un objet JavaScript en string JSON.
-
-    console.log(json);
-}
-
-
-var isCtrl = false;
-document.onkeyup = function(e) {
-    if (e.keyCode == 17) isCtrl = false;
-}
-
-document.onkeydown = function(e) {
-    if (e.keyCode == 17) isCtrl = true;
-    if (e.keyCode == 83 && isCtrl == true) {
-        //run code for CTRL+S -- ie, save!
-
-        $("#button").append(' <span class="save-icon"><span class="loader"></span><span class="loader"></span><span class="loader">');
-
-
-        console.log("Ctrl+S pressed");
-        return false;
-    }
+    window.print()
 }

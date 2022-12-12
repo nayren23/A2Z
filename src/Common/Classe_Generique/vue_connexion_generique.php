@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+
 require_once "./Common/Classe_Generique/vue_generique.php";
 
 /**
@@ -90,6 +95,21 @@ class Vue_connexion_generique extends Vue_Generique
       })
     </script>
 <?php
+  }
+
+  
+  public function affichageAdreMailUtiliser()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'error',
+        title: "Attention cette adresse mail <br>ou cet identifiant existe déjà 😮 "
+      })
+    </script>
+
+  <?php
   }
 }
 ?>

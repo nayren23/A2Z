@@ -1,4 +1,9 @@
 <?php
+
+require_once("./Common/Bibliotheque_Communes/errreur404.php");
+if (constant("a2z") != "rya")
+	die(affichage_erreur404());
+
 require_once("./Common/Bibliotheque_Communes/Verification_Creation_Token.php");
 require_once("./Common/Classe_Generique/modele_connexion_generique.php");
 
@@ -6,7 +11,7 @@ class ModeleConnexion extends Modele_Connexion_Generique
 {
 
     public function insereInscription()
-    {
+    {   
         if (!isset($_POST['token']) || !verification_token())
             return 1;
 
