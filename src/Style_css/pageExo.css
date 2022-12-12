@@ -495,3 +495,8 @@ ul {
     word-break: break-word;
     border: 0;
 }
+
+.supprimer {
+    margin-left: 5%;
+    font-size: smaller;
+}

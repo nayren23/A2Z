@@ -152,11 +152,11 @@ class VueEdition extends Vue_connexion_generique
 
                     </div>
 
-                    <form action="save" id="formSave">
+                    
                         <page size="A4" id="page" class="sortable res zima">
                         </page>
 
-                    </form>
+                   
 
 
                 </div>

@@ -36,9 +36,9 @@ $(function() {
             let htmlNouvelExercice
             const uuid = CreateUUID()
             if (classes.includes("exoVraiFaux")) {
-                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /> <button class = "supprimer" onClick="supprimerExo()">❌</button> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
             } else if (classes.includes("exoAutre")) {
-                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">-autre type</p> </div>'
+                htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><button class = "supprimer" onClick="supprimerExo()">❌</button><p class="pVraiFaux">-autre type</p> </div>'
             }
 
             $(".res").append(htmlNouvelExercice);
