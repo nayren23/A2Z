@@ -6,21 +6,18 @@
     button {
         display: none;
     }
-     :link {
-        display: none;
-    }
     body {
         margin: 0;
     }
-    .divVraiOuFaux {
+    .inputVraiF,
+    .consigne2,
+    .divVraiOuFaux,
+     :link {
         border: none;
     }
-    .inputVraiF {
+    /*#page {
         border: none;
-    }
-    #page {
-        border: none;
-    }
+    }*/
     @page {
         margin: 0;
         padding: 0;
