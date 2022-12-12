@@ -133,7 +133,7 @@ class VueEdition extends Vue_connexion_generique
 
                     <div id="modifieurs">
                         <div class="select">
-                            <select id="input-font" class="input" onchange="changeAll(this);">
+                            <select id="input-font" class="input button-34" onchange="changeAll(this);">
 
                                 <option value="arial">Arial</option>
                                 <option value="cursive">cursive</option>
@@ -141,22 +141,22 @@ class VueEdition extends Vue_connexion_generique
 
                         </div>
                         <div id="button">
-                            <button id="up">+</button>
-                            <button id="down">-</button>
+                            <button id="up" class="button-34">+</button>
+                            <button id="down" class="button-34">-</button>
 
-                            <button id="getPDF" onclick="getPDF()">Telecharger page en PDF</button>
-                            <button id="save" onclick="tojson()"> Sauvegarder</button>
+                            <button id="getPDF" class="button-34" onclick="getPDF()">Telecharger page en PDF</button>
+                            <button id="save" class="button-34" onclick="tojson()"> Sauvegarder</button>
                         </div>
 
 
 
                     </div>
 
-                    <form action="save" id="formSave">
+                    
                         <page size="A4" id="page" class="sortable res zima">
                         </page>
 
-                    </form>
+                   
 
 
                 </div>
