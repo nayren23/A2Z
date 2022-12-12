@@ -21,6 +21,7 @@ class ContFavoris extends Controleurgenerique
         $this->afficherBoutonCreerDossier();
         $this->afficheCarouselFiches();
         $this->afficherIconeDossier();
+        $this->afficheDossierRacine();
 
         
 
@@ -30,7 +31,12 @@ class ContFavoris extends Controleurgenerique
     public function getLocation() {
         return $this->location;
     }
-
+    public function afficheDossierRacine() {
+        ?>
+        <script> src="Script_js\script_dossier.js" </script>
+        <script> rechercheLocation() </script>
+        <?php    
+}
     public function envoyezDossierBdd() {
         $this->dossier = envoieDossierBdd();
     }

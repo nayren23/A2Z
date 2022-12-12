@@ -32,8 +32,28 @@ async function popUpNomDuDossier($loc) {
 }
 
 function créarionIconedossier($idDossier,$nomDossier) {
-
 let nouveauDossier = '<figure><a href="index.php?module=favoris&location=' + $idDossier + '"><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>' + $nomDossier + '</figcaption></figure>';
 $(".BoxDossiers").append(nouveauDossier);
 
+}
+
+function rechercheLocation() {
+
+  var url = new URL(window.location.href);
+  var idDossier = url.searchParams.get("location");
+            $.ajax ( {
+            method : "POST" ,
+            url : "./modules/mod_favoris/creerDossier.php",
+            data : { idDossier : idDossier,
+                        } ,
+            dataType : "json"
+            })
+            .done ( function ( element) {
+              
+              console.log(element)
+
+              for (let i = 0 ; i < element.length; i++) {
+              créarionIconedossier(element[i]['idDossier'],element[i]['nomDossier']);
+              }
+            } ) ;
 }

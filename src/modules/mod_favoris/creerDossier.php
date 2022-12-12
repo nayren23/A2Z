@@ -44,9 +44,26 @@ class dossierBDD extends Connexion
       }
       echo $idDossier;
     }
+
+    public function recupereDossierSelonLocation() {
+      try {
+      $sql = "select idDossier, nomDossier from dossier where idParent = :idParent";
+      $stmt = self::$bdd->prepare($sql);
+      $stmt->execute(array(":idParent" => $_POST['idDossier']));
+      
+      $resultat = $stmt->fetchAll();
+      } catch (PDOException $e) {
+      echo false;
+    }
+    echo json_encode($resultat);
+
+  }
 }
 $dossier = new dossierBDD();
 if (isset($_POST['dossier'])){
   $dossier->envoieDossierBdd();
+ }
+ if (isset($_POST['idDossier'])){
+  $dossier->recupereDossierSelonLocation();
  }
 ?>
