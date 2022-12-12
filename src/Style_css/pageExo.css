@@ -79,7 +79,7 @@ body {
 /*fin Accordeon*/
 
 
-/*Questions dans accordeons*/
+/*Questions dans accordeaons*/
 
 .content {
     box-sizing: border-box;
@@ -144,6 +144,15 @@ label .accordion-heading {
     margin: 0;
 }
 
+
+/********************/
+
+
+/* pseudos elements */
+
+
+/**********************/
+
 .content:before {
     content: '';
     width: 10px;
@@ -170,9 +179,6 @@ label .accordion-heading {
 }
 
 
-/*Questions dans accordeons*/
-
-
 /********************/
 
 
@@ -181,15 +187,31 @@ label .accordion-heading {
 
 /**********************/
 
+input:checked~.content {
+    max-height: 400px;
+    transition: max-height, 1s;
+}
 
-/*input*/
+input:checked~label .cross-box {
+    background-color: #93c04d;
+}
+
+input:checked~label .cross:before {
+    transform: rotate(180deg);
+}
+
+input:checked~label .cross:after {
+    transform: rotate(0deg);
+}
+
+input:checked~.questions {
+    max-height: 600px;
+    transition: 1s;
+}
 
 .input {
     margin-top: 5;
 }
-
-
-/*fin input*/
 
 
 /*draggable*/
@@ -222,9 +244,6 @@ label .accordion-heading {
 
 /*fin draggable*/
 
-
-/*Page*/
-
 page {
     background: white;
     display: inline-block;
@@ -246,9 +265,6 @@ page[size="A4"] {
         box-shadow: 0;
     }
 }
-
-
-/*Page fin*/
 
 
 /*changefont*/
@@ -293,9 +309,6 @@ ul {
 
 /* CSS */
 
-
-/*boutton outils*/
-
 .button-34 {
     background: #5E5DF0;
     border-radius: 999px;
@@ -316,9 +329,7 @@ ul {
     border: 0;
 }
 
-
-/*boutton outils fin*/
-
 .supprimer {
     margin-left: 5%;
+    font-size: smaller;
 }
