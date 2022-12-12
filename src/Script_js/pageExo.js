@@ -9,7 +9,7 @@ function changeAll(font) {
     }
 }
 
-$(function () {
+$(function() {
     // page
     $(".sortable").sortable({
         revert: true
@@ -23,26 +23,24 @@ $(function () {
     $("li").disableSelection();
 });
 
-$(function () {
+$(function() {
     // rend les exos draggable
     $(".draggable, #draggable-nonvalid").draggable({
-        helper: "clone"
-    })
-    // rend la page droppable et definit l'event listener du drop
+            helper: "clone"
+        })
+        // rend la page droppable et definit l'event listener du drop
     $("#page").droppable({
         accept: ".draggable",
-        drop: function (event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
+        drop: function(event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
             const classes = ui.draggable["0"].className
             let htmlNouvelExercice
             const uuid = CreateUUID()
-            if(classes.includes("exoVraiFaux")){
+            if (classes.includes("exoVraiFaux")) {
                 htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">---------------Vrai----Faux</p> </div>'
-            }
-            
-            else if(classes.includes("exoAutre")){
+            } else if (classes.includes("exoAutre")) {
                 htmlNouvelExercice = '<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all" /><p class="pVraiFaux">-autre type</p> </div>'
             }
-            
+
             $(".res").append(htmlNouvelExercice);
             var idUnique = document.getElementById('idDivVraiFaux');
             idUnique.id = uuid
@@ -59,23 +57,5 @@ function CreateUUID() {
 
 
 function getPDF() {
-    var doc = new jsPDF();
-
-    // We'll make our own renderer to skip this editor
-    var specialElementHandlers = {
-        '#getPDF': function (element, renderer) {
-            return true;
-        },
-
-    };
-
-    // All units are in the set measurement for the document
-    // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-    doc.fromHTML($('.zima').get(0), 15, 15, {
-        'width': 170,
-        'height': 200,
-        'elementHandlers': specialElementHandlers
-    });
-
-    doc.save('Generated.pdf');
+    window.print()
 }

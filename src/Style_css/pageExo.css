@@ -17,6 +17,7 @@ body {
 @media (min-width: 1920px) {
     .flex-container {
         max-width: 1920px;
+        margin-top: 40;
     }
 }
 
@@ -76,7 +77,6 @@ body {
 
 
 /*fin Accordeon*/
-
 
 .content {
     box-sizing: border-box;
@@ -206,6 +206,10 @@ input:checked~.questions {
     transition: 1s;
 }
 
+.input {
+    margin-top: 5;
+}
+
 
 /*draggable*/
 
@@ -226,8 +230,6 @@ input:checked~.questions {
     margin: 10px 10px 10px 0;
 }
 
-
-
 .dropp2 {
     width: 200px;
     height: 40px;
@@ -245,7 +247,7 @@ page {
     margin: 0 auto;
     margin-bottom: 0.5cm;
     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
-    border:  solid black;
+    border: solid black;
 }
 
 page[size="A4"] {
@@ -469,4 +471,27 @@ ul {
     100% {
         opacity: 0;
     }
+}
+
+
+/* CSS */
+
+.button-34 {
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
 }
