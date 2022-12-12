@@ -29,8 +29,6 @@ class dossierBDD extends Connexion
         $location = intval ($_POST['location']);
         $stmt2->execute(array(':nomDossier'=>$_POST['dossier'], ':idParent'=> $location, ':idUser'=>$idUser));
         
-        $idUser = $stmt->fetch();
-
         $sql3 = 'select idDossier from dossier where nomDossier = :nomDossier';
         $stmt3 = self::$bdd->prepare($sql3);
 
