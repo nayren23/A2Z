@@ -67,7 +67,8 @@ class ContConnexion extends Controleurgenerique
             case 'connexionidentifiant':
                 if ($this->insereDonneConnexion()) {
                     $this->affichageConnexionReussie(); // mettre cette fonction dans mod principale
-                    header('Location: ./index.php?module=editionExo&connexion=true'); //redirection vers la page 
+                    //header('Location: ./index.php?module=editionExo&connexion=true&idFiche=1')
+                    header('Location: ./index.php?module=favoris&location=1'); //redirection vers la page 
                 } else {
                     header('Location: ./index.php?module=connexion&action=connexion&errorConnexion=true'); //redirection vers la page 
                 }
