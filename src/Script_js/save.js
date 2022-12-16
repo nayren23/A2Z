@@ -3,8 +3,14 @@ function tojson() {
     var contentElements = document.querySelector('page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
     Array.from(contentElements).forEach(element => {
-        const texte = $(`#${element.id} input`)[0].value
-        $(`#${element.id} input`).attr("value", texte)
+        const cssSelector = `#${element.id} .input-utilisateur`
+        const inputs = $(cssSelector) //recupere tous les élement  selectionner par le selecteur css par class
+        const inputArray = Array.from(inputs)
+        let texte
+        inputArray.forEach(input => {//Boucle for pour inserer la val dans le input 
+            texte = input.value
+            $(input).attr("value", texte)
+        })
         console.log(texte)
         exercicesHTML.push(element.outerHTML)
     }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
