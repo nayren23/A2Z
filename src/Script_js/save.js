@@ -2,7 +2,9 @@ function tojson() {
     //  This gives you an HTMLElement object
     var contentElements = document.querySelector('page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
+
     Array.from(contentElements).forEach(element => {
+        
         const cssSelector = `#${element.id} .input-utilisateur`
         const inputs = $(cssSelector) //recupere tous les élement  selectionner par le selecteur css par class
         const inputArray = Array.from(inputs)
@@ -15,39 +17,30 @@ function tojson() {
     }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
 
-    //tableau des id du tableau HTMl
-    let identifiantExercicesHtml = [];
+    let donneesExercices = [];
     const divExercice = document.querySelectorAll(".classeDeBase") // recupere tout les classes qui possede classDeBase 
-    Array.from(divExercice).forEach(element => identifiantExercicesHtml.push(element.id)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
-    //tableau des id du tableau HTMl
-    let positionExercice = []; // tableau pour sauvegarder l'odre des exercices dasn la page
-    for (let i = 0; i < Array.from(divExercice).length; i++) {
-        positionExercice[i] = i;
-    }
-    // forEach(element => positionExercice.push(element.id)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+    Array.from(divExercice).forEach((element, index) => { //index pour récupere l'index qui seras incrementer dans le for each
+        const donneExo = { // objet
+            id: element.id,
+            position: index
+        }
+        donneesExercices.push(donneExo)//on met les donne dans le tableau 
+    });
 
 
-    //  This gives you a string representing that element and its content
-    //var html = element.outerHTML;
-    //  This gives you a JSON object that you can send with jQuery.ajax's `data`
-    // option, you can rename the property to whatever you want.
-    var deco_var = decodeURI($_GET('idFiche'));
+    const deco_var = decodeURI($_GET('idFiche'));
 
-    var data = {
-        idExo: identifiantExercicesHtml, // creation tableau identifiant UNIQUE identifiant HTML
+    //Donne envoyer à PHP un objet
+    const data = {
+        idExo: donneesExercices.map(donnee => donnee.id), // creation tableau identifiant UNIQUE identifiant HTML
         html: exercicesHTML, // tableau des exos en html
-        idFiche: deco_var,
-        positionExercice: positionExercice
+        idFiche: deco_var, //GUID UNIQUE
+        positionExercice: donneesExercices.map(donnee => donnee.position) //stream pour récuperer la position dans le tableau d'objet 
     };
-
 
     document.querySelector(".divVraiOuFaux")
 
-
-
-    //  This gives you a string in JSON syntax of the object above that you can 
-    // send with XMLHttpRequest.
 
     const json = JSON.stringify(data); // transforme un objet JavaScript en string JSON.
     const obj = JSON.parse(json); // transforme un string JSON en objet JavaScript.
@@ -65,8 +58,6 @@ function tojson() {
     })
 
 }
-
-
 
 //recuperation idFiche depuis l'url
 function $_GET(param) {
