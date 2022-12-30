@@ -136,10 +136,12 @@ class VueEdition extends Vue_connexion_generique
                             </label>
 
                             <div class="content">
-                            <input type="file" id="image-input" accept="image/*"></input>
+                                <button class="custom-btn btn-15"  onclick="importerImage()">Importer une image!</button>
+
+                          <!--  <input type="file" id="image-input" accept="image/*"></input> -->
 
                                 <script src="Script_js/import_photos.js"></script>
-                                    
+
                                 <table>
                                     
                                 </table>

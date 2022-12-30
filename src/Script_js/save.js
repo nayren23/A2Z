@@ -4,7 +4,7 @@ function tojson() {
     let exercicesHTML = [];
 
     Array.from(contentElements).forEach(element => {
-        
+
         const cssSelector = `#${element.id} .input-utilisateur`
         const inputs = $(cssSelector) //recupere tous les élement  selectionner par le selecteur css par class
         const inputArray = Array.from(inputs)
@@ -37,10 +37,9 @@ function tojson() {
         html: exercicesHTML, // tableau des exos en html
         idFiche: deco_var, //GUID UNIQUE
         positionExercice: donneesExercices.map(donnee => donnee.position) //stream pour récuperer la position dans le tableau d'objet
-        
+
     };
-    console.log(donneesExercices.map(donnee => donnee.id))
-    console.log(donneesExercices.map(donnee => donnee.position))
+
 
 
     document.querySelector(".divVraiOuFaux")
@@ -50,31 +49,56 @@ function tojson() {
     const obj = JSON.parse(json); // transforme un string JSON en objet JavaScript.
     const idUniqueJSON = JSON.parse(json);
 
+    envoieExercice(json)
 
+}
 
-    console.log(deco_var);
-
+function envoieExercice(json){
     $.ajax({
         method: "POST",
         url: "./modules/mod_editionExo/saveExo.php",
         data: { stringRecu: json },
-        dataType: "json"
+        dataType: "json",
+
+        // traitement des cas 
+        success: function (response) {
+            affichageSuccess()
+        },
+        error: function (response) {
+            console.log(response)
+            affichageErreur()
+        }
+    })
+}
+
+function affichageSuccess(json) {
+    Toast.fire({
+        icon: 'success',
+        title: "Votre travail a été sauvegardé avec succès😄"
+    })
+}
+
+
+function affichageErreur(json) {
+    Toast.fire({
+        icon: 'error',
+        title: "Erreur lors de la sauvegarde de votre travail🤔"
     })
 
 }
+    //recuperation idFiche depuis l'url
+    function $_GET(param) {
+        var vars = {};
+        window.location.href.replace(location.hash, '').replace(
+            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+            function (m, key, value) { // callback
+                vars[key] = value !== undefined ? value : '';
+            }
+        );
 
-//recuperation idFiche depuis l'url
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace(location.hash, '').replace(
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function (m, key, value) { // callback
-            vars[key] = value !== undefined ? value : '';
+        if (param) {
+            return vars[param] ? vars[param] : null;
         }
-    );
-
-    if (param) {
-        return vars[param] ? vars[param] : null;
+        return vars;
     }
-    return vars;
-}
+

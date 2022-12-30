@@ -1,44 +1,85 @@
-var input = document.getElementById("image-input");
-input.addEventListener("change", function() {
-  var file = this.files[0];
-  var reader = new FileReader();
-  reader.addEventListener('load', onLoad);
-  reader.readAsDataURL(file);
-});
+/**
+ * Fonction qui affiche la pop up de sélection de l'image
+ */
+async function importerImage() {
+
+  const { value: file } = await Swal.fire({
+    title: `Sélectionner l'image`,
+    input: 'file',
+    confirmButtonColor: '#0096d9',
+    inputAttributes: {
+      'accept': 'image/*',
+      'aria-label': 'Upload your profile picture',
+
+    }
+  })
+
+  if (file) {
+    const reader = new FileReader()
+    reader.onload = (e) => onFileLoaded(e)
+    reader.readAsDataURL(file)
+  }
+}
+
 
 /**
- * 
+ * Fonction qui stocke 
  * @param {*} event 
  */
-function onLoad(event){
-    var imageData = event.target.result;
-    const json = JSON.stringify(imageData); // transforme un objet JavaScript en string JSON.
-    send(json)
-
+function onFileLoaded(event) {
+  // verifie la taille Mo
+  Swal.fire({
+    confirmButtonColor: '#0096d9',
+    title: 'Votre photo téléchargée',
+    imageUrl: event.target.result,
+    imageAlt: 'Votre photo téléchargée'
+  })
+  var imageData = event.target.result;
+  const json = JSON.stringify(imageData); // transforme un objet JavaScript en string JSON.
+  send(json)
 }
 
 
 
 /**
- * 
+ * Fonction qui envoie la data reçu en paramètre, en base 64 à php
  * @param {*} json 
  */
-function send(json){
-    $.ajax({
-        url: "./modules/mod_editionExo/modele_editionExo.php",
-        type: "POST",
-        data: { image: json },
-        success: function(response) {
-          console.log("Image envoyée avec succès!");
-              //metrtre dans l'image dans le tab directeemtn par id par ex
+function send(json) {
+  $.ajax({
+    url: "./modules/mod_editionExo/sauvegardePhoto.php",
+    type: "POST",
+    data: {
+      image: json,
 
-        },
-        error: function(response) {
-            console.log("Erreur envoie image !"); // notif
-          }
-      });
+    },
+
+    // traitement des cas 
+    success: function (response) {
+      setTimeout(affichageImportSuccess, 10000)//en millisecondes
+    },
+    error: function (response) {
+      setTimeout(affichageImportErreur, 10000)//en millisecondes
+    }
+  });
 }
 
-function afficherImage(json){
+function afficherImage(json) {
 
+}
+
+
+function affichageImportSuccess() {
+  Toast.fire({
+    icon: 'success',
+    title: "Image sauvegardée avec succès😄"
+  })
+}
+
+
+function affichageImportErreur() {
+  Toast.fire({
+    icon: 'error',
+    title: "Erreur lors de l'envoi de l'image !🤔"
+  })
 }
