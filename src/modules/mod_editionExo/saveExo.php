@@ -7,7 +7,6 @@ session_start();
 class saveExo extends connexion
 {
 
-
     public function __construct()
     {
         parent::initConnexion();
@@ -23,10 +22,6 @@ class saveExo extends connexion
         try {
             // faire une boucle for qui va d'une part
             $idFiche = htmlspecialchars($tableauContenuExerciceDecode['idFiche']);
-
-
-
-
 
             //requete SQL
             $sql = 'INSERT into exercices (idExo, contenu, idFiche,positionExercice)  VALUES (:idExo , :contenu, :idFiche, :positionExercice)';
@@ -53,13 +48,6 @@ class saveExo extends connexion
 
             for ($i = 0; $i < $tailleTableauSite || $i < $tailleTableauBdd; $i++) {  //parcours de la bd et compare si delete, insert ou update en fonction
 
-                $indiceExoSite = htmlspecialchars(array_search($exoDansLaBDD[$i]['idExo'], $tableauContenuExerciceDecode['idExo'])); //on cherche lebon index pour le tableau du site web
-                $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$indiceExoSite]); //recuperation de l'id de l'exo
-
-                $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$i]);
-
-
-                var_dump( "IDENTIFAITNT EXERCICE" .$idExercice, "POSITION" .$positionExercice);
                 if ($i < $tailleTableauBdd) {
                     $this->inserer($tableauContenuExerciceDecode, $i, $nouveauxTableauBdd, $statement, $idFiche);
                 }
@@ -112,8 +100,3 @@ class saveExo extends connexion
 
 $exoSauvegarder = new saveExo();
 $exoSauvegarder->insererDonneesExercices();
-
-
-
-
-?>
