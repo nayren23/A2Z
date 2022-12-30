@@ -1,12 +1,19 @@
 <?php
+require_once "./connexion.php";
 
 require_once("./Common/Bibliotheque_Communes/errreur404.php");
 if (constant("a2z") != "rya")
 	die(affichage_erreur404());
 
 
+
 class ModeleEditionExo  extends Connexion
 {
+
+	public function __construct()
+    {
+        parent::initConnexion();
+    }
 
 	/**
 	 * fonction qui récupere l'ensembles des exercices d'une fiche
@@ -23,5 +30,21 @@ class ModeleEditionExo  extends Connexion
 
 		return $result;
 	}
+
+	public function recupererPhotos(){
+
+		if(isset($_POST['image'])){
+			$photo64 = $_POST['image']; // tableau en JSON contenant tout (id et le code html)
+			var_dump($photo64);
+		}
+
+
+	}
+
+	
 }
+
+$photoExercice = new ModeleEditionExo();
+$photoExercice->recupererPhotos();
+
 ?>

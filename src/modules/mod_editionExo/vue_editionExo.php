@@ -136,10 +136,10 @@ class VueEdition extends Vue_connexion_generique
                             </label>
 
                             <div class="content">
-                                <script src="Script_js/import_photos.js"></script>
-                                <script type="text/javascript"></script>
+                            <input type="file" id="image-input" accept="image/*"></input>
 
-                                <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
+                                <script src="Script_js/import_photos.js"></script>
+                                    
                                 <table>
                                     
                                 </table>
