@@ -44,8 +44,7 @@ $(function() {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
             }
             else if (classes.includes("imagesDraggable")) {
-                console.log(ui.draggable[0].src)
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img class="draggable imagesDraggable" alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /></div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img class="imagePage " alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
             
             $(".res").append(htmlNouvelExercice);

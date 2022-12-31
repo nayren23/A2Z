@@ -19,6 +19,11 @@ body {
   padding: 20;
 }
 
+/*En attendant le resizable  */
+.imagePage{
+  height: 10%;
+  width: 10%;
+}
 
 .informationCompte {
   background: #394264;

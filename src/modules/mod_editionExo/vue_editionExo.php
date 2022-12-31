@@ -154,8 +154,6 @@ class VueEdition extends Vue_connexion_generique
                                 foreach ($tableauImage as $value) {
                                 ?>
                                     <img class="draggable imagesDraggable" alt="photo de profile" src="<?php echo $value['cheminImages'] ?>" class="rounded-circle avatar-xs" alt="" />
-
-
                                 <?php
                                 }
                                 ?>
