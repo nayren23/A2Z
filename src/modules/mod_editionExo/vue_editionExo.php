@@ -14,7 +14,7 @@ class VueEdition extends Vue_connexion_generique
         parent::__construct(); // comme un super
     }
 
-    function pageExoEdition($tableauExercice)
+    function pageExoEdition($tableauExercice, $tableauImage)
     {
 ?>
 
@@ -133,19 +133,34 @@ class VueEdition extends Vue_connexion_generique
                         <label class="labelEditionExo" for="tab-3">
                             <div class="cross-box"><span class="cross"></span></div>
                             <span class="accordion-heading">Banque d'image</span>
-                            </label>
+                        </label>
 
-                            <div class="content">
-                                <button class="custom-btn btn-15" id="BoutonImportPhoto" onclick="importerImage()">Importer une image!</button>
+                        <div class="content">
+                        <form action="" class="search-bar"><!--  Mettre la bonne action -->
+                                <input type="search" name="search" pattern=".*\S.*" required>
+                                <button class="search-btn" type="submit">
+                                    <span>Search</span>
+                                </button>
+                            </form>
+                            <button class="custom-btn btn-15" id="BoutonImportPhoto" onclick="importerImage()">Importer une image!</button>
 
-                          <!--  <input type="file" id="image-input" accept="image/*"></input> -->
+                            <!--  <input type="file" id="image-input" accept="image/*"></input> -->
 
-                                <script src="Script_js/import_photos.js"></script>
+                            <script src="Script_js/import_photos.js"></script>
 
-                                <table>
-                                    
-                                </table>
-                            </div>
+                            <table id="tableauImages">
+
+                                <?php
+                                foreach ($tableauImage as $value) {
+                                ?>
+                                    <img class="draggable imagesDraggable" alt="photo de profile" src="<?php echo $value['cheminImages'] ?>" class="rounded-circle avatar-xs" alt="" />
+
+
+                                <?php
+                                }
+                                ?>
+                            </table>
+                        </div>
 
 
                     </div>

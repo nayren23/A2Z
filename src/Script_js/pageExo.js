@@ -26,11 +26,12 @@ $(function() {
 $(function() {
     // rend les exos draggable
     $(".draggable, #draggable-nonvalid").draggable({
-            helper: "clone"
+        helper: "clone",
         })
         // rend la page droppable et definit l'event listener du drop
     $("#page").droppable({
         accept: ".draggable",
+
         drop: function(event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
             const classes = ui.draggable["0"].className
             let htmlNouvelExercice
@@ -41,9 +42,12 @@ $(function() {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-autre type</p> </div>`
             } else if (classes.includes("consigne")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
-
             }
-
+            else if (classes.includes("imagesDraggable")) {
+                console.log(ui.draggable[0].src)
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img class="draggable imagesDraggable" alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /></div>`
+            }
+            
             $(".res").append(htmlNouvelExercice);
             var idUnique = document.getElementById('idDivVraiFaux');
             idUnique.id = uuid

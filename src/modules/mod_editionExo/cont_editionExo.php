@@ -40,7 +40,8 @@ class ContEditionExo extends Controleurgenerique
     public function affichagePageEditionExo()
     {
         $tableauExercice = $this -> modele -> recupererExercices();
-        $this->vue->pageExoEdition($tableauExercice);
+        $tableauImage = $this -> modele -> recupererImages();
+        $this->vue->pageExoEdition($tableauExercice,$tableauImage);
     }
 
     public function affichageConnexionReussie()
