@@ -136,7 +136,7 @@ class VueEdition extends Vue_connexion_generique
                             </label>
 
                             <div class="content">
-                                <button class="custom-btn btn-15"  onclick="importerImage()">Importer une image!</button>
+                                <button class="custom-btn btn-15" id="BoutonImportPhoto" onclick="importerImage()">Importer une image!</button>
 
                           <!--  <input type="file" id="image-input" accept="image/*"></input> -->
 

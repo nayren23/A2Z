@@ -10,13 +10,18 @@ async function importerImage() {
     inputAttributes: {
       'accept': 'image/*',
       'aria-label': 'Upload your profile picture',
-
     }
   })
 
   if (file) {
+    //Verifiaction de la taille de l'image
+    const tailleMaximum = 1000000
+    if (file.size > tailleMaximum) { // 1 MO
+      return affichageImportErreurImageSize()
+    }
+    const nomImage = file.name
     const reader = new FileReader()
-    reader.onload = (e) => onFileLoaded(e)
+    reader.onload = (e) => onFileLoaded(e, nomImage)
     reader.readAsDataURL(file)
   }
 }
@@ -26,7 +31,7 @@ async function importerImage() {
  * Fonction qui stocke la photo
  * @param {*} event 
  */
-function onFileLoaded(event) {
+function onFileLoaded(event, nomImage) {
   // verifie la taille Mo
   Swal.fire({
     confirmButtonColor: '#0096d9',
@@ -36,38 +41,37 @@ function onFileLoaded(event) {
   })
   var imageData = event.target.result;
 
-  send(imageData)
+  //On envoie l'image en base 64 et son nom pour la description
+  const data = {
+    imageData: imageData, // tableau des exos en html
+    nomImage: nomImage, //GUID UNIQUE
+  };
+
+  const json = JSON.stringify(data); // transforme un objet JavaScript en string JSON.
+  send(json)
 }
-
-
 
 /**
  * Fonction qui envoie la data reçu en paramètre, en base 64 à php
- * @param {*} imageData 
+ * @param {*} json 
  */
-function send(imageData) {
+function send(json) {
   $.ajax({
     url: "./modules/mod_editionExo/sauvegardePhoto.php",
     type: "POST",
     data: {
-      image: imageData,
-
+      image: json,
     },
 
     // traitement des cas 
     success: function (response) {
-      setTimeout(affichageImportSuccess, 10000)//en millisecondes
+      setTimeout(affichageImportSuccess, 5000)//en millisecondes
     },
     error: function (response) {
-      setTimeout(affichageImportErreur, 10000)//en millisecondes
+      setTimeout(affichageImportErreur, 5000)//en millisecondes
     }
   });
 }
-
-function afficherImage() {
-
-}
-
 
 function affichageImportSuccess() {
   Toast.fire({
@@ -81,5 +85,12 @@ function affichageImportErreur() {
   Toast.fire({
     icon: 'error',
     title: "Erreur lors de l'envoi de l'image !🤔"
+  })
+}
+
+function affichageImportErreurImageSize() {
+  Toast.fire({
+    icon: 'error',
+    title: "Erreur votre image est trop grande !🤔"
   })
 }

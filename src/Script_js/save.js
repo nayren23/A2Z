@@ -58,7 +58,6 @@ function envoieExercice(json){
         method: "POST",
         url: "./modules/mod_editionExo/saveExo.php",
         data: { stringRecu: json },
-        dataType: "json",
 
         // traitement des cas 
         success: function (response) {

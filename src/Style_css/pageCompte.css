@@ -21,7 +21,7 @@ body {
 
 
 .informationCompte {
-  background:#394264;
+  background: #394264;
   padding: 1rem;
   border-radius: 20px;
   border-left: 1px solid rgba(255, 255, 255, .3);
@@ -62,7 +62,7 @@ body {
   width: 50%;
 }
 
-.changement-Taille-Affichage-Info-Compte{
+.changement-Taille-Affichage-Info-Compte {
   height: 9rem;
 }
 
@@ -80,9 +80,9 @@ body {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
   outline: none;
 }
 
@@ -91,8 +91,10 @@ body {
   background: #0098db;
   border: none;
   z-index: 1;
-  height: 6%;
+  height: 5%;
+  width: 100%;
 }
+
 .btn-15:after {
   position: absolute;
   content: "";
@@ -103,18 +105,21 @@ body {
   z-index: -1;
   background-color: #09139c;
   border-radius: 5px;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
   transition: all 0.3s ease;
 }
+
 .btn-15:hover {
   color: #fff;
 }
+
 .btn-15:hover:after {
   left: 0;
   width: 100%;
 }
+
 .btn-15:active {
   top: 2px;
 }
