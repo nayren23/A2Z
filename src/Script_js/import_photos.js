@@ -23,7 +23,7 @@ async function importerImage() {
 
 
 /**
- * Fonction qui stocke 
+ * Fonction qui stocke la photo
  * @param {*} event 
  */
 function onFileLoaded(event) {
@@ -35,22 +35,22 @@ function onFileLoaded(event) {
     imageAlt: 'Votre photo téléchargée'
   })
   var imageData = event.target.result;
-  const json = JSON.stringify(imageData); // transforme un objet JavaScript en string JSON.
-  send(json)
+
+  send(imageData)
 }
 
 
 
 /**
  * Fonction qui envoie la data reçu en paramètre, en base 64 à php
- * @param {*} json 
+ * @param {*} imageData 
  */
-function send(json) {
+function send(imageData) {
   $.ajax({
     url: "./modules/mod_editionExo/sauvegardePhoto.php",
     type: "POST",
     data: {
-      image: json,
+      image: imageData,
 
     },
 
@@ -64,7 +64,7 @@ function send(json) {
   });
 }
 
-function afficherImage(json) {
+function afficherImage() {
 
 }
 
