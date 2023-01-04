@@ -296,6 +296,10 @@ ul {
 
 /*bouton change taille font*/
 
+#textarea::selection {
+    font-family: Arial, sans-serif;
+}
+
 #up {
     width: 30px;
     height: 30px;

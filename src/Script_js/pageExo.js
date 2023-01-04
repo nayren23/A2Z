@@ -9,6 +9,22 @@ function changeAll(font) {
     }
 }
 
+function GetSelection() {
+    var selection = "";
+
+    var textarea = document.getElementById("myArea");
+    console.log(textarea);
+    var selection = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+    console.log(selection);
+    selection.fontcolor("red");
+
+}
+
+
+
+/*<textarea id="myArea" cols="30" spellcheck="false">Select some text within this field.</textarea>
+    <button onclick="ModifySelection ()">Modify the current selection</button>*/
+
 $(function() {
     // page
     $(".sortable").sortable({
@@ -21,7 +37,7 @@ $(function() {
     });*/
     // empêche la selection du texte des exos qu'on peut drag n drop sur la page
     $("li").disableSelection();
-}); 
+});
 
 $(function() {
     // rend les exos draggable
@@ -36,7 +52,12 @@ $(function() {
             let htmlNouvelExercice
             const uuid = CreateUUID()
             if (classes.includes("exoVraiFaux")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>`
+                htmlNouvelExercice = ` < div class = "divVraiOuFaux classeDeBase"
+        id = "idDivVraiFaux" > < input type = "text"
+        name = "VouF"
+        id = "myArea"
+        class = "inputVraiF all input-utilisateur" / > < button class = "supprimer"
+        onClick = "supprimerExo(this)" > ❌ < /button> <p class="pVraiFaux">---------------Vrai----Faux</p > < /div>`
             } else if (classes.includes("exoAutre")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-autre type</p> </div>`
             } else if (classes.includes("consigne")) {

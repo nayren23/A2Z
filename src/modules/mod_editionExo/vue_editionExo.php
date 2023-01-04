@@ -168,7 +168,7 @@ class VueEdition extends Vue_connexion_generique
 
                         </div>
                         <div id="button">
-                            <button id="up" class="button-34">+</button>
+                            <button id="up" class="button-34" onclick="GetSelection()">+</button>
                             <button id="down" class="button-34">-</button>
 
                             <button id="getPDF" class="button-34" onclick="getPDF()">Telecharger page en PDF</button>
