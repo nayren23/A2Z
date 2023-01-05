@@ -51,6 +51,11 @@ function onFileLoaded(event, nomImage) {
   send(json)
 }
 
+function creationImage(sourceImage) {
+  let image = `<img class="draggable imagesDraggable" id="Image" alt="photo de profile" src="` + sourceImage + `" alt=""/>`
+  $(".conteneurPhotos").append(image)
+}
+
 /**
  * Fonction qui envoie la data reçu en paramètre, en base 64 à php
  * @param {*} json 
@@ -65,14 +70,56 @@ function send(json) {
 
     // traitement des cas 
     success: function (response) {
+      // console.log(response[0]["cheminImages"]);
+
+
+      $(".conteneurPhotos").empty()
+
+      for (let i = 0; i < response.length; i++) {
+        creationImage(response[i]["cheminImages"]);
+      }
+
       setTimeout(affichageImportSuccess, 5000)//en millisecondes
+
     },
     error: function (response) {
       setTimeout(affichageImportErreur, 5000)//en millisecondes
     }
-  });
+  })
+    /*
+    .done (function (element){
+  
+    })*/
+    ;
 }
 
+/**
+ * Fonction qui envoie la data reçu en paramètre, en base 64 à php
+ * @param {*} json 
+ */
+function affichageImageEnregistrer() {
+  $.ajax({
+    url: "./modules/mod_editionExo/sauvegardePhoto.php",
+    type: "POST",
+
+    // traitement des cas 
+    success: function (response) {
+      // console.log(response[0]["cheminImages"]);
+
+      for (let i = 0; i < response.length; i++) {
+        creationImage(response[i]["cheminImages"]);
+      }
+     // setTimeout(affichageImportSuccess, 5000)//en millisecondes
+
+    },
+
+  })
+    /*
+    .done (function (element){
+  
+    })*/
+    ;
+}
 function affichageImportSuccess() {
   Toast.fire({
     icon: 'success',

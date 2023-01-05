@@ -44,7 +44,7 @@ $(function() {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
             }
             else if (classes.includes("imagesDraggable")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img class="imagePage " alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img id="Image" class="imagePage " alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
             
             $(".res").append(htmlNouvelExercice);
@@ -54,6 +54,10 @@ $(function() {
     });
 });
 
+$(function() {
+    console.log("arii")
+    $("#Image").resizable();
+  });
 
 function CreateUUID() {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>

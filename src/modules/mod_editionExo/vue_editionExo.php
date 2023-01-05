@@ -136,7 +136,7 @@ class VueEdition extends Vue_connexion_generique
                         </label>
 
                         <div class="content">
-                        <form action="" class="search-bar"><!--  Mettre la bonne action -->
+                            <form action="" class="search-bar"><!--  Mettre la bonne action -->
                                 <input type="search" name="search" pattern=".*\S.*" required>
                                 <button class="search-btn" type="submit">
                                     <span>Search</span>
@@ -148,16 +148,10 @@ class VueEdition extends Vue_connexion_generique
 
                             <script src="Script_js/import_photos.js"></script>
 
-                            <table id="tableauImages">
+                            <div id="tableauImages" class="conteneurPhotos" >
 
-                                <?php
-                                foreach ($tableauImage as $value) {
-                                ?>
-                                    <img class="draggable imagesDraggable" alt="photo de profile" src="<?php echo $value['cheminImages'] ?>" class="rounded-circle avatar-xs" alt="" />
-                                <?php
-                                }
-                                ?>
-                            </table>
+
+                                </div>
                         </div>
 
 

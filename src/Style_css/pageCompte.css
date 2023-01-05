@@ -23,6 +23,7 @@ body {
 .imagePage{
   height: 10%;
   width: 10%;
+  resize: both;
 }
 
 .informationCompte {

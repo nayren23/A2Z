@@ -12,7 +12,7 @@ class SauvegardePhoto  extends Connexion
         parent::initConnexion();
     }
 
-    public function recupererPhotos()
+    public function envoiePhotos()
     {
 
         if (isset($_POST['image'])) {
@@ -29,6 +29,7 @@ class SauvegardePhoto  extends Connexion
             $DateImage  = date("Y-m-d");
             $idUser = $this->recuperationInfoCompte();
             $statement1->execute(array(':cheminImages' => htmlspecialchars($cheminImages), ':DateImage' => htmlspecialchars($DateImage), ':idUser' => htmlspecialchars($idUser['idUser']), ':DescriptionImages' => htmlspecialchars($DescriptionImages)));
+            $this->recuperationPhotos();
         }
     }
 
@@ -45,7 +46,53 @@ class SauvegardePhoto  extends Connexion
             echo $e->getMessage() . $e->getCode();
         }
     }
+
+    /**
+     * FOnction pour récupérer toutes les images de la BDD pour ensuite les envoyé à Js 
+     */
+    public function recuperationPhotos()
+    {
+        try {
+
+            //Requetes SQL
+            $sql = 'SELECT idImages FROM `images` WHERE idUser=:idUser'; //On récupere d'abord tous les id des images à afficher
+            $sql2 = 'SELECT cheminImages FROM `images` WHERE idImages=:idImages'; //On prend les images 1 à 1
+
+            //preparation des requetes SQL
+            $statement1 = self::$bdd->prepare($sql);
+            $statement2 = self::$bdd->prepare($sql2);
+
+            //////////////////// 1ere Requete ////////////////////
+
+            $idUser = $this->recuperationInfoCompte();
+            $statement1->execute(array(':idUser' => $idUser['idUser']));
+            $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
+
+            $nouveauxTableauBdd = array_map(fn ($value): string => $value['idImages'], $resultat_Tab_ID); //Pour éviter les structure lourdes de php
+
+            //////////////////// 2ème requete ////////////////////
+            $tailleTabImage = count($nouveauxTableauBdd);
+
+            //Boucle for pour envoyer 1 à 1 les images à Js
+            for ($i = 0; $i < $tailleTabImage; $i++) {
+
+                $sql2 = 'SELECT cheminImages FROM `images` WHERE idImages =:idImages';
+                $statement2->execute(array(':idImages' => $nouveauxTableauBdd[$i]));
+                $resultat_Tab_cheminImages[$i] = $statement2->fetch(PDO::FETCH_ASSOC);
+            }
+
+            header("Content-Type: application/json"); // On avertit le navigateur du type de donnée qu'on lui envoit !!!Hyper important ne pas enlever ou la page va complétement buguer!!!
+            echo json_encode($resultat_Tab_cheminImages); //Envoie à Js
+        } catch (PDOException $e) {
+            echo $e->getMessage() . $e->getCode();
+        }
+    }
 }
 
 $photoExercice = new SauvegardePhoto();
-$photoExercice->recupererPhotos();
+
+if(isset($_POST['image'])){
+    $photoExercice->envoiePhotos();
+}else{
+    $photoExercice->recuperationPhotos();
+}
