@@ -23,7 +23,14 @@ $(function() {
     $("li").disableSelection();
 }); 
 
-$(function() {
+//Appelle 1 fois au début du chargement de la page
+$( document ).ready(function() {
+    definitionDraggable()
+  });
+
+function definitionDraggable() {
+    console.log("Draggable ready")
+
     // rend les exos draggable
     $(".draggable, #draggable-nonvalid").draggable({
         helper: "clone",
@@ -52,7 +59,7 @@ $(function() {
             idUnique.id = uuid
         }
     });
-});
+};
 
 $(function() {
     console.log("arii")

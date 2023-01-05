@@ -148,8 +148,14 @@ class VueEdition extends Vue_connexion_generique
 
                             <script src="Script_js/import_photos.js"></script>
 
-                            <div id="tableauImages" class="conteneurPhotos" >
+                            <div id="tableauImages"  >
+                                <table>
+                                    <tbody class="conteneurPhotos">
 
+
+                                    </tbody>
+
+                                </table>
 
                                 </div>
                         </div>

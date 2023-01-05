@@ -52,9 +52,10 @@ function onFileLoaded(event, nomImage) {
 }
 
 function creationImage(sourceImage) {
-  let image = `<img class="draggable imagesDraggable" id="Image" alt="photo de profile" src="` + sourceImage + `" alt=""/>`
+  let image = `<td><img class="draggable imagesDraggable" alt="photo de profile" src="` + sourceImage + `" alt=""/></td>`
   $(".conteneurPhotos").append(image)
 }
+
 
 /**
  * Fonction qui envoie la data reçu en paramètre, en base 64 à php
@@ -71,12 +72,14 @@ function send(json) {
     // traitement des cas 
     success: function (response) {
       // console.log(response[0]["cheminImages"]);
-
+        console.log("hihi")
+ 
 
       $(".conteneurPhotos").empty()
 
       for (let i = 0; i < response.length; i++) {
         creationImage(response[i]["cheminImages"]);
+        definitionDraggable()
       }
 
       setTimeout(affichageImportSuccess, 5000)//en millisecondes
