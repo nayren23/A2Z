@@ -54,7 +54,10 @@ function definitionDraggable() {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img id="Image" class="imagePage " alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
             
+
             $(".res").append(htmlNouvelExercice);
+            console.log("arii")
+            $(".imagePage").resizable();
             var idUnique = document.getElementById('idDivVraiFaux');
             idUnique.id = uuid
         }
@@ -63,7 +66,7 @@ function definitionDraggable() {
 
 $(function() {
     console.log("arii")
-    $("#Image").resizable();
+    $(".imagePage").resizable();
   });
 
 function CreateUUID() {
