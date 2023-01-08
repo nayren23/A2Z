@@ -254,8 +254,10 @@ page {
 }
 
 page[size="A4"] {
-    width: 21cm;
-    height: 29.7cm;
+    min-width: 21cm;
+    min-height: 29.7cm;
+    max-width: 21cm;
+    max-height: 29.7cm;
 }
 
 @media print {

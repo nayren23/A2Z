@@ -45,9 +45,6 @@ function canvaAffiche() {
 
 
 
-
-
-
 }
 
 
@@ -68,6 +65,7 @@ $(function() {
     // empêche la selection du texte des exos qu'on peut drag n drop sur la page
     $("li").disableSelection();
 });
+
 
 $(function() {
     // rend les exos draggable
@@ -104,6 +102,12 @@ $(function() {
             idUnique.id = uuid
         }
     });
+});
+
+
+$(function() {
+    canvaAffiche();
+
 });
 
 
