@@ -55,14 +55,12 @@ class SauvegardePhoto  extends Connexion
         try {
 
             if (isset($_POST['nomImage'])) {
-                $nomImage = (string) trim($_POST['nomImage']);
+                $nomImage = htmlspecialchars((string) trim($_POST['nomImage']));
 
                 $sql = 'SELECT idImages FROM `images` WHERE DescriptionImages LIKE  ? LIMIT 10';
                 $statement1 = self::$bdd->prepare($sql);
                 $statement1->execute(array("%$nomImage%"));
                 $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
-                $nouveauxTableauBdd = array_map(fn ($value): string => $value['idImages'], $resultat_Tab_ID); //Pour éviter les structure lourdes de php
-
 
             } else {
                 //Requetes SQL
@@ -72,9 +70,13 @@ class SauvegardePhoto  extends Connexion
 
                 $statement1->execute(array(':idUser' => $idUser['idUser']));
                 $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
-                $nouveauxTableauBdd = array_map(fn ($value): string => $value['idImages'], $resultat_Tab_ID); //Pour éviter les structure lourdes de php
-
+                
             }
+            $func = function ($tableau): string {
+                return ($tableau['idImages']);
+            };;
+
+            $nouveauxTableauBdd = array_map($func, $resultat_Tab_ID); //Pour éviter les structure lourdes de php
             //preparation des requetes SQL
 
             $sql2 = 'SELECT cheminImages FROM `images` WHERE idImages=:idImages LIMIT 10;'; //On prend les images 1 à 1
@@ -98,7 +100,9 @@ class SauvegardePhoto  extends Connexion
             echo $e->getMessage() . $e->getCode();
         }
     }
+
 }
+
 
 $photoExercice = new SauvegardePhoto();
 
