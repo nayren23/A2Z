@@ -27,10 +27,12 @@ body {
   resize: both;
 }
 
+.imagesDraggable{
+  border: 2px solid #333;
+}
 .tableImage{
+  margin-left: 4%;
   display: inline-grid;
-  border: 10px solid #333;
-  border-color: red;
   width: 200px;
 
 }
@@ -280,7 +282,7 @@ input {
 
 
 	.search-bar input {
-		box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+		box-shadow: 0 0 0 0.4em #0098db inset;
 	}
 	.search-bar input:focus,
 	.search-bar input:valid {

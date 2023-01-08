@@ -137,10 +137,14 @@ class VueEdition extends Vue_connexion_generique
 
                         <div class="content">
                             <form action="" class="search-bar"><!--  Mettre la bonne action -->
-                                <input type="search" name="search" pattern=".*\S.*" required>
-                                <button class="search-btn" type="submit">
-                                    <span>Search</span>
-                                </button>
+                                <input type="search" id="barreDeRechercheImages" name="search" pattern=".*\S.*" required value="" >
+
+                                <script src="Script_js/import_photos.js"></script>
+                                <script type="text/javascript">
+                                    recherche()
+                                </script>
+
+
                             </form>
                             <button class="custom-btn btn-15" id="BoutonImportPhoto" onclick="importerImage()">Importer une image!</button>
 
@@ -148,13 +152,13 @@ class VueEdition extends Vue_connexion_generique
 
                             <script src="Script_js/import_photos.js"></script>
 
-                                <table class="tableImage">
-                                    <tbody class="conteneurPhotos">
+                            <table class="tableImage">
+                                <tbody class="conteneurPhotos">
 
 
-                                    </tbody>
+                                </tbody>
 
-                                </table>
+                            </table>
 
                         </div>
 

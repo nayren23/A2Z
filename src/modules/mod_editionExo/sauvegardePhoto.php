@@ -54,21 +54,32 @@ class SauvegardePhoto  extends Connexion
     {
         try {
 
-            //Requetes SQL
-            $sql = 'SELECT idImages FROM `images` WHERE idUser=:idUser'; //On récupere d'abord tous les id des images à afficher
-            $sql2 = 'SELECT cheminImages FROM `images` WHERE idImages=:idImages'; //On prend les images 1 à 1
+            if (isset($_POST['nomImage'])) {
+                $nomImage = (string) trim($_POST['nomImage']);
 
+                $sql = 'SELECT idImages FROM `images` WHERE DescriptionImages LIKE  ? LIMIT 10';
+                $statement1 = self::$bdd->prepare($sql);
+                $statement1->execute(array("%$nomImage%"));
+                $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
+                $nouveauxTableauBdd = array_map(fn ($value): string => $value['idImages'], $resultat_Tab_ID); //Pour éviter les structure lourdes de php
+
+
+            } else {
+                //Requetes SQL
+                $sql = 'SELECT idImages FROM `images` WHERE idUser=:idUser LIMIT 10;'; //On récupere d'abord tous les id des images à afficher
+                $statement1 = self::$bdd->prepare($sql);
+                $idUser = $this->recuperationInfoCompte();
+
+                $statement1->execute(array(':idUser' => $idUser['idUser']));
+                $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
+                $nouveauxTableauBdd = array_map(fn ($value): string => $value['idImages'], $resultat_Tab_ID); //Pour éviter les structure lourdes de php
+
+            }
             //preparation des requetes SQL
-            $statement1 = self::$bdd->prepare($sql);
+
+            $sql2 = 'SELECT cheminImages FROM `images` WHERE idImages=:idImages LIMIT 10;'; //On prend les images 1 à 1
             $statement2 = self::$bdd->prepare($sql2);
 
-            //////////////////// 1ere Requete ////////////////////
-
-            $idUser = $this->recuperationInfoCompte();
-            $statement1->execute(array(':idUser' => $idUser['idUser']));
-            $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
-
-            $nouveauxTableauBdd = array_map(fn ($value): string => $value['idImages'], $resultat_Tab_ID); //Pour éviter les structure lourdes de php
 
             //////////////////// 2ème requete ////////////////////
             $tailleTabImage = count($nouveauxTableauBdd);
@@ -91,8 +102,8 @@ class SauvegardePhoto  extends Connexion
 
 $photoExercice = new SauvegardePhoto();
 
-if(isset($_POST['image'])){
+if (isset($_POST['image'])) {
     $photoExercice->envoiePhotos();
-}else{
+} else {
     $photoExercice->recuperationPhotos();
 }
