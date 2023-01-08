@@ -12,8 +12,11 @@ class ModeleFavoris extends Connexion {
     }
 
    public function creerFiche() {
-    $sql2 = 'INSERT INTO fiche(idUser) VALUES (:idUser)';
-    $stmt2 = self::$bdd->prepare($sql2); 
+    $sql = 'INSERT INTO fiche(idUser) VALUES (:idUser)';
+    $stmt = self::$bdd->prepare($sql);
+    $stmt->execute(array(':identifiant' => $_SESSION['identifiant']));
+    $tabretour = $stmt->fetch();
+    $idUser =$tabretour['idUser'];
 
 
     $location = intval ($_POST['location']);
