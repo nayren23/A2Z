@@ -52,7 +52,7 @@ function onFileLoaded(event, nomImage) {
 }
 
 function creationImage(sourceImage) {
-  let image = `<td><img class="draggable imagesDraggable" alt="photo de profile" src="` + sourceImage + `" alt=""/></td>`
+  let image = `<img class="draggable imagesDraggable" alt="photo de profile" src="` + sourceImage + `" alt=""/>`
   $(".conteneurPhotos").append(image)
 }
 

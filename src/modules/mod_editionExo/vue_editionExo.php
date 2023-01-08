@@ -128,7 +128,7 @@ class VueEdition extends Vue_connexion_generique
 
 
 
-                    <div class="panel">
+                    <div class="panel" id="divImages">
                         <input type="radio" class="acc" id="tab-3" name="tabs">
                         <label class="labelEditionExo" for="tab-3">
                             <div class="cross-box"><span class="cross"></span></div>
@@ -148,8 +148,7 @@ class VueEdition extends Vue_connexion_generique
 
                             <script src="Script_js/import_photos.js"></script>
 
-                            <div id="tableauImages"  >
-                                <table>
+                                <table class="tableImage">
                                     <tbody class="conteneurPhotos">
 
 
@@ -157,7 +156,6 @@ class VueEdition extends Vue_connexion_generique
 
                                 </table>
 
-                                </div>
                         </div>
 
 

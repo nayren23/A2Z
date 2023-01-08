@@ -19,6 +19,7 @@ body {
   padding: 20;
 }
 
+
 /*En attendant le resizable  */
 .imagePage{
   height: 10%;
@@ -26,6 +27,23 @@ body {
   resize: both;
 }
 
+.tableImage{
+  display: inline-grid;
+  border: 10px solid #333;
+  border-color: red;
+  width: 200px;
+
+}
+.conteneurPhotos{
+  width: 200px;
+}
+
+
+/*
+#divImages{
+  height: 70%;
+
+}*/
 .informationCompte {
   background: #394264;
   padding: 1rem;
