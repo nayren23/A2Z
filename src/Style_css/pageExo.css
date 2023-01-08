@@ -300,6 +300,11 @@ ul {
     font-family: Arial, sans-serif;
 }
 
+canvas {
+    display: block;
+    padding-top: 15;
+}
+
 #up {
     width: 30px;
     height: 30px;

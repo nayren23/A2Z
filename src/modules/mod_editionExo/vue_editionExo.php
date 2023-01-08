@@ -77,7 +77,7 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
 
-                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiFaux">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiouFaux">Vrai ou Faux ?</li>
                                 </div>
                             </div>
 
@@ -87,7 +87,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Conscience phonologique</span>
                                 </label>
                                 <div class="content">
-                                    <li class="ui-state-highlight listeDeroulante draggable exoAutre">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable repondParPhrase">Phrase simple</li>
 
                                 </div>
                             </div>
@@ -181,6 +181,7 @@ class VueEdition extends Vue_connexion_generique
 
 
                     <page size="A4" id="page" class="sortable res zima">
+                        
                     </page>
 
 

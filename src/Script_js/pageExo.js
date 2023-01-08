@@ -16,14 +16,44 @@ function GetSelection() {
     console.log(textarea);
     var selection = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
     console.log(selection);
-    selection.fontcolor("red");
+
+
+}
+
+function canvaAffiche() {
+
+
+    var largeurCarreau = 20;
+    var hauteurCarreau = 20;
+    const longueurCanvas = $(".monCanvas").length;
+    console.log($(".monCanvas")[0]);
+    console.log($(".monCanvas"));
+    console.log($(".monCanvas").length)
+    for (let z = 0; z < longueurCanvas; z++) {
+
+        var ctx = $(".monCanvas")[z].getContext('2d');
+        for (var i = 0; i < 39; i++) {
+            for (var j = 0; j < 3; j++) {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(i * largeurCarreau, j * hauteurCarreau, largeurCarreau, hauteurCarreau);
+                ctx.strokeStyle = "#000000";
+                ctx.strokeRect(i * largeurCarreau, j * hauteurCarreau, largeurCarreau, hauteurCarreau);
+            }
+        }
+
+    }
+
+
+
+
+
 
 }
 
 
 
-/*<textarea id="myArea" cols="30" spellcheck="false">Select some text within this field.</textarea>
-    <button onclick="ModifySelection ()">Modify the current selection</button>*/
+
+
 
 $(function() {
     // page
@@ -58,14 +88,18 @@ $(function() {
         id = "myArea"
         class = "inputVraiF all input-utilisateur" / > < button class = "supprimer"
         onClick = "supprimerExo(this)" > ❌ < /button> <p class="pVraiFaux">---------------Vrai----Faux</p > < /div>`
-            } else if (classes.includes("exoAutre")) {
+            } else if (classes.includes("exoVraiouFaux")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-autre type</p> </div>`
             } else if (classes.includes("consigne")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
+            } else if (classes.includes("repondParPhrase")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <button class = "ajoutLigne" onClick="canvaAffiche()">+</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
+
 
             }
 
             $(".res").append(htmlNouvelExercice);
+            canvaAffiche();
             var idUnique = document.getElementById('idDivVraiFaux');
             idUnique.id = uuid
         }
