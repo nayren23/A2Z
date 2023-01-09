@@ -305,6 +305,7 @@ ul {
 canvas {
     display: block;
     padding-top: 15;
+    margin-left: 3%;
 }
 
 #up {

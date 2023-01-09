@@ -18,6 +18,10 @@
     margin-left: 5px;
 }
 
+.inputCanva {
+    margin-left: 20%;
+}
+
 .rond {
     border-radius: 50%;
     width: 35px;
