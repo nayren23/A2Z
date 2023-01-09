@@ -94,7 +94,7 @@ $(function() {
             } else if (classes.includes("consigne")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
             } else if (classes.includes("repondParPhrase")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <button class = "ajoutLigne" onClick="canvaAffiche()">+</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
 
 
             }
