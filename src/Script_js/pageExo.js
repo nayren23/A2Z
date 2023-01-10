@@ -65,7 +65,7 @@ function definitionDraggable() {
 };
 
 $(function() {
-    console.log("arii")
+    console.log("resizable ready")
     $(".imagePage").resizable();
   });
 

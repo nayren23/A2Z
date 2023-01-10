@@ -29,9 +29,13 @@ body {
 
 .imagesDraggable{
   border: 2px solid #333;
+border-radius: 15% 15% 15% 15%;
+border-color: #0098db;
+margin-top: 2%;
+margin-left: 2%;
 }
 .tableImage{
-  margin-left: 4%;
+  /*margin-left: 4%;*/
   display: inline-grid;
   width: 200px;
 
