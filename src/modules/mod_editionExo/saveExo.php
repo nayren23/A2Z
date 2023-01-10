@@ -74,7 +74,7 @@ class saveExo extends connexion
             //update
             $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$indiceExoSite]); //recuperation de l'id de l'exo
             $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$indiceExoSite]); // recuperation de l'html   
-            $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$i]);
+            $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$indiceExoSite]);
                  
             $tableauExec = array(':contenu' => json_encode($html), ':idExo' => $idExercice, ':positionExercice'=> $positionExercice);
             $statement2->execute($tableauExec);
