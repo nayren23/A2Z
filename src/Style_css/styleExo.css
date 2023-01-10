@@ -22,7 +22,10 @@
     margin-left: 20%;
 }
 
-.Entete {}
+.Entete {
+    background-color: grey;
+    height: 150;
+}
 
 .rond {
     border-radius: 50%;

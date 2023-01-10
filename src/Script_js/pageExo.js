@@ -96,7 +96,7 @@ $(function() {
             } else if (classes.includes("repondParPhrase")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
             } else if (classes.includes("Entete")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"></div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase " id="idGuid"><div><p>Prénom__________</p><p>Date:____/______/_____</p> </div> <div class="Entete"> </div></div>`
 
 
             }
