@@ -22,6 +22,43 @@
     margin-left: 20%;
 }
 
+.left {
+    display: inline-block;
+    width: 60%;
+    height: 100%;
+}
+
+.bot {
+    display: block;
+}
+
+.right {
+    display: inline-block;
+}
+
+.groupe {
+    width: 10px;
+}
+
+.lecture {
+    border-radius: 0% 0% 30% 0%;
+}
+
+.boiteEntete {
+    width: 100%;
+    display: inline-block;
+}
+
+.prenom {
+    width: 75%;
+    display: inline-block;
+}
+
+.date {
+    width: 25%;
+    display: inline-block;
+}
+
 .Entete {
     background-color: grey;
     height: 150;
