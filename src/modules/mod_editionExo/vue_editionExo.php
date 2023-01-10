@@ -43,7 +43,19 @@ class VueEdition extends Vue_connexion_generique
                             <span class="accordion-heading" id="myElement">Mise en page</span>
                         </label>
 
+                        <div class="questions">
 
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-7" name="question">
+                                <label class="labelEditionExo" for="question-7">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Entête</span>
+                                </label>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable Entete">Entête</li>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="questions">
 
                             <div class="question-wrap">
@@ -133,17 +145,17 @@ class VueEdition extends Vue_connexion_generique
                         <label class="labelEditionExo" for="tab-3">
                             <div class="cross-box"><span class="cross"></span></div>
                             <span class="accordion-heading">Banque d'image</span>
-                            </label>
+                        </label>
 
-                            <div class="content">
-                                <script src="Script_js/import_photos.js"></script>
-                                <script type="text/javascript"></script>
+                        <div class="content">
+                            <script src="Script_js/import_photos.js"></script>
+                            <script type="text/javascript"></script>
 
-                                <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
-                                <table>
-                                    
-                                </table>
-                            </div>
+                            <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
+                            <table>
+
+                            </table>
+                        </div>
 
 
                     </div>
@@ -181,7 +193,7 @@ class VueEdition extends Vue_connexion_generique
 
 
                     <page size="A4" id="page" class="sortable res zima">
-                        
+
                     </page>
 
 

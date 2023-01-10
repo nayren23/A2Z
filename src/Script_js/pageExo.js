@@ -84,24 +84,26 @@ $(function() {
             const uuid = CreateUUID()
             if (classes.includes("exoVraiFaux")) {
                 htmlNouvelExercice = ` < div class = "divVraiOuFaux classeDeBase"
-        id = "idDivVraiFaux" > < input type = "text"
+        id = "idGuid" > < input type = "text"
         name = "VouF"
         id = "myArea"
         class = "inputVraiF all input-utilisateur" / > < button class = "supprimer"
         onClick = "supprimerExo(this)" > ❌ < /button> <p class="pVraiFaux">---------------Vrai----Faux</p > < /div>`
             } else if (classes.includes("exoVraiouFaux")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-----Vrai ou faux</p> </div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-----Vrai ou faux</p> </div>`
             } else if (classes.includes("consigne")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
             } else if (classes.includes("repondParPhrase")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
+            } else if (classes.includes("Entete")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"></div>`
 
 
             }
 
             $(".res").append(htmlNouvelExercice);
             canvaAffiche();
-            var idUnique = document.getElementById('idDivVraiFaux');
+            var idUnique = document.getElementById('idGuid');
             idUnique.id = uuid
         }
     });
