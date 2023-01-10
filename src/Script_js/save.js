@@ -3,6 +3,10 @@ function tojson() {
     var contentElements = document.querySelector('page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
 
+    //Ici on enleve les class que Jquery rajoute car nous n'en n'avons pas besoin et cela créer des bugs si on l'enregistre
+    $('.ui-wrapper').remove();
+    $('.ui-resizable-handle').remove();
+
     Array.from(contentElements).forEach(element => {
 
         const cssSelector = `#${element.id} .input-utilisateur`
@@ -15,6 +19,9 @@ function tojson() {
         })
         exercicesHTML.push(element.outerHTML)
     }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+
+    //apres sauvegarde on re met les images draggables pour qu'on puisse les modifier meme après sauvegarde
+    mettreImageResizable()
 
 
     let donneesExercices = [];

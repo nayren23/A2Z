@@ -56,8 +56,7 @@ function definitionDraggable() {
             
 
             $(".res").append(htmlNouvelExercice);
-            console.log("arii")
-            $(".imagePage").resizable();
+            mettreImageResizable()
             var idUnique = document.getElementById('idDivVraiFaux');
             idUnique.id = uuid
         }
@@ -65,9 +64,13 @@ function definitionDraggable() {
 };
 
 $(function() {
-    console.log("resizable ready")
-    $(".imagePage").resizable();
+    mettreImageResizable()
   });
+
+  function mettreImageResizable(){
+    console.log("Image resizable ready :)")
+    $(".imagePage").resizable();
+  }
 
 function CreateUUID() {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
