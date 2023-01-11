@@ -64,15 +64,22 @@ $(function() {
     $("li").disableSelection();
 });
 
+//Appelle 1 fois au début du chargement de la page
+$(document).ready(function() {
+    definitionDraggable()
+});
 
-$(function() {
+function definitionDraggable() {
+    console.log("Draggable ready")
+
     // rend les exos draggable
     $(".draggable, #draggable-nonvalid").draggable({
-            helper: "clone"
+            helper: "clone",
         })
         // rend la page droppable et definit l'event listener du drop
     $("#page").droppable({
         accept: ".draggable",
+
         drop: function(event, ui) { // drop ajoute lt-mirror et modifie les attribut du text area
             const classes = ui.draggable["0"].className
             let htmlNouvelExercice
@@ -91,19 +98,29 @@ $(function() {
             } else if (classes.includes("repondParPhrase")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
             } else if (classes.includes("Entete")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase " id="idGuid"><button class = "enteteBouton supprimer" onClick="supprimerExo(this)">❌</button><div class = "boiteEntete"><p class = "prenom">Prénom__________</p><p class = "date">Date:____/______/_____</p> </div><div class="Entete"><div class = "left"><input type="text"  class="top" /><input type="text"  class="bot" /> </div>   <div class = "right"><div class = "lectureLeft"><input type="text"  class="lecture" /><input type="text"  class="lecture2" /></div> <div class = " lectureRight"> <input type="text"  class="groupe" cols="40" rows="5"/> </div></div> </div></div>`
-
-
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase " id="idGuid"><button class = "enteteBouton supprimer" onClick="supprimerExo(this)">❌</button><div class = "boiteEntete"><p class = "prenom">Prénom__________</p><p class = "date">Date:____/______/_____</p> </div><div class="Entete"><div class = "left"><input type="text"  class="top input-utilisateur" /><input type="text"  class="bot input-utilisateur" /> </div>   <div class = "right"><div class = "lectureLeft"><input type="text"  class="lecture input-utilisateur" /><input type="text"  class="lecture2 input-utilisateur" /></div> <div class = " lectureRight"> <input type="text"  class="groupe input-utilisateur " cols="40" rows="5"/> </div></div> </div></div>`
+            } else if (classes.includes("imagesDraggable")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><img id="Image" class="imagePage " alt="photo de profile" src=` + ui.draggable[0].src + ` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
+
 
             $(".res").append(htmlNouvelExercice);
             canvaAffiche();
             var idUnique = document.getElementById('idGuid');
+            mettreImageResizable()
             idUnique.id = uuid
         }
     });
+};
+
+$(function() {
+    mettreImageResizable()
 });
 
+function mettreImageResizable() {
+    console.log("Image resizable ready :)")
+    $(".imagePage").resizable();
+}
 
 $(function() {
     canvaAffiche();

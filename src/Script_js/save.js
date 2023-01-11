@@ -3,9 +3,9 @@ function tojson() {
     var contentElements = document.querySelector('page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
 
+    //Ici on enleve les class que Jquery rajoute car nous n'en n'avons pas besoin et cela créer des bugs si on l'enregistre
     $('.ui-wrapper').remove();
     $('.ui-resizable-handle').remove();
-    $('.lt-mirror__wrapper').remove();
 
     Array.from(contentElements).forEach(element => {
 
@@ -19,6 +19,9 @@ function tojson() {
         })
         exercicesHTML.push(element.outerHTML)
     }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+
+    //apres sauvegarde on re met les images draggables pour qu'on puisse les modifier meme après sauvegarde
+    mettreImageResizable()
 
 
     let donneesExercices = [];
@@ -43,8 +46,7 @@ function tojson() {
         positionExercice: donneesExercices.map(donnee => donnee.position) //stream pour récuperer la position dans le tableau d'objet
 
     };
-    console.log(donneesExercices.map(donnee => donnee.id))
-    console.log(donneesExercices.map(donnee => donnee.position))
+
 
 
     document.querySelector(".divVraiOuFaux")
@@ -54,31 +56,55 @@ function tojson() {
     const obj = JSON.parse(json); // transforme un string JSON en objet JavaScript.
     const idUniqueJSON = JSON.parse(json);
 
+    envoieExercice(json)
 
+}
 
-    console.log(deco_var);
-
+function envoieExercice(json){
     $.ajax({
         method: "POST",
         url: "./modules/mod_editionExo/saveExo.php",
         data: { stringRecu: json },
-        dataType: "json"
+
+        // traitement des cas 
+        success: function (response) {
+            affichageSuccess()
+        },
+        error: function (response) {
+            console.log(response)
+            affichageErreur()
+        }
+    })
+}
+
+function affichageSuccess(json) {
+    Toast.fire({
+        icon: 'success',
+        title: "Votre travail a été sauvegardé avec succès😄"
+    })
+}
+
+
+function affichageErreur(json) {
+    Toast.fire({
+        icon: 'error',
+        title: "Erreur lors de la sauvegarde de votre travail🤔"
     })
 
 }
+    //recuperation idFiche depuis l'url
+    function $_GET(param) {
+        var vars = {};
+        window.location.href.replace(location.hash, '').replace(
+            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+            function (m, key, value) { // callback
+                vars[key] = value !== undefined ? value : '';
+            }
+        );
 
-//recuperation idFiche depuis l'url
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace(location.hash, '').replace(
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function(m, key, value) { // callback
-            vars[key] = value !== undefined ? value : '';
+        if (param) {
+            return vars[param] ? vars[param] : null;
         }
-    );
-
-    if (param) {
-        return vars[param] ? vars[param] : null;
+        return vars;
     }
-    return vars;
-}
+
