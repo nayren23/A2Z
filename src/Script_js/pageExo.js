@@ -102,6 +102,10 @@ function definitionDraggable() {
             } else if (classes.includes("imagesDraggable")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><img id="Image" class="imagePage " alt="photo de profile" src=` + ui.draggable[0].src + ` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
+            else if (classes.includes("imagesDraggable")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img id="Image" class="imagePage " alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
+            }
+            
 
 
             $(".res").append(htmlNouvelExercice);
