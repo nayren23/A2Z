@@ -18,11 +18,81 @@
     margin-left: 5px;
 }
 
-.rond {
-    border-radius: 50%;
-    width: 35px;
-    text-align: center;
-    margin-left: 5;
+.bot {
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.top {
+    font-size: 27px;
+    font-weight: bold;
+    width: 80%;
+    margin-top: 25px;
+}
+
+.left {
+    display: inline-block;
+    width: 59%;
+    height: 100%;
+    text-align: -webkit-center;
+}
+
+.right {
+    float: right;
+    width: 40%;
+    height: 100%;
+}
+
+.groupe {
+    width: 72px;
+    height: 72px;
+    border-radius: 40px;
+}
+
+.lectureLeft {
+    width: 70%;
+    display: inline-block;
+}
+
+.lectureRight {
+    width: 30%;
+    float: right;
+}
+
+.lecture {
+    border-radius: 0% 0% 30% 0%;
+}
+
+.boiteEntete {
+    width: 100%;
+    display: inline-block;
+}
+
+.prenom {
+    width: 74%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.nom {
+    font-weight: bold;
+}
+
+.date {
+    width: 25%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.Entete {
+    background-color: grey;
+    height: 150;
+    width: 100%;
+}
+
+button.enteteBouton.supprimer {
+    margin-left: 93%;
 }
 
 .consigne2 {
@@ -30,4 +100,11 @@
     height: 50px;
     width: 92%;
     margin-left: 15px;
+}
+
+.rond {
+    border-radius: 50%;
+    width: 35px;
+    text-align: center;
+    margin-left: 5;
 }

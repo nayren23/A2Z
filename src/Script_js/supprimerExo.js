@@ -4,7 +4,7 @@
  */
 function supprimerExo(elem) {
 
-
+    console.log(elem);
     var element = document.getElementById(elem.parentNode.id);
     console.log(element.id)
     console.log(elem);

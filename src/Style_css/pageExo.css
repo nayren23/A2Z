@@ -254,8 +254,10 @@ page {
 }
 
 page[size="A4"] {
-    width: 21cm;
-    height: 29.7cm;
+    min-width: 21cm;
+    min-height: 29.7cm;
+    max-width: 21cm;
+    max-height: 29.7cm;
 }
 
 @media print {
@@ -296,6 +298,20 @@ ul {
 
 /*bouton change taille font*/
 
+#textarea::selection {
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+    padding-top: 15;
+    margin-left: 3%;
+}
+
+.inputCanva {
+    margin-left: 20%;
+}
+
 #up {
     width: 30px;
     height: 30px;
@@ -334,6 +350,5 @@ ul {
 }
 
 .supprimer {
-    margin-left: 5%;
     font-size: smaller;
 }

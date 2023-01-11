@@ -13,7 +13,7 @@ function tojson() {
         const inputs = $(cssSelector) //recupere tous les élement  selectionner par le selecteur css par class
         const inputArray = Array.from(inputs)
         let texte
-        inputArray.forEach(input => {//Boucle for pour inserer la val dans le input 
+        inputArray.forEach(input => { //Boucle for pour inserer la val dans le input 
             texte = input.value
             $(input).attr("value", texte)
         })
@@ -32,7 +32,7 @@ function tojson() {
             id: element.id,
             position: index
         }
-        donneesExercices.push(donneExo)//on met les donne dans le tableau 
+        donneesExercices.push(donneExo) //on met les donne dans le tableau 
     });
 
 
