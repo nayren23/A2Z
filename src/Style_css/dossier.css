@@ -1,11 +1,39 @@
 .BoxDossiers {
-    border: yellowgreen;
-    border-style: solid;
+    display: block ruby;
+    border: grey;
+    width: 95%;
+    border-style: double;
+    border-width: 8px;
+    border-radius: 10px;
     margin: 50;
-    margin-top: 125;
+    margin-top: 15;
     height: 60%;
 }
+
+.boxBoutons {
+height:50px;
+width: 100%;
+margin: 25 50 -10 ;
+display: inline-block;
+}
+
 .imageDossier {
+    height: 150px;
+    width: 150px;
+}
+
+.boutonSupp {
+    position: absolute;
+
+}
+
+.button-34 {
+width: 175px;
+margin-left: 10px;
+height: 50px;
+}
+
+.fiche {
     height: 150px;
     width: 150px;
 }

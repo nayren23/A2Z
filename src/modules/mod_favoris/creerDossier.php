@@ -45,9 +45,9 @@ class dossierBDD extends Connexion
 
     public function recupereDossierSelonLocation() {
       try {
-      $sql = "select idDossier, nomDossier from dossier where idParent = :idParent";
+      $sql = "select idDossier, nomDossier from dossier join utilisateur using (idUser) where identifiant = :id and idParent = :idParent";
       $stmt = self::$bdd->prepare($sql);
-      $stmt->execute(array(":idParent" => $_POST['idDossier']));
+      $stmt->execute(array(":idParent" => $_POST['idParent'], ":id" => $_SESSION['identifiant']));
       
       $resultat = $stmt->fetchAll();
       } catch (PDOException $e) {
@@ -56,12 +56,28 @@ class dossierBDD extends Connexion
     echo json_encode($resultat);
 
   }
+
+  public function supprimerDossier() {
+    try{
+      $sql = "DELETE from dossier where idDossier = :idDossier";
+      $stmt = self::$bdd->prepare($sql);
+      $stmt->execute(array(":idDossier" => $_POST['idDossier']));
+
+    }catch (PDOException $e) {
+
+    }
+  }
 }
 $dossier = new dossierBDD();
+
+if(isset($_POST['idDossier'])){
+$dossier->supprimerDossier();
+}
 if (isset($_POST['dossier'])){
   $dossier->envoieDossierBdd();
  }
- if (isset($_POST['idDossier'])){
+
+ if (isset($_POST['idParent'])){
   $dossier->recupereDossierSelonLocation();
  }
 ?>

@@ -23,9 +23,10 @@ class VueFavoris extends Vue_Generique {
 <script src="./Script_js/script_dossier.js">
 
 </script>
-   <button type="button" onClick="popUpNomDuDossier(<?php echo $_GET['location']?>)" name="CreerDossier" > Créer un dossier </button>
-   <button type="button" onClick="popUpNomDeLaFiche(<?php echo $_GET['location']?>)"   >Créer une fiche</button>
-
+  <div class="boxBoutons">
+   <button type="button"  class="button-34" onClick="popUpNomDuDossier(<?php echo $_GET['location']?>)" name="CreerDossier" > Créer un dossier </button>
+   <button type="button"  class="button-34" onClick="popUpNomDeLaFiche(<?php echo $_GET['location']?>)"   >Créer une fiche</button>
+ </div>
 <?php
   
   }
