@@ -43,6 +43,19 @@ class VueEdition extends Vue_connexion_generique
                             <span class="accordion-heading" id="myElement">Mise en page</span>
                         </label>
 
+
+                        <div class="questions">
+
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-6" name="question">
+                                <label class="labelEditionExo" for="question-6">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Consigne</span>
+                                </label>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable consigne">Consigne</li>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -118,10 +131,24 @@ class VueEdition extends Vue_connexion_generique
                     <div class="panel">
                         <input type="radio" class="acc" id="tab-3" name="tabs">
                         <label class="labelEditionExo" for="tab-3">
-                            <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Banque d'image</span>
-                        </label>
+                            <div class="cross-box"><span class="cross"></span></div>
+                            <span class="accordion-heading">Banque d'image</span>
+                            </label>
+
+                            <div class="content">
+                                <script src="Script_js/import_photos.js"></script>
+                                <script type="text/javascript"></script>
+
+                                <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
+                                <table>
+                                    
+                                </table>
+                            </div>
+
 
                     </div>
+
+
 
                 </div>
                 <!--Fin Accordeon-->
@@ -152,11 +179,11 @@ class VueEdition extends Vue_connexion_generique
 
                     </div>
 
-                    
-                        <page size="A4" id="page" class="sortable res zima">
-                        </page>
 
-                   
+                    <page size="A4" id="page" class="sortable res zima">
+                    </page>
+
+
 
 
                 </div>
@@ -165,13 +192,13 @@ class VueEdition extends Vue_connexion_generique
                 <script src="Script_js\recuperationExo.js"></script>
                 <script src="Script_js/blocageToucheEntree.js"></script>
                 <script>
-                    const tableauExo = <?php echo  json_encode($tableauExercice)  ?>; //ici on encode le tableau pour l'envoyer à JS
+                    const tableauExo = `<?php echo  json_encode($tableauExercice)  ?> `; //ici on encode le tableau pour l'envoyer à JS
                     let exercice
                     <?php
                     for ($i = 0; $i < count($tableauExercice); $i++) {
                         $exercice = htmlspecialchars_decode($tableauExercice[$i]['contenu']); //on decode le htmlspecialchars pour ré avoir les chevrons
                     ?>
-                        exercice = '<?php echo $exercice ?>'
+                        exercice = `<?php echo $exercice ?>`
                         insertionExercies(exercice)
                     <?php
                     } ?>
