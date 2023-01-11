@@ -43,7 +43,7 @@ class ficheBDD extends Connexion
 
     public function recupererFicheSelonLocation() {
       try {
-      $sql = "SELECT idFiche, nomFiche from fiche join utilisateur where idDossier = :idDossier and identifiant = :identifiant";
+      $sql = "SELECT idFiche, nomFiche from fiche join utilisateur using (idUser) where idDossier = :idDossier and identifiant = :identifiant";
       $stmt = self::$bdd->prepare($sql);
       $stmt->execute(array(":idDossier" => $_POST['idParent'], ":identifiant" => $_SESSION['identifiant']));
       
@@ -54,8 +54,23 @@ class ficheBDD extends Connexion
     echo json_encode($resultat);
 
   }
+
+  function supprimerFiche() {
+    try {
+      $sql = "DELETE from fiche where idFiche = :idFiche";
+      $stmt = self::$bdd->prepare($sql);
+      $stmt->execute(array(":idFiche" => $_POST['idFiche']));
+
+    } catch (PDOException $e) {
+      echo false;
+    }
+    echo true;
+  }
 }
 $fiche = new ficheBDD();
+if(isset($_POST['idFiche'])){
+  $fiche->supprimerFiche();
+  }
 if (isset($_POST['nomFiche'])){
   $fiche->envoieficheBdd();
  }

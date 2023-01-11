@@ -64,8 +64,9 @@ class dossierBDD extends Connexion
       $stmt->execute(array(":idDossier" => $_POST['idDossier']));
 
     }catch (PDOException $e) {
-
+      echo false;
     }
+    echo true;
   }
 }
 $dossier = new dossierBDD();
