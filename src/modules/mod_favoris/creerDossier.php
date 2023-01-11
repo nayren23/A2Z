@@ -58,7 +58,7 @@ class dossierBDD extends Connexion
   }
 
   public function supprimerDossier() {
-    try{
+    try{      
       $sql = "DELETE from dossier where idDossier = :idDossier";
       $stmt = self::$bdd->prepare($sql);
       $stmt->execute(array(":idDossier" => $_POST['idDossier']));
@@ -68,6 +68,8 @@ class dossierBDD extends Connexion
     }
     echo true;
   }
+
+
 }
 $dossier = new dossierBDD();
 
