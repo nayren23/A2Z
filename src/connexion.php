@@ -18,7 +18,7 @@ class Connexion{
          // self::$bdd = new PDO('mysql:host=localhost;dbname=dutinfopw201620', 'Aldric', '13542');
 
         //pour yassine le BG NE PAS SUPPRIMER ET UTILISER L AUTRE BDD
-       self::$bdd = new PDO('mysql:host=localhost;dbname=dutinfopw201620', 'yassine', 'yassine');
+      // self::$bdd = new PDO('mysql:host=localhost;dbname=dutinfopw201620', 'yassine', 'yassine');
     }
 }
 
