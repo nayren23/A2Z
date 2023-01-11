@@ -188,7 +188,7 @@ label .accordion-heading {
 /**********************/
 
 input:checked~.content {
-    max-height: 400px;
+    max-height: 1000px;
     transition: max-height, 1s;
 }
 
@@ -222,15 +222,15 @@ input:checked~.questions {
     padding: 0.5em;
     float: left;
     margin: 10px;
+    
 }
 
 .draggable,
 #draggable-nonvalid {
-    width: 100px;
-    height: 100px;
-    padding: 0.5em;
-    float: left;
-    margin: 10px 10px 10px 0;
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+
 }
 
 .dropp2 {
