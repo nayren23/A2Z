@@ -54,13 +54,13 @@ function supprimerFiche(idFiche) {
     })
     .done ( function ( element) {
       location. reload()
-
     } ) ;
 }
 
 function créationIconedossier($idDossier,$nomDossier) {
   let nouveauDossier = '<div class="imageSeule"><button type="button" class="boutonSupp" onClick="supprimerDossier('+ $idDossier +')">❌</button> <figure><a class="lien" href="index.php?module=favoris&location=' + $idDossier + '"><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>' + $nomDossier + '</figcaption></figure></div>';
   $(".BoxDossiers").append(nouveauDossier);
+  
 
 }
 
