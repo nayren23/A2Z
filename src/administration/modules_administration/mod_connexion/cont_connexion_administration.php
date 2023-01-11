@@ -48,7 +48,7 @@ class ContConnexion_administration extends Controleurgenerique
                 ////////////////////////////////////////////////// DECONNEXION ///////////////////////////////////////////////////////
             case 'deconnexion':
                 if ($this->deconnexion()) {
-                    header('Location: ./index.php?module=administration&action=connexion&DeconnexionReussite=true');
+                    header('Location: ./index.php?module=administration&DeconnexionReussite=true');
                 } else {
                     header('Location: ./index.php?module=administration&action=connexion&erroDeconnexion=true');
                 }
