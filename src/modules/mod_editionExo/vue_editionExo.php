@@ -43,7 +43,19 @@ class VueEdition extends Vue_connexion_generique
                             <span class="accordion-heading" id="myElement">Mise en page</span>
                         </label>
 
+                        <div class="questions">
 
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-7" name="question">
+                                <label class="labelEditionExo" for="question-7">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Entête</span>
+                                </label>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable Entete">Entête</li>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="questions">
 
                             <div class="question-wrap">
@@ -77,7 +89,7 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
 
-                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiFaux">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiouFaux">Vrai ou Faux ?</li>
                                 </div>
                             </div>
 
@@ -87,7 +99,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Conscience phonologique</span>
                                 </label>
                                 <div class="content">
-                                    <li class="ui-state-highlight listeDeroulante draggable exoAutre">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable repondParPhrase">Phrase simple</li>
 
                                 </div>
                             </div>
@@ -185,7 +197,7 @@ class VueEdition extends Vue_connexion_generique
 
                         </div>
                         <div id="button">
-                            <button id="up" class="button-34">+</button>
+                            <button id="up" class="button-34" onclick="GetSelection()">+</button>
                             <button id="down" class="button-34">-</button>
 
                             <button id="getPDF" class="button-34" onclick="getPDF()">Telecharger page en PDF</button>
@@ -198,6 +210,7 @@ class VueEdition extends Vue_connexion_generique
 
 
                     <page size="A4" id="page" class="sortable res zima">
+
                     </page>
 
 
