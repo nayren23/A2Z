@@ -3,13 +3,17 @@ function tojson() {
     var contentElements = document.querySelector('page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
 
+    $('.ui-wrapper').remove();
+    $('.ui-resizable-handle').remove();
+    $('.lt-mirror__wrapper').remove();
+
     Array.from(contentElements).forEach(element => {
-        
+
         const cssSelector = `#${element.id} .input-utilisateur`
         const inputs = $(cssSelector) //recupere tous les élement  selectionner par le selecteur css par class
         const inputArray = Array.from(inputs)
         let texte
-        inputArray.forEach(input => {//Boucle for pour inserer la val dans le input 
+        inputArray.forEach(input => { //Boucle for pour inserer la val dans le input 
             texte = input.value
             $(input).attr("value", texte)
         })
@@ -25,7 +29,7 @@ function tojson() {
             id: element.id,
             position: index
         }
-        donneesExercices.push(donneExo)//on met les donne dans le tableau 
+        donneesExercices.push(donneExo) //on met les donne dans le tableau 
     });
 
 
@@ -37,7 +41,7 @@ function tojson() {
         html: exercicesHTML, // tableau des exos en html
         idFiche: deco_var, //GUID UNIQUE
         positionExercice: donneesExercices.map(donnee => donnee.position) //stream pour récuperer la position dans le tableau d'objet
-        
+
     };
     console.log(donneesExercices.map(donnee => donnee.id))
     console.log(donneesExercices.map(donnee => donnee.position))
@@ -68,7 +72,7 @@ function $_GET(param) {
     var vars = {};
     window.location.href.replace(location.hash, '').replace(
         /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function (m, key, value) { // callback
+        function(m, key, value) { // callback
             vars[key] = value !== undefined ? value : '';
         }
     );

@@ -21,11 +21,6 @@ function GetSelection() {
 }
 
 function canvaAffiche() {
-
-
-
-
-
     var largeurCarreau = 20;
     var hauteurCarreau = 20;
     const longueurCanvas = $(".monCanvas").length;
@@ -96,7 +91,7 @@ $(function() {
             } else if (classes.includes("repondParPhrase")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
             } else if (classes.includes("Entete")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase " id="idGuid"><div class = "boiteEntete"><p class = "prenom">Prénom__________</p><p class = "date">Date:____/______/_____</p> </div>        <div class="Entete">  <div class = "left"><input type="text"  class="top" /><input type="text"  class="bot" /> </div>    <div class = "right"><input type="text"  class="lecture" /> <input type="text"  class="groupe" /></div> </div></div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase " id="idGuid"><button class = "enteteBouton supprimer" onClick="supprimerExo(this)">❌</button><div class = "boiteEntete"><p class = "prenom">Prénom__________</p><p class = "date">Date:____/______/_____</p> </div><div class="Entete"><div class = "left"><input type="text"  class="top" /><input type="text"  class="bot" /> </div>   <div class = "right"><div class = "lectureLeft"><input type="text"  class="lecture" /><input type="text"  class="lecture2" /></div> <div class = " lectureRight"> <input type="text"  class="groupe" cols="40" rows="5"/> </div></div> </div></div>`
 
 
             }

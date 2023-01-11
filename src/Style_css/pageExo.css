@@ -308,6 +308,10 @@ canvas {
     margin-left: 3%;
 }
 
+.inputCanva {
+    margin-left: 20%;
+}
+
 #up {
     width: 30px;
     height: 30px;
@@ -346,6 +350,5 @@ canvas {
 }
 
 .supprimer {
-    margin-left: 5%;
     font-size: smaller;
 }

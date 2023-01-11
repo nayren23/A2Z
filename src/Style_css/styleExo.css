@@ -18,26 +18,46 @@
     margin-left: 5px;
 }
 
-.inputCanva {
-    margin-left: 20%;
+.bot {
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.top {
+    font-size: 27px;
+    font-weight: bold;
+    width: 80%;
+    margin-top: 25px;
 }
 
 .left {
     display: inline-block;
-    width: 60%;
+    width: 59%;
     height: 100%;
-}
-
-.bot {
-    display: block;
+    text-align: -webkit-center;
 }
 
 .right {
-    display: inline-block;
+    float: right;
+    width: 40%;
+    height: 100%;
 }
 
 .groupe {
-    width: 10px;
+    width: 72px;
+    height: 72px;
+    border-radius: 40px;
+}
+
+.lectureLeft {
+    width: 70%;
+    display: inline-block;
+}
+
+.lectureRight {
+    width: 30%;
+    float: right;
 }
 
 .lecture {
@@ -50,25 +70,29 @@
 }
 
 .prenom {
-    width: 75%;
+    width: 74%;
     display: inline-block;
+    font-weight: bold;
+}
+
+.nom {
+    font-weight: bold;
 }
 
 .date {
     width: 25%;
     display: inline-block;
+    font-weight: bold;
 }
 
 .Entete {
     background-color: grey;
     height: 150;
+    width: 100%;
 }
 
-.rond {
-    border-radius: 50%;
-    width: 35px;
-    text-align: center;
-    margin-left: 5;
+button.enteteBouton.supprimer {
+    margin-left: 93%;
 }
 
 .consigne2 {
@@ -76,4 +100,11 @@
     height: 50px;
     width: 92%;
     margin-left: 15px;
+}
+
+.rond {
+    border-radius: 50%;
+    width: 35px;
+    text-align: center;
+    margin-left: 5;
 }
