@@ -14,7 +14,7 @@ class VueEdition extends Vue_connexion_generique
         parent::__construct(); // comme un super
     }
 
-    function pageExoEdition($tableauExercice)
+    function pageExoEdition($tableauExercice, $tableauImage)
     {
 ?>
 
@@ -128,22 +128,39 @@ class VueEdition extends Vue_connexion_generique
 
 
 
-                    <div class="panel">
+                    <div class="panel" id="divImages">
                         <input type="radio" class="acc" id="tab-3" name="tabs">
                         <label class="labelEditionExo" for="tab-3">
                             <div class="cross-box"><span class="cross"></span></div>
                             <span class="accordion-heading">Banque d'image</span>
-                            </label>
+                        </label>
 
-                            <div class="content">
+                        <div class="content">
+                            <form action="" class="search-bar"><!--  Mettre la bonne action -->
+                                <input type="search" id="barreDeRechercheImages" name="search" pattern=".*\S.*" required value="" >
+
                                 <script src="Script_js/import_photos.js"></script>
-                                <script type="text/javascript"></script>
+                                <script type="text/javascript">
+                                    recherche()
+                                </script>
 
-                                <input type="file" class="form-control form-control-sm" aria-label="Small file input example" accept="image/png, image/jpeg, image/jpg " name="image" required>
-                                <table>
-                                    
-                                </table>
-                            </div>
+
+                            </form>
+                            <button class="custom-btn btn-15" id="BoutonImportPhoto" onclick="importerImage()">Importer une image!</button>
+
+                            <!--  <input type="file" id="image-input" accept="image/*"></input> -->
+
+                            <script src="Script_js/import_photos.js"></script>
+
+                            <table class="tableImage">
+                                <tbody class="conteneurPhotos">
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
 
 
                     </div>

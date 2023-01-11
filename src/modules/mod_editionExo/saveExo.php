@@ -44,7 +44,12 @@ class saveExo extends connexion
             $tailleTableauSite = count($exoDansLaBDD);
             $tailleTableauBdd = count($tableauContenuExerciceDecode['idExo']);
 
-            $nouveauxTableauBdd = array_map(fn($value) : string => $value['idExo'], $exoDansLaBDD);//on remplit un nouveux tab avec tous les id des exos qui sera utilisé pour l'insertion car il est plus simple et évite de faire trop de boucle for
+            $func = function ($tableau): string {
+                return ($tableau['idExo']);
+            };;
+
+            $nouveauxTableauBdd = array_map($func, $exoDansLaBDD); //Pour éviter les structure lourdes de php
+
 
             for ($i = 0; $i < $tailleTableauSite || $i < $tailleTableauBdd; $i++) {  //parcours de la bd et compare si delete, insert ou update en fonction
 
@@ -69,7 +74,7 @@ class saveExo extends connexion
             //update
             $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$indiceExoSite]); //recuperation de l'id de l'exo
             $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$indiceExoSite]); // recuperation de l'html   
-            $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$i]);
+            $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$indiceExoSite]);
                  
             $tableauExec = array(':contenu' => json_encode($html), ':idExo' => $idExercice, ':positionExercice'=> $positionExercice);
             $statement2->execute($tableauExec);
