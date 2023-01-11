@@ -9,6 +9,47 @@ function changeAll(font) {
     }
 }
 
+function GetSelection() {
+    var selection = "";
+
+    var textarea = document.getElementById("myArea");
+    console.log(textarea);
+    var selection = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+    console.log(selection);
+
+
+}
+
+function canvaAffiche() {
+    var largeurCarreau = 20;
+    var hauteurCarreau = 20;
+    const longueurCanvas = $(".monCanvas").length;
+    console.log($(".monCanvas")[0]);
+    console.log($(".monCanvas"));
+    console.log($(".monCanvas").length)
+    for (let z = 0; z < longueurCanvas; z++) {
+
+        var ctx = $(".monCanvas")[z].getContext('2d');
+        for (var i = 0; i < 39; i++) {
+            for (var j = 0; j < 3; j++) {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(i * largeurCarreau, j * hauteurCarreau, largeurCarreau, hauteurCarreau);
+                ctx.strokeStyle = "#000000";
+                ctx.strokeRect(i * largeurCarreau, j * hauteurCarreau, largeurCarreau, hauteurCarreau);
+            }
+        }
+
+    }
+
+
+
+}
+
+
+
+
+
+
 $(function() {
     // page
     $(".sortable").sortable({
@@ -21,19 +62,19 @@ $(function() {
     });*/
     // empêche la selection du texte des exos qu'on peut drag n drop sur la page
     $("li").disableSelection();
-}); 
+});
 
 //Appelle 1 fois au début du chargement de la page
-$( document ).ready(function() {
+$(document).ready(function() {
     definitionDraggable()
-  });
+});
 
 function definitionDraggable() {
     console.log("Draggable ready")
 
     // rend les exos draggable
     $(".draggable, #draggable-nonvalid").draggable({
-        helper: "clone",
+            helper: "clone",
         })
         // rend la page droppable et definit l'event listener du drop
     $("#page").droppable({
@@ -44,20 +85,33 @@ function definitionDraggable() {
             let htmlNouvelExercice
             const uuid = CreateUUID()
             if (classes.includes("exoVraiFaux")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> <p class="pVraiFaux">---------------Vrai----Faux</p> </div>`
-            } else if (classes.includes("exoAutre")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-autre type</p> </div>`
+                htmlNouvelExercice = ` < div class = "divVraiOuFaux classeDeBase"
+        id = "idGuid" > < input type = "text"
+        name = "VouF"
+        id = "myArea"
+        class = "inputVraiF all input-utilisateur" / > < button class = "supprimer"
+        onClick = "supprimerExo(this)" > ❌ < /button> <p class="pVraiFaux">---------------Vrai----Faux</p > < /div>`
+            } else if (classes.includes("exoVraiouFaux")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button><p class="pVraiFaux">-----Vrai ou faux</p> </div>`
             } else if (classes.includes("consigne")) {
-                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="rond all input-utilisateur" maxlength="1"/><input type="text" name="VouF" class="consigne2 all input-utilisateur" /> <button class = "supprimer" onClick="supprimerExo(this)">❌</button> </div>`
+            } else if (classes.includes("repondParPhrase")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><input type="text" name="VouF" class="inputCanva inputVraiF all input-utilisateur" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button> <canvas class="monCanvas" width="740" height="61"></canvas></div>`
+            } else if (classes.includes("Entete")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase " id="idGuid"><button class = "enteteBouton supprimer" onClick="supprimerExo(this)">❌</button><div class = "boiteEntete"><p class = "prenom">Prénom__________</p><p class = "date">Date:____/______/_____</p> </div><div class="Entete"><div class = "left"><input type="text"  class="top input-utilisateur" /><input type="text"  class="bot input-utilisateur" /> </div>   <div class = "right"><div class = "lectureLeft"><input type="text"  class="lecture input-utilisateur" /><input type="text"  class="lecture2 input-utilisateur" /></div> <div class = " lectureRight"> <input type="text"  class="groupe input-utilisateur " cols="40" rows="5"/> </div></div> </div></div>`
+            } else if (classes.includes("imagesDraggable")) {
+                htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idGuid"><img id="Image" class="imagePage " alt="photo de profile" src=` + ui.draggable[0].src + ` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
             else if (classes.includes("imagesDraggable")) {
                 htmlNouvelExercice = `<div class ="divVraiOuFaux classeDeBase" id="idDivVraiFaux"><img id="Image" class="imagePage " alt="photo de profile" src=`+ui.draggable[0].src +` alt="" /><button class = "supprimer" onClick="supprimerExo(this)">❌</button></div>`
             }
             
 
+
             $(".res").append(htmlNouvelExercice);
+            canvaAffiche();
+            var idUnique = document.getElementById('idGuid');
             mettreImageResizable()
-            var idUnique = document.getElementById('idDivVraiFaux');
             idUnique.id = uuid
         }
     });
@@ -65,12 +119,18 @@ function definitionDraggable() {
 
 $(function() {
     mettreImageResizable()
-  });
+});
 
-  function mettreImageResizable(){
+function mettreImageResizable() {
     console.log("Image resizable ready :)")
     $(".imagePage").resizable();
-  }
+}
+
+$(function() {
+    canvaAffiche();
+
+});
+
 
 function CreateUUID() {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
