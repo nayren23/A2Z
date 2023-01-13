@@ -10,7 +10,7 @@ async function popUpNomDuDossier($loc) {
       })
       
       if (nomDossier) {
-        Swal.fire('nom dossier : ', nomDossier)
+        Swal.fire('Nom de votre dossier :', nomDossier)
         $.ajax ( {
           method : "POST" ,
           url : "./modules/mod_favoris/creerDossier.php",
@@ -21,7 +21,118 @@ async function popUpNomDuDossier($loc) {
        
           .done ( function ( retour) {
             
-            créarionIconedossier(retour,nomDossier)
+            créationIconedossier(retour,nomDossier)
+
+          } ) ;
+      }
+      
+
+        
+      })()
+}
+function supprimerDossier(idDossier) {
+  $.ajax ( {
+    method : "POST" ,
+    url : "./modules/mod_favoris/creerDossier.php",
+    data : { idDossier: idDossier } ,
+    dataType : "json",
+
+
+
+    success: function (response) {
+      location. reload()
+    }
+  })
+}
+function supprimerFiche(idFiche) {
+  $.ajax ( {
+    method : "POST" ,
+    url : "./modules/mod_editionExo/creerFiche.php",
+    data : { idFiche: idFiche,
+                } ,
+    dataType : "json"
+    })
+    .done ( function ( element) {
+      location. reload()
+    } ) ;
+}
+
+function créationIconedossier($idDossier,$nomDossier) {
+  let nouveauDossier = '<div id="' + $idDossier +'" class=" draggableFiche dossier"><button type="button" class="boutonSupp" onClick="supprimerDossier('+ $idDossier +')">❌</button> <figure class="imageSeule"><a class="lien" href="index.php?module=favoris&location=' + $idDossier + '"><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>' + $nomDossier + '</figcaption></figure></div>';
+  $(".BoxDossiers").append(nouveauDossier);
+  
+
+}
+
+function rechercheLocation() {
+
+  var url = new URL(window.location.href);
+  var location = url.searchParams.get("location");
+  rechercheDossier(location);
+  rechercheFiche(location);
+}
+function rechercheDossier (location) {
+  $.ajax ( {
+    method : "POST" ,
+    url : "./modules/mod_favoris/creerDossier.php",
+    data : { idParent: location,
+                } ,
+    dataType : "json"
+    })
+    .done ( function ( element) {
+
+      console.log(element)
+
+      for (let i = 0 ; i < element.length; i++) {
+      créationIconedossier(element[i]['idDossier'],element[i]['nomDossier']);
+      }
+
+    } ) ;
+}
+function rechercheFiche (location) {
+  $.ajax ( {
+    method : "POST" ,
+    url : "./modules/mod_editionExo/creerFiche.php",
+    data : { idParent: location,
+                } ,
+    dataType : "json"
+    })
+    .done ( function ( element) {
+
+      console.log(element)
+
+      for (let i = 0 ; i < element.length; i++) {
+      créationIconeFiche(element[i]['idFiche'],element[i]['nomFiche']);
+      }
+      
+
+    } ) ;
+}
+async function popUpNomDeLaFiche($loc) {
+  
+
+  (async () => {
+
+      const { value: nomFiche } = await Swal.fire({
+        input: 'text',
+        inputLabel: 'Entrez le nom de la fiche',
+        inputPlaceholder: 'Nom de la fiche'
+      })
+      
+      if (nomFiche) {
+        Swal.fire('Nom de votre fiche : ',nomFiche)
+        $.ajax ( {
+          method : "POST" ,
+          url : "./modules/mod_editionExo/creerFiche.php",
+          data : { nomFiche : nomFiche ,
+            location : $loc } ,
+          dataType : "json"
+          })
+       
+          .done ( function ( retour) {
+
+              console.log(retour)
+              créationIconeFiche(retour,nomFiche);
 
           } ) ;
       }
@@ -31,29 +142,8 @@ async function popUpNomDuDossier($loc) {
       })()
 }
 
-function créarionIconedossier($idDossier,$nomDossier) {
-let nouveauDossier = '<figure><a href="index.php?module=favoris&location=' + $idDossier + '"><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>' + $nomDossier + '</figcaption></figure>';
-$(".BoxDossiers").append(nouveauDossier);
-
+function créationIconeFiche($idFiche,$nomFiche) {
+  let nouvelElement = '<div id="' + $idFiche +'" class=" draggableFiche"><button type="button" class="boutonSupp" onClick="supprimerFiche('+ $idFiche +')">❌</button> <figure class="imageSeule" ><a class="lien" href="index.php?module=editionExo&idFiche=' + $idFiche + '"><img src="./ressource/images/fiche.png" class="fiche"><figcaption>' + $nomFiche + '</figcaption></figure></div>'
+  $(".BoxDossiers").append(nouvelElement);
 }
 
-function rechercheLocation() {
-
-  var url = new URL(window.location.href);
-  var idDossier = url.searchParams.get("location");
-            $.ajax ( {
-            method : "POST" ,
-            url : "./modules/mod_favoris/creerDossier.php",
-            data : { idDossier : idDossier,
-                        } ,
-            dataType : "json"
-            })
-            .done ( function ( element) {
-              
-              console.log(element)
-
-              for (let i = 0 ; i < element.length; i++) {
-              créarionIconedossier(element[i]['idDossier'],element[i]['nomDossier']);
-              }
-            } ) ;
-}

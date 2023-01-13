@@ -1,19 +1,54 @@
 .BoxDossiers {
-    border: yellowgreen;
-    border-style: solid;
+    display: grid;
+    grid-template-columns: 9% 9% 9% 9% 9% 9% 9% 9% 9% 9% 9%;
+    max-height: 1600px;
+    border: grey;
+    max-width: 95%;
+    border-style: double;
+    border-width: 8px;
+    border-radius: 10px;
     margin: 50;
-    margin-top: 125;
-    height: 60%;
-}
-.imageDossier {
-    height: 150px;
-    width: 150px;
+    padding-bottom: 50px;
+    height: 600px;
+
 }
 
+.boxBoutons {
+height:50px;
+width: 100%;
+margin: 25 50 -10 ;
+display: inline-block;
+}
+
+.imageSeule {
+    height: 150px;
+    width: 150px;
+    margin-top: 15px;
+
+}
+
+.boutonSupp {
+    position: absolute;
+    background-color: transparent;
+    border: 0;
+    margin-top: 10px;
+    width: 24px;
+
+}
+
+.button-34 {
+width: 175px;
+margin-left: 10px;
+height: 50px;
+}
+.fiche {
+    height: 150px;
+    width: 150px; 
+}
 figcaption {
     color: #fff;
     font: italic smaller sans-serif;
-    padding: 3px;
+    font-size: larger;
     height: 20px;
     width: 150px;
     text-align: center;
@@ -21,5 +56,12 @@ figcaption {
 figure {
     display : inline-block;
     max-width: 150px;
+
+}
+
+.lien {
+    height: 150px;
+    width: 150px;
+    float: left;
 
 }

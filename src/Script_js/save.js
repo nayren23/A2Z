@@ -2,71 +2,109 @@ function tojson() {
     //  This gives you an HTMLElement object
     var contentElements = document.querySelector('page').children; // recupere tous les elements enfants de celui recherche dans querySelector (selecteur CSS)
     let exercicesHTML = [];
+
+    //Ici on enleve les class que Jquery rajoute car nous n'en n'avons pas besoin et cela créer des bugs si on l'enregistre
+    $('.ui-wrapper').remove();
+    $('.ui-resizable-handle').remove();
+
     Array.from(contentElements).forEach(element => {
-        const texte = $(`#${element.id} input`)[0].value
-        $(`#${element.id} input`).attr("value", texte)
-        console.log(texte)
+
+        const cssSelector = `#${element.id} .input-utilisateur`
+        const inputs = $(cssSelector) //recupere tous les élement  selectionner par le selecteur css par class
+        const inputArray = Array.from(inputs)
+        let texte
+        inputArray.forEach(input => { //Boucle for pour inserer la val dans le input 
+            texte = input.value
+            $(input).attr("value", texte)
+        })
         exercicesHTML.push(element.outerHTML)
     }); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
 
+    //apres sauvegarde on re met les images draggables pour qu'on puisse les modifier meme après sauvegarde
+    mettreImageResizable()
 
-    //tableau des id du tableau HTMl
-    let identifiantExercicesHtml = [];
+
+    let donneesExercices = [];
     const divExercice = document.querySelectorAll(".classeDeBase") // recupere tout les classes qui possede classDeBase 
-    Array.from(divExercice).forEach(element => identifiantExercicesHtml.push(element.id)); // transforme le HTMLCollection en tableau et ajoute chaque element dans le tableau exercicesHTML
+
+    Array.from(divExercice).forEach((element, index) => { //index pour récupere l'index qui seras incrementer dans le for each
+        const donneExo = { // objet
+            id: element.id,
+            position: index
+        }
+        donneesExercices.push(donneExo) //on met les donne dans le tableau 
+    });
 
 
-    //  This gives you a string representing that element and its content
-    //var html = element.outerHTML;
-    //  This gives you a JSON object that you can send with jQuery.ajax's `data`
-    // option, you can rename the property to whatever you want.
-    var deco_var = decodeURI($_GET('idFiche'));
+    const deco_var = decodeURI($_GET('idFiche'));
 
-    var data = {
-        idExo: identifiantExercicesHtml, // creation tableau identifiant UNIQUE identifiant HTML
+    //Donne envoyer à PHP un objet
+    const data = {
+        idExo: donneesExercices.map(donnee => donnee.id), // creation tableau identifiant UNIQUE identifiant HTML
         html: exercicesHTML, // tableau des exos en html
-        idFiche: deco_var
+        idFiche: deco_var, //GUID UNIQUE
+        positionExercice: donneesExercices.map(donnee => donnee.position) //stream pour récuperer la position dans le tableau d'objet
+
     };
+
 
 
     document.querySelector(".divVraiOuFaux")
 
 
-
-    //  This gives you a string in JSON syntax of the object above that you can 
-    // send with XMLHttpRequest.
-
     const json = JSON.stringify(data); // transforme un objet JavaScript en string JSON.
     const obj = JSON.parse(json); // transforme un string JSON en objet JavaScript.
     const idUniqueJSON = JSON.parse(json);
 
+    envoieExercice(json)
 
+}
 
-    console.log(deco_var);
-
+function envoieExercice(json){
     $.ajax({
         method: "POST",
         url: "./modules/mod_editionExo/saveExo.php",
         data: { stringRecu: json },
-        dataType: "json"
+
+        // traitement des cas 
+        success: function (response) {
+            affichageSuccess()
+        },
+        error: function (response) {
+            console.log(response)
+            affichageErreur()
+        }
+    })
+}
+
+function affichageSuccess(json) {
+    Toast.fire({
+        icon: 'success',
+        title: "Votre travail a été sauvegardé avec succès😄"
+    })
+}
+
+
+function affichageErreur(json) {
+    Toast.fire({
+        icon: 'error',
+        title: "Erreur lors de la sauvegarde de votre travail🤔"
     })
 
 }
+    //recuperation idFiche depuis l'url
+    function $_GET(param) {
+        var vars = {};
+        window.location.href.replace(location.hash, '').replace(
+            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+            function (m, key, value) { // callback
+                vars[key] = value !== undefined ? value : '';
+            }
+        );
 
-
-
-//recuperation idFiche depuis l'url
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace(location.hash, '').replace(
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function(m, key, value) { // callback
-            vars[key] = value !== undefined ? value : '';
+        if (param) {
+            return vars[param] ? vars[param] : null;
         }
-    );
-
-    if (param) {
-        return vars[param] ? vars[param] : null;
+        return vars;
     }
-    return vars;
-}
+

@@ -14,7 +14,7 @@ class VueEdition extends Vue_connexion_generique
         parent::__construct(); // comme un super
     }
 
-    function pageExoEdition($tableauExercice)
+    function pageExoEdition($tableauExercice, $tableauImage)
     {
 ?>
 
@@ -43,7 +43,19 @@ class VueEdition extends Vue_connexion_generique
                             <span class="accordion-heading" id="myElement">Mise en page</span>
                         </label>
 
+                        <div class="questions">
 
+                            <div class="question-wrap">
+                                <input type="radio" class="acc" id="question-7" name="question">
+                                <label class="labelEditionExo" for="question-7">
+                                    <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Entête</span>
+                                </label>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable Entete">Entête</li>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="questions">
 
                             <div class="question-wrap">
@@ -77,7 +89,7 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
 
-                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiFaux">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable exoVraiouFaux">Vrai ou Faux ?</li>
                                 </div>
                             </div>
 
@@ -87,7 +99,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Conscience phonologique</span>
                                 </label>
                                 <div class="content">
-                                    <li class="ui-state-highlight listeDeroulante draggable exoAutre">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable repondParPhrase">Phrase simple</li>
 
                                 </div>
                             </div>
@@ -128,13 +140,44 @@ class VueEdition extends Vue_connexion_generique
 
 
 
-                    <div class="panel">
+                    <div class="panel" id="divImages">
                         <input type="radio" class="acc" id="tab-3" name="tabs">
                         <label class="labelEditionExo" for="tab-3">
-                            <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Banque d'image</span>
+                            <div class="cross-box"><span class="cross"></span></div>
+                            <span class="accordion-heading">Banque d'image</span>
                         </label>
 
+                        <div class="content">
+                            <form action="" class="search-bar"><!--  Mettre la bonne action -->
+                                <input type="search" id="barreDeRechercheImages" name="search" pattern=".*\S.*" required value="" >
+
+                                <script src="Script_js/import_photos.js"></script>
+                                <script type="text/javascript">
+                                    recherche()
+                                </script>
+
+
+                            </form>
+                            <button class="custom-btn btn-15" id="BoutonImportPhoto" onclick="importerImage()">Importer une image!</button>
+
+                            <!--  <input type="file" id="image-input" accept="image/*"></input> -->
+
+                            <script src="Script_js/import_photos.js"></script>
+
+                            <table class="tableImage">
+                                <tbody class="conteneurPhotos">
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
                     </div>
+
+
 
                 </div>
                 <!--Fin Accordeon-->
@@ -154,7 +197,7 @@ class VueEdition extends Vue_connexion_generique
 
                         </div>
                         <div id="button">
-                            <button id="up" class="button-34">+</button>
+                            <button id="up" class="button-34" onclick="GetSelection()">+</button>
                             <button id="down" class="button-34">-</button>
 
                             <button id="getPDF" class="button-34" onclick="getPDF()">Telecharger page en PDF</button>
@@ -167,6 +210,7 @@ class VueEdition extends Vue_connexion_generique
 
 
                     <page size="A4" id="page" class="sortable res zima">
+
                     </page>
 
 
@@ -178,13 +222,13 @@ class VueEdition extends Vue_connexion_generique
                 <script src="Script_js\recuperationExo.js"></script>
                 <script src="Script_js/blocageToucheEntree.js"></script>
                 <script>
-                    const tableauExo = <?php echo  json_encode($tableauExercice)  ?>; //ici on encode le tableau pour l'envoyer à JS
+                    const tableauExo = `<?php echo  json_encode($tableauExercice)  ?> `; //ici on encode le tableau pour l'envoyer à JS
                     let exercice
                     <?php
                     for ($i = 0; $i < count($tableauExercice); $i++) {
                         $exercice = htmlspecialchars_decode($tableauExercice[$i]['contenu']); //on decode le htmlspecialchars pour ré avoir les chevrons
                     ?>
-                        exercice = '<?php echo $exercice ?>'
+                        exercice = `<?php echo $exercice ?>`
                         insertionExercies(exercice)
                     <?php
                     } ?>

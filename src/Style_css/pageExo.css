@@ -188,7 +188,7 @@ label .accordion-heading {
 /**********************/
 
 input:checked~.content {
-    max-height: 400px;
+    max-height: 1000px;
     transition: max-height, 1s;
 }
 
@@ -222,15 +222,15 @@ input:checked~.questions {
     padding: 0.5em;
     float: left;
     margin: 10px;
+    
 }
 
 .draggable,
 #draggable-nonvalid {
-    width: 100px;
-    height: 100px;
-    padding: 0.5em;
-    float: left;
-    margin: 10px 10px 10px 0;
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+
 }
 
 .dropp2 {
@@ -254,8 +254,10 @@ page {
 }
 
 page[size="A4"] {
-    width: 21cm;
-    height: 29.7cm;
+    min-width: 21cm;
+    min-height: 29.7cm;
+    max-width: 21cm;
+    max-height: 29.7cm;
 }
 
 @media print {
@@ -296,6 +298,20 @@ ul {
 
 /*bouton change taille font*/
 
+#textarea::selection {
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+    padding-top: 15;
+    margin-left: 3%;
+}
+
+.inputCanva {
+    margin-left: 20%;
+}
+
 #up {
     width: 30px;
     height: 30px;
@@ -314,9 +330,9 @@ ul {
 /* CSS */
 
 .button-34 {
-    background: #5E5DF0;
+    background: #0098db;
     border-radius: 999px;
-    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-shadow: #0098db 0 10px 20px -10px;
     box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
@@ -334,6 +350,5 @@ ul {
 }
 
 .supprimer {
-    margin-left: 5%;
     font-size: smaller;
 }

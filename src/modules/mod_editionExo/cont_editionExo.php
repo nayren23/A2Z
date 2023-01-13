@@ -14,6 +14,7 @@ class ContEditionExo extends Controleurgenerique
         $this->vue = new VueEdition;
         $this->modele = new ModeleEditionExo;
         $this->action = (isset($_GET['action']) ? $_GET['action'] : 'editionExo');
+        $this->afficheImageEnregistrer();
     }
 
 
@@ -36,11 +37,19 @@ class ContEditionExo extends Controleurgenerique
         }
     }
 
+    public function afficheImageEnregistrer() {
+        ?>
+        <script src="Script_js/import_photos.js"></script>
+
+        <script> affichageImageEnregistrer() </script>
+        <?php    
+}
 
     public function affichagePageEditionExo()
     {
         $tableauExercice = $this -> modele -> recupererExercices();
-        $this->vue->pageExoEdition($tableauExercice);
+        $tableauImage = $this -> modele -> recupererImages();
+        $this->vue->pageExoEdition($tableauExercice,$tableauImage);
     }
 
     public function affichageConnexionReussie()
