@@ -20,7 +20,7 @@
 
 .bot {
     display: block;
-    margin-top: 20px;
+    margin-top: 14px;
     font-style: italic;
 }
 
@@ -28,7 +28,7 @@
     font-size: 27px;
     font-weight: bold;
     width: 80%;
-    margin-top: 25px;
+    margin-top: 7px;
 }
 
 .left {
@@ -45,8 +45,8 @@
 }
 
 .groupe {
-    width: 72px;
-    height: 72px;
+    width: 75px;
+    height: 75px;
     border-radius: 40px;
 }
 
@@ -58,10 +58,6 @@
 .lectureRight {
     width: 30%;
     float: right;
-}
-
-.lecture {
-    border-radius: 0% 0% 30% 0%;
 }
 
 .boiteEntete {
@@ -87,7 +83,7 @@
 
 .Entete {
     background-color: grey;
-    height: 150;
+    height: 110;
     width: 100%;
 }
 
@@ -95,11 +91,17 @@ button.enteteBouton.supprimer {
     margin-left: 93%;
 }
 
+input.groupe.input-utilisateur {
+    margin-top: 7px;
+}
+
 .consigne2 {
     border: dashed black 1px;
     height: 50px;
     width: 92%;
     margin-left: 15px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .rond {
@@ -107,4 +109,27 @@ button.enteteBouton.supprimer {
     width: 35px;
     text-align: center;
     margin-left: 5;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.entoureMotsExo {
+    width: 150px;
+    height: 30px;
+}
+
+.premierMot {
+    background-color: grey;
+}
+
+.premiereLigne {
+    margin-top: 15px;
+}
+
+.deuxiemeLigne {
+    margin-top: 30px;
+}
+
+.alignCenter {
+    text-align: center;
 }
