@@ -58,7 +58,7 @@ function supprimerFiche(idFiche) {
 }
 
 function créationIconedossier($idDossier,$nomDossier) {
-  let nouveauDossier = '<div class="imageSeule"><button type="button" class="boutonSupp" onClick="supprimerDossier('+ $idDossier +')">❌</button> <figure><a class="lien" href="index.php?module=favoris&location=' + $idDossier + '"><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>' + $nomDossier + '</figcaption></figure></div>';
+  let nouveauDossier = '<div id="' + $idDossier +'" class=" draggableFiche dossier"><button type="button" class="boutonSupp" onClick="supprimerDossier('+ $idDossier +')">❌</button> <figure class="imageSeule"><a class="lien" href="index.php?module=favoris&location=' + $idDossier + '"><img onClick="rechercheLocation()"src="./ressource/images/dossier.png" alt="Image de dossier"><figcaption>' + $nomDossier + '</figcaption></figure></div>';
   $(".BoxDossiers").append(nouveauDossier);
   
 
@@ -143,6 +143,7 @@ async function popUpNomDeLaFiche($loc) {
 }
 
 function créationIconeFiche($idFiche,$nomFiche) {
-  let nouvelElement = '<div class="imageSeule"><button type="button" class="boutonSupp" onClick="supprimerFiche('+ $idFiche +')">❌</button> <figure><a class="lien" href="index.php?module=editionExo&idFiche=' + $idFiche + '"><img src="./ressource/images/fiche.png" class="fiche"><figcaption>' + $nomFiche + '</figcaption></figure></div>'
+  let nouvelElement = '<div id="' + $idFiche +'" class=" draggableFiche"><button type="button" class="boutonSupp" onClick="supprimerFiche('+ $idFiche +')">❌</button> <figure class="imageSeule" ><a class="lien" href="index.php?module=editionExo&idFiche=' + $idFiche + '"><img src="./ressource/images/fiche.png" class="fiche"><figcaption>' + $nomFiche + '</figcaption></figure></div>'
   $(".BoxDossiers").append(nouvelElement);
 }
+

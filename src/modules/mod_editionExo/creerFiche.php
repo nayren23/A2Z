@@ -57,6 +57,10 @@ class ficheBDD extends Connexion
 
   function supprimerFiche() {
     try {
+      $sql = "DELETE from exercices where idFiche = :idFiche";
+      $stmt = self::$bdd->prepare($sql);
+      $stmt->execute(array(":idFiche" => $_POST['idFiche']));
+      
       $sql = "DELETE from fiche where idFiche = :idFiche";
       $stmt = self::$bdd->prepare($sql);
       $stmt->execute(array(":idFiche" => $_POST['idFiche']));
