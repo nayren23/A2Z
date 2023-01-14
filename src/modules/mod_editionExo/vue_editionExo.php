@@ -25,14 +25,14 @@ class VueEdition extends Vue_connexion_generique
 
 
 
-        <div class="flex-container">
+        <div class="flex-container" id="conteneurPageEdition">
 
-            <div class="flex-row">
+            <div class="flex-row" id="conteneurPageA4">
 
 
                 <!--Accordeon-->
 
-                <div class="flex-col-md-6">
+                <div class="flex-col-md-6" id="accordeonGauche">
 
                     <div class="panel">
 
