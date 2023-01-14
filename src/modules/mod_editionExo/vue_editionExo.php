@@ -18,11 +18,7 @@ class VueEdition extends Vue_connexion_generique
     {
 ?>
 
-
-
-
-
-
+<title> Edition Fiche | A2Z</title>
 
 
         <div class="flex-container">
@@ -110,7 +106,7 @@ class VueEdition extends Vue_connexion_generique
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Décodage</span>
                                 </label>
                                 <div class="content">
-                                    <li class="ui-state-highlight listeDeroulante draggable">Vrai ou Faux ?</li>
+                                    <li class="ui-state-highlight listeDeroulante draggable entoureMots">Entoure Les Mots</li>
 
                                 </div>
                             </div>
@@ -119,18 +115,13 @@ class VueEdition extends Vue_connexion_generique
                                 <label class="labelEditionExo" for="question-4">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Encodage</span>
                                 </label>
-                                <div class="content">
-                                    <li class="ui-state-highlight listeDeroulante draggable">Vrai ou Faux ?</li>
-                                </div>
+                                
                             </div>
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-5" name="question">
                                 <label class="labelEditionExo" for="question-5">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Copie</span>
                                 </label>
-                                <div class="content">
-                                    <li class="ui-state-highlight listeDeroulante draggable">Vrai ou Faux ?</li>
-                                </div>
                             </div>
 
 
