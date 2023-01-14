@@ -22,6 +22,12 @@
     display: block;
     margin-top: 14px;
     font-style: italic;
+    margin-left: 35%;
+    background-color: #979797;
+    text-align: center;
+    border-block: #979797;
+    border-width: 0px;
+    border-color: #979797 !important;
 }
 
 .top {
@@ -29,13 +35,19 @@
     font-weight: bold;
     width: 80%;
     margin-top: 7px;
+    background-color: #979797;
+    text-align: center;
+
+    border-block: #979797;
+    border-width: 0px;
+    border-color: #979797 !important;
 }
 
 .left {
     display: inline-block;
     width: 59%;
     height: 100%;
-    text-align: -webkit-center;
+    text-align: center;
 }
 
 .right {
@@ -82,7 +94,7 @@
 }
 
 .Entete {
-    background-color: grey;
+    background-color: #979797;
     height: 110;
     width: 100%;
 }
@@ -119,7 +131,7 @@ input.groupe.input-utilisateur {
 }
 
 .premierMot {
-    background-color: grey;
+    background-color: #979797;
 }
 
 .premiereLigne {
