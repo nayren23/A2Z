@@ -38,7 +38,7 @@ class saveExo extends connexion
             $statement4 = Connexion::$bdd->prepare($sql4);
             $statement5 = Connexion::$bdd->prepare($sql5);
 
-            $statement3->execute(array(':idFiche' => $idFiche));
+            $statement3->execute(array(':idFiche' => htmlspecialchars($idFiche)));
             $exoDansLaBDD = $statement3->fetchAll(); //structure ne dictionnaire
 
             $nouveauxTableauBdd = array(); //pour éviter d'avoir un tableau en dictionnaire de la BDD
@@ -63,7 +63,7 @@ class saveExo extends connexion
                 }
             }
             $DateImage  = date('l jS \of F Y h:i:s A');
-            $tableauExecution = array(':dateEcriture' => htmlspecialchars($DateImage), ':idFiche' => $idFiche);
+            $tableauExecution = array(':dateEcriture' => htmlspecialchars($DateImage), ':idFiche' => htmlspecialchars($idFiche));
             $statement5->execute($tableauExecution);
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
