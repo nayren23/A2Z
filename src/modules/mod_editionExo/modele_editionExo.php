@@ -24,7 +24,7 @@ class ModeleEditionExo  extends Modele_Connexion_Generique
 		$sql1 ='Select contenu from exercices join fiche using (idFiche) where idUser = :idUser and idFiche = :idFiche ORDER BY positionExercice '; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
 		$statement1 = Connexion::$bdd->prepare($sql1);
 
-		$statement1->execute(array(':idFiche' => $idFiche , ':idUser' => $idUseur['idUser']));
+		$statement1->execute(array(':idFiche' => htmlspecialchars($idFiche) , ':idUser' => htmlspecialchars($idUseur['idUser'])));
 		$result = $statement1->fetchAll();//on  retourne tous les exos
 
 		return $result;
@@ -41,7 +41,7 @@ class ModeleEditionExo  extends Modele_Connexion_Generique
 		$statement1 = Connexion::$bdd->prepare($sql1);
 		$idUseur =$this->recuperationInfoCompte();
 
-		$statement1->execute(array(':idUser' => $idUseur['idUser']));
+		$statement1->execute(array(':idUser' => htmlspecialchars($idUseur['idUser'])));
 		$result = $statement1->fetchAll();//on  retourne tous les exos
 
 		return $result;
@@ -57,7 +57,7 @@ class ModeleEditionExo  extends Modele_Connexion_Generique
 		$idUseur = $this->recuperationInfoCompte();
 		$sql1 ='Select * from fiche where idUser = :idUser and idFiche = :idFiche'; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
 		$statement1 = Connexion::$bdd->prepare($sql1);
-		$statement1->execute(array(':idFiche' => $idFiche , ':idUser' => $idUseur['idUser']));
+		$statement1->execute(array(':idFiche' => htmlspecialchars($idFiche) , ':idUser' => htmlspecialchars($idUseur['idUser'])));
 		$result = $statement1->fetchAll();//on  retourne tous les exos
 		return $result;
 	}

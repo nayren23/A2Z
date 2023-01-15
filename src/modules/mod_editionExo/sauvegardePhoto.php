@@ -67,7 +67,7 @@ class SauvegardePhoto  extends Connexion
                 $statement1 = self::$bdd->prepare($sql);
                 $idUser = $this->recuperationInfoCompte();
 
-                $statement1->execute(array(':idUser' => $idUser['idUser']));
+                $statement1->execute(array(':idUser' => htmlspecialchars($idUser['idUser'])));
                 $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
             }
             $func = function ($tableau): string {
@@ -88,7 +88,7 @@ class SauvegardePhoto  extends Connexion
             for ($i = 0; $i < $tailleTabImage; $i++) {
 
                 $sql2 = 'SELECT cheminImages FROM `images` WHERE idImages =:idImages';
-                $statement2->execute(array(':idImages' => $nouveauxTableauBdd[$i]));
+                $statement2->execute(array(':idImages' => htmlspecialchars($nouveauxTableauBdd[$i])));
                 $resultat_Tab_cheminImages[$i] = $statement2->fetch(PDO::FETCH_ASSOC);
             }
             if (!empty($resultat_Tab_cheminImages)) {
