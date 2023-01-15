@@ -107,14 +107,20 @@ class VueEdition extends Vue_connexion_generique
                                 </label>
                                 <div class="content">
                                     <li class="ui-state-highlight listeDeroulante draggable entoureMots">Entoure Les Mots</li>
-
+                                </div>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable entoureMots">Entoure Les Mots</li>
                                 </div>
                             </div>
+
                             <div class="question-wrap">
                                 <input type="radio" class="acc" id="question-4" name="question">
                                 <label class="labelEditionExo" for="question-4">
                                     <div class="cross-box"><span class="cross"></span></div><span class="accordion-heading">Encodage</span>
                                 </label>
+                                <div class="content">
+                                    <li class="ui-state-highlight listeDeroulante draggable continuePhrase">Colorie la bonne Phrase</li>
+                                </div>
                                 
                             </div>
                             <div class="question-wrap">
