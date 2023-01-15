@@ -47,6 +47,9 @@ if (constant("a2z") != "rya")
   <?php
 
 
+
+  
+
   if (!isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
     require_once("./composants/comp_navbar_Connexion/composants_navbar_Connexion.php");
     $navbar_Connexion = new Composant_navbar_Connexion();

@@ -14,7 +14,12 @@ class Controleur
     }
 
     public function exec()
-    {
+    {   
+        require_once("./Common/Classe_Generique/verificationExistanceUser.php");
+
+  $verificationExistanceUser = new verificationExistanceUser();
+
+  $verificationExistanceUser->verificationExistanceUser();
         switch ($this->module) {
 
             case "connexion":

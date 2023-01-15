@@ -62,6 +62,10 @@ class ContConnexion extends Controleurgenerique
                 } elseif (isset($_GET['InscriptionReussi'])) {
                     $this->affichageInscriptionReussite();
                 }
+                elseif (isset($_GET['SuppresionCompte'])) {
+                    $this->SuppresionCompte();
+                }
+                
                 break;
 
             case 'connexionidentifiant':
@@ -156,4 +160,10 @@ class ContConnexion extends Controleurgenerique
     {
         $this->vue->affichageDeconnexionImpossible();  //toasts
     }
+
+    public function SuppresionCompte()
+    {
+        $this->vue->SuppresionCompte();  //toasts
+    }
+    
 }

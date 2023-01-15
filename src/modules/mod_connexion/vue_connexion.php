@@ -127,4 +127,18 @@ class VueConnexion extends Vue_connexion_generique
 
   <?php
   }
+
+  public function SuppresionCompte()
+  {
+  ?>
+    <script src="Script_js/outils.js"></script>
+    <script type="text/javascript">
+      Toast.fire({
+        icon: 'warning',
+        title: "Attention votre compte a été supprimé veuillez contacter votre administrateur s'il s'agit d'une erreur 😓! "
+      })
+    </script>
+
+  <?php
+  }
 }
