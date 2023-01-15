@@ -254,7 +254,7 @@ page {
 
 page[size="A4"] {
     min-width: 21cm;
-    min-height: 41.7cm;
+    min-height: 38.7cm;
     max-width: 21cm;
     max-height: 29.7cm;
 }
