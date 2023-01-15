@@ -63,9 +63,8 @@ class saveExo extends connexion
                 }
             }
             $DateImage  = date('l jS \of F Y h:i:s A');
-            $tableauExecution = array(':dateEcriture'=> htmlspecialchars($DateImage), ':idFiche' => $idFiche);
+            $tableauExecution = array(':dateEcriture' => htmlspecialchars($DateImage), ':idFiche' => $idFiche);
             $statement5->execute($tableauExecution);
-
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }
@@ -80,8 +79,8 @@ class saveExo extends connexion
             $idExercice = htmlspecialchars($tableauContenuExerciceDecode['idExo'][$indiceExoSite]); //recuperation de l'id de l'exo
             $html =  htmlspecialchars($tableauContenuExerciceDecode['html'][$indiceExoSite]); // recuperation de l'html   
             $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$indiceExoSite]);
-                 
-            $tableauExec = array(':contenu' => json_encode($html), ':idExo' => $idExercice, ':positionExercice'=> $positionExercice);
+
+            $tableauExec = array(':contenu' => json_encode($html), ':idExo' => $idExercice, ':positionExercice' => $positionExercice);
             $statement2->execute($tableauExec);
         } else {
             //delete
@@ -102,7 +101,7 @@ class saveExo extends connexion
             $positionExercice = htmlspecialchars($tableauContenuExerciceDecode['positionExercice'][$i]);
 
             var_dump($html);
-            $tableauExec = array(':idExo' => $idExercice, ':contenu' => json_encode($html), ':idFiche' => $idFiche, ':positionExercice'=> $positionExercice);
+            $tableauExec = array(':idExo' => $idExercice, ':contenu' => json_encode($html), ':idFiche' => $idFiche, ':positionExercice' => $positionExercice);
             $statement->execute($tableauExec); //vois si pour le mdp on fait htmlspecialchars
         }
     }
@@ -110,3 +109,11 @@ class saveExo extends connexion
 
 $exoSauvegarder = new saveExo();
 $exoSauvegarder->insererDonneesExercices();
+
+/*
+Version 1.0 - 2022/11/30
+GNU GPL  Copyleft (C inversé) 2023-2033
+Initiated by Hamidi.Yassine,Chouchane.Rayan,Claude.Aldric
+Web Site = http://localhost/A2Z/src/index.php?module=connexion&action=connexion 
+*/
+?>

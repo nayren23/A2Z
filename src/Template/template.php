@@ -1,7 +1,7 @@
 <?php
 require_once("./Common/Bibliotheque_Communes/errreur404.php");
 if (constant("a2z") != "rya")
-	die(affichage_erreur404());
+  die(affichage_erreur404());
 ?>
 
 <html lang="fr">
@@ -47,9 +47,6 @@ if (constant("a2z") != "rya")
   <?php
 
 
-
-  
-
   if (!isset($_SESSION["identifiant"])) {  //page accessible uniquement si on est connecter
     require_once("./composants/comp_navbar_Connexion/composants_navbar_Connexion.php");
     $navbar_Connexion = new Composant_navbar_Connexion();
@@ -62,9 +59,6 @@ if (constant("a2z") != "rya")
 
   require_once("./composants/comp_footer/composants_footer.php");
   $footer = new Composant_footer();
-
-
-
 
   ?>
 
@@ -82,3 +76,11 @@ if (constant("a2z") != "rya")
 
 
 </html>
+
+<!--
+Version 1.0 - 2022/11/30
+GNU GPL  Copyleft (C inversé) 2023-2033
+Initiated by Hamidi.Yassine,Chouchane.Rayan,Claude.Aldric
+Web Site = http://localhost/A2Z/src/index.php?module=connexion&action=connexion 
+*/
+-->
