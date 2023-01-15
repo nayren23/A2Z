@@ -254,8 +254,8 @@ page {
 
 page[size="A4"] {
     min-width: 21cm;
-    min-height: 29.7cm;
-    max-width: 21cm;
+    min-height: 41.7cm;
+    max-width: 25cm;
     max-height: 29.7cm;
 }
 
@@ -304,7 +304,7 @@ ul {
 canvas {
     display: block;
     padding-top: 15;
-    margin-left: 3%;
+    margin-left: 6%;
 }
 
 .inputCanva {
