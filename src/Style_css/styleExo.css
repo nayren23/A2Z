@@ -44,21 +44,30 @@
 
 .left {
     display: inline-block;
-    width: 59%;
+    width: 55%;
     height: 100%;
     text-align: center;
 }
 
 .right {
     float: right;
-    width: 40%;
+    width: 45%;
     height: 100%;
 }
 
 .groupe {
-    width: 75px;
-    height: 75px;
-    border-radius: 40px;
+    width: 89px;
+    height: 89px;
+    border-radius: 44px;
+    font-size: 19px;
+}
+
+.lecture {
+    font-size: 19px;
+}
+
+.lecture2 {
+    font-size: 19px;
 }
 
 .lectureLeft {
@@ -157,23 +166,23 @@ input.groupe.input-utilisateur {
 }
 
 .phraseGauchecss {
-    width: 150px;
+    width: 295px;
     height: 30px;
     margin-top: 37;
 }
 
 .phraseDroitecss1 {
-    width: 100%;
+    width: 90%;
     margin-bottom: 5;
 }
 
 .phraseDroitecss2 {
-    width: 100%;
+    width: 90%;
     margin-bottom: 5;
 }
 
 .phraseDroitecss3 {
-    width: 100%;
+    width: 90%;
 }
 
 .choixPhrase {
