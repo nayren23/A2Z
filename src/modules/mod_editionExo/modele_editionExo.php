@@ -21,11 +21,12 @@ class ModeleEditionExo  extends Modele_Connexion_Generique
 	public function recupererExercices()
 	{
 		$idFiche = htmlspecialchars($_GET['idFiche']);
-
-		$sql1 = 'Select contenu from exercices where idFiche = :idFiche ORDER BY positionExercice'; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
+		
+		$idUseur = $this->recuperationInfoCompte();
+		$sql1 ='Select contenu from exercices join fiche using (idFiche) where idUser = :idUser and idFiche = :idFiche ORDER BY positionExercice '; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
 		$statement1 = Connexion::$bdd->prepare($sql1);
 
-		$statement1->execute(array(':idFiche' => $idFiche));
+		$statement1->execute(array(':idFiche' => $idFiche , ':idUser' => $idUseur['idUser']));
 		$result = $statement1->fetchAll();//on  retourne tous les exos
 
 		return $result;
@@ -48,7 +49,20 @@ class ModeleEditionExo  extends Modele_Connexion_Generique
 		return $result;
 	}
 
-	
+		/**
+	 * fonction sécurise pour éviter d'accéder à des fiches inconnue ou appartenant à quelqu'un d'autres
+	 */
+	public function verificationDroitAccesFiche()
+	{
+		$idFiche = htmlspecialchars($_GET['idFiche']);
+		
+		$idUseur = $this->recuperationInfoCompte();
+		$sql1 ='Select * from fiche where idUser = :idUser and idFiche = :idFiche'; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
+		$statement1 = Connexion::$bdd->prepare($sql1);
+		$statement1->execute(array(':idFiche' => $idFiche , ':idUser' => $idUseur['idUser']));
+		$result = $statement1->fetchAll();//on  retourne tous les exos
+		return $result;
+	}
 	
 }
 

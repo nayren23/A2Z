@@ -27,10 +27,13 @@ class ContEditionExo extends Controleurgenerique
 
                 ////////////////////////////////////////////////// INSCRIPTION ///////////////////////////////////////////////////////
             case 'editionExo':
-                $this->affichagePageEditionExo();
-                if (isset($_GET['connexion'])) {
-                    $this->affichageConnexionReussie();
+                if (isset($_GET['idFiche'])) {
+                        if(!$this->verificationDroitAccesFiche()){ //Sécurisation pour éviter d'accéder à des fiches inconnue ou appartenant à quelqu'un 
+                            die(affichage_erreur404());
+                        }
+                    $this->affichagePageEditionExo();
                 }
+
                 break;
             default:
                 die(affichage_erreur404());
@@ -52,9 +55,8 @@ class ContEditionExo extends Controleurgenerique
         $this->vue->pageExoEdition($tableauExercice,$tableauImage);
     }
 
-    public function affichageConnexionReussie()
-    {
-        $this->vue->affichageConnexionReussie();
+    public function verificationDroitAccesFiche(){
+        return $this->modele->verificationDroitAccesFiche();
     }
 
     public function recupererExercices(){
