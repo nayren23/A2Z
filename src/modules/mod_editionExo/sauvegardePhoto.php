@@ -57,9 +57,9 @@ class SauvegardePhoto  extends Connexion
             if (isset($_POST['nomImage'])) {
                 $nomImage = htmlspecialchars((string) trim($_POST['nomImage']));
 
-                $sql = 'SELECT idImages FROM `images` WHERE DescriptionImages LIKE  ? LIMIT 10';
+                $sql = 'SELECT idImages FROM `images` join utilisateur using (idUser) where  identifiant = ? and  DescriptionImages LIKE  ? LIMIT 10';
                 $statement1 = self::$bdd->prepare($sql);
-                $statement1->execute(array("%$nomImage%"));
+                $statement1->execute(array($_SESSION['identifiant'], "%$nomImage%"));
                 $resultat_Tab_ID = $statement1->fetchAll(PDO::FETCH_ASSOC);
 
             } else {
@@ -93,9 +93,11 @@ class SauvegardePhoto  extends Connexion
                 $statement2->execute(array(':idImages' => $nouveauxTableauBdd[$i]));
                 $resultat_Tab_cheminImages[$i] = $statement2->fetch(PDO::FETCH_ASSOC);
             }
+            if(!empty($resultat_Tab_cheminImages)){
+                header("Content-Type: application/json"); // On avertit le navigateur du type de donnée qu'on lui envoit !!!Hyper important ne pas enlever ou la page va complétement buguer!!!
+                echo json_encode($resultat_Tab_cheminImages); //Envoie à Js
+            }
 
-            header("Content-Type: application/json"); // On avertit le navigateur du type de donnée qu'on lui envoit !!!Hyper important ne pas enlever ou la page va complétement buguer!!!
-            echo json_encode($resultat_Tab_cheminImages); //Envoie à Js
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }
