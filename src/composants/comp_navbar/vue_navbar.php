@@ -13,7 +13,7 @@ class Vue_navbar extends Vue_Generique
     {
         parent::__construct(); // comme un super
     }
-    function navBarHabillage($image)
+    function navBarHabillage($image,$idFiche)
     {
 ?>
         <link rel="stylesheet" href="Style_css/NavBar.css">
@@ -25,7 +25,7 @@ class Vue_navbar extends Vue_Generique
                         <div class="navigation">
                             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                                 <li><a href="index.php?module=favoris&location=1" class="nav-link px-2 link-secondary">Accueil</a></li>
-                                <li><a href="index.php?module=editionExo&idFiche=1" class="nav-link px-2 link-secondary">Ma fiche</a></li>
+                                <li><a href="index.php?module=editionExo&idFiche=<?php echo $idFiche  ?>" class="nav-link px-2 link-secondary">Ma dernière fiche</a></li>
                                 <li><a href="#" class="nav-link px-2 link-dark">Fiches publiques</a></li>
                             </ul>
                         </div>

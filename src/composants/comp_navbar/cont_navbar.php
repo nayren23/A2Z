@@ -22,17 +22,27 @@ class Cont_navbar
     public function exec()
     {
         $image = $this->recuperationPhoto()["cheminImage"];
-        $this->affichageHabillage($image);
+        if($this->recupererDerniereFicheUser() == null ){
+            $idFiche = 0;
+        }
+        else{
+            $idFiche = $this->recupererDerniereFicheUser()["idFiche"];
+        }
+        $this->affichageHabillage($image,$idFiche);
     }
 
-    public function affichageHabillage($image)
+    public function affichageHabillage($image,$idFiche)
     {
-        $this->vue->navBarHabillage($image);
+        $this->vue->navBarHabillage($image,$idFiche);
     }
 
     public function recuperationPhoto()
     {
         return $this->modele->recupererPhoto();
+    }
+
+    public function recupererDerniereFicheUser(){
+       return $this->modele->recupererDerniereFicheUser();
     }
 }
 ?>

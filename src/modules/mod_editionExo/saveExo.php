@@ -29,13 +29,15 @@ class saveExo extends connexion
             $sql2 = 'UPDATE exercices SET contenu= :contenu , positionExercice =:positionExercice WHERE idExo =:idExo';
             $sql3 = 'SELECT idExo FROM exercices WHERE idFiche = :idFiche'; // selectionenr les exercices avec lequel l'id de la fiche existe deja et si l'exo existe deja 
             $sql4 = 'DELETE FROM exercices WHERE idExo =:idExo';
-
+            $sql5 = 'UPDATE `fiche` SET `dateEcriture`= :dateEcriture WHERE `idFiche`= :idFiche';
             //preparation des requetes SQL
             $statement = Connexion::$bdd->prepare($sql);
             $statement1 = Connexion::$bdd->prepare($sql1);
             $statement2 = Connexion::$bdd->prepare($sql2);
             $statement3 = Connexion::$bdd->prepare($sql3);
             $statement4 = Connexion::$bdd->prepare($sql4);
+            $statement5 = Connexion::$bdd->prepare($sql5);
+
             $statement3->execute(array(':idFiche' => $idFiche));
             $exoDansLaBDD = $statement3->fetchAll(); //structure ne dictionnaire
 
@@ -59,8 +61,11 @@ class saveExo extends connexion
                 if ($i < $tailleTableauSite) {
                     $this->modifierOuSupprimer($i, $exoDansLaBDD, $tableauContenuExerciceDecode, $statement2, $statement4);
                 }
-
             }
+            $DateImage  = date('l jS \of F Y h:i:s A');
+            $tableauExecution = array(':dateEcriture'=> htmlspecialchars($DateImage), ':idFiche' => $idFiche);
+            $statement5->execute($tableauExecution);
+
         } catch (PDOException $e) {
             echo $e->getMessage() . $e->getCode();
         }
