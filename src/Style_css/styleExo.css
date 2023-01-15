@@ -18,11 +18,15 @@
     margin-left: 5px;
 }
 
+inputCanva {
+    width: 550px;
+}
+
 .bot {
+    font-size: 25;
     display: block;
-    margin-top: 14px;
     font-style: italic;
-    margin-left: 35%;
+    margin-left: 25%;
     background-color: #979797;
     text-align: center;
     border-block: #979797;
@@ -31,9 +35,9 @@
 }
 
 .top {
-    font-size: 27px;
+    font-size: 34px;
     font-weight: bold;
-    width: 80%;
+    width: 100%;
     margin-top: 7px;
     background-color: #979797;
     text-align: center;
@@ -187,4 +191,11 @@ input.groupe.input-utilisateur {
 
 .choixPhrase {
     height: 150px;
+}
+
+.ui-state-highlight {
+    background: white !important;
+    border-radius: 20% !important;
+    border: 4px solid #0098db !important;
+    text-align: center !important;
 }
