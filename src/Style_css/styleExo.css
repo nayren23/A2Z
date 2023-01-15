@@ -37,7 +37,6 @@
     margin-top: 7px;
     background-color: #979797;
     text-align: center;
-
     border-block: #979797;
     border-width: 0px;
     border-color: #979797 !important;
@@ -144,4 +143,39 @@ input.groupe.input-utilisateur {
 
 .alignCenter {
     text-align: center;
+}
+
+.phraseGauche {
+    width: 40%;
+    display: inline-block;
+}
+
+.phraseDroite {
+    display: inline-block;
+    float: right;
+    width: 60%;
+}
+
+.phraseGauchecss {
+    width: 150px;
+    height: 30px;
+    margin-top: 37;
+}
+
+.phraseDroitecss1 {
+    width: 100%;
+    margin-bottom: 5;
+}
+
+.phraseDroitecss2 {
+    width: 100%;
+    margin-bottom: 5;
+}
+
+.phraseDroitecss3 {
+    width: 100%;
+}
+
+.choixPhrase {
+    height: 150px;
 }
