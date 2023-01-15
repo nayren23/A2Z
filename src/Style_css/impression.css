@@ -47,7 +47,13 @@
     }
 
     .inputCanva {
-        margin-left: 30%;
+        margin-left: 25%;
+        width: 70%;
+    }
+
+    .vraiOuFaux {
+        width: 70%;
+
     }
 
     body {
@@ -93,8 +99,27 @@
         font-size: 24px;
     }
 
-    .coloriagePhrase {
-        border: 1px solid grey;
+    .coloriagePhrase  {
+        border: 2px solid #adacb1;
+    }
+
+    .lecture,.lecture2 {
+        background-color: #524e4b;
+        color: white;
+        border-style: solid !important;
+        border-color: #524e4b !important;
+        border-width: 10px !important;
+    }
+
+    .premiereLigne{
+        margin-left: 10%;
+    }
+
+    .phraseDroitecss1{
+        margin-bottom: 3%;
+    }
+    .phraseGauchecss{
+        margin-top: 14%;
     }
 }
 /*
