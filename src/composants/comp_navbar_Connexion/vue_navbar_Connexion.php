@@ -47,21 +47,21 @@ class Vue_navbar_Connexion extends Vue_Generique
                                     //ici on verifie si on est sur la page inscription si c'est le cas alors on affiche pas le bouton sinon on l'affiche
                                     if (isset(($_GET['action'])) && !($_GET['action'] == "inscription") && (!isset($_SESSION['identifiant']))) {
                                     ?>
-                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn boutonConnexion">Inscription</button>
                                         <button onclick="window.location.href = 'index.php?module=administration'" type="button" class="btn btn-outline-light me-2">Administration</button>
                                     <?php
                                     }
                                     //ici on verifie si on est conencter si oui alors on change le bouton conencter par deconnexion
                                     else if ((!isset($_SESSION['identifiant'])) && isset(($_GET['action'])) && $_GET['action'] != "connexion") {
                                     ?>
-                                        <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-warning">Connexion</button>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn boutonConnexion">Connexion</button>
                                         <button onclick="window.location.href = 'index.php?module=administration'" type="button" class="btn btn-outline-light me-2">Administration</button>
                                     <?php
                                     }
                                     //Pour la page admini on met connexion et inscription
                                     else if (!isset(($_GET['action']))) {
                                     ?>
-                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn btn-warning">Inscription</button>
+                                        <button onclick="window.location.href = 'index.php?module=connexion&action=inscription'" type="button" class="btn boutonConnexion">Inscription</button>
                                         <button onclick="window.location.href = 'index.php?module=connexion&action=connexion'" type="button" class="btn btn-outline-light me-2">Connexion</button>
                                     <?php
                                     }
