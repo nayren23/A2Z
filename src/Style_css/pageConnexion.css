@@ -208,6 +208,11 @@ input[type="button"] {
   width: 90%;
 }
 
+.boutonConnexion{
+  color: whitesmoke;
+  background-color: #0098db;
+
+}
 /*
 Version 1.0 - 2022/11/30
 GNU GPL  Copyleft (C inversé) 2023-2033
