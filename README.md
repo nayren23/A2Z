@@ -12,6 +12,8 @@
 
 - Elle souhaiterait également pouvoir proposer cette application à d’autres professeurs voire d'autres écoles pour qu'elles puissent elles aussi en profiter dans le futur.
 
+⚠️Attention, si vous souhaitez utiliser pleinement la fonctionnalité d'impression, 
+il faut faire "ctrl+p" puis plus de paramètres et dans les options cochés "imprimer les arrières plans"⚠️
 
 ##  Notice de mise en place du site et de la base de donnée
 ### Prérequis
